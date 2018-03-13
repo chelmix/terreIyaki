@@ -4,12 +4,14 @@ package entityBeans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Property implements Serializable {
@@ -17,7 +19,7 @@ public class Property implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+    @Column(nullable = false)
     private String name; // peut servir d'id ?
     private String value; // on ne va pas faire des calculs avec les contenances ? ou calories etc
     
@@ -25,16 +27,17 @@ public class Property implements Serializable {
     private Unit unit;
     @ManyToMany
     private Collection<Product> products;
+    
 
     public Property() {
-        products = new ArrayList();
+        products = new ArrayList();       
     }
 
     public Property(String name, String value) {
         this();
         this.name = name;
         this.value = value;
-    }
+    } 
 
     public Collection<Product> getProducts() {
         return products;

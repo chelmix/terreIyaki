@@ -18,13 +18,18 @@ public class Category implements Serializable {
     
     @OneToMany(mappedBy = "category")
     private Collection<ComboCategory> comboCategories;
+    
+    @OneToMany(mappedBy = "category")
+    private Collection<Product> products;
 
     @ManyToOne
     private Menu menu;
     
     public Category() {
         comboCategories = new ArrayList();
+        products = new ArrayList();
     }
+    
 
     public Category(String name) {
         this();
@@ -45,6 +50,14 @@ public class Category implements Serializable {
 
     public void setComboCategories(Collection<ComboCategory> comboCategories) {
         this.comboCategories = comboCategories;
+    }
+
+    public Collection<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Collection<Product> products) {
+        this.products = products;
     }
     
     

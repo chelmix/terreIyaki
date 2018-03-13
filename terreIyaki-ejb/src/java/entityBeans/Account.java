@@ -58,8 +58,6 @@ public class Account implements Serializable {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
-
-    
     
     public Long getId() {
         return id;
