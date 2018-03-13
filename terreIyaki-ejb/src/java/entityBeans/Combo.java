@@ -22,7 +22,13 @@ public class Combo implements Serializable {
     private String description;
     
     @ManyToOne
+    private Status status;
+    
+    @ManyToOne
     private Menu menu;
+    
+    @ManyToOne
+    private VAT vat;
     
     @OneToMany(mappedBy = "combo")
     private Collection<ComboCategory> comboCategories;
@@ -77,6 +83,24 @@ public class Combo implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public VAT getVat() {
+        return vat;
+    }
+
+    public void setVat(VAT vat) {
+        this.vat = vat;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    
+    
     
     @Override
     public String toString() {
