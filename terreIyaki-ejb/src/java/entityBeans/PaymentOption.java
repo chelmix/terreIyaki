@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -27,6 +28,12 @@ public class PaymentOption implements Serializable {
     private String Name; 
     @Column(nullable = false)
     private float Amount; 
+    
+    
+    @ManyToOne
+    private Status status;
+    
+    
     
     
     // associations
@@ -80,6 +87,14 @@ public class PaymentOption implements Serializable {
     @Override
     public String toString() {
         return "PaymentOption[ Name= " + Name +" Amount= "+Amount  +" ]";
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
     
 }

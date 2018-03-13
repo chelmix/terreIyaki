@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -26,7 +27,10 @@ public class MyTable implements Serializable {
     private Long id;
     
     private int tableNumber;
-    private int status;
+    
+    @ManyToOne
+    private Status status; 
+    
     
     
     @ManyToMany(mappedBy="myTables")
@@ -36,10 +40,10 @@ public class MyTable implements Serializable {
         myOrders = new ArrayList();
     }
 
-    public MyTable(int tableNumber, int status) {
+    public MyTable(int tableNumber) {
         this();
         this.tableNumber = tableNumber;
-        this.status = status;
+       
     }  
 
     public Long getId() {
@@ -63,13 +67,15 @@ public class MyTable implements Serializable {
         this.tableNumber = tableNumber;
     }
 
-    public int getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
+
+    
 
     public Collection<MyOrder> getMyOrders() {
         return myOrders;

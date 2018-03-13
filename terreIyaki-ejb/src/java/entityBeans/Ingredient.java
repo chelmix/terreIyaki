@@ -2,11 +2,14 @@
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -24,10 +27,25 @@ public class Ingredient implements Serializable {
     @Column(nullable = false)
     private String Description; 
 
+    
+    @ManyToMany
+    private Collection <OrderItem> orderItems; 
+    
+    
+    @ManyToMany 
+    private Collection <Product> products; 
+    
+    
+    
+    
     public Ingredient() {
+        orderItems = new ArrayList();
+        products = new ArrayList(); 
+        
     }
 
     public Ingredient(String Name, String Description) {
+        this(); 
         this.Name = Name;
         this.Description = Description;
     }
@@ -57,6 +75,27 @@ public class Ingredient implements Serializable {
         this.id = id;
     }
 
+    public Collection<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(Collection<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public Collection<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Collection<Product> products) {
+        this.products = products;
+    }
+
+   
+
+    
+    
+    
    
     @Override
     public String toString() {

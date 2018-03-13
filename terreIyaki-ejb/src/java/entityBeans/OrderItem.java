@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -29,6 +30,11 @@ public class OrderItem implements Serializable {
 
     private float price;
     private float tax;
+    
+    @ManyToOne
+    private Status status;
+    
+    
 
 //    @ManyToOne
 //    OrderItem comboOrderItem;
@@ -41,6 +47,20 @@ public class OrderItem implements Serializable {
     @OneToMany(mappedBy = "comboOrderItem")
     private Collection<OrderItem> orderItems;
 
+    @ManyToMany (mappedBy = "orderItems")
+    private Collection <Ingredient> ingredients; 
+    
+    
+    @ManyToMany (mappedBy = "orderItems")
+    private Collection <Option> options; 
+    
+    @ManyToOne
+    private Product product; 
+    
+    
+    
+    
+    
 //    @ManyToOne
 //    private ComboOrderItem comboOrderItem;
     public OrderItem() {
@@ -105,5 +125,39 @@ public class OrderItem implements Serializable {
     public void setOrderItems(Collection<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
+
+    public Collection<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Collection<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Collection<Option> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Collection<Option> options) {
+        this.options = options;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+    
+    
 
 }

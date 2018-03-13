@@ -33,13 +33,18 @@ public class MyOrder implements Serializable {
     
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date orderDate;
+    
+    @ManyToOne
     private Status status;
     
     @ManyToOne
     private Account account;
     
     @ManyToMany
-    private Collection<MyTable> myTables;   
+    private Collection<MyTable> myTables;  
+    
+    @OneToMany (mappedBy="myOrder")
+    private Collection <Payment> payments; 
     
     
     @OneToMany(mappedBy="myOrder")
@@ -48,6 +53,7 @@ public class MyOrder implements Serializable {
     public MyOrder() {
         myTables = new ArrayList();
         orderItems = new ArrayList();
+        payments = new ArrayList(); 
     }
 
     public MyOrder(Date orderDate, Status status) {
@@ -110,5 +116,15 @@ public class MyOrder implements Serializable {
     public void setAccount(Account account) {
         this.account = account;
     }
+
+    public Collection<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Collection<Payment> payments) {
+        this.payments = payments;
+    }
+    
+    
     
 }

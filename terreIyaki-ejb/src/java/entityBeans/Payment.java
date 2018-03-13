@@ -29,20 +29,25 @@ public class Payment implements Serializable {
     @Column(nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date Date; 
-    @Column(nullable = false)
-    private String Status; 
+
+    @ManyToOne
+    private Status Status; 
 
     @ManyToOne
     private PaymentOption PaymentOption;
+    
+    @ManyToOne
+    private MyOrder myOrder; 
 
     public Payment() {
     }
 
-    public Payment(Date Date, String Status, PaymentOption PaymentOption) {
+    public Payment(Date Date, PaymentOption PaymentOption) {
         this.Date = Date;
-        this.Status = Status;
         this.PaymentOption = PaymentOption;
+        
     }
+    
 
     public PaymentOption getPaymentOption() {
         return PaymentOption;
@@ -60,14 +65,7 @@ public class Payment implements Serializable {
         this.Date = Date;
     }
 
-    public String getStatus() {
-        return Status;
-    }
 
-    public void setStatus(String Status) {
-        this.Status = Status;
-    }
-    
     public Long getId() {
         return id;
     }
@@ -76,10 +74,26 @@ public class Payment implements Serializable {
         this.id = id;
     }
 
+    public MyOrder getMyOrder() {
+        return myOrder;
+    }
+
+    public void setMyOrder(MyOrder myOrder) {
+        this.myOrder = myOrder;
+    }
+
 
     @Override
     public String toString() {
         return "Payment[ Date=" + Date + " ]";
+    }
+
+    public Status getStatus() {
+        return Status;
+    }
+
+    public void setStatus(Status Status) {
+        this.Status = Status;
     }
     
 }
