@@ -4,10 +4,12 @@ package entityBeans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -16,15 +18,22 @@ public class VAT implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+    @Column(nullable = false)
     private float rate; // in percent
     private String label;
     
     @OneToMany(mappedBy = "vat")
     private Collection<Product> products;
+    
+    @OneToMany(mappedBy = "vat")
+    private Collection<Combo> combos;
+    
+    @ManyToOne
+    private Status status;
 
     public VAT() {
         products = new ArrayList();
+        combos = new ArrayList();
     }
 
     public VAT(float rate, String label) {
@@ -32,6 +41,16 @@ public class VAT implements Serializable {
         this.rate = rate;
         this.label = label;
     }
+
+    public Collection<Combo> getCombos() {
+        return combos;
+    }
+
+    public void setCombos(Collection<Combo> combos) {
+        this.combos = combos;
+    }
+    
+    
 
     public Collection<Product> getProducts() {
         return products;

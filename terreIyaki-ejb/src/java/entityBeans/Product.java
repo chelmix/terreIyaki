@@ -3,12 +3,14 @@ package entityBeans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Product implements Serializable {
@@ -16,7 +18,7 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+    @Column(nullable = false)
     private String name;
     private Float price;
     private String picture;
@@ -30,11 +32,27 @@ public class Product implements Serializable {
     private Collection<Product> mainCourses;
     @ManyToMany(mappedBy = "mainCourses")
     private Collection<Product> sides;
+    @ManyToOne
+    private Category category;
+    @ManyToMany
+    private Collection<ComboCategory> comboCategories;
+    @OneToMany(mappedBy = "product")
+    private Collection<OrderItem> orderItems;
+    @ManyToMany(mappedBy = "product")
+    private Collection<Option> options;
+    @ManyToMany(mappedBy = "product")
+    private Collection<Ingredient> ingredients;
+    @ManyToOne
+    private Status status;
 
     public Product() {
         properties = new ArrayList();
         sides = new ArrayList();
         mainCourses = new ArrayList();
+        comboCategories = new ArrayList();
+        orderItems = new ArrayList();
+        options = new ArrayList();
+        ingredients = new ArrayList();
     }
 
     public Product(String name, Float price, String picture, String description) {
@@ -44,6 +62,54 @@ public class Product implements Serializable {
         this.picture = picture;
         this.description = description;
     }
+
+    public Collection<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(Collection<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public Collection<Option> getOptions() {
+        return options;
+    }
+
+    public void setOptions(Collection<Option> options) {
+        this.options = options;
+    }
+
+    public Collection<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Collection<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }   
+
+    public Collection<ComboCategory> getComboCategories() {
+        return comboCategories;
+    }
+
+    public void setComboCategories(Collection<ComboCategory> comboCategories) {
+        this.comboCategories = comboCategories;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    } 
 
     public Collection<Product> getSides() {
         return sides;
