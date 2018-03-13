@@ -2,11 +2,14 @@
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -20,10 +23,20 @@ public class Option implements Serializable {
     @Column(nullable = false)
     private String Value; 
 
+    @ManyToMany
+    private Collection <OrderItem> orderItems; 
+    
+    @ManyToMany 
+    private Collection <Product> products; 
+    
+    
     public Option() {
+        orderItems = new ArrayList(); 
+        products = new ArrayList(); 
     }
 
     public Option(String Name, String Value) {
+        this(); 
         this.Name = Name;
         this.Value = Value;
     }
@@ -43,6 +56,24 @@ public class Option implements Serializable {
     public void setValue(String Value) {
         this.Value = Value;
     }
+
+    public Collection<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(Collection<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public Collection<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Collection<Product> products) {
+        this.products = products;
+    }
+
+ 
     
     
 

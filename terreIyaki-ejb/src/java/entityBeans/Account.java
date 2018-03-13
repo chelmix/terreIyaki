@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -26,7 +27,10 @@ public class Account implements Serializable {
     private int code;
     private String firstName;
     private String lastName;
+    @ManyToOne
     private Status status;
+    @ManyToOne
+    private Menu menu; 
     
     
     @ManyToMany
@@ -47,12 +51,15 @@ public class Account implements Serializable {
         this.lastName = lastName;
     }
 
-    public Account(int code, String firstName, String lastName, Status status) {
-        this.code = code;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.status = status;
+    public Menu getMenu() {
+        return menu;
     }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    
     
     public Long getId() {
         return id;
