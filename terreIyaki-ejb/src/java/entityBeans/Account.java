@@ -46,13 +46,6 @@ public class Account implements Serializable {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
-    public Account(int code, String firstName, String lastName, Status status) {
-        this.code = code;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.status = status;
-    }
     
     public Long getId() {
         return id;
