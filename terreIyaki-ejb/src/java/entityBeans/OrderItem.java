@@ -6,6 +6,7 @@
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,38 +21,37 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class OrderItem implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private float price;
     private float tax;
-    
+
 //    @ManyToOne
 //    OrderItem comboOrderItem;
-    
-    
     @ManyToOne
     private MyOrder myOrder;
-    
+
     @ManyToOne
-    private OrderItem comboOrderItem;    
-    
-@OneToMany(mappedBy="comboOrderItem")    
-private Collection<OrderItem>orderItems;    
-    
+    private OrderItem comboOrderItem;
+
+    @OneToMany(mappedBy = "comboOrderItem")
+    private Collection<OrderItem> orderItems;
+
 //    @ManyToOne
 //    private ComboOrderItem comboOrderItem;
-
     public OrderItem() {
+        orderItems = new ArrayList();
     }
 
     public OrderItem(float price, float tax) {
+        this();
         this.price = price;
         this.tax = tax;
     }
-    
 
     public Long getId() {
         return id;
@@ -59,26 +59,6 @@ private Collection<OrderItem>orderItems;
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OrderItem)) {
-            return false;
-        }
-        OrderItem other = (OrderItem) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
     }
 
     @Override
@@ -126,6 +106,4 @@ private Collection<OrderItem>orderItems;
         this.orderItems = orderItems;
     }
 
-
-    
 }

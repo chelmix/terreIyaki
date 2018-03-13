@@ -33,11 +33,8 @@ public class PaymentOption implements Serializable {
     @OneToMany(mappedBy = "PaymentOption")
     private Collection<Payment> payment;
 
-    
-    
-
     public PaymentOption() {
-        payment = new ArrayList<>(); 
+        payment = new ArrayList(); 
     }
 
     public PaymentOption(String Name, float Amount) {
@@ -53,9 +50,6 @@ public class PaymentOption implements Serializable {
     public void setPayment(Collection<Payment> payment) {
         this.payment = payment;
     }
-
-   
-    
     
     public String getName() {
         return Name;
@@ -81,26 +75,6 @@ public class PaymentOption implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PaymentOption)) {
-            return false;
-        }
-        PaymentOption other = (PaymentOption) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
     }
 
     @Override
