@@ -2,6 +2,7 @@
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,24 +15,43 @@ import javax.persistence.OneToMany;
 @Entity
 public class Combo implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     private String name; // de type A2 B6 etc
     private String price;
     private String description;
     
     @ManyToOne
-    private String menu;
+    private Menu menu;
     
     @OneToMany(mappedBy = "combo")
     private Collection<ComboCategory> comboCategories;
 
     public Combo() {
+        comboCategories = new ArrayList();
     }
 
     public Combo(String name, String price, String description) {
+        this();
         this.name = name;
         this.price = price;
         this.description = description;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public Collection<ComboCategory> getComboCategories() {
+        return comboCategories;
+    }
+
+    public void setComboCategories(Collection<ComboCategory> comboCategories) {
+        this.comboCategories = comboCategories;
     }
 
     public String getName() {
@@ -58,9 +78,6 @@ public class Combo implements Serializable {
         this.description = description;
     }
     
-    
-    
-   
     @Override
     public String toString() {
         return "Combo " + name + " ";

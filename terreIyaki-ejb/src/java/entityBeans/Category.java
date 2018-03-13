@@ -2,10 +2,9 @@
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,12 +20,14 @@ public class Category implements Serializable {
     private Collection<ComboCategory> comboCategories;
 
     @ManyToOne
-    private Category menu;
+    private Menu menu;
     
     public Category() {
+        comboCategories = new ArrayList();
     }
 
     public Category(String name) {
+        this();
         this.name = name;
     }
 
@@ -46,7 +47,6 @@ public class Category implements Serializable {
         this.comboCategories = comboCategories;
     }
     
-
     
     @Override
     public String toString() {

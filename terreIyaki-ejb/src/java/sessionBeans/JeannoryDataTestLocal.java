@@ -5,10 +5,15 @@
  */
 package sessionBeans;
 
+import javax.ejb.Local;
+
 /**
  *
- * @author chelmix
+ * @author jeanno
  */
-public class todelete {
+@Local
+public interface JeannoryDataTestLocal {
+
+    public void dataTest();
     
 }
