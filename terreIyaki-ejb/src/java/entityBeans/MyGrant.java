@@ -6,6 +6,7 @@
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ import javax.persistence.ManyToMany;
 public class MyGrant implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String name;
@@ -31,9 +32,11 @@ public class MyGrant implements Serializable {
     private Collection<Account>accounts;
 
     public MyGrant() {
+        accounts = new ArrayList();
     }
 
     public MyGrant(String name) {
+        this();
         this.name = name;
     }
     
@@ -47,25 +50,6 @@ public class MyGrant implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MyGrant)) {
-            return false;
-        }
-        MyGrant other = (MyGrant) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String toString() {

@@ -6,6 +6,7 @@
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ import javax.persistence.ManyToMany;
 public class MyTable implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private int tableNumber;
@@ -32,17 +33,14 @@ public class MyTable implements Serializable {
     private Collection<MyOrder>myOrders;
 
     public MyTable() {
+        myOrders = new ArrayList();
     }
 
     public MyTable(int tableNumber, int status) {
+        this();
         this.tableNumber = tableNumber;
         this.status = status;
-    }
-    
-    
-    
-    
-    
+    }  
 
     public Long getId() {
         return id;
@@ -50,26 +48,6 @@ public class MyTable implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MyTable)) {
-            return false;
-        }
-        MyTable other = (MyTable) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
     }
 
     @Override

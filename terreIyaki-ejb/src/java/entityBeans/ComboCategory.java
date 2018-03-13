@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 
 @Entity
@@ -16,25 +15,22 @@ public class ComboCategory implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int number;
+
     private String name;
     
     @ManyToOne
     private Category category;
     
     @ManyToOne
-    private Category combo;
+    private Combo combo;
 
     public ComboCategory() {
     }
 
-    public ComboCategory(Long id, int number) {
-        this.id = id;
-        this.number = number;
+    public ComboCategory(String name) {
+        this.name = name;
     }
     
-    
-
     public Long getId() {
         return id;
     }
@@ -43,19 +39,33 @@ public class ComboCategory implements Serializable {
         this.id = id;
     }
 
-    public int getNumber() {
-        return number;
+    public String getName() {
+        return name;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Combo getCombo() {
+        return combo;
+    }
+
+    public void setCombo(Combo combo) {
+        this.combo = combo;
+    }
 
     @Override
     public String toString() {
-        return "ComboNumber category" + number + " ]";
+        return id+" "+name;
     }
     
 }

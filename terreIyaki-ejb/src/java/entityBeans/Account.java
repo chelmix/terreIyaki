@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,13 +20,13 @@ public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private int code;
     private String firstName;
     private String lastName;
-    private int status;
+    private Status status;
     
     
     @ManyToMany
@@ -40,17 +36,24 @@ public class Account implements Serializable {
     private Collection<MyOrder>myOrders;
 
     public Account() {
+        myGrants = new ArrayList();
+        myOrders = new ArrayList();
+    }
+    
+    public Account(int code, String firstName, String lastName) {
+        this();
+        this.code = code;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public Account(int code, String firstName, String lastName, int status) {
+    public Account(int code, String firstName, String lastName, Status status) {
         this.code = code;
         this.firstName = firstName;
         this.lastName = lastName;
         this.status = status;
     }
     
-    
-
     public Long getId() {
         return id;
     }
@@ -60,28 +63,8 @@ public class Account implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Account)) {
-            return false;
-        }
-        Account other = (Account) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "entityBeans.Account[ id=" + id + " ]";
+        return id+" : "+firstName+" "+lastName;
     }
 
     public int getCode() {
@@ -108,11 +91,11 @@ public class Account implements Serializable {
         this.lastName = lastName;
     }
 
-    public int getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(int Status) {
         this.status = status;
     }
 
