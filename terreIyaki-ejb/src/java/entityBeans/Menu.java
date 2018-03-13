@@ -19,10 +19,14 @@ public class Menu implements Serializable {
     
     @OneToMany(mappedBy = "menu")
     private Collection<Category> combos;
+    
+    @OneToMany(mappedBy = "menu")
+    private Collection<Category> accounts;
 
     public Menu() {
         categories = new ArrayList();
         combos = new ArrayList();
+        accounts = new ArrayList();
     }
 
     public Menu(String type) {
@@ -53,6 +57,14 @@ public class Menu implements Serializable {
 
     public void setCombos(Collection<Category> combos) {
         this.combos = combos;
+    }
+
+    public Collection<Category> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Collection<Category> accounts) {
+        this.accounts = accounts;
     }
     
     

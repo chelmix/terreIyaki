@@ -2,10 +2,13 @@
 package entityBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
@@ -23,8 +26,12 @@ public class ComboCategory implements Serializable {
     
     @ManyToOne
     private Combo combo;
+    
+    @ManyToMany(mappedBy = "comboCategories")
+    private Collection<Product> products;
 
     public ComboCategory() {
+        products = new ArrayList();
     }
 
     public ComboCategory(String name) {
@@ -61,6 +68,14 @@ public class ComboCategory implements Serializable {
 
     public void setCombo(Combo combo) {
         this.combo = combo;
+    }
+
+    public Collection<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Collection<Product> products) {
+        this.products = products;
     }
 
     @Override
