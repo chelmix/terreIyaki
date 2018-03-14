@@ -38,15 +38,25 @@ public class Payment implements Serializable {
     
     @ManyToOne
     private MyOrder myOrder; 
+       private float Amount; 
 
     public Payment() {
     }
 
-    public Payment(Date Date, PaymentOption PaymentOption) {
+    public Payment(Date Date, float Amount) {
         this.Date = Date;
-        this.PaymentOption = PaymentOption;
-        
+        this.Amount = Amount;
     }
+
+    public float getAmount() {
+        return Amount;
+    }
+
+    public void setAmount(float Amount) {
+        this.Amount = Amount;
+    }
+
+    
     
     public PaymentOption getPaymentOption() {
         return PaymentOption;

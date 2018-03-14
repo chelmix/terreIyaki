@@ -26,8 +26,7 @@ public class PaymentOption implements Serializable {
     
     @Column(nullable = false)
     private String Name; 
-    @Column(nullable = false)
-    private float Amount; 
+
     
     
     @ManyToOne
@@ -44,10 +43,10 @@ public class PaymentOption implements Serializable {
         payment = new ArrayList(); 
     }
 
-    public PaymentOption(String Name, float Amount) {
+    public PaymentOption(String Name) {
         this();
         this.Name = Name;
-        this.Amount = Amount;
+    
     }
 
     public Collection<Payment> getPayment() {
@@ -66,13 +65,7 @@ public class PaymentOption implements Serializable {
         this.Name = Name;
     }
 
-    public float getAmount() {
-        return Amount;
-    }
-
-    public void setAmount(float Amount) {
-        this.Amount = Amount;
-    }
+   
     
     
 
@@ -86,7 +79,7 @@ public class PaymentOption implements Serializable {
 
     @Override
     public String toString() {
-        return "PaymentOption[ Name= " + Name +" Amount= "+Amount  +" ]";
+        return "PaymentOption[ Name= " + Name ;
     }
 
     public Status getStatus() {
