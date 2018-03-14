@@ -31,7 +31,7 @@ public class Payment implements Serializable {
     private Date Date; 
 
     @ManyToOne
-    private Status Status; 
+    private Status status; 
 
     @ManyToOne
     private PaymentOption PaymentOption;
@@ -89,11 +89,11 @@ public class Payment implements Serializable {
     }
 
     public Status getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(Status Status) {
-        this.Status = Status;
+        this.status = Status;
     }
     
 }
