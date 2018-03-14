@@ -38,9 +38,9 @@ public class Product implements Serializable {
     private Collection<ComboCategory> comboCategories;
     @OneToMany(mappedBy = "product")
     private Collection<OrderItem> orderItems;
-    @ManyToMany(mappedBy = "product")
+    @ManyToMany(mappedBy = "products")
     private Collection<Option> options;
-    @ManyToMany(mappedBy = "product")
+    @ManyToMany(mappedBy = "products")
     private Collection<Ingredient> ingredients;
     @ManyToOne
     private Status status;
