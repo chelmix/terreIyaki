@@ -56,10 +56,9 @@ public class MyOrder implements Serializable {
         payments = new ArrayList(); 
     }
 
-    public MyOrder(Date orderDate, Status status) {
+    public MyOrder(Date orderDate) {
         this();
         this.orderDate = orderDate;
-        this.status = status;
     } 
     
     public Long getId() {
