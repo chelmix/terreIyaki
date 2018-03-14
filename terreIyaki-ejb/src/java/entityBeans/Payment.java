@@ -48,7 +48,6 @@ public class Payment implements Serializable {
         
     }
     
-
     public PaymentOption getPaymentOption() {
         return PaymentOption;
     }

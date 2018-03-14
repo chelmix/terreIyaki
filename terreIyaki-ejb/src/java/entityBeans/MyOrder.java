@@ -46,7 +46,6 @@ public class MyOrder implements Serializable {
     @OneToMany (mappedBy="myOrder")
     private Collection <Payment> payments; 
     
-    
     @OneToMany(mappedBy="myOrder")
     private Collection<OrderItem>orderItems;
 

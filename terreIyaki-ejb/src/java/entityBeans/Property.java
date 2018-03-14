@@ -25,7 +25,7 @@ public class Property implements Serializable {
     
     @ManyToOne
     private Unit unit;
-    @ManyToMany
+    @ManyToMany(mappedBy = "properties")
     private Collection<Product> products;
     
 
