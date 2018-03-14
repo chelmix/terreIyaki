@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/JeannoryDataTest.java</file>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-ejb/src/java/entityBeans/OrderItem.java</file>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/JeannoryDataTestLocal.java</file>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-ejb/src/java/entityBeans/MyOrder.java</file>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-ejb/src/conf/persistence.xml</file>
+            <file>file:/D:/ProjetsJ2EE/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Payment.java</file>
+            <file>file:/D:/ProjetsJ2EE/terreIyaki/terreIyaki-ejb/src/java/entityBeans/MyOrder.java</file>
+            <file>file:/D:/ProjetsJ2EE/terreIyaki/terreIyaki-ejb/src/java/entityBeans/MyTable.java</file>
+            <file>file:/D:/ProjetsJ2EE/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/GenerateData.java</file>
+            <file>file:/D:/ProjetsJ2EE/terreIyaki/terreIyaki-ejb/src/java/entityBeans/PaymentOption.java</file>
+            <file>file:/D:/ProjetsJ2EE/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/JeannoryDataTest.java</file>
         </group>
     </open-files>
 </project-private>

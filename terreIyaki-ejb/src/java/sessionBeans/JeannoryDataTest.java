@@ -47,7 +47,6 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 //        MyTable myTable02 = new MyTable(2, 1);
         
         OrderItem orderItem01 = new OrderItem(20f, 4f);
-        
         OrderItem orderItem02 = new OrderItem(20f, 4f);
         OrderItem orderItem03 = new OrderItem(20f, 4f);
         OrderItem orderItem04 = new OrderItem(20f, 4f);
