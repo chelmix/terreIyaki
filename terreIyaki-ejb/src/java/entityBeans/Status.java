@@ -21,17 +21,16 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Status implements Serializable {
-    private static final long serialVersionUID = 1L;
-  
 
-    
+    private static final long serialVersionUID = 1L;
+
     @Id
-    private int num; 
+    private int num;
     @Column(nullable = false)
-    private String Name; 
+    private String Name;
     @Column(nullable = false)
     private String Label;
-    
+
     @OneToMany(mappedBy = "status")
     private Collection<Account> accounts;
     @OneToMany(mappedBy = "status")
@@ -63,12 +62,18 @@ public class Status implements Serializable {
         vats = new ArrayList();
     }
 
-    public Status(String Name, String Label) {
-        this.num = num; 
+    public Status(int num, String Name, String Label) {
+        this.num = num;
         this.Name = Name;
         this.Label = Label;
     }
 
+    
+   
+    
+    
+    
+    
     public Collection<Account> getAccounts() {
         return accounts;
     }
@@ -165,11 +170,9 @@ public class Status implements Serializable {
         this.num = num;
     }
 
-
-
     @Override
     public String toString() {
-           return "Status [ Name= " + Name +" Label= "+Label  +" ]";
+        return "Status [ Name= " + Name + " Label= " + Label + " ]";
     }
-    
+
 }
