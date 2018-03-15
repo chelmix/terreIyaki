@@ -53,8 +53,8 @@ public class GenerateData implements GenerateDataLocal {
         Status s17 = new Status(17, "Inactif ", "Payment Option ");
         Status s18 = new Status(18, "Actif", "VAT  ");
         Status s19 = new Status(19, "Inactif ", "VAT ");
-        Status s20 = new Status(18, "Disponible", "Product  ");
-        Status s21 = new Status(19, "Indisponible ", "Product ");
+        Status s20 = new Status(20, "Disponible", "Product  ");
+        Status s21 = new Status(21, "Indisponible ", "Product ");
 
         //PaymentOption de p01 à p03
         PaymentOption po01 = new PaymentOption("CB");
