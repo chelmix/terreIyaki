@@ -122,7 +122,9 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         MyTable myTable06 = new MyTable(6);
         MyTable myTable07 = new MyTable(7);
         MyTable myTable08 = new MyTable(8);
-
+        MyTable myTable09 = new MyTable(9);
+        MyTable myTable10 = new MyTable(10);
+        
         //myOrder01 à myOrder10
         MyOrder myOrder01 = new MyOrder(d01);
         myOrder01.setStatus(s09);
@@ -147,6 +149,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         MyGrant myGrant01 = new MyGrant("serveur");
         MyGrant myGrant02 = new MyGrant("cuisinier");
         MyGrant myGrant03 = new MyGrant("caissier");
+        MyGrant myGrant04 = new MyGrant("client");
 
         // account01 à account10
         Account account01 = new Account(1234, "Jean", "Dupond");
@@ -159,6 +162,30 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Account account08 = new Account(4785, "Alex", "Kidd");
         Account account09 = new Account(4234, "Vincent", "Rattant");
         Account account10 = new Account(3264, "Jeanne", "Durand");
+        
+        Account account11 = new Account(1, "Table", "1");
+        Account account12 = new Account(2, "Table", "2");
+        Account account13 = new Account(3, "Table", "3");
+        Account account14 = new Account(4, "Table", "4");
+        Account account15 = new Account(5, "Table", "5");
+        Account account16 = new Account(6, "Table", "6");
+        Account account17 = new Account(7, "Table", "7");
+        Account account18 = new Account(8, "Table", "8");
+        Account account19 = new Account(9, "Table", "9");
+        Account account20 = new Account(10, "Table", "10");
+        
+        account11.setMyTable(myTable01);
+        account12.setMyTable(myTable02);
+        account13.setMyTable(myTable03);
+        account14.setMyTable(myTable04);
+        account15.setMyTable(myTable05);
+        account16.setMyTable(myTable06);
+        account17.setMyTable(myTable07);
+        account18.setMyTable(myTable08);
+        account19.setMyTable(myTable09);
+        account20.setMyTable(myTable10);
+        
+        
 
         // prod01 à prod16
         Product prod01 = new Product("Yasai", 20f, null, "Tempura de légumes 7 pièces");
@@ -189,6 +216,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         List<MyGrant> listMyGrant02 = new ArrayList();
         List<MyGrant> listMyGrant03 = new ArrayList();
         List<MyGrant> listMyGrant04 = new ArrayList();
+        List<MyGrant> listMyGrant05 = new ArrayList();
 
         List<MyTable> listMyTable01 = new ArrayList();
         List<MyTable> listMyTable02 = new ArrayList();
@@ -203,9 +231,11 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         listMyGrant02.add(myGrant02);
         listMyGrant03.add(myGrant03);
 
+
         //serveur et caissier
         listMyGrant04.add(myGrant01);
         listMyGrant04.add(myGrant03);
+        listMyGrant05.add(myGrant04);
 
         listMyTable01.add(myTable01);
         listMyTable02.add(myTable02);
@@ -226,6 +256,17 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         account08.setMyGrants(listMyGrant03);
         account09.setMyGrants(listMyGrant04);
         account10.setMyGrants(listMyGrant04);
+        
+        account11.setMyGrants(listMyGrant05);
+        account12.setMyGrants(listMyGrant05);
+        account13.setMyGrants(listMyGrant05);
+        account14.setMyGrants(listMyGrant05);
+        account15.setMyGrants(listMyGrant05);
+        account16.setMyGrants(listMyGrant05);
+        account17.setMyGrants(listMyGrant05);
+        account18.setMyGrants(listMyGrant05);
+        account19.setMyGrants(listMyGrant05);
+        account20.setMyGrants(listMyGrant05);
 
         myOrder01.setAccount(account01);
         myOrder02.setAccount(account02);
@@ -390,6 +431,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(myGrant01);
         em.persist(myGrant02);
         em.persist(myGrant03);
+        em.persist(myGrant04);
 
         em.persist(account01);
         em.persist(account02);
@@ -401,7 +443,17 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(account08);
         em.persist(account09);
         em.persist(account10);
-
+        em.persist(account11);
+        em.persist(account12);
+        em.persist(account13);
+        em.persist(account14);
+        em.persist(account15);
+        em.persist(account16);
+        em.persist(account17);
+        em.persist(account18);
+        em.persist(account19);
+        em.persist(account20);
+        
         em.persist(myOrder01);
         em.persist(myOrder02);
         em.persist(myOrder03);
@@ -432,7 +484,9 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(myTable06);
         em.persist(myTable07);
         em.persist(myTable08);
-
+        em.persist(myTable09);
+        em.persist(myTable10);
+        
         em.persist(comboOrderItem01);
         
         em.persist(prod17);

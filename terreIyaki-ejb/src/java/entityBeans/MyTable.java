@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -23,13 +24,13 @@ import javax.persistence.ManyToOne;
 public class MyTable implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     private int tableNumber;
     
     @ManyToOne
     private Status status; 
+    
+    @OneToOne(mappedBy="myTable")
+    private Account account;
     
     
     
@@ -46,18 +47,25 @@ public class MyTable implements Serializable {
        
     }  
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
-        return "entityBeans.MyTable[ id=" + id + " ]";
+        return "MyTable{" + "tableNumber=" + tableNumber + '}';
     }
+
+    
+    
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "entityBeans.MyTable[ id=" + id + " ]";
+//    }
 
     public int getTableNumber() {
         return tableNumber;
@@ -83,6 +91,14 @@ public class MyTable implements Serializable {
 
     public void setMyOrders(Collection<MyOrder> myOrders) {
         this.myOrders = myOrders;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
     
 }

@@ -76,7 +76,19 @@
 </div>          
     
 <p>${message}</p>
-    
-        
+<c:if test="${user!=null}">
+<p>Bonjour ${user.firstName} ${user.lastName}</p>
+<c:url value="FrontController?section=login&action=logout" var="url01" />
+
+<c:forEach var="my" items="${myGrants}">
+<c:if test="${my.name=='client'}">
+Bienvenue à la table n° ${user.myTable.tableNumber}   
+</c:if>
+</c:forEach>
+
+
+
+<p>Se déconnecter :  <a href="${url01}">  ici </a> </p>
+</c:if>       
     </body>
 </html>

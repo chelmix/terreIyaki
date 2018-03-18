@@ -6,6 +6,8 @@
 package sessionBeans;
 
 import entityBeans.Account;
+import entityBeans.MyGrant;
+import java.util.List;
 import javax.ejb.Local;
 import tools.CustomException;
 import tools.MyLog;
@@ -18,5 +20,7 @@ import tools.MyLog;
 public interface UserTreatmentLocal {
 
     public Account toLogOn(MyLog myLog) throws CustomException;
+
+    public List<MyGrant> getMyGrant(MyLog myLog) throws CustomException;
     
 }

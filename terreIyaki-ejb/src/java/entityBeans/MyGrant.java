@@ -22,9 +22,6 @@ import javax.persistence.ManyToMany;
 public class MyGrant implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     private String name;
     
     
@@ -40,20 +37,25 @@ public class MyGrant implements Serializable {
         this.name = name;
     }
     
-    
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+//    
+//
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//
+//    @Override
+//    public String toString() {
+//        return "entityBeans.MyGrant[ id=" + id + " ]";
+//    }
 
     @Override
     public String toString() {
-        return "entityBeans.MyGrant[ id=" + id + " ]";
+        return "MyGrant{" + "name=" + name + '}';
     }
 
     public String getName() {

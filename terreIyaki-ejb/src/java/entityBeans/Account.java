@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -21,9 +22,6 @@ public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
     private int code;
     private String firstName;
     private String lastName;
@@ -32,6 +30,8 @@ public class Account implements Serializable {
     @ManyToOne
     private Menu menu; 
     
+    @OneToOne
+    private MyTable myTable;
     
     @ManyToMany
     private Collection<MyGrant> myGrants;    
@@ -58,19 +58,24 @@ public class Account implements Serializable {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Override
     public String toString() {
-        return id+" : "+firstName+" "+lastName;
+        return "Account{" + "code=" + code + ", firstName=" + firstName + ", lastName=" + lastName + '}';
     }
+    
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return id+" : "+firstName+" "+lastName;
+//    }
 
     public int getCode() {
         return code;
@@ -118,6 +123,14 @@ public class Account implements Serializable {
 
     public void setMyOrders(Collection<MyOrder> myOrders) {
         this.myOrders = myOrders;
+    }
+
+    public MyTable getMyTable() {
+        return myTable;
+    }
+
+    public void setMyTable(MyTable myTable) {
+        this.myTable = myTable;
     }
     
 }
