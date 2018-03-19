@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>frontController.FrontController</servlet-class>
+        <init-param>
+            <param-name>dataTestJeannory</param-name>
+            <param-value>subControllers.JeannoryDataTestCtrl</param-value>
+        </init-param>
+        <init-param>
+            <param-name>backoffice</param-name>
+            <param-value>subControllers.BackOfficeCtrl</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern>/FrontController</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <ejb-local-ref>
+        <ejb-ref-name>JeannoryDataTest</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.JeannoryDataTestLocal</local>
+        <ejb-link>terreIyaki-ejb.jar#JeannoryDataTest</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>CatalogTreatment</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.CatalogTreatmentLocal</local>
+        <ejb-link>terreIyaki-ejb.jar#CatalogTreatment</ejb-link>
+    </ejb-local-ref>
+</web-app>

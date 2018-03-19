@@ -11,9 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name ="entityBeans.Property.selectAll", 
+            query = "select p from Property p")
+})
 public class Property implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
