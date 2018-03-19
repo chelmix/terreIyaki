@@ -7,10 +7,16 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name ="entityBeans.Category.selectAll", 
+            query = "select c from Category c")
+})
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,7 +69,7 @@ public class Category implements Serializable {
     
     @Override
     public String toString() {
-        return "Category " + name + " ]";
+        return "Category : " + name;
     }
     
 }

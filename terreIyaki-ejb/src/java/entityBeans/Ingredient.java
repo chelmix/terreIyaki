@@ -10,12 +10,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author samira
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name ="entityBeans.Ingredient.selectAll", 
+            query = "select i from Ingredient i")
+})
 public class Ingredient implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
