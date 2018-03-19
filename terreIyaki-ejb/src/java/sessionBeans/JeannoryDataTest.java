@@ -614,6 +614,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(prop04);
         em.persist(prop05);
         
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/master
         em.persist(ing01);
         em.persist(ing02);
@@ -623,6 +624,8 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         //em.flush();
 =======
+=======
+>>>>>>> jeannoBranch
         em.persist(combo01);
         em.persist(combo02);
         
@@ -652,7 +655,10 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(comboCat10);
         
         em.flush();
+<<<<<<< HEAD
 >>>>>>> provisoire jeu d essai + affichage produit et menu
+=======
+>>>>>>> jeannoBranch
 
     
     
