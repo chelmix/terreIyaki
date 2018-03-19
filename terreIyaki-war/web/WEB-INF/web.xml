@@ -17,14 +17,14 @@
             <param-name>login</param-name> 
             <param-value>subControllers.LoginCtrl</param-value>
         </init-param>                
-<<<<<<< refs/remotes/origin/master
+
              
         <init-param>
             <param-name>backoffice</param-name>
             <param-value>subControllers.BackOfficeCtrl</param-value>
         </init-param>
-    </servlet>
-=======
+ 
+
            
         <init-param>
             <param-name>carteJeannory</param-name> 
@@ -33,7 +33,7 @@
                         
        </servlet> 
        
->>>>>>> provisoire jeu d essai + affichage produit et menu
+
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/FrontController</url-pattern>
