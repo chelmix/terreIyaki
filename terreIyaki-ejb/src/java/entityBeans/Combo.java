@@ -18,7 +18,7 @@ public class Combo implements Serializable {
     
     @Id
     private String name; // de type A2 B6 etc
-    private String price;
+    private float price;
     private String description;
     
     @ManyToOne
@@ -37,7 +37,7 @@ public class Combo implements Serializable {
         comboCategories = new ArrayList();
     }
 
-    public Combo(String name, String price, String description) {
+    public Combo(String name, float price, String description) {
         this();
         this.name = name;
         this.price = price;
@@ -68,13 +68,7 @@ public class Combo implements Serializable {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
-    }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
 
     public String getDescription() {
         return description;
@@ -105,6 +99,14 @@ public class Combo implements Serializable {
     @Override
     public String toString() {
         return "Combo " + name + " ";
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
     
 }
