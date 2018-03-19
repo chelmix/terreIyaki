@@ -70,5 +70,19 @@ public class CatalogTreatment implements CatalogTreatmentLocal {
         List<Property> lp = qr.getResultList();
         return lp;
     }
+    
+    @Override
+    public List<Option> getAllOptions() {
+        Query qr = em.createNamedQuery("entityBeans.Option.selectAll");
+        List<Option> lo = qr.getResultList();
+        return lo;
+    }
+    
+    @Override
+    public List<Ingredient> getAllIngredients() {
+        Query qr = em.createNamedQuery("entityBeans.Ingredient.selectAll");
+        List<Ingredient> li = qr.getResultList();
+        return li;
+    }
 
 }

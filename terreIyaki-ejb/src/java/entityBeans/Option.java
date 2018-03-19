@@ -10,9 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name ="entityBeans.Option.selectAll", 
+            query = "select o from Option o")
+})
 public class Option implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

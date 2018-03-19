@@ -26,6 +26,8 @@ public class BackOfficeCtrl implements ControllerInterface, Serializable {
         request.setAttribute("categories", catalogTreatment.getAllCategories());
         request.setAttribute("vats", catalogTreatment.getAllVATs());
         request.setAttribute("properties", catalogTreatment.getAllProperties());
+        request.setAttribute("options", catalogTreatment.getAllOptions());
+        request.setAttribute("ingredients", catalogTreatment.getAllIngredients());
         
         if("createproduct".equals(action)) {
             String name = request.getParameter("name");
