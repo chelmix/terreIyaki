@@ -10,7 +10,7 @@
     <body>
         <div>
         <c:url value="FrontController?section=dataTestJeannory" var="url01" />
-        <c:url value="FrontController?section=backoffice" var="url03" />
+        
         
         Data Test :  <a href="${url01}">  ici </a><br />
         <hr />
@@ -21,8 +21,10 @@
         Login :  <a href="${url02}">  ici </a> 
         
         </div>
+        <div>
+        <c:url value="FrontController?section=backoffice" var="url03" />
         Back office provisoire : <a href="${url03}">  ici </a>
-        
+        </div>
 
     </body>
 </html>
