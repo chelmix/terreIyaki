@@ -387,12 +387,15 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         
         
         ComboCategory comboCat01 = new ComboCategory ("Entrée Bento Shokado");
-        ComboCategory comboCat02 = new ComboCategory ("Plat/assortiment Bento Shokado");
+        ComboCategory comboCat02 = new ComboCategory ("Plat Bento Shokado");
         ComboCategory comboCat03 = new ComboCategory ("Déssert Bento Shokado");
+        ComboCategory comboCat10 = new ComboCategory ("Assortiment Bento Shokado");
+        
         
         ComboCategory comboCat04 = new ComboCategory ("Entrée Zen");
         ComboCategory comboCat05 = new ComboCategory ("Plat au choix Zen");
-        ComboCategory comboCat06 = new ComboCategory ("Déssert Zen");        
+        ComboCategory comboCat06 = new ComboCategory ("Déssert Zen");  
+        ComboCategory comboCat11 = new ComboCategory ("Assortiment Zen");
         
         comboCat01.setCombo(combo01);
         comboCat02.setCombo(combo01);
@@ -400,7 +403,71 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         
         comboCat04.setCombo(combo02);
         comboCat05.setCombo(combo02);
-        comboCat06.setCombo(combo02);        
+        comboCat06.setCombo(combo02);
+        
+        List<ComboCategory> listComboCat01 = new ArrayList();
+         List<ComboCategory> listComboCat02 = new ArrayList();
+          List<ComboCategory> listComboCat03 = new ArrayList();
+           List<ComboCategory> listComboCat04 = new ArrayList();
+            List<ComboCategory> listComboCat05 = new ArrayList();
+             List<ComboCategory> listComboCat06 = new ArrayList();
+             
+             List<ComboCategory> listComboCat07 = new ArrayList();
+             List<ComboCategory> listComboCat08 = new ArrayList();
+             
+        
+        listComboCat01.add(comboCat01);
+        listComboCat02.add(comboCat02);
+        listComboCat03.add(comboCat03);
+        listComboCat04.add(comboCat10);
+        
+        
+        listComboCat05.add(comboCat04);
+        listComboCat06.add(comboCat05);
+        listComboCat07.add(comboCat06);
+        listComboCat08.add(comboCat11);
+        
+        
+        
+        
+         prod17.setComboCategories(listComboCat01);
+    //= new Product("Sélection de petits hors-d'oeuvres", 6f, null, "Entrée Bento Shokado");
+         prod18.setComboCategories(listComboCat01);
+                 
+                 //= new Product("Légumes salés, Mijotés", 6f, null, "Entrée Bento Shokado");
+         
+         
+         prod19.setComboCategories(listComboCat02);
+             
+                 //= new Product("Sashimi, Saumon Label Rouge grillé", 20f, null, "Plat Bento Shokado");
+         prod20.setComboCategories(listComboCat02);                
+    //             = new Product("Tempura de gambas et légumes", 20f, null, "Plat Bento Shokado");
+         prod21.setComboCategories(listComboCat04);   
+                 //= new Product("Soupe Miso, Riz", 5f, null, "Assortiment Bento Shokado");
+         prod22.setComboCategories(listComboCat03);
+                 //= new Product("Fruit frais", 5f, null, "Déssert Bento Shokado");
+         
+         
+        
+         prod23.setComboCategories(listComboCat05);
+                 //= new Product("Entrée Zen", 9f, null, "Petits hors-d'oeuvres, soupe Miso");
+         
+         
+         prod24.setComboCategories(listComboCat06);
+         //= new Product("Sushi", 30f, null, "Plat au choix Zen, Assortiment de 7 sushi et 6 maki");
+         prod25.setComboCategories(listComboCat06);
+         //= new Product("Tempura", 30f, null, "Plat au choix Zen, 8 tempura de gambas et légumes ou de légumes uniquement (végétarien)");
+         prod26.setComboCategories(listComboCat06);
+         //= new Product("Sushi Tempura", 30f, null, "Plat au choix Zen, Assortiment de 4 sushi et 4 tempura mixtes");
+         prod27.setComboCategories(listComboCat06);
+         //= new Product("Sashimi", 30f, null, "Plat au choix Zen, Assortiment de 15 sashimi");
+         
+         prod28.setComboCategories(listComboCat06);
+         //= new Product("Gyu", 30f, null, "Plat au choix Zen, Boeuf Black Angus persillé, sauce Teriyaki");
+         
+         
+         prod29.setComboCategories(listComboCat07);
+         //= new Product("Dessert Zen", 6f, null, "Fruits frais");        
         
         
         
@@ -581,6 +648,8 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(comboCat04);
         em.persist(comboCat05);
         em.persist(comboCat06);
+         em.persist(comboCat11);
+        em.persist(comboCat10);
         
         em.flush();
 >>>>>>> provisoire jeu d essai + affichage produit et menu

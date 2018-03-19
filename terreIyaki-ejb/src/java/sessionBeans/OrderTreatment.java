@@ -7,6 +7,7 @@ package sessionBeans;
 
 import entityBeans.Account;
 import entityBeans.Combo;
+import entityBeans.ComboCategory;
 import entityBeans.Product;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,10 +65,51 @@ public class OrderTreatment implements OrderTreatmentLocal {
         
         
     }
+    
+//afficher comboCategorie
+    @Override
+    public List<ComboCategory> getComboCat(String nomMenu) throws CustomException, SecurityException{
+        
+     List<ComboCategory> c03 = new ArrayList();
+     String req03 = "Select c from ComboCategory c where c.combo.name =:paramComboName";   
+        Query qr03 = em.createQuery(req03);
+qr03.setParameter("paramComboName", nomMenu);
+         try{
+ c03= (List<ComboCategory>)  qr03.getResultList();
+ return   c03;
+ }catch (NoResultException ex){
+            CustomException ce = new CustomException(CustomException.USER_ERR, "aucun sous menu");
+            throw ce;         
+ }         
+        
+        
+    }    
+    
+ //afficher produit du menus
+    @Override
+     public List<Product> getComboProduct(String nomCategorie) throws CustomException, SecurityException{
+        
+     List<Product> po04 = new ArrayList();
+     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName";   
+        Query qr04 = em.createQuery(req04);
+qr04.setParameter("paramComboCategoryName", nomCategorie);
+         try{
+ po04= (List<Product>)  qr04.getResultList();
+ return   po04;
+ }catch (NoResultException ex){
+            CustomException ce = new CustomException(CustomException.USER_ERR, "aucun produit dans sous menu");
+            throw ce;         
+ }         
+        
+        
+    }    
+    
+    
+    
 
-    public void persist(Object object) {
-        em.persist(object);
-    }
+//    public void persist(Object object) {
+//        em.persist(object);
+//    }
     
     
     
