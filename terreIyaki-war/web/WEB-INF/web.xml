@@ -19,7 +19,10 @@
             <param-value>subControllers.LoginCtrl</param-value>
         </init-param>                
            
-                 
+        <init-param>
+            <param-name>carteJeannory</param-name> 
+            <param-value>subControllers.versCarteJeannoryCtrl</param-value>
+        </init-param>                  
                         
        </servlet> 
        

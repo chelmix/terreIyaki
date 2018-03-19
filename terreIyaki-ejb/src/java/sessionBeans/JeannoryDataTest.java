@@ -7,6 +7,8 @@ package sessionBeans;
 
 import entityBeans.Account;
 import entityBeans.Category;
+import entityBeans.Combo;
+import entityBeans.ComboCategory;
 import entityBeans.Ingredient;
 import entityBeans.MyGrant;
 import entityBeans.MyOrder;
@@ -204,7 +206,23 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Product prod14 = new Product("Kyuri Wakame", 8f, null, "Salade japonaise");
         Product prod15 = new Product("Nasu", 9f, null, "Aubergines confites");
         Product prod16 = new Product("Kara Age", 9f, null, "Beignet de poulet");
-
+        
+        Product prod17 = new Product("Sélection de petits hors-d'oeuvres", 6f, null, "Entrée Bento Shokado");
+        Product prod18 = new Product("Légumes salés, Mijotés", 6f, null, "Entrée Bento Shokado");
+        Product prod19 = new Product("Sashimi, Saumon Label Rouge grillé", 20f, null, "Plat Bento Shokado");
+        Product prod20 = new Product("Tempura de gambas et légumes", 20f, null, "Plat Bento Shokado");
+        Product prod21 = new Product("Soupe Miso, Riz", 5f, null, "Assortiment Bento Shokado");
+        Product prod22 = new Product("Fruit frais", 5f, null, "Déssert Bento Shokado");
+        
+        Product prod23 = new Product("Entrée Zen", 9f, null, "Petits hors-d'oeuvres, soupe Miso");
+        Product prod24 = new Product("Sushi", 30f, null, "Plat au choix Zen, Assortiment de 7 sushi et 6 maki");
+        Product prod25 = new Product("Tempura", 30f, null, "Plat au choix Zen, 8 tempura de gambas et légumes ou de légumes uniquement (végétarien)");
+        Product prod26 = new Product("Sushi Tempura", 30f, null, "Plat au choix Zen, Assortiment de 4 sushi et 4 tempura mixtes");
+        Product prod27 = new Product("Sashimi", 30f, null, "Plat au choix Zen, Assortiment de 15 sashimi");
+        Product prod28 = new Product("Gyu", 30f, null, "Plat au choix Zen, Boeuf Black Angus persillé, sauce Teriyaki");
+        Product prod29 = new Product("Dessert Zen", 6f, null, "Fruits frais");
+        
+        
         //cat01 à cat05
         Category cat01 = new Category("Entrées");
         Category cat02 = new Category("Tempura");
@@ -334,7 +352,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         // mich
         
       
-        Product prod17 = new Product("Châteauneuf du Pape", 120f, null, "Millésime 2007 grand cru");
+        Product prod30 = new Product("Châteauneuf du Pape", 120f, null, "Millésime 2007 grand cru");
         
         VAT vat01 = new VAT(10f, "consommation immédiate");
         VAT vat02 = new VAT(5.5f, "consommation différée");
@@ -362,6 +380,30 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prop04.setUnit(u01);
         prop05.setUnit(u02);
         prod17.getProperties().add(prop04);
+        
+        
+        Combo combo01 = new Combo ("Bento ShoKado", 62f, "menu 3 étoiles");
+        Combo combo02 = new Combo ("Zen", 45f, "menu abordable");
+        
+        
+        ComboCategory comboCat01 = new ComboCategory ("Entrée Bento Shokado");
+        ComboCategory comboCat02 = new ComboCategory ("Plat/assortiment Bento Shokado");
+        ComboCategory comboCat03 = new ComboCategory ("Déssert Bento Shokado");
+        
+        ComboCategory comboCat04 = new ComboCategory ("Entrée Zen");
+        ComboCategory comboCat05 = new ComboCategory ("Plat au choix Zen");
+        ComboCategory comboCat06 = new ComboCategory ("Déssert Zen");        
+        
+        comboCat01.setCombo(combo01);
+        comboCat02.setCombo(combo01);
+        comboCat03.setCombo(combo01);
+        
+        comboCat04.setCombo(combo02);
+        comboCat05.setCombo(combo02);
+        comboCat06.setCombo(combo02);        
+        
+        
+        
         
         em.persist(s01);
         em.persist(s02);
@@ -504,8 +546,34 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(prop03);
         em.persist(prop04);
         em.persist(prop05);
-
-        //em.flush();
+        
+        em.persist(combo01);
+        em.persist(combo02);
+        
+        em.persist(prod17);
+        em.persist(prod18);
+        em.persist(prod19);
+        em.persist(prod20);
+        em.persist(prod21);
+        em.persist(prod22);
+        
+        em.persist(prod23);
+        em.persist(prod24);
+        em.persist(prod25);
+        em.persist(prod26);
+        em.persist(prod27);
+        em.persist(prod28);
+        em.persist(prod29);
+        em.persist(prod30);
+        
+        em.persist(comboCat01);
+        em.persist(comboCat02);
+        em.persist(comboCat03);
+        em.persist(comboCat04);
+        em.persist(comboCat05);
+        em.persist(comboCat06);
+        
+        em.flush();
 
     
     
