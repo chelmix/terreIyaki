@@ -9,7 +9,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-19T18:40:51")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-19T20:46:26")
 @StaticMetamodel(Combo.class)
 public class Combo_ { 
 

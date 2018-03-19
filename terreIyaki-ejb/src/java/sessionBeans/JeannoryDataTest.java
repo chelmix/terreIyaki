@@ -504,6 +504,12 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(prop03);
         em.persist(prop04);
         em.persist(prop05);
+        
+        em.persist(ing01);
+        em.persist(ing02);
+        em.persist(ing03);
+        em.persist(ing04);
+        em.persist(ing05);
 
         //em.flush();
 
