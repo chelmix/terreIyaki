@@ -85,7 +85,7 @@ Bienvenue à la table n° ${user.myTable.tableNumber}
 <c:url value="FrontController?section=carteJeannory&action=produit" var="url02" />
 A la carte  :  <a href="${url02}">  ici </a>     
 <c:url value="FrontController?section=carteJeannory&action=formule" var="url03" />
-vers les formules  :  <a href="${url03}">  ici </a>       
+<br/>vers les formules  :  <a href="${url03}">  ici </a>       
 
 
 </c:if>

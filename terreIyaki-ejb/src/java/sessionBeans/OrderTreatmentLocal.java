@@ -6,6 +6,7 @@
 package sessionBeans;
 
 import entityBeans.Combo;
+import entityBeans.ComboCategory;
 import entityBeans.Product;
 import java.util.List;
 import javax.ejb.Local;
@@ -21,6 +22,10 @@ public interface OrderTreatmentLocal {
     public List<Product> getProduct() throws CustomException, SecurityException;
 
     public List<Combo> getCombo() throws CustomException, SecurityException;
+
+    public List<ComboCategory> getComboCat(String nomMenu) throws CustomException, SecurityException;
+
+    public List<Product> getComboProduct(String nomCategorie) throws CustomException, SecurityException;
 
 
     

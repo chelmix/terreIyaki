@@ -6,6 +6,7 @@
 package subControllers;
 
 import entityBeans.Combo;
+import entityBeans.ComboCategory;
 import entityBeans.Product;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,7 +18,6 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import sessionBeans.OrderTreatmentLocal;
-import sessionBeans.UserTreatmentLocal;
 import tools.CustomException;
 
 /**
@@ -27,41 +27,110 @@ import tools.CustomException;
 @Stateless
 public class versCarteJeannoryCtrl implements ControllerInterface, versCarteJeannoryCtrlLocal {
 
-@Override
-public String execute(HttpServletRequest request, HttpServletResponse response) {
-    if (request.getParameter("action").equals("produit")){
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         OrderTreatmentLocal gestionCommande = lookupOrderTreatmentLocal();
+//***************************************************************************** 
+// ****************************Product*****************************************        
         
-        try{
-        List<Product> p01=  (List<Product>) gestionCommande.getProduct();
-        request.setAttribute("product", p01);
         
-                 } catch (CustomException ex) {
-                    String texte = ex.getMessage();
-                    request.setAttribute("message", texte);
-                }       
+        if (request.getParameter("action").equals("produit")) {
+
+            try {
+                List<Product> p01 = (List<Product>) gestionCommande.getProduct();
+                request.setAttribute("product", p01);
+
+            } catch (CustomException ex) {
+                String texte = ex.getMessage();
+                request.setAttribute("message", texte);
+            }
+        }
+        
+ //*****************************************************************************       
+ //*****************************************************************************       
+           
+        
+        
+        
+        
+        
+        
+        
+        try {
+            
+            
+
+            if (request.getParameter("action").equals("formule")) {
+                     try {
+                        List<Combo> c01 = (List<Combo>) gestionCommande.getCombo();
+                        request.setAttribute("combo", c01); 
+                                            } catch (CustomException ex) {
+                        String texte = ex.getMessage();
+                        request.setAttribute("message", texte);
+                    }
+                
+ //****************************************************************************
+               try{
+                if (request.getParameter("detection").equals("itemFormul")) {
+
+//                    try {
+//                        List<Combo> c01 = (List<Combo>) gestionCommande.getCombo();
+//                        request.setAttribute("combo", c01);
+                        String nomMenu = request.getParameter("nameCombo");
+request.setAttribute("nameCombo", nomMenu);
+ 
+                        try {
+                            List<ComboCategory> c02 = (List<ComboCategory>) gestionCommande.getComboCat(nomMenu);
+                            request.setAttribute("comboCategory", c02);
+
+                        } catch (CustomException ex) {
+                            String texte = ex.getMessage();
+                            request.setAttribute("message", texte);
+                        }
+ //****************************************************************************                
+                try {
+                    if (request.getParameter("faction").equals("produitFormul")) {
+                        String nomCategorie = request.getParameter("comboCategory");
+                        try {
+                            List<Product> po01 = (List<Product>) gestionCommande.getComboProduct(nomCategorie);
+                            request.setAttribute("comboProduct", po01);
+                            //        System.out.println("********************produits du menu"+po01.toString());
+                        } catch (CustomException ex) {
+                            String texte = ex.getMessage();
+                            request.setAttribute("message", texte);
+                        }
+
+                    }
+                
+                
+                
+                
+                } catch (NullPointerException ex01) {
+                    //nada
+                }
+ //****************************************************************************
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                }
+                 } catch (NullPointerException ex01) {
+                    //nada
+                }               
+ //****************************************************************************
+                
+                
+
+            }
+        } catch (NullPointerException ex01) {
+            //nada
+        }
+       return "carteJeanno";
+
     }
-    
-    if (request.getParameter("action").equals("formule")){
-        OrderTreatmentLocal gestionCommande = lookupOrderTreatmentLocal();
-        
-        try{
-        List<Combo> c01=  (List<Combo>) gestionCommande.getCombo();
-        request.setAttribute("combo", c01);
-        
-                 } catch (CustomException ex) {
-                    String texte = ex.getMessage();
-                    request.setAttribute("message", texte);
-                }       
-    }
-    
-    
-    return "carteJeanno";
-
-    
-}
-
-
 
     private OrderTreatmentLocal lookupOrderTreatmentLocal() {
         try {
@@ -75,5 +144,5 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
         }
 
     }
-    
+
 }
