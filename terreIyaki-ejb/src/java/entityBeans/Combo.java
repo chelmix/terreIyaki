@@ -20,6 +20,15 @@ public class Combo implements Serializable {
     private String name; // de type A2 B6 etc
     private float price;
     private String description;
+
+    public Combo(String name, float price, String description, String urlImage) {
+        this();
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.urlImage = urlImage;
+    }
+    private String urlImage;
     
     @ManyToOne
     private Status status;
@@ -37,12 +46,6 @@ public class Combo implements Serializable {
         comboCategories = new ArrayList();
     }
 
-    public Combo(String name, float price, String description) {
-        this();
-        this.name = name;
-        this.price = price;
-        this.description = description;
-    }
 
     public Menu getMenu() {
         return menu;
@@ -107,6 +110,14 @@ public class Combo implements Serializable {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
     
 }

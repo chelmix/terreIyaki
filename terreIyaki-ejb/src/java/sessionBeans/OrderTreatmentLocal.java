@@ -8,6 +8,7 @@ package sessionBeans;
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.Product;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Local;
 import tools.CustomException;
@@ -26,6 +27,10 @@ public interface OrderTreatmentLocal {
     public List<ComboCategory> getComboCat(String nomMenu) throws CustomException, SecurityException;
 
     public List<Product> getComboProduct(String nomCategorie) throws CustomException, SecurityException;
+
+    public List<Product> getComboProductAll(String nomMenu) throws CustomException, SecurityException;
+
+    public HashMap<String, List<Product>> getHashProduct(String nomMenu) throws CustomException;
 
 
     

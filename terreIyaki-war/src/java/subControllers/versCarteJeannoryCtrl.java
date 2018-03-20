@@ -8,6 +8,7 @@ package subControllers;
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.Product;
+import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +26,7 @@ import tools.CustomException;
  * @author jeanno
  */
 @Stateless
-public class versCarteJeannoryCtrl implements ControllerInterface, versCarteJeannoryCtrlLocal {
+public class versCarteJeannoryCtrl implements ControllerInterface, Serializable {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {

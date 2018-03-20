@@ -87,7 +87,8 @@ A la carte  :  <a href="${url02}">  ici </a>
 <c:url value="FrontController?section=carteJeannory&action=formule" var="url03" />
 <br/>vers les formules  :  <a href="${url03}">  ici </a>       
 
-
+<c:url value="FrontController?section=combo&action=allCombo" var="url04" />
+<br/>Formule V2  :  <a href="${url04}">  ici </a>    
 </c:if>
 
 
