@@ -19,6 +19,7 @@ public class ComboCategory implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private int number;
     private String name;
     
     @ManyToOne
@@ -33,10 +34,15 @@ public class ComboCategory implements Serializable {
     public ComboCategory() {
         products = new ArrayList();
     }
+    
+    
 
-    public ComboCategory(String name) {
+    public ComboCategory(int number, String name) {
+        this();
+        this.number = number;
         this.name = name;
     }
+
     
     public Long getId() {
         return id;
@@ -81,6 +87,14 @@ public class ComboCategory implements Serializable {
     @Override
     public String toString() {
         return id+" "+name;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
     
 }

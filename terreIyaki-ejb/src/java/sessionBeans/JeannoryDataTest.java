@@ -7,6 +7,8 @@ package sessionBeans;
 
 import entityBeans.Account;
 import entityBeans.Category;
+import entityBeans.Combo;
+import entityBeans.ComboCategory;
 import entityBeans.Ingredient;
 import entityBeans.MyGrant;
 import entityBeans.MyOrder;
@@ -188,23 +190,39 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         
 
         // prod01 à prod16
-        Product prod01 = new Product("Yasai", 20f, null, "Tempura de légumes 7 pièces");
-        Product prod02 = new Product("Ebi", 33f, null, "Tempura de gambas 6 pièces");
-        Product prod03 = new Product("Moriawase 6", 25f, null, "Tempura de légumes et de gambas 6 pièces");
-        Product prod04 = new Product("Ise Ebi", 50f, null, "Tempura de langoustes");
-        Product prod05 = new Product("Moriawase 10", 35f, null, "Tempura de légumes et de gambas 10 pièces");
-        Product prod06 = new Product("Kagoshima", 90f, null, "Entrecôte de boeuf Wagyu de Kagoshima");
-        Product prod07 = new Product("Torikatsu Toji", 29f, null, "Torikatsu Toji");
-        Product prod08 = new Product("Shake-Terriyaki", 30f, null, "Saumon Royal de l'Océan Pacifique");
-        Product prod09 = new Product("Gohan", 7f, null, "Riz nature");
-        Product prod10 = new Product("Miso-Shiro", 7f, null, "Soupe Miso");
-        Product prod11 = new Product("Yasai Mushi", 11f, null, "Légumes de saison à la vapeur, coulis de sésame");
-        Product prod12 = new Product("Agedashi", 11f, null, "Tofu frit");
-        Product prod13 = new Product("Edamame 6", 19f, null, "Soja vert");
-        Product prod14 = new Product("Kyuri Wakame", 8f, null, "Salade japonaise");
-        Product prod15 = new Product("Nasu", 9f, null, "Aubergines confites");
-        Product prod16 = new Product("Kara Age", 9f, null, "Beignet de poulet");
-
+        Product prod01 = new Product("Yasai", 20f, "http", "Tempura de légumes 7 pièces");
+        Product prod02 = new Product("Ebi", 33f, "http", "Tempura de gambas 6 pièces");
+        Product prod03 = new Product("Moriawase 6", 25f, "http", "Tempura de légumes et de gambas 6 pièces");
+        Product prod04 = new Product("Ise Ebi", 50f, "http", "Tempura de langoustes");
+        Product prod05 = new Product("Moriawase 10", 35f, "http", "Tempura de légumes et de gambas 10 pièces");
+        Product prod06 = new Product("Kagoshima", 90f, "http", "Entrecôte de boeuf Wagyu de Kagoshima");
+        Product prod07 = new Product("Torikatsu Toji", 29f, "http", "Torikatsu Toji");
+        Product prod08 = new Product("Shake-Terriyaki", 30f, "http", "Saumon Royal de l'Océan Pacifique");
+        Product prod09 = new Product("Gohan", 7f, "http", "Riz nature");
+        Product prod10 = new Product("Miso-Shiro", 7f, "http", "Soupe Miso");
+        Product prod11 = new Product("Yasai Mushi", 11f, "http", "Légumes de saison à la vapeur, coulis de sésame");
+        Product prod12 = new Product("Agedashi", 11f, "http", "Tofu frit");
+        Product prod13 = new Product("Edamame 6", 19f, "http", "Soja vert");
+        Product prod14 = new Product("Kyuri Wakame", 8f, "http", "Salade japonaise");
+        Product prod15 = new Product("Nasu", 9f, "http", "Aubergines confites");
+        Product prod16 = new Product("Kara Age", 9f, "http", "Beignet de poulet");
+        
+        Product prod17 = new Product("Sélection de petits hors-d'oeuvres", 6f, "http", "Entrée Bento Shokado");
+        Product prod18 = new Product("Légumes salés, Mijotés", 6f, "http", "Entrée Bento Shokado");
+        Product prod19 = new Product("Sashimi, Saumon Label Rouge grillé", 20f, "http", "Plat Bento Shokado");
+        Product prod20 = new Product("Tempura de gambas et légumes", 20f, "http", "Plat Bento Shokado");
+        Product prod21 = new Product("Soupe Miso, Riz", 5f, "http", "Assortiment Bento Shokado");
+        Product prod22 = new Product("Fruit frais", 5f, "http", "Déssert Bento Shokado");
+        
+        Product prod23 = new Product("Entrée Zen", 9f, "http", "Petits hors-d'oeuvres, soupe Miso");
+        Product prod24 = new Product("Sushi", 30f, "http", "Plat au choix Zen, Assortiment de 7 sushi et 6 maki");
+        Product prod25 = new Product("Tempura", 30f, "http", "Plat au choix Zen, 8 tempura de gambas et légumes ou de légumes uniquement (végétarien)");
+        Product prod26 = new Product("Sushi Tempura", 30f, "http", "Plat au choix Zen, Assortiment de 4 sushi et 4 tempura mixtes");
+        Product prod27 = new Product("Sashimi", 30f, "http", "Plat au choix Zen, Assortiment de 15 sashimi");
+        Product prod28 = new Product("Gyu", 30f, "http", "Plat au choix Zen, Boeuf Black Angus persillé, sauce Teriyaki");
+        Product prod29 = new Product("Dessert Zen", 6f, "http", "Fruits frais");
+        
+        
         //cat01 à cat05
         Category cat01 = new Category("Entrées");
         Category cat02 = new Category("Tempura");
@@ -334,7 +352,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         // mich
         
       
-        Product prod17 = new Product("Châteauneuf du Pape", 120f, null, "Millésime 2007 grand cru");
+        Product prod30 = new Product("Châteauneuf du Pape", 120f, "http", "Millésime 2007 grand cru");
         
         VAT vat01 = new VAT(10f, "consommation immédiate");
         VAT vat02 = new VAT(5.5f, "consommation différée");
@@ -362,6 +380,96 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prop04.setUnit(u01);
         prop05.setUnit(u02);
         prod17.getProperties().add(prop04);
+        
+        
+        Combo combo01 = new Combo ("Bento ShoKado", 62f, "menu 3 étoiles","images/bentoShokado.jpg");
+        Combo combo02 = new Combo ("Zen", 45f, "menu abordable","images/Zen.jpg");
+        
+        
+        ComboCategory comboCat01 = new ComboCategory (1,"Entrée Bento Shokado");
+        ComboCategory comboCat02 = new ComboCategory (2,"Plat Bento Shokado");        
+        ComboCategory comboCat10 = new ComboCategory (3,"Assortiment Bento Shokado");
+        ComboCategory comboCat03 = new ComboCategory (4,"Déssert Bento Shokado");
+        
+        ComboCategory comboCat04 = new ComboCategory (1,"Entrée Zen");
+        ComboCategory comboCat05 = new ComboCategory (2,"Plat au choix Zen");        
+        ComboCategory comboCat11 = new ComboCategory (3,"Assortiment Zen");
+        ComboCategory comboCat06 = new ComboCategory (4,"Déssert Zen");  
+        
+        comboCat01.setCombo(combo01);
+        comboCat02.setCombo(combo01);
+        comboCat03.setCombo(combo01);
+        
+        comboCat04.setCombo(combo02);
+        comboCat05.setCombo(combo02);
+        comboCat06.setCombo(combo02);
+        
+        List<ComboCategory> listComboCat01 = new ArrayList();
+         List<ComboCategory> listComboCat02 = new ArrayList();
+          List<ComboCategory> listComboCat03 = new ArrayList();
+           List<ComboCategory> listComboCat04 = new ArrayList();
+            List<ComboCategory> listComboCat05 = new ArrayList();
+             List<ComboCategory> listComboCat06 = new ArrayList();
+             
+             List<ComboCategory> listComboCat07 = new ArrayList();
+             List<ComboCategory> listComboCat08 = new ArrayList();
+             
+        
+        listComboCat01.add(comboCat01);
+        listComboCat02.add(comboCat02);
+        listComboCat03.add(comboCat03);
+        listComboCat04.add(comboCat10);
+        
+        
+        listComboCat05.add(comboCat04);
+        listComboCat06.add(comboCat05);
+        listComboCat07.add(comboCat06);
+        listComboCat08.add(comboCat11);
+        
+        
+        
+        
+         prod17.setComboCategories(listComboCat01);
+    //= new Product("Sélection de petits hors-d'oeuvres", 6f, null, "Entrée Bento Shokado");
+         prod18.setComboCategories(listComboCat01);
+                 
+                 //= new Product("Légumes salés, Mijotés", 6f, null, "Entrée Bento Shokado");
+         
+         
+         prod19.setComboCategories(listComboCat02);
+             
+                 //= new Product("Sashimi, Saumon Label Rouge grillé", 20f, null, "Plat Bento Shokado");
+         prod20.setComboCategories(listComboCat02);                
+    //             = new Product("Tempura de gambas et légumes", 20f, null, "Plat Bento Shokado");
+         prod21.setComboCategories(listComboCat04);   
+                 //= new Product("Soupe Miso, Riz", 5f, null, "Assortiment Bento Shokado");
+         prod22.setComboCategories(listComboCat03);
+                 //= new Product("Fruit frais", 5f, null, "Déssert Bento Shokado");
+         
+         
+        
+         prod23.setComboCategories(listComboCat05);
+                 //= new Product("Entrée Zen", 9f, null, "Petits hors-d'oeuvres, soupe Miso");
+         
+         
+         prod24.setComboCategories(listComboCat06);
+         //= new Product("Sushi", 30f, null, "Plat au choix Zen, Assortiment de 7 sushi et 6 maki");
+         prod25.setComboCategories(listComboCat06);
+         //= new Product("Tempura", 30f, null, "Plat au choix Zen, 8 tempura de gambas et légumes ou de légumes uniquement (végétarien)");
+         prod26.setComboCategories(listComboCat06);
+         //= new Product("Sushi Tempura", 30f, null, "Plat au choix Zen, Assortiment de 4 sushi et 4 tempura mixtes");
+         prod27.setComboCategories(listComboCat06);
+         //= new Product("Sashimi", 30f, null, "Plat au choix Zen, Assortiment de 15 sashimi");
+         
+         prod28.setComboCategories(listComboCat06);
+         //= new Product("Gyu", 30f, null, "Plat au choix Zen, Boeuf Black Angus persillé, sauce Teriyaki");
+         
+         
+         prod29.setComboCategories(listComboCat07);
+         //= new Product("Dessert Zen", 6f, null, "Fruits frais");        
+        
+        
+        
         
         em.persist(s01);
         em.persist(s02);
@@ -505,13 +613,47 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(prop04);
         em.persist(prop05);
         
+
         em.persist(ing01);
         em.persist(ing02);
         em.persist(ing03);
         em.persist(ing04);
         em.persist(ing05);
 
-        //em.flush();
+
+        em.persist(combo01);
+        em.persist(combo02);
+        
+        em.persist(prod17);
+        em.persist(prod18);
+        em.persist(prod19);
+        em.persist(prod20);
+        em.persist(prod21);
+        em.persist(prod22);
+        
+        em.persist(prod23);
+        em.persist(prod24);
+        em.persist(prod25);
+        em.persist(prod26);
+        em.persist(prod27);
+        em.persist(prod28);
+        em.persist(prod29);
+        em.persist(prod30);
+        
+        em.persist(comboCat01);
+        em.persist(comboCat02);
+        em.persist(comboCat03);
+        em.persist(comboCat04);
+        em.persist(comboCat05);
+        em.persist(comboCat06);
+         em.persist(comboCat11);
+        em.persist(comboCat10);
+        
+        em.flush();
+//<<<<<<< HEAD
+//>>>>>>> provisoire jeu d essai + affichage produit et menu
+//=======
+//>>>>>>> jeannoBranch
 
     
     
