@@ -135,6 +135,18 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         MyTable myTable09 = new MyTable(9);
         MyTable myTable10 = new MyTable(10);
 
+        // mettre un statut à une table 
+        myTable01.setStatus(s14);
+        myTable02.setStatus(s15);
+        myTable03.setStatus(s14);
+        myTable04.setStatus(s15);
+        myTable05.setStatus(s14);
+        myTable06.setStatus(s15);
+        myTable07.setStatus(s14);
+        myTable08.setStatus(s15);
+        myTable09.setStatus(s14);
+        myTable10.setStatus(s15);
+
         //myOrder01 à myOrder10
         MyOrder myOrder01 = new MyOrder(d11);
         myOrder01.setStatus(s05);
@@ -218,7 +230,28 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Product prod14 = new Product("Kyuri Wakame", 8f, "http", "Salade japonaise");
         Product prod15 = new Product("Nasu", 9f, "http", "Aubergines confites");
         Product prod16 = new Product("Kara Age", 9f, "http", "Beignet de poulet");
+        
 
+       
+        
+=======
+
+        Product prod17 = new Product("Sélection de petits hors-d'oeuvres", 6f, "http", "Entrée Bento Shokado");
+        Product prod18 = new Product("Légumes salés, Mijotés", 6f, "http", "Entrée Bento Shokado");
+        Product prod19 = new Product("Sashimi, Saumon Label Rouge grillé", 20f, "http", "Plat Bento Shokado");
+        Product prod20 = new Product("Tempura de gambas et légumes", 20f, "http", "Plat Bento Shokado");
+        Product prod21 = new Product("Soupe Miso, Riz", 5f, "http", "Assortiment Bento Shokado");
+        Product prod22 = new Product("Fruit frais", 5f, "http", "Déssert Bento Shokado");
+
+        Product prod23 = new Product("Entrée Zen", 9f, "http", "Petits hors-d'oeuvres, soupe Miso");
+        Product prod24 = new Product("Sushi", 30f, "http", "Plat au choix Zen, Assortiment de 7 sushi et 6 maki");
+        Product prod25 = new Product("Tempura", 30f, "http", "Plat au choix Zen, 8 tempura de gambas et légumes ou de légumes uniquement (végétarien)");
+        Product prod26 = new Product("Sushi Tempura", 30f, "http", "Plat au choix Zen, Assortiment de 4 sushi et 4 tempura mixtes");
+        Product prod27 = new Product("Sashimi", 30f, "http", "Plat au choix Zen, Assortiment de 15 sashimi");
+        Product prod28 = new Product("Gyu", 30f, "http", "Plat au choix Zen, Boeuf Black Angus persillé, sauce Teriyaki");
+        Product prod29 = new Product("Dessert Zen", 6f, "http", "Fruits frais");
+
+>>>>>>> Auto stash before rebase of "origin/master"
         Product prod55 = new Product("Coca cola", 5f, "http", "servi avec rondelle de citron");
         Product prod56 = new Product("Fanta", 5f, "http", "saveur exotique");
 
@@ -387,7 +420,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prod09.setVat(vat01);
         prod10.setVat(vat01);
         prod11.setVat(vat01);
-
+        prod17.setVat(vat03);
         Property prop01 = new Property("Origine", "Japon");
         Property prop02 = new Property("Origine", "UE");
         Property prop03 = new Property("Origine", "Nouvelle Zélande");
@@ -400,7 +433,6 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         prop04.setUnit(u01);
         prop05.setUnit(u02);
-
         prod30.getProperties().add(prop04);
 
         // propriétés au pif
@@ -430,11 +462,32 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         ComboCategory comboCat05 = new ComboCategory(2, "2 - Plat au choix");
 //        ComboCategory comboCat11 = new ComboCategory (3,"Accompagnement");
         ComboCategory comboCat06 = new ComboCategory(4, "3 - Dessert");
+=======
+        prod17.getProperties().add(prop04);
+
+        Combo combo01 = new Combo("Bento ShoKado", 62f, "menu 3 étoiles", "images/bentoShokado.jpg");
+        Combo combo02 = new Combo("Zen", 45f, "menu abordable", "images/Zen.jpg");
+
+        ComboCategory comboCat01 = new ComboCategory(1, "Entrée Bento Shokado");
+        ComboCategory comboCat02 = new ComboCategory(2, "Plat Bento Shokado");
+        ComboCategory comboCat10 = new ComboCategory(3, "Assortiment Bento Shokado");
+        ComboCategory comboCat03 = new ComboCategory(4, "Déssert Bento Shokado");
+
+        ComboCategory comboCat04 = new ComboCategory(1, "Entrée Zen");
+        ComboCategory comboCat05 = new ComboCategory(2, "Plat au choix Zen");
+        ComboCategory comboCat11 = new ComboCategory(3, "Assortiment Zen");
+        ComboCategory comboCat06 = new ComboCategory(4, "Déssert Zen");
+
+        comboCat01.setCombo(combo01);
+        comboCat02.setCombo(combo01);
+        comboCat03.setCombo(combo01);
+>>>>>>> Auto stash before rebase of "origin/master"
 
         comboCat04.setCombo(combo02);
         comboCat05.setCombo(combo02);
         comboCat06.setCombo(combo02);
 
+<<<<<<< refs/remotes/origin/master
         List<ComboCategory> listComboCat05 = new ArrayList();
         List<ComboCategory> listComboCat06 = new ArrayList();
         List<ComboCategory> listComboCat07 = new ArrayList();
@@ -474,187 +527,25 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         List<ComboCategory> listComboCat01 = new ArrayList();
         List<ComboCategory> listComboCat02 = new ArrayList();
         List<ComboCategory> listComboCat03 = new ArrayList();
-        List<ComboCategory> listComboCat04 = new ArrayList();
+        List<ComboCategory> listComboCat04 = new ArrayList();        
+        
+
+        List<ComboCategory> listComboCat07 = new ArrayList();
+        List<ComboCategory> listComboCat08 = new ArrayList();
+>>>>>>> Auto stash before rebase of "origin/master"
 
         listComboCat01.add(comboCat01);
         listComboCat02.add(comboCat02);
         listComboCat03.add(comboCat03);
-        listComboCat04.add(comboCat10);
-
-        prod117.setComboCategories(listComboCat01);
-        prod18.setComboCategories(listComboCat01);
-        prod19.setComboCategories(listComboCat02);
-        prod20.setComboCategories(listComboCat02);
-        prod21.setComboCategories(listComboCat04);
-        prod22.setComboCategories(listComboCat03);
-
-        prod117.setVat(vat01);
-        prod19.setVat(vat01);
-        prod22.setVat(vat01);
-        prod21.setVat(vat01);
-
-        prod23.setVat(vat01);
-        prod25.setVat(vat01);
-        prod29.setVat(vat01);
-
-        prod56.setVat(vat01);
-        prod55.setVat(vat01);
-
-        prod08.setVat(vat01);
-        prod05.setVat(vat01);
-        prod06.setVat(vat01);
-
-        prod30.setVat(vat03);
-
-        OrderItem orderItem100 = new OrderItem(0f, 0f);
-//**************menu
-        orderItem100.setCombo(combo02);
-        OrderItem orderItem101 = new OrderItem(10, 10f);
-        orderItem101.setProduct(prod23);
-        OrderItem orderItem102 = new OrderItem(30f, 10f);
-        orderItem102.setProduct(prod25);
-        OrderItem orderItem103 = new OrderItem(5f, 10f);
-        orderItem103.setProduct(prod29);
-
-        orderItem101.setComboOrderItem(orderItem100);
-        orderItem102.setComboOrderItem(orderItem100);
-        orderItem103.setComboOrderItem(orderItem100);
-
-        OrderItem orderItem104 = new OrderItem(0f, 0f);
-//**************menu
-        orderItem104.setCombo(combo01);
-        OrderItem orderItem105 = new OrderItem(12f, 10f);
-        orderItem105.setProduct(prod117);//µ***********
-        OrderItem orderItem106 = new OrderItem(40f, 10f);
-        orderItem106.setProduct(prod19);
-        OrderItem orderItem107 = new OrderItem(5f, 10f);
-        orderItem107.setProduct(prod21);
-
-        OrderItem orderItem108 = new OrderItem(5f, 10f);
-        orderItem108.setProduct(prod22);
-
-        orderItem105.setComboOrderItem(orderItem105);
-        orderItem106.setComboOrderItem(orderItem105);
-        orderItem107.setComboOrderItem(orderItem105);
-        orderItem108.setComboOrderItem(orderItem105);
-
-        OrderItem orderItem109 = new OrderItem(5f, 10f);
-        orderItem109.setProduct(prod55);
-        OrderItem orderItem110 = new OrderItem(5f, 10f);
-        orderItem110.setProduct(prod56);
-
-        OrderItem orderItem111 = new OrderItem(0f, 0f);
-        orderItem111.setCombo(combo01);
-//**************menu
-        OrderItem orderItem112 = new OrderItem(12f, 10f);
-        orderItem112.setProduct(prod117);
-        OrderItem orderItem113 = new OrderItem(40f, 10f);
-        orderItem113.setProduct(prod19);
-        OrderItem orderItem114 = new OrderItem(5f, 10f);
-        orderItem114.setProduct(prod21);
-        OrderItem orderItem115 = new OrderItem(5f, 10f);
-        orderItem115.setProduct(prod22);
-
-        orderItem112.setComboOrderItem(orderItem111);
-        orderItem113.setComboOrderItem(orderItem111);
-        orderItem114.setComboOrderItem(orderItem111);
-        orderItem115.setComboOrderItem(orderItem111);
-
-        OrderItem orderItem116 = new OrderItem(30f, 10f);
-        orderItem116.setProduct(prod08);
-        OrderItem orderItem117 = new OrderItem(5f, 10f);
-        orderItem117.setProduct(prod55);
-        OrderItem orderItem118 = new OrderItem(5f, 10f);
-        orderItem118.setProduct(prod55);
-        OrderItem orderItem119 = new OrderItem(35f, 10f);
-        orderItem119.setProduct(prod05);
-        OrderItem orderItem120 = new OrderItem(30f, 10f);
-        orderItem120.setProduct(prod08);
-
-        OrderItem orderItem121 = new OrderItem(5f, 10f);
-        orderItem121.setProduct(prod55);
-        OrderItem orderItem122 = new OrderItem(5f, 10f);
-        orderItem122.setProduct(prod55);
-
-        OrderItem orderItem123 = new OrderItem(30f, 10f);
-        orderItem123.setProduct(prod08);
-        OrderItem orderItem124 = new OrderItem(90f, 10f);
-        orderItem124.setProduct(prod06);
-        OrderItem orderItem125 = new OrderItem(120f, 20f);
-        orderItem125.setProduct(prod30);
-
-//List<OrderItem> listOrderItem101 = new ArrayList();        
-//List<OrderItem> listOrderItem102 = new ArrayList(); 
-//List<OrderItem> listOrderItem105 = new ArrayList(); 
-//List<OrderItem> listOrderItem106 = new ArrayList(); 
-//listOrderItem101.add(orderItem100);
-//
-//listOrderItem101.add(orderItem101);
-//listOrderItem101.add(orderItem102);
-//listOrderItem101.add(orderItem103);
-        //commande myOrder01  
-        orderItem100.setMyOrder(myOrder01);
-        orderItem101.setMyOrder(myOrder01);
-        orderItem102.setMyOrder(myOrder01);
-        orderItem103.setMyOrder(myOrder01);
-        orderItem104.setMyOrder(myOrder01);
-        orderItem105.setMyOrder(myOrder01);
-        orderItem106.setMyOrder(myOrder01);
-        orderItem107.setMyOrder(myOrder01);
-        orderItem108.setMyOrder(myOrder01);
-        orderItem109.setMyOrder(myOrder01);
-        orderItem110.setMyOrder(myOrder01);
-
-//listOrderItem101.add(orderItem104);
-//listOrderItem101.add(orderItem105);
-//listOrderItem101.add(orderItem106);
-//listOrderItem101.add(orderItem107);
-//listOrderItem101.add(orderItem108);
-//listOrderItem101.add(orderItem109);
-//listOrderItem101.add(orderItem110);
-//
-//myOrder01.setOrderItems(listOrderItem101);
-//listOrderItem102.add(orderItem111);
-//listOrderItem102.add(orderItem112);
-//listOrderItem102.add(orderItem113);
-//listOrderItem102.add(orderItem114);
-//listOrderItem102.add(orderItem115);
-//listOrderItem102.add(orderItem116);
-//listOrderItem102.add(orderItem117);
-//listOrderItem102.add(orderItem118);
-//commande myOrder02 
-        orderItem111.setMyOrder(myOrder02);
-        orderItem112.setMyOrder(myOrder02);
-        orderItem113.setMyOrder(myOrder02);
-        orderItem114.setMyOrder(myOrder02);
-        orderItem115.setMyOrder(myOrder02);
-        orderItem116.setMyOrder(myOrder02);
-        orderItem117.setMyOrder(myOrder02);
-        orderItem118.setMyOrder(myOrder02);
-
-//myOrder02.setOrderItems(listOrderItem102);
-//listOrderItem105.add(orderItem119);
-//listOrderItem105.add(orderItem120);
-//listOrderItem105.add(orderItem121);
-//listOrderItem105.add(orderItem122);
-//commande myOrder05
-        orderItem119.setMyOrder(myOrder05);
-        orderItem120.setMyOrder(myOrder05);
-        orderItem121.setMyOrder(myOrder05);
-        orderItem122.setMyOrder(myOrder05);
-
-//        
-//myOrder05.setOrderItems(listOrderItem105);
-//
-//listOrderItem106.add(orderItem123);
-//listOrderItem106.add(orderItem124);
-//listOrderItem106.add(orderItem125);
-//commande myOrder06
-        orderItem123.setMyOrder(myOrder06);
-        orderItem124.setMyOrder(myOrder06);
-        orderItem125.setMyOrder(myOrder06);
-
-//myOrder06.setOrderItems(listOrderItem106);
+        listComboCat04.add(comboCat10);         
+         
+         prod117.setComboCategories(listComboCat01);
+         prod18.setComboCategories(listComboCat01);
+         prod19.setComboCategories(listComboCat02);
+         prod20.setComboCategories(listComboCat02);                
+         prod21.setComboCategories(listComboCat04);   
+         prod22.setComboCategories(listComboCat03);
+         
         em.persist(combo02);
 
         em.persist(prod23);
@@ -681,8 +572,9 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(comboCat01);
         em.persist(comboCat02);
         em.persist(comboCat03);
-        em.persist(comboCat10);
-
+        em.persist(comboCat10);  
+        
+        
         em.persist(s01);
         em.persist(s02);
         em.persist(s03);
@@ -807,7 +699,9 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(myTable10);
 
         em.persist(comboOrderItem01);
-
+        
+        
+        
         em.persist(vat01);
         em.persist(vat02);
         em.persist(vat03);
@@ -828,8 +722,6 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(ing04);
         em.persist(ing05);
 
-        em.persist(prod55);
-        em.persist(prod56);
 
         em.persist(orderItem100);
         em.persist(orderItem101);
@@ -849,23 +741,13 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(orderItem113);
         em.persist(orderItem114);
 
-        em.persist(orderItem115);
-        em.persist(orderItem116);
-        em.persist(orderItem117);
-        em.persist(orderItem118);
-        em.persist(orderItem119);
-
-        em.persist(orderItem120);
-        em.persist(orderItem121);
-        em.persist(orderItem122);
-        em.persist(orderItem123);
-        em.persist(orderItem124);
-
-        em.persist(orderItem125);
-
-        //      em.persist(comboCat11);
+        
         em.flush();
 
     }
 
+    
+    
+    }
+    
 }

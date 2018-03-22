@@ -12,6 +12,7 @@
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
         
+<<<<<<< refs/remotes/origin/master
         <main>
         <p>${message}</p>
         <c:if test="${user!=null}">
@@ -35,6 +36,28 @@
                 </c:if>
             </c:forEach>
 
+=======
+        Data Test :  <a href="${url01}">  ici </a><br />
+        </div>
+        <hr />
+        
+        <div>
+        <c:url value="FrontController?section=versLogin" var="url02" />
+        
+        Login :  <a href="${url02}">  ici </a> 
+        
+        </div>
+        <div>
+        <c:url value="FrontController?section=backoffice" var="url03" />
+        Back office provisoire : <a href="${url03}">  ici </a>
+        </div>
+        
+        
+        <div>
+        <c:url value="FrontController?section=table" var="url04" />
+        Liste des tables : <a href="${url04}">  ici </a>
+        </div>
+>>>>>>> Auto stash before rebase of "origin/master"
 
             
         </c:if>

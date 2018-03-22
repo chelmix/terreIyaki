@@ -28,6 +28,7 @@
             <param-value>subControllers.ComboCtrl</param-value>
         </init-param>
         <init-param>
+<<<<<<< refs/remotes/origin/master
             <param-name>overview</param-name>
             <param-value>subControllers.OverviewCtrl</param-value>
 
@@ -57,6 +58,12 @@
                                       
        </servlet>
 
+=======
+            <param-name>table</param-name>
+            <param-value>subControllers.versMyTables</param-value>
+        </init-param>
+    </servlet>
+>>>>>>> Auto stash before rebase of "origin/master"
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/FrontController</url-pattern>
@@ -66,6 +73,7 @@
             30
         </session-timeout>
     </session-config>
+<<<<<<< refs/remotes/origin/master
     <ejb-local-ref>
         <ejb-ref-name>CatalogTreatment</ejb-ref-name>
         <ejb-ref-type>Session</ejb-ref-type>
@@ -78,4 +86,6 @@
         <local>sessionBeans.CatalogTreatmentLocal</local>
         <ejb-link>terreIyaki-ejb.jar#CatalogTreatment</ejb-link>
     </ejb-local-ref>
+=======
+>>>>>>> Auto stash before rebase of "origin/master"
 </web-app>
