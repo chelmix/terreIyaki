@@ -9,14 +9,21 @@ import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.Product;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import tools.CustomException;
+import tools.TriParComboCategory;
+//import tools.TriParComboCategory;
+
+
 
 /**
  *
@@ -27,12 +34,18 @@ public class OrderTreatment implements OrderTreatmentLocal {
     @PersistenceContext(unitName = "terreIyaki-ejbPU")
     private EntityManager em;
 
+    private HashMap<String,Long> panier ;
+    
+    @PostConstruct
+    public void init(){
+        panier = new HashMap<>();
+    }
+    
+    
     
     
 //méthode pour afficher produit
-    
   
-    
     @Override
     public List<Product> getProduct() throws CustomException, SecurityException{
      List<Product> p01 = new ArrayList();
@@ -86,14 +99,15 @@ qr03.setParameter("paramComboName", nomMenu);
     
  //afficher produit du sous categorie menus
     @Override
-     public List<Product> getComboProduct(String nomCategorie) throws CustomException, SecurityException{
+     public List<Product> getComboProduct(String nomCategorie, String nomMenu) throws CustomException, SecurityException{
        
          
          
      List<Product> po04 = new ArrayList();
-     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName";   
+     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName and c.combo.name =:paramComboName";   
         Query qr04 = em.createQuery(req04);
 qr04.setParameter("paramComboCategoryName", nomCategorie);
+qr04.setParameter("paramComboName",nomMenu);
          try{
  po04= (List<Product>)  qr04.getResultList();
  return   po04;
@@ -130,15 +144,28 @@ qr03.setParameter("paramComboName", nomMenu);
  }catch (NoResultException ex){
             CustomException ce = new CustomException(CustomException.USER_ERR, "aucun sous menu");
             throw ce;         
- }      
- // List<Product> po04 = new ArrayList();
-  
+ }  
+//*********************************************************  
+//*********************************************************  
+//il faut trier la c03 en fonction de number
+ //*********************************************************  
+ //*********************************************************   
+         List<ComboCategory>c05 = new ArrayList();
+         TriParComboCategory c04 = new TriParComboCategory();
+       Collections.sort(c03, c04);        
+ System.out.println("triiiiiiiiiiiiiiiiiiiiiiiiiii\n"+c03.toString());
+
+ for(int i=0;i<c03.size();i++){
+     System.out.println(i+" "+c03.get(i).getNumber()+"*******************************");
+     
+ }
   //**********insertion hashmap**********début
          for(int i=0;i<c03.size();i++){
        List<Product> po04 = new ArrayList(); 
-     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName order by c.number";   
+     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName and c.combo.name =:paramComboName";   
         Query qr04 = em.createQuery(req04);
 qr04.setParameter("paramComboCategoryName", c03.get(i).getName());
+qr04.setParameter("paramComboName", nomMenu);
          try{
           
  po04= (List<Product>)  qr04.getResultList();
@@ -156,7 +183,8 @@ qr04.setParameter("paramComboCategoryName", c03.get(i).getName());
      //**************************************************************************
      
      
-     
+
+   
      
     
     
@@ -180,13 +208,66 @@ qr05.setParameter("paramComboName", nomMenu);
     }     
      
      
+     //a chaque clique on ajoute 1 produit
+    @Override
+    public HashMap<String,Long> getPanier(String nomComboCat,String nomProduit) throws CustomException {
+  //  Product p01 = new Product();
      
-     
+     String req01 = "select p from Product p where  p.name =:paramNameProduct";   
+        Query qr01 = em.createQuery(req01);
+qr01.setParameter("paramNameProduct", nomProduit);
+         try{
+             
+             
+             Product p01 = (Product) qr01.getSingleResult();
+
+panier.put(nomComboCat, p01.getId());
+return panier;
+ }catch (NoResultException ex){
+            CustomException ce = new CustomException(CustomException.USER_ERR, "aucun produit");
+            throw ce;         
+ }       
+        
+      //  HashMap<Long,Integer> panier = new HashMap();
+    }
 
 //    public void persist(Object object) {
 //        em.persist(object);
 //    }
+
+
+//    public int compareTo(ComboCategory obj, ComboCategory cible) {
+//        int d01 = obj.getNumber();
+//        int d02 = cible.getNumber();
+//        int delta = d01 - d02;
+//        if(delta < 0){
+//            return -1;
+//        }else if(delta > 0){
+//            return 1;
+//        }else{
+//            return 0;
+//        }
+//    } 
     
-    
-    
+//        public int compareTo(Ville cible) {
+//        String nom01 = this.getNom();
+//        if(nom01 == null){
+//            return -1;
+//        }
+//        String nom02 = cible.getNom();
+//        if(nom02 == null){
+//            return 1;
+//        }
+   //    public int compare(ComboCategory obj, ComboCategory cible) {
+//        int d01 = obj.getNumber();
+//        int d02 = cible.getNumber();
+//        int delta = d01 - d02;
+//        if(delta < 0){
+//            return -1;
+//        }else if(delta > 0){
+//            return 1;
+//        }else{
+//            return 0;
+//        }
+//    } 
 }
