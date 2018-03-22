@@ -25,6 +25,12 @@
         <c:url value="FrontController?section=backoffice" var="url03" />
         Back office provisoire : <a href="${url03}">  ici </a>
         </div>
+        
+        
+        <div>
+        <c:url value="FrontController?section=table" var="url04" />
+        Liste des tables : <a href="${url04}">  ici </a>
+        </div>
 
     </body>
 </html>
