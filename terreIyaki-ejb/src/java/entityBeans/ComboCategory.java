@@ -86,7 +86,7 @@ public class ComboCategory implements Serializable {
 
     @Override
     public String toString() {
-        return id+" "+name;
+        return number+" "+name;
     }
 
     public int getNumber() {

@@ -36,16 +36,17 @@
         </c:forEach>
         
         <c:if test="${HashProduct!=null}">
-        Détail menu ${comboName02}
+            <h3> ${comboName02} </h3>
         
   <c:forEach var="map" items="${HashProduct}">
 
-<br/>${map.key}
-
-${map.value.description} 
-         
+<br/><br/>${map.key}<br/>
+<c:forEach var="map02" items="${map.value}">
+<br/>${map02.name} - ${map02.description} - ${map02.picture}
+     </c:forEach>       
   </c:forEach>        
-        
+
+
  
         </c:if>
             

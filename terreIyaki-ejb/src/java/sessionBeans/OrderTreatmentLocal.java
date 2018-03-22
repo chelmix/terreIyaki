@@ -30,7 +30,7 @@ public interface OrderTreatmentLocal {
 
     public List<Product> getComboProductAll(String nomMenu) throws CustomException, SecurityException;
 
-    public HashMap<String, List<Product>> getHashProduct(String nomMenu) throws CustomException;
+    public HashMap<String, List<Product>> getHashProduct(String nomMenu) throws CustomException, SecurityException;
 
 
     

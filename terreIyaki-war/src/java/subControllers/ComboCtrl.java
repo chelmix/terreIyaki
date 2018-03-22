@@ -5,6 +5,7 @@ import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.Product;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -14,6 +15,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.jasper.JasperException;
 import sessionBeans.OrderTreatmentLocal;
 import tools.CustomException;
 
@@ -88,14 +90,35 @@ public class ComboCtrl implements ControllerInterface, Serializable {
 //     
  String comboName01 = request.getParameter("comboName");
  request.setAttribute("comboName02",comboName01);
+//********************************************** 
+ 
+ //try{
+ 
+
+     //on vide la liste
+ try{
+ request.removeAttribute("HashProduct");
+ }catch(NullPointerException ex){
+     
+ }
+ 
+ 
  try{
  HashMap<String,List<Product>> ha01 = gestionCommande.getHashProduct(comboName01);
  request.setAttribute("HashProduct", ha01);
   }catch(CustomException ex){
  String texte = ex.getMessage();
  request.setAttribute("message", texte);
-  }
-     
+  
+   
+ 
+ }
+ 
+ 
+ 
+ 
+ 
+ //*********************************************
  }
 // }catch(NullPointerException ne){
 //     //on ne fait rien

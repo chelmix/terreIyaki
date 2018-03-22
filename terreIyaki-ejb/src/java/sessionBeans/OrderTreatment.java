@@ -9,6 +9,8 @@ import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.Product;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,6 +19,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import tools.CustomException;
+import tools.TriParComboCategory;
+//import tools.TriParComboCategory;
 
 /**
  *
@@ -130,15 +134,28 @@ qr03.setParameter("paramComboName", nomMenu);
  }catch (NoResultException ex){
             CustomException ce = new CustomException(CustomException.USER_ERR, "aucun sous menu");
             throw ce;         
- }      
- // List<Product> po04 = new ArrayList();
-  
+ }  
+//*********************************************************  
+//*********************************************************  
+//il faut trier la c03 en fonction de number
+ //*********************************************************  
+ //*********************************************************   
+         List<ComboCategory>c05 = new ArrayList();
+         TriParComboCategory c04 = new TriParComboCategory();
+       Collections.sort(c03, c04);        
+ System.out.println("triiiiiiiiiiiiiiiiiiiiiiiiiii\n"+c03.toString());
+
+ for(int i=0;i<c03.size();i++){
+     System.out.println(i+" "+c03.get(i).getNumber()+"*******************************");
+     
+ }
   //**********insertion hashmap**********début
          for(int i=0;i<c03.size();i++){
        List<Product> po04 = new ArrayList(); 
-     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName order by c.number";   
+     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName and c.combo.name =:paramComboName";   
         Query qr04 = em.createQuery(req04);
 qr04.setParameter("paramComboCategoryName", c03.get(i).getName());
+qr04.setParameter("paramComboName", nomMenu);
          try{
           
  po04= (List<Product>)  qr04.getResultList();
@@ -156,7 +173,8 @@ qr04.setParameter("paramComboCategoryName", c03.get(i).getName());
      //**************************************************************************
      
      
-     
+
+   
      
     
     
@@ -186,7 +204,40 @@ qr05.setParameter("paramComboName", nomMenu);
 //    public void persist(Object object) {
 //        em.persist(object);
 //    }
+
+
+//    public int compareTo(ComboCategory obj, ComboCategory cible) {
+//        int d01 = obj.getNumber();
+//        int d02 = cible.getNumber();
+//        int delta = d01 - d02;
+//        if(delta < 0){
+//            return -1;
+//        }else if(delta > 0){
+//            return 1;
+//        }else{
+//            return 0;
+//        }
+//    } 
     
-    
-    
+//        public int compareTo(Ville cible) {
+//        String nom01 = this.getNom();
+//        if(nom01 == null){
+//            return -1;
+//        }
+//        String nom02 = cible.getNom();
+//        if(nom02 == null){
+//            return 1;
+//        }
+   //    public int compare(ComboCategory obj, ComboCategory cible) {
+//        int d01 = obj.getNumber();
+//        int d02 = cible.getNumber();
+//        int delta = d01 - d02;
+//        if(delta < 0){
+//            return -1;
+//        }else if(delta > 0){
+//            return 1;
+//        }else{
+//            return 0;
+//        }
+//    } 
 }
