@@ -370,18 +370,18 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         Combo combo02 = new Combo("Zen", 45f, "menu abordable", "images/Zen.jpg");
 //      Zen  
-        Product prod23 = new Product("King starter", 10f, "http", "Petits hors-d'oeuvres avec sa soupe Miso");
-        Product prod24 = new Product("Sushi rary", 30f, "http", "Assortiment variés de 7 sushi et 6 maki");
-        Product prod25 = new Product("Tempura gaya", 30f, "http", "8 exotiques tempura de gambas avec ses légumes ou plats royal de légumes tempura (plat végétarien)");
-        Product prod26 = new Product("Sushi Tempura", 30f, "http", "Délicieux assortiment de 4 sushi et de 4 tempura mixtes");
-        Product prod27 = new Product("King Sashimi", 30f, "http", "Succulent assortiment de 15 sashimi");
-        Product prod28 = new Product("Gyu Royal", 30f, "http", "Excellent plat avec notre spécial Boeuf Black Angus persillé et sa sauce Teriyaki");
-        Product prod29 = new Product("Fruit love", 5f, "http", "Assortiments de fruits frais");
+        Product prod23 = new Product("King starter", 10f, "images/nonDisponible.png", "Petits hors-d'oeuvres avec sa soupe Miso");
+        Product prod24 = new Product("Sushi rary", 30f, "images/nonDisponible.png", "Assortiment variés de 7 sushi et 6 maki");
+        Product prod25 = new Product("Tempura gaya", 30f, "images/nonDisponible.png", "8 exotiques tempura de gambas avec ses légumes ou plats royal de légumes tempura (plat végétarien)");
+        Product prod26 = new Product("Sushi Tempura", 30f, "images/nonDisponible.png", "Délicieux assortiment de 4 sushi et de 4 tempura mixtes");
+        Product prod27 = new Product("King Sashimi", 30f, "images/nonDisponible.png", "Succulent assortiment de 15 sashimi");
+        Product prod28 = new Product("Gyu Royal", 30f, "images/nonDisponible.png", "Excellent plat avec notre spécial Boeuf Black Angus persillé et sa sauce Teriyaki");
+        Product prod29 = new Product("Fruit love", 5f, "images/nonDisponible.png", "Assortiments de fruits frais");
 
-        ComboCategory comboCat04 = new ComboCategory(1, "Entrée");
-        ComboCategory comboCat05 = new ComboCategory(2, "Plat au choix");
+        ComboCategory comboCat04 = new ComboCategory(1, "1 - Entrée");
+        ComboCategory comboCat05 = new ComboCategory(2, "2 - Plat au choix");
 //        ComboCategory comboCat11 = new ComboCategory (3,"Accompagnement");
-        ComboCategory comboCat06 = new ComboCategory(4, "Dessert");
+        ComboCategory comboCat06 = new ComboCategory(4, "3 - Dessert");
 
         comboCat04.setCombo(combo02);
         comboCat05.setCombo(combo02);
@@ -408,17 +408,17 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
          
 Combo combo01 = new Combo ("Bento ShoKado", 62f, "menu 3 étoiles","images/bentoShokado.jpg");         
          
-        ComboCategory comboCat01 = new ComboCategory (1,"Entrée au choix");
-        ComboCategory comboCat02 = new ComboCategory (2,"Plat au choix");        
-        ComboCategory comboCat10 = new ComboCategory (3,"Accompagnement");
-        ComboCategory comboCat03 = new ComboCategory (4,"Dessert");
+        ComboCategory comboCat01 = new ComboCategory (1,"1 - Entrée au choix");
+        ComboCategory comboCat02 = new ComboCategory (2,"2 - Plat au choix");        
+        ComboCategory comboCat10 = new ComboCategory (3,"3 - Accompagnement");
+        ComboCategory comboCat03 = new ComboCategory (4,"4 - Dessert");
                 
-        Product prod117 = new Product("Gosaismas starter", 12f, "http", "Sélection de délicieux petits hors-d'oeuvres");
-        Product prod18 = new Product("Gosaismos starter", 12f, "http", "Assortiments de légumes salés et Mijotés");
-        Product prod19 = new Product("Bento Shokado speedo", 40f, "http", "Plat de Sashimi avec du Saumon Label Rouge grillé");
-        Product prod20 = new Product("Bento Shokado algo", 40f, "http", "Tempura de gambas avec ses légumes");
-        Product prod21 = new Product("Accompagnement loquent", 5f, "http", "Riz gluant avec graine de sésames à volontés");
-        Product prod22 = new Product("Litchi love", 5f, "http", "Assortiments de litchi frais");                
+        Product prod117 = new Product("Gosaismas starter", 12f, "images/nonDisponible.png", "Sélection de délicieux petits hors-d'oeuvres");
+        Product prod18 = new Product("Gosaismos starter", 12f, "images/nonDisponible.png", "Assortiments de légumes salés et Mijotés");
+        Product prod19 = new Product("Bento Shokado speedo", 40f, "images/nonDisponible.png", "Plat de Sashimi avec du Saumon Label Rouge grillé");
+        Product prod20 = new Product("Bento Shokado algo", 40f, "images/nonDisponible.png", "Tempura de gambas avec ses légumes");
+        Product prod21 = new Product("Accompagnement loquent", 5f, "images/nonDisponible.png", "Riz gluant avec graine de sésames à volontés");
+        Product prod22 = new Product("Litchi love", 5f, "images/nonDisponible.png", "Assortiments de litchi frais");                
                 
         comboCat01.setCombo(combo01);
         comboCat02.setCombo(combo01);

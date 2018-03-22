@@ -26,11 +26,13 @@ public interface OrderTreatmentLocal {
 
     public List<ComboCategory> getComboCat(String nomMenu) throws CustomException, SecurityException;
 
-    public List<Product> getComboProduct(String nomCategorie) throws CustomException, SecurityException;
+    public List<Product> getComboProduct(String nomCategorie, String nomMenu) throws CustomException, SecurityException;
 
     public List<Product> getComboProductAll(String nomMenu) throws CustomException, SecurityException;
 
     public HashMap<String, List<Product>> getHashProduct(String nomMenu) throws CustomException, SecurityException;
+
+    public HashMap<String,Long> getPanier(String nomComboCat,String nomProduit)throws CustomException;
 
 
     

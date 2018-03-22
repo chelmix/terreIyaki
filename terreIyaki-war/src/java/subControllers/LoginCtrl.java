@@ -222,7 +222,9 @@ public class LoginCtrl implements ControllerInterface, Serializable {
         }
         } catch (NullPointerException ne09) {
             //on fait rien
-        }        
+        }   
+        
+   
 
         return "login";
     }

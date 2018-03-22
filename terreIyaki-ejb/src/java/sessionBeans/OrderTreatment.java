@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -21,6 +22,8 @@ import javax.persistence.Query;
 import tools.CustomException;
 import tools.TriParComboCategory;
 //import tools.TriParComboCategory;
+
+
 
 /**
  *
@@ -31,12 +34,18 @@ public class OrderTreatment implements OrderTreatmentLocal {
     @PersistenceContext(unitName = "terreIyaki-ejbPU")
     private EntityManager em;
 
+    private HashMap<String,Long> panier ;
+    
+    @PostConstruct
+    public void init(){
+        panier = new HashMap<>();
+    }
+    
+    
     
     
 //méthode pour afficher produit
-    
   
-    
     @Override
     public List<Product> getProduct() throws CustomException, SecurityException{
      List<Product> p01 = new ArrayList();
@@ -90,14 +99,15 @@ qr03.setParameter("paramComboName", nomMenu);
     
  //afficher produit du sous categorie menus
     @Override
-     public List<Product> getComboProduct(String nomCategorie) throws CustomException, SecurityException{
+     public List<Product> getComboProduct(String nomCategorie, String nomMenu) throws CustomException, SecurityException{
        
          
          
      List<Product> po04 = new ArrayList();
-     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName";   
+     String req04 = "Select c.products from  ComboCategory c where c.name= :paramComboCategoryName and c.combo.name =:paramComboName";   
         Query qr04 = em.createQuery(req04);
 qr04.setParameter("paramComboCategoryName", nomCategorie);
+qr04.setParameter("paramComboName",nomMenu);
          try{
  po04= (List<Product>)  qr04.getResultList();
  return   po04;
@@ -198,8 +208,28 @@ qr05.setParameter("paramComboName", nomMenu);
     }     
      
      
+     //a chaque clique on ajoute 1 produit
+    @Override
+    public HashMap<String,Long> getPanier(String nomComboCat,String nomProduit) throws CustomException {
+  //  Product p01 = new Product();
      
-     
+     String req01 = "select p from Product p where  p.name =:paramNameProduct";   
+        Query qr01 = em.createQuery(req01);
+qr01.setParameter("paramNameProduct", nomProduit);
+         try{
+             
+             
+             Product p01 = (Product) qr01.getSingleResult();
+
+panier.put(nomComboCat, p01.getId());
+return panier;
+ }catch (NoResultException ex){
+            CustomException ce = new CustomException(CustomException.USER_ERR, "aucun produit");
+            throw ce;         
+ }       
+        
+      //  HashMap<Long,Integer> panier = new HashMap();
+    }
 
 //    public void persist(Object object) {
 //        em.persist(object);
