@@ -93,7 +93,7 @@ request.setAttribute("nameCombo", nomMenu);
                     if (request.getParameter("faction").equals("produitFormul")) {
                         String nomCategorie = request.getParameter("comboCategory");
                         try {
-                            List<Product> po01 = (List<Product>) gestionCommande.getComboProduct(nomCategorie);
+                            List<Product> po01 = (List<Product>) gestionCommande.getComboProduct(nomCategorie, nomMenu);
                             request.setAttribute("comboProduct", po01);
                             //        System.out.println("********************produits du menu"+po01.toString());
                         } catch (CustomException ex) {

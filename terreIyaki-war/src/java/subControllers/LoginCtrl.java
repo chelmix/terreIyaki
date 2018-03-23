@@ -18,6 +18,7 @@ import tools.MyLog;
 
 public class LoginCtrl implements ControllerInterface, Serializable {
 
+    @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
@@ -222,7 +223,9 @@ public class LoginCtrl implements ControllerInterface, Serializable {
         }
         } catch (NullPointerException ne09) {
             //on fait rien
-        }        
+        }   
+        
+   
 
         return "login";
     }

@@ -5,10 +5,11 @@
  */
 package subControllers;
 
-import java.beans.*;
 import java.io.Serializable;
+import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -16,9 +17,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class VersLoginCtrl implements ControllerInterface, Serializable {
 
-  @Override
-  public String execute(HttpServletRequest request, HttpServletResponse response )  {
-      //je créé l 'ArrayList
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
+    HttpSession session = request.getSession();
+
+      
       return "login";
       
   } 
