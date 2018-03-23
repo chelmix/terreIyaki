@@ -25,14 +25,16 @@ public class versMyTables implements ControllerInterface, Serializable {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-            HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         TableTreatementLocal gestionTable = lookupTableTreatementLocal();
 
-        if (request.getParameter("action").equals("table")) {
+       // test if sur création d'une nouvelle commande 
+        // ou creation d'un nouveau controleur verscontroleurs 
+        // submit vers le nouveau controleur 
 
             try {
                 List<MyTable> mt = gestionTable.selectAll();
-                request.setAttribute("myTables", mt);
+                request.setAttribute("myTable", mt);
               
 
             } catch (NullPointerException ex) {
@@ -40,8 +42,8 @@ public class versMyTables implements ControllerInterface, Serializable {
                 request.setAttribute("message", texte);
             }
 
-        }
-        return  "myTables";
+        
+        return  "myTable";
 
     }
 

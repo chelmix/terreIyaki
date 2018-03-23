@@ -14,9 +14,15 @@
     </head>
     <body>
         <h1>Liste des tables et leurs statuts</h1>
-         <c:forEach var="table" items="${myTables}"><p>
-                <td> ${table.Status}</td>
+        <p> ${myTable}</p> 
+        <form action="FrontController?section=table&action=valide">
+        <c:forEach var="table" items="${myTable}"><p>
+               <input type="checkbox" name="table" value="${table.tableNumber}"> <br> <td> ${table.status}</td>
+                <p> test blabla </p>
                   </p>  </c:forEach>
+                   <input type="submit" value="Submit">
+                  </form>
+                  
                  
                  
     </body>
