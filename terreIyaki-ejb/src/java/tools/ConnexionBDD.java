@@ -17,8 +17,8 @@ public class ConnexionBDD implements Serializable {
     
     public ConnexionBDD()throws NamingException{
         InitialContext itc = new InitialContext();
-        ds = (DataSource) itc.lookup("jdbc/RestaurantPostgresJeanno");
-    //    ds = (DataSource) itc.lookup("jdbc/restaurant");
+//        ds = (DataSource) itc.lookup("jdbc/RestaurantPostgresJeanno");
+        ds = (DataSource) itc.lookup("jdbc/restaurant");
         
         
         
