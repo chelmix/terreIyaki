@@ -34,13 +34,14 @@ public class OrderTreatment implements OrderTreatmentLocal {
     @PersistenceContext(unitName = "terreIyaki-ejbPU")
     private EntityManager em;
 
-    private HashMap<String,Long> panier ;
-    
-    @PostConstruct
-    public void init(){
-        panier = new HashMap<>();
-    }
-    
+//    private HashMap<String,Long> panier ;
+//    
+//    @PostConstruct
+//    @Override
+//    public void init(){
+//      HashMap<String,Long>   panier = new HashMap<>();
+//    }
+//    
     
     
     
@@ -212,7 +213,7 @@ qr05.setParameter("paramComboName", nomMenu);
     @Override
     public HashMap<String,Long> getPanier(String nomComboCat,String nomProduit) throws CustomException {
   //  Product p01 = new Product();
-     
+     HashMap<String,Long> panier = new HashMap();
      String req01 = "select p from Product p where  p.name =:paramNameProduct";   
         Query qr01 = em.createQuery(req01);
 qr01.setParameter("paramNameProduct", nomProduit);
@@ -230,6 +231,29 @@ return panier;
         
       //  HashMap<Long,Integer> panier = new HashMap();
     }
+    
+    
+    
+    //on récupère toutes les id produits des menus commandés, ainsi que leur nombre
+    @Override
+ public HashMap<Long,Integer> getMenuProductCommande (HashMap<String,Long> getPanier) {
+    HashMap<Long,Integer> menuProductPaid = new HashMap();
+    for(HashMap.Entry<String,Long>entry : getPanier.entrySet()){
+       Long idProduct = (Long) entry.getValue();
+ 
+       menuProductPaid.put(idProduct, 1);
+       
+       
+    }
+    
+    return menuProductPaid;
+
+    
+}
+    //on récupère tous les menus commandés
+
+    
+    
 
 //    public void persist(Object object) {
 //        em.persist(object);
