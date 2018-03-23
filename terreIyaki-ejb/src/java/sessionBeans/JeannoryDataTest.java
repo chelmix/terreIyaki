@@ -216,6 +216,15 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Category cat03 = new Category("Viandes grillés");
         Category cat04 = new Category("Poissons grillés");
         Category cat05 = new Category("Accompagnements");
+        
+        // attribution de catégories aux produits
+        prod01.setCategory(cat05);
+        prod02.setCategory(cat05);
+        prod03.setCategory(cat05);
+        prod04.setCategory(cat04);
+        prod05.setCategory(cat04);
+        prod06.setCategory(cat03);
+        prod07.setCategory(cat02);
 
         List<MyGrant> listMyGrant01 = new ArrayList();
         List<MyGrant> listMyGrant02 = new ArrayList();

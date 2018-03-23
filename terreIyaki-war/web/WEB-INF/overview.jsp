@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Terryaki</title>
     </head>
     <body>
         <h1>Vue d'ensemble du menu</h1><br />
@@ -15,11 +15,8 @@
         <h2>A la carte</h2><br />
         <c:forEach var = "cat" items="${categories}">
             <section>
-                <h3>${cat.name}</h3>
-                <c:forEach var = "pro" items="${cat.products}">
-                    <c:url value="FrontController?section=overview&productid=" var="url03" />
-                    <a href="#">${pro.name}</a>
-                </c:forEach>
+                <c:url value="FrontController?section=overview&categoryid=${cat.id}" var="url03" />
+                <a href="${url03}">${cat.name}</a>
             </section>
         </c:forEach>       
     </body>

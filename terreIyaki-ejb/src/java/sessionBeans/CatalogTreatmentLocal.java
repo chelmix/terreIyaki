@@ -26,5 +26,7 @@ public interface CatalogTreatmentLocal {
     public List<Ingredient> getAllIngredients();
 
     public Product getProductById(String productId);
+
+    public Category getCategoryById(String categoryId);
     
 }

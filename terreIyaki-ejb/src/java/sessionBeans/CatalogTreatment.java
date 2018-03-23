@@ -91,7 +91,7 @@ public class CatalogTreatment implements CatalogTreatmentLocal {
     public Product getProductById(String productId) {
         Product pro;
         TypedQuery<Product> qr = em.createNamedQuery("entityBeans.Product.selectProductById", Product.class);
-        qr.setParameter("paramId", productId);
+        qr.setParameter("paramId", Long.valueOf(productId));
         try {
             pro = qr.getSingleResult();
         } catch(NoResultException ex){
@@ -99,6 +99,20 @@ public class CatalogTreatment implements CatalogTreatmentLocal {
             return null;
         }
         return pro;
+    }
+    
+    @Override
+    public Category getCategoryById(String categoryId) {
+        Category cat;
+        TypedQuery<Category> qr = em.createNamedQuery("entityBeans.Category.selectCategoryById", Category.class);
+        qr.setParameter("paramId", Long.valueOf(categoryId));
+        try {
+            cat = qr.getSingleResult();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return cat;
     }
 
 }

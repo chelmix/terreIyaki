@@ -37,13 +37,7 @@
             <param-name>overview</param-name>
             <param-value>subControllers.OverviewCtrl</param-value>
         </init-param>                                         
-                        
-        
-        
-        c   
-        
-                                                 
-                        
+                                      
        </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>

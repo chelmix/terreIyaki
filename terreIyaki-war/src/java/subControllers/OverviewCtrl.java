@@ -17,12 +17,18 @@ public class OverviewCtrl implements ControllerInterface, Serializable {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String productId = request.getParameter("productid");
+        String categoryId = request.getParameter("categoryid");
         if (productId != null) {
             request.setAttribute("product", catalogTreatment.getProductById(productId));
             return "product-overview";
+        } else if (categoryId != null) {
+            request.setAttribute("category", catalogTreatment.getCategoryById(categoryId));
+            //request.setAttribute("products", catalogTreatment.getProductsById(categoryId).getProducts());
+            return "category-overview";
         } else {
+            request.setAttribute("categories", catalogTreatment.getAllCategories());
             return "overview";
-        }     
+        }
     }
 
     private CatalogTreatmentLocal lookupCatalogTreatmentLocal() {
