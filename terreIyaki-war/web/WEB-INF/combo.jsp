@@ -49,14 +49,7 @@
         
         
         
-                                          <form action="FrontController" method="POST">
-                 Recevoir facture par email<input type="hidden" name="section" value="combo" />
-                  <input type="hidden" name="action" value="mail" />
-  
-                <br/> <input type="text" name="email" value="" />
-                 <input type="submit" value="Envoyer" name="doIt" />
-                 
-             </form>
+
         
         <c:if test="${HashProduct!=null}">
             <h3>Menu ${comboName02} </h3>
@@ -64,7 +57,7 @@
             <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/>
             </a>
             
-            
+<%--           
  <h3>HashMap trié avant le request.SetAttribute, mais affichage aléatoire.... </h3>       
   <c:forEach var="map" items="${HashProduct}">
 
@@ -73,8 +66,8 @@
 <br/>${map02.name} - ${map02.description}
      </c:forEach><br/>       
   </c:forEach>    
-     
-     
+   
+ --%>   
      
      
 
@@ -85,7 +78,7 @@
 
 <%
  //test
-  out.print("<br><h3>Code dans la jsp ==> HashMap trié dans la jsp...</h3>");  
+  //out.print("<br><h3>Code dans la jsp ==> HashMap trié dans la jsp...</h3>");  
     
     HashMap <String,List<Product>> ha01 =new HashMap(); 
   ha01 = (HashMap <String,List<Product>> ) request.getAttribute("HashProduct");
@@ -146,12 +139,21 @@
              
 
              
+             <c:if test="${menuRempli!=null}">
              
+            <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>   
+           
+           
+                        <form action="FrontController" method="POST">
+                    Valider la commande et recevoir facture électronique (renseigner email)<input type="hidden" name="section" value="combo" />
+                  <input type="hidden" name="action" value="validerMenu" />
+                    <input type="hidden" name="detection" value="mail" />
+                <br/> <input type="text" name="email" value="" />
+                 <input type="submit" value="Envoyer" name="doIt" />
+                 
+             </form>
              
-             <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>   
-             
-             
-
+</c:if>
              
              
              <br/>Sous menu choisi <c:forEach var="hashPanr" items="${hashPanier}"> 

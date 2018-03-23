@@ -21,7 +21,9 @@ public interface PayementTreatmentLocal {
 
     public void envoyerMail(String mailDestinataire) throws NamingException, SQLException, EJBException;
 
-    public Mail getMail() throws NamingException, SQLException;
+//    public Mail getMail() throws NamingException, SQLException;
+
+    public void getBillPdf(String nomMenu);
 
     
 }

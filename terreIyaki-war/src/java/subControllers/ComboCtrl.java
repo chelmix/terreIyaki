@@ -379,7 +379,37 @@ System.out.println("ou etes vous ****************************");
      
      
  //****************************test*****************************************
+       
+//***********************facture *******début ******************************
      
+     try{
+     
+     if(request.getParameter("detection").equals("mail")){
+         
+    String mailDestination = request.getParameter("email");
+   PayementTreatmentLocal traiterFacture =  lookupPayementTreatmentLocal();
+   //test
+    Date d01 = new GregorianCalendar(2018, 1, 22, 12, 30).getTime();
+   MyOrder o01 = new MyOrder(d01);
+     try {
+         
+         traiterFacture.getBillPdf(nomMenu);        
+         traiterFacture.envoyerMail(mailDestination);
+         
+         
+         System.out.println("mail envoyé ++++++++++++++++++");
+     } catch (NamingException ex) {
+         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (SQLException ex) {
+         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
+     } 
+     }
+     }catch(NullPointerException ne){
+                  
+     } 
+
+//***********************facture *******fin ****************************** 
+    
        
      
      
@@ -403,45 +433,6 @@ System.out.println("ou etes vous ****************************");
      
      
  }
-      
-//***********************facture *******début ******************************
-     
-     try{
-     
-     if(request.getParameter("action").equals("mail")){
-         
-    String mailDestination = request.getParameter("email");
-   PayementTreatmentLocal traiterFacture =  lookupPayementTreatmentLocal();
-   //test
-    Date d01 = new GregorianCalendar(2018, 1, 22, 12, 30).getTime();
-   MyOrder o01 = new MyOrder(d01);
-   
-  Mail mail01 = traiterFacture.getMail();
-   
-   System.out.println(mail01.toString());
-   
-
-     try {
-         traiterFacture.envoyerMail(mailDestination);
-         
-         
-         System.out.println("mail envoyé ++++++++++++++++++");
-     } catch (NamingException ex) {
-         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
-     } catch (SQLException ex) {
-         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
-     }
-     }
-     }catch(NullPointerException ne){
-         
-         
-     } catch (NamingException ex) {
-         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
-     } catch (SQLException ex) {
-         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
-     }
-  
-//***********************facture *******fin ****************************** 
 
 
 
