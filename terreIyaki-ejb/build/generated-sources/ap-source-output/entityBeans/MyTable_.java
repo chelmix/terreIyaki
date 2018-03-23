@@ -11,6 +11,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-23T20:03:25")
 =======
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-23T15:46:05")
@@ -21,6 +22,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 =======
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-23T18:11:59")
 >>>>>>> Auto stash before merge of "jeannoBranch" and "origin/jeannoBranch"
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-23T19:31:15")
+>>>>>>> jeanno test
 @StaticMetamodel(MyTable.class)
 public class MyTable_ { 
 
