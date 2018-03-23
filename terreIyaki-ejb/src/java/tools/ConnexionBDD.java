@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,11 +7,10 @@
 package tools;
 
 import java.beans.*;
-=======
 
-package tools;
 
->>>>>>> jeannoBranch
+
+
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,14 +18,12 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-<<<<<<< HEAD
 /**
  *
  * @author jeanno
  */
-=======
 
->>>>>>> jeannoBranch
+
 public class ConnexionBDD implements Serializable {
     
 
@@ -45,10 +42,5 @@ public class ConnexionBDD implements Serializable {
 public Connection getConnetion() throws SQLException{
     return ds.getConnection();
 }
-    
-<<<<<<< HEAD
-=======
-    
-    
->>>>>>> jeannoBranch
+
 }

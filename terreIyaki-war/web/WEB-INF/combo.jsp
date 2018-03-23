@@ -46,21 +46,9 @@
 
 </div>     
         </c:forEach>
-        
-        
-        
-<<<<<<< HEAD
 
-=======
-                                          <form action="FrontController" method="POST">
-                 Recevoir facture par email<input type="hidden" name="section" value="combo" />
-                  <input type="hidden" name="action" value="mail" />
-  
-                <br/> <input type="text" name="email" value="" />
-                 <input type="submit" value="Envoyer" name="doIt" />
-                 
-             </form>
->>>>>>> jeannoBranch
+
+
         
         <c:if test="${HashProduct!=null}">
             <h3>Menu ${comboName02} </h3>
@@ -149,12 +137,10 @@
          <c:if test="${hashPanier!=null}">
              
 
-             
-<<<<<<< HEAD
              <c:if test="${menuRempli!=null}">
              
-            <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>   
-           
+            <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>  (ne pas recevoir de facture électronique) 
+           <br/><br/>
            
                         <form action="FrontController" method="POST">
                     Valider la commande et recevoir facture électronique (renseigner email)<input type="hidden" name="section" value="combo" />
@@ -166,16 +152,8 @@
              </form>
              
 </c:if>
-=======
-             
-             
-             <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>   
-             
-             
 
->>>>>>> jeannoBranch
-             
-             
+
              <br/>Sous menu choisi <c:forEach var="hashPanr" items="${hashPanier}"> 
              
          <br/>${hashPanr.key}
