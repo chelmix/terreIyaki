@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+<<<<<<< HEAD
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
@@ -28,18 +29,37 @@ import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
+=======
+import entityBeans.MyOrder;
+import tools.ConnexionBDD;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
+import javax.ejb.EJBException;
+import javax.ejb.Stateless;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+>>>>>>> jeannoBranch
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+<<<<<<< HEAD
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+=======
+import javax.mail.internet.MimeMessage;
+>>>>>>> jeannoBranch
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.swing.text.Document;
+<<<<<<< HEAD
 import tools.ConnexionBDD;
+=======
+>>>>>>> jeannoBranch
 import tools.Mail;
 
 
@@ -108,6 +128,7 @@ public class PayementTreatment implements PayementTreatmentLocal {
             // Now set the actual message
             message.setText("Votre Restaurant Iyaki vous remercie de votre visite\nVous trouverez ci-joint votre facture\nEn espérant vous retrouver prochainement");
 
+<<<<<<< HEAD
             
  //***********************PJ****************************************************           
             
@@ -121,6 +142,8 @@ message.setFileName("/home/jeanno/Files/test.pdf");
                      
 
             
+=======
+>>>>>>> jeannoBranch
             // Send message
             Transport.send(message);
 
@@ -132,8 +155,13 @@ message.setFileName("/home/jeanno/Files/test.pdf");
 
     }
 
+<<<<<<< HEAD
 
     private Mail getMail() throws NamingException, SQLException {
+=======
+    @Override
+    public Mail getMail() throws NamingException, SQLException {
+>>>>>>> jeannoBranch
 
         ConnexionBDD b01 = new ConnexionBDD();
 
@@ -160,6 +188,7 @@ message.setFileName("/home/jeanno/Files/test.pdf");
     
     
     
+<<<<<<< HEAD
     @Override
     public void getBillPdf(String nomMenu){
         com.lowagie.text.Document document = new com.lowagie.text.Document(PageSize.A4);
@@ -239,6 +268,24 @@ document.close();
 }
         
         
+=======
+//    public void createPdf(){
+//        Document document = new Document(PageSize.A4);
+//try {
+//PdfWriter.getInstance(document,
+//new FileOutputStream("c:/test.pdf"));
+//document.open();
+//document.add(new Paragraph("Hello World"));
+//} catch (DocumentException de) {
+//de.printStackTrace();
+//} catch (IOException ioe) {
+//ioe.printStackTrace();
+//}
+//document.close();
+//}
+//        
+//        
+>>>>>>> jeannoBranch
 
     
     

@@ -21,9 +21,13 @@ public interface PayementTreatmentLocal {
 
     public void envoyerMail(String mailDestinataire) throws NamingException, SQLException, EJBException;
 
+<<<<<<< HEAD
 //    public Mail getMail() throws NamingException, SQLException;
 
     public void getBillPdf(String nomMenu);
+=======
+    public Mail getMail() throws NamingException, SQLException;
+>>>>>>> jeannoBranch
 
     
 }

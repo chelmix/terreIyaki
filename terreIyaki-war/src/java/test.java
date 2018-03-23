@@ -1,16 +1,25 @@
 
+<<<<<<< HEAD
 import com.lowagie.text.Chapter;
+=======
+>>>>>>> jeannoBranch
 import java.io.FileOutputStream;
 import java.io.IOException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
+<<<<<<< HEAD
 import com.lowagie.text.Image;
+=======
+>>>>>>> jeannoBranch
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
+<<<<<<< HEAD
 import java.text.SimpleDateFormat;
 import java.util.Date;
+=======
+>>>>>>> jeannoBranch
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,6 +36,7 @@ public class test {
 try{
 PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/test.pdf"));
 document.open();
+<<<<<<< HEAD
 
 
 Image image = Image.getInstance("/home/jeanno/logo.png");
@@ -79,6 +89,9 @@ paragraph = new Paragraph("Terre Iyaki Restaurant vous remercie de votre visite 
 document.add(paragraph);
 
 
+=======
+document.add(new Paragraph("Hello World"));
+>>>>>>> jeannoBranch
 } catch (DocumentException de) {
 de.printStackTrace();
 } catch (IOException ioe) {
