@@ -22,10 +22,16 @@
         Login :  <a href="${url02}">  ici </a> 
         
         </div>
+        
         <div>
         <c:url value="FrontController?section=backoffice" var="url03" />
         Back office provisoire : <a href="${url03}">  ici </a>
         </div>
+        
+        <div>
+        <c:url value="FrontController?section=overview" var="url10" />
+        Vue d'ensemble : <a href="${url10}">  ici </a>
+        </div
 
     </body>
 </html>

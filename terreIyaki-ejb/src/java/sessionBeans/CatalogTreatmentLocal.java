@@ -4,6 +4,7 @@ package sessionBeans;
 import entityBeans.Category;
 import entityBeans.Ingredient;
 import entityBeans.Option;
+import entityBeans.Product;
 import entityBeans.Property;
 import entityBeans.VAT;
 import java.util.List;
@@ -23,5 +24,9 @@ public interface CatalogTreatmentLocal {
     public List<Option> getAllOptions();
 
     public List<Ingredient> getAllIngredients();
+
+    public Product getProductById(String productId);
+
+    public Category getCategoryById(String categoryId);
     
 }

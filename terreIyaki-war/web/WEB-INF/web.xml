@@ -9,12 +9,12 @@
         </init-param>
 
         <init-param>
-            <param-name>versLogin</param-name> 
+            <param-name>versLogin</param-name>
             <param-value>subControllers.VersLoginCtrl</param-value>
         </init-param>     
 
         <init-param>
-            <param-name>login</param-name> 
+            <param-name>login</param-name>
             <param-value>subControllers.LoginCtrl</param-value>
         </init-param>                
            
@@ -24,18 +24,21 @@
         </init-param>
    
         <init-param>
-            <param-name>carteJeannory</param-name> 
+            <param-name>carteJeannory</param-name>
             <param-value>subControllers.versCarteJeannoryCtrl</param-value>
         </init-param> 
         
         <init-param>
-            <param-name>combo</param-name> 
+            <param-name>combo</param-name>
             <param-value>subControllers.ComboCtrl</param-value>
-        </init-param>                                            
-                        
-       </servlet> 
-       
-
+        </init-param>   
+        
+        <init-param>
+            <param-name>overview</param-name>
+            <param-value>subControllers.OverviewCtrl</param-value>
+        </init-param>                                         
+                                      
+       </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/FrontController</url-pattern>
@@ -45,6 +48,10 @@
             30
         </session-timeout>
     </session-config>
-      
-    
+    <ejb-local-ref>
+        <ejb-ref-name>CatalogTreatment</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.CatalogTreatmentLocal</local>
+        <ejb-link>terreIyaki-ejb.jar#CatalogTreatment</ejb-link>
+    </ejb-local-ref>
 </web-app>
