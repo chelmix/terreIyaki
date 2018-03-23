@@ -70,7 +70,7 @@ public class ComboCtrl implements ControllerInterface, Serializable {
  
  
  //***************************Afficher le menu choisi****************début**************** 
-// try{
+ try{
         
  if(request.getParameter("action").equals("monCombo")){
 //     String comboName01 = request.getParameter("comboName");
@@ -162,16 +162,14 @@ session.setAttribute("nombre", nb);
    
  
  }
- 
- 
- 
- 
- 
+
  //*********************************************
  }
-// }catch(NullPointerException ne){
-//     //on ne fait rien
-// }
+ 
+ 
+ }catch(NullPointerException ne){
+     //on ne fait rien
+ }
  //***************************Afficher le menu choisi****************Fin****************  
  
  
@@ -180,7 +178,7 @@ session.setAttribute("nombre", nb);
 try{ 
  if(request.getParameter("action").equals("comboChoice")){
 String nomMenuChoisi = request.getParameter("comboName");
-request.setAttribute("nameComboChoice", nomMenuChoisi); 
+session.setAttribute("nameComboChoice", nomMenuChoisi); 
 
 //inutil le menu a déjà été choisi
 //                  try {
@@ -191,8 +189,8 @@ request.setAttribute("nameComboChoice", nomMenuChoisi);
 //                        request.setAttribute("message", texte);
 //                    }
 
-//****************************************************************************
-               try{
+//*******************************disposer des catégorie Début*********************************************                
+                 try{
                 if (request.getParameter("detection").equals("itemFormul")) {
                     
                     
@@ -207,7 +205,7 @@ request.setAttribute("nameComboChoice", nomMenuChoisi);
                             String texte = ex.getMessage();
                             request.setAttribute("message", texte);
                         }
- //****************************************************************************                
+ //*******************************disposer des produits de catégorie Début*********************************************                
            
                         
                         try {
@@ -242,11 +240,48 @@ System.out.println("******************test panier ");
    //on ajoute au panier    
 // HashMap<Long,Integer> panier = new HashMap();
        try{
+
+           
 HashMap<String,Long> panier = gestionCommande.getPanier(nomCategorie, choixDuProduit);
-session.setAttribute("hashPanier", panier);
-System.out.println("******************test panier "+panier.toString());
-   //************Si la formule est rempli on propose de valider *************************début*************************    
+
+
+//si null on créé sinon on rajoute
+//****************étape 1 *****début ***********
+HashMap<String,Long> panier05 =  new HashMap();
+panier05 = (HashMap<String,Long> )session.getAttribute("hashPanier");
+if(panier05==null){
+    
+    session.setAttribute("hashPanier", panier);
+}
+//****************étape 1 *****fin ***********
+
+
+//****************étape 2 *****début ***********
+else if (panier05!=null){
+ HashMap<String,Long> panier09 =  new HashMap();
  
+for (HashMap.Entry<String,Long> entry : panier05.entrySet())
+{
+panier09.put(entry.getKey(), entry.getValue());
+  
+} 
+for (HashMap.Entry<String,Long> entry : panier.entrySet())
+{
+panier09.put(entry.getKey(), entry.getValue());
+  
+}  
+ session.setAttribute("hashPanier", panier09);
+    
+}
+//****************étape 2 *****fin ***********
+
+   //************Si la formule est rempli on propose de valider *************************début*************************    
+                         } catch (CustomException ex) {
+                            String texte = ex.getMessage();
+                            request.setAttribute("message", texte);
+                        }
+       
+       HashMap<String,Long> panier = (HashMap<String,Long>) session.getAttribute("hashPanier");
 int nb=0;
 for (HashMap.Entry<String,Long> entry : panier.entrySet())
 {
@@ -258,8 +293,6 @@ for (HashMap.Entry<String,Long> entry : panier.entrySet())
 System.out.println("le nombre calculé a la fin +++++++++++++++      "+nb);
 int nbCat = (Integer) session.getAttribute("nombre");
 System.out.println("int nbCat +++++++++++++++      "+nbCat);
-
-
 
 //request.setAttribute("nameComboChoice02",nomCategorie);  
 
@@ -273,35 +306,21 @@ request.setAttribute("menuRempli", "valider menu");
        
 
 
-
-
-
-
-
-                        } catch (CustomException ex) {
-                            String texte = ex.getMessage();
-                            request.setAttribute("message", texte);
-                        }
-       
-
    }                    
                         
                               } catch (NullPointerException ex01) {
 
 }                  
                         
+   //************On ajoute le produit *************************fin*************************                         
                         
-                        
-  //************On ajoute le produit *************************fin*************************  
+ 
                     }
                 
-                
-                
- //****************************************************************************                
                 } catch (NullPointerException ex01) {
                     //nada
                 }
- //****************************************************************************
+ //**********************************disposer des produits de catégorie fin******************************************
              
                         
                         
@@ -309,7 +328,8 @@ request.setAttribute("menuRempli", "valider menu");
                  } catch (NullPointerException ex01) {
                     //nada
                 }       
-
+//*******************************disposer des catégorie fin*********************************************                
+    
  }
  
  
@@ -317,6 +337,74 @@ request.setAttribute("menuRempli", "valider menu");
                     //nada
                 }       
 //**************************le menu a été choisi************************* fin **************** 
+
+
+       //**************achat dun menu **********début ****************      
+ try{
+ if(request.getParameter("action").equals("validerMenu")){
+     String message = "merci pour avoir commandé ce menu";
+     request.setAttribute("message", message);
+     System.out.println("++++++++++++++++ session :   "+session.getAttribute("hashPanier").toString());
+HashMap<String,Long> panier = (HashMap<String,Long> ) session.getAttribute("hashPanier");
+panier.clear();
+session.setAttribute("hashPanier", panier);     
+     
+  session.removeAttribute("nombre");
+
+     System.out.println("++++++++++++++++ session V22222222:   "+session.getAttribute("hashPanier").toString());
+
+     
+ //****************************test*****************************************
+     
+  
+ 
+ //L349
+   //on enregistre tous les menus commandés dans la session
+     
+//provisoire car fatigué
+     String nomMenu = (String)session.getAttribute("nameComboChoice");
+     HashMap<String,Integer> menuHashCommande= new HashMap();
+     menuHashCommande.put(nomMenu, 1);  
+request.setAttribute("menuCommande", menuHashCommande); 
+   
+
+session.removeAttribute("nameComboChoice");     
+ 
+System.out.println("ou etes vous ****************************");     
+     
+     
+ //****************************test*****************************************
+     
+       
+     
+     
+     
+     
+     
+     
+     
+ }        
+  //**************achat dun menu **********fin ****************       
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ }catch(NullPointerException ne) {
+     
+     
+ }
+      
+
+
+
+
+
+
 
     return "combo";
     } 

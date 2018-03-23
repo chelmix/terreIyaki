@@ -125,7 +125,7 @@
  
      <c:if test="${comboCategory!=null}">
          <c:if test="${hashPanier!=null}">
-             <a href="FrontController?section=versLogin&action=validerMenu">${menuRempli}</a>   
+             <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>   
              <br/>Sous menu choisi <c:forEach var="hashPanr" items="${hashPanier}"> 
              
          <br/>${hashPanr.key}
@@ -166,9 +166,16 @@
      
      
      
-            
-
-            
+      <c:if test="${menuCommande!=null}">
+      <c:forEach var="achat" items="${menuCommande}">
+          
+          
+         menu commandé : ${achat.key} - quantité : ${achat.value}
+          <c:url value="FrontController?section=versLogin" var="url02" />
+        
+          <br/><br/>retour vers acceuil Client :  <a href="${url02}">  ici </a>         
+      </c:forEach>
+            </c:if>
          
             
     </body>

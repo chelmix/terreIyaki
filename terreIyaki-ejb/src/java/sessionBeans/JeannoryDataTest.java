@@ -378,7 +378,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Product prod28 = new Product("Gyu Royal", 30f, "images/nonDisponible.png", "Excellent plat avec notre spécial Boeuf Black Angus persillé et sa sauce Teriyaki");
         Product prod29 = new Product("Fruit love", 5f, "images/nonDisponible.png", "Assortiments de fruits frais");
 
-        ComboCategory comboCat04 = new ComboCategory(1, "1 - Entrée");
+        ComboCategory comboCat04 = new ComboCategory(1, "1 - Entree");
         ComboCategory comboCat05 = new ComboCategory(2, "2 - Plat au choix");
 //        ComboCategory comboCat11 = new ComboCategory (3,"Accompagnement");
         ComboCategory comboCat06 = new ComboCategory(4, "3 - Dessert");
@@ -408,7 +408,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
          
 Combo combo01 = new Combo ("Bento ShoKado", 62f, "menu 3 étoiles","images/bentoShokado.jpg");         
          
-        ComboCategory comboCat01 = new ComboCategory (1,"1 - Entrée au choix");
+        ComboCategory comboCat01 = new ComboCategory (1,"1 - Entree au choix");
         ComboCategory comboCat02 = new ComboCategory (2,"2 - Plat au choix");        
         ComboCategory comboCat10 = new ComboCategory (3,"3 - Accompagnement");
         ComboCategory comboCat03 = new ComboCategory (4,"4 - Dessert");

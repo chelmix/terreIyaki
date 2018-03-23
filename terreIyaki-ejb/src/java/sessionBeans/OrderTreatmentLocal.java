@@ -34,6 +34,12 @@ public interface OrderTreatmentLocal {
 
     public HashMap<String,Long> getPanier(String nomComboCat,String nomProduit)throws CustomException;
 
+//    public void init();
+
+    public HashMap<Long, Integer> getMenuProductCommande(HashMap<String, Long> getPanier);
+
+
+
 
     
 }

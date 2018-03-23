@@ -13,6 +13,7 @@
         
         
         Data Test :  <a href="${url01}">  ici </a><br />
+        </div>
         <hr />
         
         <div>
