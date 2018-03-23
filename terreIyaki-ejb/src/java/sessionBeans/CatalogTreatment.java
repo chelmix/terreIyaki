@@ -9,8 +9,10 @@ import entityBeans.VAT;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 @Stateless
 public class CatalogTreatment implements CatalogTreatmentLocal {
@@ -83,6 +85,34 @@ public class CatalogTreatment implements CatalogTreatmentLocal {
         Query qr = em.createNamedQuery("entityBeans.Ingredient.selectAll");
         List<Ingredient> li = qr.getResultList();
         return li;
+    }
+    
+    @Override
+    public Product getProductById(String productId) {
+        Product pro;
+        TypedQuery<Product> qr = em.createNamedQuery("entityBeans.Product.selectProductById", Product.class);
+        qr.setParameter("paramId", Long.valueOf(productId));
+        try {
+            pro = qr.getSingleResult();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return pro;
+    }
+    
+    @Override
+    public Category getCategoryById(String categoryId) {
+        Category cat;
+        TypedQuery<Category> qr = em.createNamedQuery("entityBeans.Category.selectCategoryById", Category.class);
+        qr.setParameter("paramId", Long.valueOf(categoryId));
+        try {
+            cat = qr.getSingleResult();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return cat;
     }
 
 }
