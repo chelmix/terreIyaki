@@ -78,8 +78,9 @@
 
 
 <c:forEach var="my" items="${myGrants}">
+   <br/> Profil : ${my.name}
 <c:if test="${my.name=='client'}">
-Bienvenue à la table n° ${user.myTable.tableNumber}   
+    <br/>Bienvenue à la table n° ${user.myTable.tableNumber}   
 </c:if>
 <c:if test="${my.name=='client'||my.name=='serveur'}">
 <c:url value="FrontController?section=carteJeannory&action=produit" var="url02" />
@@ -90,7 +91,10 @@ A la carte  :  <a href="${url02}">  ici </a>
 <c:url value="FrontController?section=combo&action=allCombo" var="url04" />
 <br/>Formule V2  :  <a href="${url04}">  ici </a>    
 </c:if>
-
+<c:if test="${my.name=='caissier'}">
+    <c:url value="FrontController?section=reglement" var="url33" />
+    <br/>Commande en attente de règlement : <a href="${url33}"  >Ici</a>
+</c:if>
 
 
 </c:forEach>

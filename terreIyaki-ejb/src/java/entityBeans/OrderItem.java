@@ -34,6 +34,8 @@ public class OrderItem implements Serializable {
     @ManyToOne
     private Status status;
     
+    @ManyToOne
+    private Combo combo;
     
 
 //    @ManyToOne
@@ -156,6 +158,14 @@ public class OrderItem implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Combo getCombo() {
+        return combo;
+    }
+
+    public void setCombo(Combo combo) {
+        this.combo = combo;
     }
     
     

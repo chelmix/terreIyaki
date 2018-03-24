@@ -113,7 +113,7 @@
           for (int i=0;i<lp01.size();i++){
               
         out.print("<br>"+lp01.get(i).getName());
-          out.print(lp01.get(i).getDescription());    
+          out.print(" "+lp01.get(i).getDescription());    
               
           }
 
