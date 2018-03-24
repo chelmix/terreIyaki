@@ -21,7 +21,9 @@ public class ProductChoiceCtrl implements ControllerInterface, Serializable {
         if (productId != null) {
             Product prod = catalogTreatment.getProductById(productId);
             request.setAttribute("product", prod);
-            //request.setAttribute("properties", catalogTreatment.getPropertiesByProduct(prod));
+            request.setAttribute("options", catalogTreatment.getOptionsByProduct(prod));
+            request.setAttribute("ingredients", catalogTreatment.getIngredientsByProduct(prod));
+            request.setAttribute("sides", catalogTreatment.getSidesByProduct(prod));
         }
         
         return "product-choice";

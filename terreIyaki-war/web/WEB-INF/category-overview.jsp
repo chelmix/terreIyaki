@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
-        <h1>${category.name}</h1>   
+        <h1>Catégorie : ${category.name}</h1>   
         <c:forEach var = "pro" items="${products}">
             <p>${pro.name} : ${pro.description}<br />
                 Prix HT : ${pro.price} - todo prix ttc <br />

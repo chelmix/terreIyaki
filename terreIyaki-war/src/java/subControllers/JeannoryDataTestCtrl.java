@@ -32,7 +32,7 @@ public class JeannoryDataTestCtrl implements ControllerInterface, Serializable {
         JeannoryDataTestLocal monTest = lookupJeannoryDataTestLocal();
         monTest.dataTest();
         request.setAttribute("message", "Le jeu d'essai a bien été généré !");
-        return "home";
+        return "temp-home";
         
         
     }

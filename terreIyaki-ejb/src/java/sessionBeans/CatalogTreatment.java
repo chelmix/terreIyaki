@@ -143,5 +143,47 @@ public class CatalogTreatment implements CatalogTreatmentLocal {
         }
         return propList;
     }
+    
+    @Override
+    public List<Option> getOptionsByProduct(Product prod) {
+        List<Option> optList = new ArrayList();
+        TypedQuery<Option> qr = em.createNamedQuery("entityBeans.Product.selectProductOptions", Option.class);
+        qr.setParameter("paramProd", prod);
+        try {
+            optList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return optList;
+    }
+    
+    @Override
+    public List<Ingredient> getIngredientsByProduct(Product prod) {
+        List<Ingredient> ingList = new ArrayList();
+        TypedQuery<Ingredient> qr = em.createNamedQuery("entityBeans.Product.selectProductIngredients", Ingredient.class);
+        qr.setParameter("paramProd", prod);
+        try {
+            ingList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return ingList;
+    }
+    
+    @Override
+    public List<Product> getSidesByProduct(Product prod) {
+        List<Product> sidList = new ArrayList();
+        TypedQuery<Product> qr = em.createNamedQuery("entityBeans.Product.selectProductSides", Product.class);
+        qr.setParameter("paramProd", prod);
+        try {
+            sidList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return sidList;
+    }
 
 }

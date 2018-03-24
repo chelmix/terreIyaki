@@ -49,7 +49,7 @@ public class FrontController extends HttpServlet {
         
         String prefixe = "/WEB-INF/";
         String suffixe = ".jsp";
-        String page = "home";
+        String page = "temp-home";
         
         if (mp.containsKey(section)) {
             ControllerInterface ci = mp.get(section);
