@@ -30,15 +30,14 @@
         <init-param>
             <param-name>overview</param-name>
             <param-value>subControllers.OverviewCtrl</param-value>
-<<<<<<< refs/remotes/origin/master
+
         </init-param>
         <init-param>
             <param-name>product-choice</param-name>
             <param-value>subControllers.ProductChoiceCtrl</param-value>
         </init-param>
-    </servlet>
-=======
-        </init-param>  
+
+
         
                                                
         <init-param>
@@ -49,7 +48,7 @@
                                                                                                                                                                     
                                       
        </servlet>
->>>>>>> avant recevoir master
+
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/FrontController</url-pattern>

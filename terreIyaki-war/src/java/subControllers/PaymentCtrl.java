@@ -8,7 +8,6 @@ package subControllers;
 import entityBeans.MyOrder;
 import entityBeans.OrderItem;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -81,6 +80,12 @@ Long id = Long.valueOf(request.getParameter("id"));
            List<OrderItem> or01= traiterPaiement.getItemsFromOrder(id);
           
             request.setAttribute("listItem", or01);
+            
+            HashMap<Long,ProductAmount> ha01 = new HashMap();
+            traiterPaiement.getMontant(id, ha01);
+            request.setAttribute("price", ha01);
+            
+            
             }catch (CustomException ex){
                 String text = ex.getMessage();
                 request.setAttribute("message",text);

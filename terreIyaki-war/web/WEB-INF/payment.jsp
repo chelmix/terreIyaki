@@ -16,7 +16,7 @@
   
         ${message}
         <c:if test="${commandeToPayHash!=null}" >
-            <br/>Commande en attente de règlement :
+            <br/>Commande en attente de règlement :<br/><br/>
            <%--     <c:forEach var="com" items="${commandeToPay}">
             <br/>Commande n° ${com.id} - date : ${com.orderDate}
         </c:forEach>    --%>
@@ -33,12 +33,24 @@
             
        
     </c:if>
+            
+            
+            
+            <c:if test="${price!=null}" >
+             <c:forEach var="pri" items="${price}">
+                 <br/>Montant total : ${pri.value.montantHT}€ HT 
+           <br/>Net à payer ${pri.value.montantTTC}€ TTC 
+            <br/><br/>
+            </c:forEach>
+            </c:if>
+            
+            
             <c:if test="${listItem!=null}" >
-                <br/>Voici les produits de la commande :
+                <br/>Produits de la commande :<br/>
             <c:forEach var="list" items="${listItem}">
-                
-                <br/>${list.product.name} - qté : 1 - ${list.product.price} € HT
-                
+               <c:if test="${list.product.name!=null}" >
+                <br/>Qté : 1 - prix : ${list.product.price}€ HT - taux tva : ${list.product.vat.rate}% : ${list.product.name}
+   </c:if> 
             </c:forEach>
             
             

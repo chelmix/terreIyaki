@@ -71,9 +71,9 @@
 <img src="images/imageTry.png" width="86" height="94" alt="boutonTry"/>
 </c:if> 
 </div>          
-<<<<<<< refs/remotes/origin/master
+
     <p>${message}</p>       
-=======
+
     
 <p>${message}</p>
 <c:if test="${user!=null}">
@@ -107,6 +107,6 @@
 <c:url value="FrontController?section=login&action=logout" var="url01" />
 <p>Se déconnecter :  <a href="${url01}">  ici </a> </p>
 </c:if>       
->>>>>>> avant recevoir master
+
     </body>
 </html>
