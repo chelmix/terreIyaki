@@ -6,6 +6,7 @@ import entityBeans.Option;
 import entityBeans.Product;
 import entityBeans.Property;
 import entityBeans.VAT;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -113,6 +114,34 @@ public class CatalogTreatment implements CatalogTreatmentLocal {
             return null;
         }
         return cat;
+    }
+    
+    @Override
+    public List<Product> getProductsByCategory(Category cat) {
+        List<Product> catList = new ArrayList();
+        TypedQuery<Product> qr = em.createNamedQuery("entityBeans.Product.selectProductsByCategory", Product.class);
+        qr.setParameter("paramCat", cat);
+        try {
+            catList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return catList;
+    }
+    
+    @Override
+    public List<Property> getPropertiesByProduct(Product prod) {
+        List<Property> propList = new ArrayList();
+        TypedQuery<Property> qr = em.createNamedQuery("entityBeans.Product.selectProductProperties", Property.class);
+        qr.setParameter("paramProd", prod);
+        try {
+            propList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return propList;
     }
 
 }

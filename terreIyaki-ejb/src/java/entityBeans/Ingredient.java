@@ -41,7 +41,7 @@ public class Ingredient implements Serializable {
     @ManyToMany 
     private Collection <Product> products; 
     
-    
+    // add status : removable - not removable
     
     
     public Ingredient() {

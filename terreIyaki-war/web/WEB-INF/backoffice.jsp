@@ -4,6 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/style.css" />
         <title>JSP Page</title>
     </head>
     <body>
@@ -14,27 +15,27 @@
         <form action="FrontController" method="POST" accept-charset="UTF-8">
             <input type="hidden" name="section" value="backoffice" />
             <input type="hidden" name="action" value="createproduct" />
-            <label>name</label><br />
+            <label>nom</label><br />
             <input type="text" name="name" /><br /><br />
-            <label>price</label><br />
+            <label>prix HT</label><br />
             <input type="text" name="price" /><br /><br />
-            <label>picture</label><br />
+            <label>image</label><br />
             <input type="text" name="picture" /><br /><br />
             <label>description</label><br />
             <input type="text" name="description" /><br /><br />
-            <label>category</label><br />
+            <label>categorie</label><br />
             <select name="pcategory">
                 <c:forEach var = "cat" items="${categories}">
                     <option value="${cat.name}">${cat}</option>
                 </c:forEach>
             </select><br /><br />
-            <label>vat</label><br />
+            <label>TVA</label><br />
             <select name="pvat">
                 <c:forEach var = "vat" items="${vats}">
                     <option value="${vat.id}">${vat}</option>
                 </c:forEach>
             </select><br /><br />
-            <label>properties</label><br />
+            <label>propriétés</label><br />
             <select name="pproperties" multiple>
                 <!-- request.getParameterValues("pproperties") returns an array of all submitted values. -->
                 <c:forEach var = "prop" items="${properties}">

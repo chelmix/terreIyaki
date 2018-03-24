@@ -393,7 +393,21 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
 
         prop04.setUnit(u01);
         prop05.setUnit(u02);
+        
         prod30.getProperties().add(prop04);
+        
+        // propriétés au pif
+        prod01.getProperties().add(prop04);
+        prod02.getProperties().add(prop04);
+        prod09.getProperties().add(prop05);
+        prod09.getProperties().add(prop02);
+        prod02.getProperties().add(prop05);
+        prod03.getProperties().add(prop02);
+        prod04.getProperties().add(prop02);
+        prod05.getProperties().add(prop02);
+        prod06.getProperties().add(prop05);
+        prod07.getProperties().add(prop02);
+        prod08.getProperties().add(prop02);
 
         Combo combo02 = new Combo("Zen", 45f, "menu abordable", "images/Zen.jpg");
 //      Zen  

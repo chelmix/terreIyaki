@@ -31,7 +31,8 @@ public class JeannoryDataTestCtrl implements ControllerInterface, Serializable {
     public String execute(HttpServletRequest request, HttpServletResponse response){
         JeannoryDataTestLocal monTest = lookupJeannoryDataTestLocal();
         monTest.dataTest();
-        return "jeannoTest";
+        request.setAttribute("message", "Le jeu d'essai a bien été généré !");
+        return "home";
         
         
     }

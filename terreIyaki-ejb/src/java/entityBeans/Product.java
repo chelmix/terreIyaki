@@ -19,7 +19,11 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "entityBeans.Product.selectAll", 
             query = "select p from Product p"),
     @NamedQuery(name = "entityBeans.Product.selectProductById", 
-            query = "select p from Product p where p.id = :paramId")
+            query = "select p from Product p where p.id = :paramId"),
+    @NamedQuery(name = "entityBeans.Product.selectProductsByCategory", 
+            query = "select p from Product p where p.category = :paramCat"),
+    @NamedQuery(name = "entityBeans.Product.selectProductProperties", 
+            query = "select p.properties from Product p where p = :paramProd")
 })
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
