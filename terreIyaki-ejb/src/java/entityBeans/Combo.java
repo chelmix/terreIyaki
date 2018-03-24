@@ -20,6 +20,12 @@ public class Combo implements Serializable {
     private String name; // de type A2 B6 etc
     private float price;
     private String description;
+    
+    @OneToMany(mappedBy="combo")
+    private Collection<OrderItem>ordreItems;
+
+   
+    
 
     public Combo(String name, float price, String description, String urlImage) {
         this();
@@ -43,6 +49,7 @@ public class Combo implements Serializable {
     private Collection<ComboCategory> comboCategories;
 
     public Combo() {
+         ordreItems= new ArrayList();
         comboCategories = new ArrayList();
     }
 
@@ -118,6 +125,14 @@ public class Combo implements Serializable {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public Collection<OrderItem> getOrdreItems() {
+        return ordreItems;
+    }
+
+    public void setOrdreItems(Collection<OrderItem> ordreItems) {
+        this.ordreItems = ordreItems;
     }
     
 }
