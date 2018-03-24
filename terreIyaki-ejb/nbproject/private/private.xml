@@ -4,18 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/conf/persistence.xml</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/VAT.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Category.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/ComboCategory.java</file>
-<<<<<<< HEAD
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/PayementTreatmentLocal.java</file>
-            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/tools/CustomException.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Combo.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/PayementTreatment.java</file>
-=======
-            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/tools/CustomException.java</file>
->>>>>>> jeannoBranch
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/OrderTreatment.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Product.java</file>
-            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/tools/OrderItemPojo.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/OrderItem.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/tools/ConnexionBDD.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/JeannoryDataTest.java</file>
         </group>
     </open-files>
