@@ -3,9 +3,13 @@ package subControllers;
 
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
+import entityBeans.MyOrder;
 import entityBeans.Product;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -21,7 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import sessionBeans.OrderTreatmentLocal;
+import sessionBeans.PayementTreatmentLocal;
 import tools.CustomException;
+import tools.Mail;
 
 
 public class ComboCtrl implements ControllerInterface, Serializable {
@@ -356,8 +362,7 @@ session.setAttribute("hashPanier", panier);
      
  //****************************test*****************************************
      
-  
- 
+
  //L349
    //on enregistre tous les menus commandés dans la session
      
@@ -374,7 +379,37 @@ System.out.println("ou etes vous ****************************");
      
      
  //****************************test*****************************************
+       
+//***********************facture *******début ******************************
      
+     try{
+     
+     if(request.getParameter("detection").equals("mail")){
+         
+    String mailDestination = request.getParameter("email");
+   PayementTreatmentLocal traiterFacture =  lookupPayementTreatmentLocal();
+   //test
+    Date d01 = new GregorianCalendar(2018, 1, 22, 12, 30).getTime();
+   MyOrder o01 = new MyOrder(d01);
+     try {
+         
+         traiterFacture.getBillPdf(nomMenu);        
+         traiterFacture.envoyerMail(mailDestination);
+         
+         
+         System.out.println("mail envoyé ++++++++++++++++++");
+     } catch (NamingException ex) {
+         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (SQLException ex) {
+         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
+     } 
+     }
+     }catch(NullPointerException ne){
+                  
+     } 
+
+//***********************facture *******fin ****************************** 
+    
        
      
      
@@ -398,7 +433,45 @@ System.out.println("ou etes vous ****************************");
      
      
  }
-      
+
+//***********************facture *******début ******************************
+     
+     try{
+     
+     if(request.getParameter("action").equals("mail")){
+         
+    String mailDestination = request.getParameter("email");
+   PayementTreatmentLocal traiterFacture =  lookupPayementTreatmentLocal();
+   //test
+    Date d01 = new GregorianCalendar(2018, 1, 22, 12, 30).getTime();
+   MyOrder o01 = new MyOrder(d01);
+   
+  Mail mail01 = traiterFacture.getMail();
+   
+   System.out.println(mail01.toString());
+   
+
+     try {
+         traiterFacture.envoyerMail(mailDestination);
+         
+         
+         System.out.println("mail envoyé ++++++++++++++++++");
+     } catch (NamingException ex) {
+         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (SQLException ex) {
+         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     }
+     }catch(NullPointerException ne){
+         
+         
+     } catch (NamingException ex) {
+         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (SQLException ex) {
+         Logger.getLogger(ComboCtrl.class.getName()).log(Level.SEVERE, null, ex);
+     }
+  
+//***********************facture *******fin ****************************** 
 
 
 
@@ -422,5 +495,20 @@ System.out.println("ou etes vous ****************************");
         }
 
     }    
+    
+    
+    private PayementTreatmentLocal lookupPayementTreatmentLocal() {
+        try {
+            Context c = new InitialContext();
+            return (PayementTreatmentLocal) c.lookup("java:global/terreIyaki/terreIyaki-ejb/PayementTreatment!sessionBeans.PayementTreatmentLocal");
+
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+
+        }
+
+    }      
+    
     
 }
