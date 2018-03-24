@@ -131,17 +131,17 @@ public class PayementTreatment implements PayementTreatmentLocal {
 
             
  //***********************PJ****************************************************           
-            
-
-DataSource source = new FileDataSource("/home/jeanno/Files/test.pdf");
+//A changer            
+//DataSource source = new FileDataSource("/home/jeanno/Files/test.pdf");
+DataSource source = new FileDataSource("/home/jeannory/Files/test.pdf");
 message.setDataHandler(new DataHandler(source));
 
-message.setFileName("/home/jeanno/Files/test.pdf");
+//A changer  
+//message.setFileName("/home/jeanno/Files/test.pdf");
+message.setFileName("/home/jeannory/Files/test.pdf");
 
- //***********************PJ****************************************************           
-                     
-
-            
+ //***********************PJ****************************************************                               
+           
 
             // Send message
             Transport.send(message);
@@ -190,17 +190,17 @@ message.setFileName("/home/jeanno/Files/test.pdf");
         com.lowagie.text.Document document = new com.lowagie.text.Document(PageSize.A4);
 try{
 //en local    
-PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/test.pdf"));
+//PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/test.pdf"));
 
 //sur serveur distant
-//PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/test.pdf"));
+PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/test.pdf"));
 document.open();
 
 //en local
-Image image = Image.getInstance("/home/jeanno/Files/logo.png");
+//Image image = Image.getInstance("/home/jeanno/Files/logo.png");
 
 //sur serveur distant
-//Image image = Image.getInstance("/home/jeannory/Files/logo.png");
+Image image = Image.getInstance("/home/jeannory/Files/logo.png");
 document.add(image);
 SimpleDateFormat formater = null;
 Date aujourdhui = new Date();

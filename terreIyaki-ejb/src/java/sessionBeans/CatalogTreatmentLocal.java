@@ -28,5 +28,15 @@ public interface CatalogTreatmentLocal {
     public Product getProductById(String productId);
 
     public Category getCategoryById(String categoryId);
+
+    public List<Product> getProductsByCategory(Category cat);
+
+    public List<Property> getPropertiesByProduct(Product prod);
+
+    public List<Option> getOptionsByProduct(Product prod);
+
+    public List<Ingredient> getIngredientsByProduct(Product prod);
+
+    public List<Product> getSidesByProduct(Product prod);
     
 }

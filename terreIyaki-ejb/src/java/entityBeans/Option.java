@@ -32,7 +32,7 @@ public class Option implements Serializable {
     @ManyToMany
     private Collection <OrderItem> orderItems; 
     
-    @ManyToMany 
+    @ManyToMany(mappedBy = "options")
     private Collection <Product> products; 
     
     

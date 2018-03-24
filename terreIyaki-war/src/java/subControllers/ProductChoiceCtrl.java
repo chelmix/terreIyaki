@@ -1,7 +1,6 @@
 
 package subControllers;
 
-import entityBeans.Category;
 import entityBeans.Product;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -13,27 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import sessionBeans.CatalogTreatmentLocal;
 
-public class OverviewCtrl implements ControllerInterface, Serializable {
+public class ProductChoiceCtrl implements ControllerInterface, Serializable {
     CatalogTreatmentLocal catalogTreatment = lookupCatalogTreatmentLocal();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String productId = request.getParameter("product-id");
-        String categoryId = request.getParameter("category-id");
         if (productId != null) {
             Product prod = catalogTreatment.getProductById(productId);
             request.setAttribute("product", prod);
-            request.setAttribute("properties", catalogTreatment.getPropertiesByProduct(prod));
-            return "product-overview";
-        } else if (categoryId != null) {
-            Category cat = catalogTreatment.getCategoryById(categoryId);
-            request.setAttribute("category", cat);
-            request.setAttribute("products", catalogTreatment.getProductsByCategory(cat));
-            return "category-overview";
-        } else {
-            request.setAttribute("categories", catalogTreatment.getAllCategories());
-            return "menu-overview";
+            request.setAttribute("options", catalogTreatment.getOptionsByProduct(prod));
+            request.setAttribute("ingredients", catalogTreatment.getIngredientsByProduct(prod));
+            request.setAttribute("sides", catalogTreatment.getSidesByProduct(prod));
         }
+        
+        return "product-choice";
     }
 
     private CatalogTreatmentLocal lookupCatalogTreatmentLocal() {

@@ -31,7 +31,7 @@ public class LoginCtrl implements ControllerInterface, Serializable {
                 session.removeAttribute("fourthNumber");
             }
         } catch (NullPointerException ne) {
-         //on fait rien
+            //on fait rien
 
         }
 
@@ -68,7 +68,7 @@ public class LoginCtrl implements ControllerInterface, Serializable {
                 session.setAttribute("firstNumber", 0);
             }
         } catch (NullPointerException ne) {
-         //on fait rien
+            //on fait rien
 
         }
 
@@ -196,15 +196,16 @@ public class LoginCtrl implements ControllerInterface, Serializable {
                     Account a = testUserTreatment.toLogOn(mylog);
                     request.setAttribute("message", "Connecté");
                     session.setAttribute("user", a);
-                    
+
                     List<MyGrant> myGrants = testUserTreatment.getMyGrant(mylog);
                     session.setAttribute("myGrants", myGrants);
                     System.out.println(myGrants.toString());
-                request.removeAttribute("code");
-                session.removeAttribute("firstNumber");
-                session.removeAttribute("secondNumber");
-                session.removeAttribute("thirdNumber");
-                session.removeAttribute("fourthNumber");
+                    request.removeAttribute("code");
+                    session.removeAttribute("firstNumber");
+                    session.removeAttribute("secondNumber");
+                    session.removeAttribute("thirdNumber");
+                    session.removeAttribute("fourthNumber");
+                    return "home";
 
                 } catch (CustomException ex) {
                     String texte = ex.getMessage();
@@ -214,18 +215,15 @@ public class LoginCtrl implements ControllerInterface, Serializable {
         } catch (NullPointerException ne02) {
             //on fait rien
         }
-        
-        
-        try{
-        if(request.getParameter("action").equals("logout")){
-            session.removeAttribute("user");
-            
-        }
+
+        try {
+            if (request.getParameter("action").equals("logout")) {
+                session.removeAttribute("user");
+
+            }
         } catch (NullPointerException ne09) {
             //on fait rien
-        }   
-        
-   
+        }
 
         return "login";
     }

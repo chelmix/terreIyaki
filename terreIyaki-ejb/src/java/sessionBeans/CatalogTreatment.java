@@ -6,6 +6,7 @@ import entityBeans.Option;
 import entityBeans.Product;
 import entityBeans.Property;
 import entityBeans.VAT;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -113,6 +114,76 @@ public class CatalogTreatment implements CatalogTreatmentLocal {
             return null;
         }
         return cat;
+    }
+    
+    @Override
+    public List<Product> getProductsByCategory(Category cat) {
+        List<Product> catList = new ArrayList();
+        TypedQuery<Product> qr = em.createNamedQuery("entityBeans.Product.selectProductsByCategory", Product.class);
+        qr.setParameter("paramCat", cat);
+        try {
+            catList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return catList;
+    }
+    
+    @Override
+    public List<Property> getPropertiesByProduct(Product prod) {
+        List<Property> propList = new ArrayList();
+        TypedQuery<Property> qr = em.createNamedQuery("entityBeans.Product.selectProductProperties", Property.class);
+        qr.setParameter("paramProd", prod);
+        try {
+            propList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return propList;
+    }
+    
+    @Override
+    public List<Option> getOptionsByProduct(Product prod) {
+        List<Option> optList = new ArrayList();
+        TypedQuery<Option> qr = em.createNamedQuery("entityBeans.Product.selectProductOptions", Option.class);
+        qr.setParameter("paramProd", prod);
+        try {
+            optList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return optList;
+    }
+    
+    @Override
+    public List<Ingredient> getIngredientsByProduct(Product prod) {
+        List<Ingredient> ingList = new ArrayList();
+        TypedQuery<Ingredient> qr = em.createNamedQuery("entityBeans.Product.selectProductIngredients", Ingredient.class);
+        qr.setParameter("paramProd", prod);
+        try {
+            ingList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return ingList;
+    }
+    
+    @Override
+    public List<Product> getSidesByProduct(Product prod) {
+        List<Product> sidList = new ArrayList();
+        TypedQuery<Product> qr = em.createNamedQuery("entityBeans.Product.selectProductSides", Product.class);
+        qr.setParameter("paramProd", prod);
+        try {
+            sidList = qr.getResultList();
+        } catch(NoResultException ex){
+            // todo
+            return null;
+        }
+        return sidList;
     }
 
 }

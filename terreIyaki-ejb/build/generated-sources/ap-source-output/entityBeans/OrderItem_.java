@@ -1,5 +1,6 @@
 package entityBeans;
 
+import entityBeans.Combo;
 import entityBeans.Ingredient;
 import entityBeans.MyOrder;
 import entityBeans.Option;
@@ -11,7 +12,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-24T00:07:04")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-24T19:46:38")
 @StaticMetamodel(OrderItem.class)
 public class OrderItem_ { 
 
@@ -20,6 +21,7 @@ public class OrderItem_ {
     public static volatile SingularAttribute<OrderItem, Product> product;
     public static volatile SingularAttribute<OrderItem, Float> price;
     public static volatile CollectionAttribute<OrderItem, Option> options;
+    public static volatile SingularAttribute<OrderItem, Combo> combo;
     public static volatile CollectionAttribute<OrderItem, Ingredient> ingredients;
     public static volatile SingularAttribute<OrderItem, Float> tax;
     public static volatile SingularAttribute<OrderItem, Long> id;

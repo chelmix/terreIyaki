@@ -38,10 +38,10 @@ public class Ingredient implements Serializable {
     private Collection <OrderItem> orderItems; 
     
     
-    @ManyToMany 
+    @ManyToMany(mappedBy = "ingredients")
     private Collection <Product> products; 
     
-    
+    // add status : removable - not removable
     
     
     public Ingredient() {
