@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
             query = "select p from Product p"),
     @NamedQuery(name = "entityBeans.Product.selectProductById", 
             query = "select p from Product p where p.id = :paramId"),
+<<<<<<< refs/remotes/origin/master
     @NamedQuery(name = "entityBeans.Product.selectProductsByCategory", 
             query = "select p from Product p where p.category = :paramCat"),
     @NamedQuery(name = "entityBeans.Product.selectProductProperties", 
@@ -30,6 +31,8 @@ import javax.persistence.OneToMany;
             query = "select p.ingredients from Product p where p = :paramProd"),
     @NamedQuery(name = "entityBeans.Product.selectProductSides", 
             query = "select p.sides from Product p where p = :paramProd")
+=======
+>>>>>>> avant recevoir master
 })
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;

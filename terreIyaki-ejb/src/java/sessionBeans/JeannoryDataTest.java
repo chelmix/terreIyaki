@@ -137,10 +137,17 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         //myOrder01 à myOrder10
         MyOrder myOrder01 = new MyOrder(d11);
-        myOrder01.setStatus(s09);
+        myOrder01.setStatus(s05);
 
         MyOrder myOrder02 = new MyOrder(d11);
+<<<<<<< refs/remotes/origin/master
         myOrder02.setStatus(s10);
+=======
+        myOrder02.setStatus(s06);
+        
+       
+        
+>>>>>>> avant recevoir master
 
         MyOrder myOrder03 = new MyOrder(d03);
         List<MyTable> listMyTable = new ArrayList();
