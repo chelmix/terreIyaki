@@ -37,14 +37,14 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class JeannoryDataTest implements JeannoryDataTestLocal {
+
     @PersistenceContext(unitName = "terreIyaki-ejbPU")
     private EntityManager em;
-    
-    
+
     @Override
-    public void dataTest(){
-        
-              //Status de s01 à s21
+    public void dataTest() {
+
+        //Status de s01 à s21
         Status s01 = new Status(1, "Prise de commande en cours", "Order Item");
         Status s02 = new Status(2, "En cours de préparation ", "Order Item");
         Status s03 = new Status(3, "Prêt à être servi ", "Order Item");
@@ -84,12 +84,11 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Date d09 = new GregorianCalendar(2018, 1, 24, 20, 15).getTime();
         Date d10 = new GregorianCalendar(2018, 1, 24, 19, 15).getTime();
 
-        
         SimpleDateFormat formater = null;
-Date aujourdhui = new Date();
-        
-formater = new SimpleDateFormat("EEEE d MMM yyyy");   
-        
+        Date aujourdhui = new Date();
+
+        formater = new SimpleDateFormat("EEEE d MMM yyyy");
+
         Date d11 = aujourdhui;
 
         // pay01 à pay10
@@ -135,16 +134,13 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         MyTable myTable08 = new MyTable(8);
         MyTable myTable09 = new MyTable(9);
         MyTable myTable10 = new MyTable(10);
-        
+
         //myOrder01 à myOrder10
         MyOrder myOrder01 = new MyOrder(d11);
         myOrder01.setStatus(s09);
 
         MyOrder myOrder02 = new MyOrder(d11);
         myOrder02.setStatus(s10);
-        
-       
-        
 
         MyOrder myOrder03 = new MyOrder(d03);
         List<MyTable> listMyTable = new ArrayList();
@@ -158,11 +154,10 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         MyOrder myOrder08 = new MyOrder(d08);
         MyOrder myOrder09 = new MyOrder(d09);
         MyOrder myOrder10 = new MyOrder(d10);
-        
-        
-         myOrder05.setStatus(s05);
+
+        myOrder05.setStatus(s05);
         myOrder06.setStatus(s06);
- 
+
         //myGrant01 à myGrant03
         MyGrant myGrant01 = new MyGrant("serveur");
         MyGrant myGrant02 = new MyGrant("cuisinier");
@@ -180,7 +175,7 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         Account account08 = new Account(4785, "Alex", "Kidd");
         Account account09 = new Account(4234, "Vincent", "Rattant");
         Account account10 = new Account(3264, "Jeanne", "Durand");
-        
+
         Account account11 = new Account(1, "Table", "1");
         Account account12 = new Account(2, "Table", "2");
         Account account13 = new Account(3, "Table", "3");
@@ -191,7 +186,7 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         Account account18 = new Account(8, "Table", "8");
         Account account19 = new Account(9, "Table", "9");
         Account account20 = new Account(10, "Table", "10");
-        
+
         account11.setMyTable(myTable01);
         account12.setMyTable(myTable02);
         account13.setMyTable(myTable03);
@@ -202,8 +197,6 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         account18.setMyTable(myTable08);
         account19.setMyTable(myTable09);
         account20.setMyTable(myTable10);
-        
-        
 
         // prod01 à prod16
         Product prod01 = new Product("Yasai", 20f, "http", "Tempura de légumes 7 pièces");
@@ -222,18 +215,38 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         Product prod14 = new Product("Kyuri Wakame", 8f, "http", "Salade japonaise");
         Product prod15 = new Product("Nasu", 9f, "http", "Aubergines confites");
         Product prod16 = new Product("Kara Age", 9f, "http", "Beignet de poulet");
-        
 
         Product prod55 = new Product("Coca cola", 5f, "http", "servi avec rondelle de citron");
         Product prod56 = new Product("Fanta", 5f, "http", "saveur exotique");
         
+        // ajout des options au pif pour test
+        prod07.getOptions().add(opt05);
+        prod07.getOptions().add(opt04);
+        prod07.getOptions().add(opt03);
+        prod07.getOptions().add(opt02);
+        prod07.getOptions().add(opt01);
+        prod02.getOptions().add(opt02);
+        prod02.getOptions().add(opt01);
+        prod03.getOptions().add(opt02);
+        prod03.getOptions().add(opt01);
+        prod04.getOptions().add(opt02);
+        prod01.getOptions().add(opt01);
+        // ajout ingredients au pif pour le test
+        prod07.getIngredients().add(ing05);
+        prod07.getIngredients().add(ing04);
+        prod07.getIngredients().add(ing03);
+        // ajout accompagnements au pif pour le test
+        prod07.getSides().add(prod12);
+        prod07.getSides().add(prod13);
+        
+
         //cat01 à cat05
         Category cat01 = new Category("Entrées");
         Category cat02 = new Category("Tempura");
         Category cat03 = new Category("Viandes grillés");
         Category cat04 = new Category("Poissons grillés");
         Category cat05 = new Category("Accompagnements");
-        
+
         // attribution de catégories aux produits
         prod01.setCategory(cat05);
         prod02.setCategory(cat05);
@@ -262,11 +275,10 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         listMyGrant02.add(myGrant02);
         listMyGrant03.add(myGrant03);
 
-
         //serveur et caissier
         listMyGrant04.add(myGrant01);
         listMyGrant04.add(myGrant03);
-        
+
         listMyGrant05.add(myGrant04);
 
         listMyTable01.add(myTable01);
@@ -288,7 +300,7 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         account08.setMyGrants(listMyGrant03);
         account09.setMyGrants(listMyGrant04);
         account10.setMyGrants(listMyGrant04);
-        
+
         account11.setMyGrants(listMyGrant05);
         account12.setMyGrants(listMyGrant05);
         account13.setMyGrants(listMyGrant05);
@@ -333,13 +345,11 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         OrderItem comboOrderItem01 = new OrderItem(100f, 20f);
 
    //     orderItem01.setMyOrder(myOrder01);
-
 //        orderItem02.setMyOrder(myOrder02);
 //        orderItem03.setMyOrder(myOrder02);
 //        orderItem04.setMyOrder(myOrder02);
 //        orderItem05.setMyOrder(myOrder02);
 //        orderItem06.setMyOrder(myOrder02);
-
         orderItem02.setComboOrderItem(comboOrderItem01);
         orderItem03.setComboOrderItem(comboOrderItem01);
         orderItem04.setComboOrderItem(comboOrderItem01);
@@ -347,7 +357,6 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         orderItem06.setComboOrderItem(comboOrderItem01);
 
 //        comboOrderItem01.setMyOrder(myOrder02);
-
         //plat simple
         OrderItem orderItem07 = new OrderItem(20f, 4f);
         OrderItem orderItem08 = new OrderItem(20f, 4f);
@@ -362,25 +371,21 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
 //        orderItem10.setMyOrder(myOrder06);
         orderItem11.setMyOrder(myOrder07);
         orderItem12.setMyOrder(myOrder08);
-        
+
         // mich
-        
-      
         Product prod30 = new Product("Châteauneuf du Pape", 120f, "http", "Millésime 2007 grand cru");
-        
+
         VAT vat01 = new VAT(10f, "consommation immédiate");
         VAT vat02 = new VAT(5.5f, "consommation différée");
         VAT vat03 = new VAT(20f, "alcool");
-        
+
         prod06.setVat(vat01);
         prod07.setVat(vat01);
         prod08.setVat(vat01);
         prod09.setVat(vat01);
         prod10.setVat(vat01);
         prod11.setVat(vat01);
-      
-        
-        
+
         Property prop01 = new Property("Origine", "Japon");
         Property prop02 = new Property("Origine", "UE");
         Property prop03 = new Property("Origine", "Nouvelle Zélande");
@@ -393,7 +398,21 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
 
         prop04.setUnit(u01);
         prop05.setUnit(u02);
+
         prod30.getProperties().add(prop04);
+
+        // propriétés au pif
+        prod01.getProperties().add(prop04);
+        prod02.getProperties().add(prop04);
+        prod09.getProperties().add(prop05);
+        prod09.getProperties().add(prop02);
+        prod02.getProperties().add(prop05);
+        prod03.getProperties().add(prop02);
+        prod04.getProperties().add(prop02);
+        prod05.getProperties().add(prop02);
+        prod06.getProperties().add(prop05);
+        prod07.getProperties().add(prop02);
+        prod08.getProperties().add(prop02);
 
         Combo combo02 = new Combo("Zen", 45f, "menu abordable", "images/Zen.jpg");
 //      Zen  
@@ -430,160 +449,146 @@ formater = new SimpleDateFormat("EEEE d MMM yyyy");
         prod28.setComboCategories(listComboCat06);
         prod29.setComboCategories(listComboCat07);
 
-         
   //combo 1       
-         
-Combo combo01 = new Combo ("Bento ShoKado", 62f, "menu 3 étoiles","images/bentoShokado.jpg");         
-         
-        ComboCategory comboCat01 = new ComboCategory (1,"1 - Entree au choix");
-        ComboCategory comboCat02 = new ComboCategory (2,"2 - Plat au choix");        
-        ComboCategory comboCat10 = new ComboCategory (3,"3 - Accompagnement");
-        ComboCategory comboCat03 = new ComboCategory (4,"4 - Dessert");
-                
+        Combo combo01 = new Combo("Bento ShoKado", 62f, "menu 3 étoiles", "images/bentoShokado.jpg");
+
+        ComboCategory comboCat01 = new ComboCategory(1, "1 - Entree au choix");
+        ComboCategory comboCat02 = new ComboCategory(2, "2 - Plat au choix");
+        ComboCategory comboCat10 = new ComboCategory(3, "3 - Accompagnement");
+        ComboCategory comboCat03 = new ComboCategory(4, "4 - Dessert");
+
         Product prod117 = new Product("Gosaismas starter", 12f, "images/nonDisponible.png", "Sélection de délicieux petits hors-d'oeuvres");
         Product prod18 = new Product("Gosaismos starter", 12f, "images/nonDisponible.png", "Assortiments de légumes salés et Mijotés");
         Product prod19 = new Product("Bento Shokado speedo", 40f, "images/nonDisponible.png", "Plat de Sashimi avec du Saumon Label Rouge grillé");
         Product prod20 = new Product("Bento Shokado algo", 40f, "images/nonDisponible.png", "Tempura de gambas avec ses légumes");
         Product prod21 = new Product("Accompagnement loquent", 5f, "images/nonDisponible.png", "Riz gluant avec graine de sésames à volontés");
-        Product prod22 = new Product("Litchi love", 5f, "images/nonDisponible.png", "Assortiments de litchi frais");                
-                
+        Product prod22 = new Product("Litchi love", 5f, "images/nonDisponible.png", "Assortiments de litchi frais");
+
         comboCat01.setCombo(combo01);
         comboCat02.setCombo(combo01);
         comboCat10.setCombo(combo01);
         comboCat03.setCombo(combo01);
-        
+
         List<ComboCategory> listComboCat01 = new ArrayList();
         List<ComboCategory> listComboCat02 = new ArrayList();
         List<ComboCategory> listComboCat03 = new ArrayList();
-        List<ComboCategory> listComboCat04 = new ArrayList();        
-        
+        List<ComboCategory> listComboCat04 = new ArrayList();
 
         listComboCat01.add(comboCat01);
         listComboCat02.add(comboCat02);
         listComboCat03.add(comboCat03);
-        listComboCat04.add(comboCat10);         
-         
-         prod117.setComboCategories(listComboCat01);
-         prod18.setComboCategories(listComboCat01);
-         prod19.setComboCategories(listComboCat02);
-         prod20.setComboCategories(listComboCat02);                
-         prod21.setComboCategories(listComboCat04);   
-         prod22.setComboCategories(listComboCat03);
-         
-         prod117.setVat(vat01);
-         prod19.setVat(vat01);
-         prod22.setVat(vat01);
-         prod21.setVat(vat01);
-         
+        listComboCat04.add(comboCat10);
+
+        prod117.setComboCategories(listComboCat01);
+        prod18.setComboCategories(listComboCat01);
+        prod19.setComboCategories(listComboCat02);
+        prod20.setComboCategories(listComboCat02);
+        prod21.setComboCategories(listComboCat04);
+        prod22.setComboCategories(listComboCat03);
+
+        prod117.setVat(vat01);
+        prod19.setVat(vat01);
+        prod22.setVat(vat01);
+        prod21.setVat(vat01);
+
         prod23.setVat(vat01);
         prod25.setVat(vat01);
         prod29.setVat(vat01);
-         
-         prod56.setVat(vat01);
-         prod55.setVat(vat01);
-         
-         prod08.setVat(vat01);
-         prod05.setVat(vat01);
-          prod06.setVat(vat01);
-          
-          prod30.setVat(vat03);
-          
-  
-OrderItem orderItem100 = new OrderItem(45f,10f );   
+
+        prod56.setVat(vat01);
+        prod55.setVat(vat01);
+
+        prod08.setVat(vat01);
+        prod05.setVat(vat01);
+        prod06.setVat(vat01);
+
+        prod30.setVat(vat03);
+
+        OrderItem orderItem100 = new OrderItem(45f, 10f);
 //**************menu
-orderItem100.setCombo(combo02);
-OrderItem orderItem101 = new OrderItem(10,10f );   
-orderItem101.setProduct(prod23);
-OrderItem orderItem102 = new OrderItem(30f,10f );  
-orderItem102.setProduct(prod25);
-OrderItem orderItem103 = new OrderItem(5f,10f );  
-orderItem102.setProduct(prod29);
-        
-        
-orderItem101.setComboOrderItem(orderItem100);
-orderItem102.setComboOrderItem(orderItem100);
-orderItem103.setComboOrderItem(orderItem100);
+        orderItem100.setCombo(combo02);
+        OrderItem orderItem101 = new OrderItem(10, 10f);
+        orderItem101.setProduct(prod23);
+        OrderItem orderItem102 = new OrderItem(30f, 10f);
+        orderItem102.setProduct(prod25);
+        OrderItem orderItem103 = new OrderItem(5f, 10f);
+        orderItem102.setProduct(prod29);
 
-OrderItem orderItem104 = new OrderItem(62f,10f );  
+        orderItem101.setComboOrderItem(orderItem100);
+        orderItem102.setComboOrderItem(orderItem100);
+        orderItem103.setComboOrderItem(orderItem100);
+
+        OrderItem orderItem104 = new OrderItem(62f, 10f);
 //**************menu
-orderItem104.setCombo(combo01);
-OrderItem orderItem105 = new OrderItem(12f,10f );  
-orderItem105.setProduct(prod117);//µ***********
-OrderItem orderItem106 = new OrderItem(40f,10f );  
-orderItem106.setProduct(prod19);
-OrderItem orderItem107 = new OrderItem(5f,10f );   
-orderItem107.setProduct(prod21);
+        orderItem104.setCombo(combo01);
+        OrderItem orderItem105 = new OrderItem(12f, 10f);
+        orderItem105.setProduct(prod117);//µ***********
+        OrderItem orderItem106 = new OrderItem(40f, 10f);
+        orderItem106.setProduct(prod19);
+        OrderItem orderItem107 = new OrderItem(5f, 10f);
+        orderItem107.setProduct(prod21);
 
+        OrderItem orderItem108 = new OrderItem(5f, 10f);
 
+        orderItem105.setComboOrderItem(orderItem105);
+        orderItem106.setComboOrderItem(orderItem105);
+        orderItem107.setComboOrderItem(orderItem105);
+        orderItem108.setComboOrderItem(orderItem105);
 
-OrderItem orderItem108 = new OrderItem(5f,10f ); 
+        OrderItem orderItem109 = new OrderItem(5f, 10f);
+        orderItem109.setProduct(prod55);
+        OrderItem orderItem110 = new OrderItem(5f, 10f);
+        orderItem110.setProduct(prod56);
 
-
-orderItem105.setComboOrderItem(orderItem105);
-orderItem106.setComboOrderItem(orderItem105);
-orderItem107.setComboOrderItem(orderItem105);
-orderItem108.setComboOrderItem(orderItem105);
-
-OrderItem orderItem109 = new OrderItem(5f,10f );  
-orderItem109.setProduct(prod55);
-OrderItem orderItem110 = new OrderItem(5f,10f ); 
-orderItem110.setProduct(prod56);
-        
-OrderItem orderItem111 = new OrderItem(62f,10f ); 
-orderItem111.setCombo(combo01);
+        OrderItem orderItem111 = new OrderItem(62f, 10f);
+        orderItem111.setCombo(combo01);
 //**************menu
-OrderItem orderItem112 = new OrderItem(12f,10f );    
-orderItem112.setProduct(prod117);
-OrderItem orderItem113 = new OrderItem(40f,10f );  
-orderItem113.setProduct(prod19);
-OrderItem orderItem114 = new OrderItem(5f,10f ); 
-orderItem114.setProduct(prod21);
-OrderItem orderItem115 = new OrderItem(5f,10f );   
-orderItem115.setProduct(prod22);
+        OrderItem orderItem112 = new OrderItem(12f, 10f);
+        orderItem112.setProduct(prod117);
+        OrderItem orderItem113 = new OrderItem(40f, 10f);
+        orderItem113.setProduct(prod19);
+        OrderItem orderItem114 = new OrderItem(5f, 10f);
+        orderItem114.setProduct(prod21);
+        OrderItem orderItem115 = new OrderItem(5f, 10f);
+        orderItem115.setProduct(prod22);
 
-orderItem112.setComboOrderItem(orderItem111);
-orderItem113.setComboOrderItem(orderItem111);
-orderItem114.setComboOrderItem(orderItem111);
-orderItem115.setComboOrderItem(orderItem111);
+        orderItem112.setComboOrderItem(orderItem111);
+        orderItem113.setComboOrderItem(orderItem111);
+        orderItem114.setComboOrderItem(orderItem111);
+        orderItem115.setComboOrderItem(orderItem111);
 
-OrderItem orderItem116 = new OrderItem(10f,10f );    
-orderItem116.setProduct(prod08);
-OrderItem orderItem117 = new OrderItem(5f,10f ); 
-orderItem117.setProduct(prod55);
-OrderItem orderItem118 = new OrderItem(5f,10f );   
-orderItem118.setProduct(prod55);
-OrderItem orderItem119 = new OrderItem(10f,10f );  
-orderItem119.setProduct(prod05);
-OrderItem orderItem120 = new OrderItem(30f,10f );     
-orderItem120.setProduct(prod08);
-        
-        
-OrderItem orderItem121 = new OrderItem(5f,10f ); 
-orderItem121.setProduct(prod55);
-OrderItem orderItem122 = new OrderItem(5f,10f );    
-orderItem122.setProduct(prod55);
-        
-OrderItem orderItem123 = new OrderItem(30f,10f );   
-orderItem123.setProduct(prod08);
-OrderItem orderItem124 = new OrderItem(90f,10f ); 
-orderItem124.setProduct(prod06);
-OrderItem orderItem125 = new OrderItem(120f,20f );   
-orderItem125.setProduct(prod30);
-                
-      
-          
+        OrderItem orderItem116 = new OrderItem(10f, 10f);
+        orderItem116.setProduct(prod08);
+        OrderItem orderItem117 = new OrderItem(5f, 10f);
+        orderItem117.setProduct(prod55);
+        OrderItem orderItem118 = new OrderItem(5f, 10f);
+        orderItem118.setProduct(prod55);
+        OrderItem orderItem119 = new OrderItem(10f, 10f);
+        orderItem119.setProduct(prod05);
+        OrderItem orderItem120 = new OrderItem(30f, 10f);
+        orderItem120.setProduct(prod08);
+
+        OrderItem orderItem121 = new OrderItem(5f, 10f);
+        orderItem121.setProduct(prod55);
+        OrderItem orderItem122 = new OrderItem(5f, 10f);
+        orderItem122.setProduct(prod55);
+
+        OrderItem orderItem123 = new OrderItem(30f, 10f);
+        orderItem123.setProduct(prod08);
+        OrderItem orderItem124 = new OrderItem(90f, 10f);
+        orderItem124.setProduct(prod06);
+        OrderItem orderItem125 = new OrderItem(120f, 20f);
+        orderItem125.setProduct(prod30);
+
 //List<OrderItem> listOrderItem101 = new ArrayList();        
 //List<OrderItem> listOrderItem102 = new ArrayList(); 
 //List<OrderItem> listOrderItem105 = new ArrayList(); 
 //List<OrderItem> listOrderItem106 = new ArrayList(); 
-          
- 
 //listOrderItem101.add(orderItem100);
 //
 //listOrderItem101.add(orderItem101);
 //listOrderItem101.add(orderItem102);
 //listOrderItem101.add(orderItem103);
-
         //commande myOrder01  
         orderItem100.setMyOrder(myOrder01);
         orderItem101.setMyOrder(myOrder01);
@@ -596,8 +601,7 @@ orderItem125.setProduct(prod30);
         orderItem108.setMyOrder(myOrder01);
         orderItem109.setMyOrder(myOrder01);
         orderItem110.setMyOrder(myOrder01);
-           
-           
+
 //listOrderItem101.add(orderItem104);
 //listOrderItem101.add(orderItem105);
 //listOrderItem101.add(orderItem106);
@@ -607,9 +611,6 @@ orderItem125.setProduct(prod30);
 //listOrderItem101.add(orderItem110);
 //
 //myOrder01.setOrderItems(listOrderItem101);
-
-
-
 //listOrderItem102.add(orderItem111);
 //listOrderItem102.add(orderItem112);
 //listOrderItem102.add(orderItem113);
@@ -618,51 +619,39 @@ orderItem125.setProduct(prod30);
 //listOrderItem102.add(orderItem116);
 //listOrderItem102.add(orderItem117);
 //listOrderItem102.add(orderItem118);
-
 //commande myOrder02 
-orderItem111.setMyOrder(myOrder02);
-orderItem112.setMyOrder(myOrder02);
-orderItem113.setMyOrder(myOrder02);       
-orderItem114.setMyOrder(myOrder02);
-orderItem115.setMyOrder(myOrder02);        
-orderItem116.setMyOrder(myOrder02);
-orderItem117.setMyOrder(myOrder02);        
-orderItem118.setMyOrder(myOrder02);        
-        
+        orderItem111.setMyOrder(myOrder02);
+        orderItem112.setMyOrder(myOrder02);
+        orderItem113.setMyOrder(myOrder02);
+        orderItem114.setMyOrder(myOrder02);
+        orderItem115.setMyOrder(myOrder02);
+        orderItem116.setMyOrder(myOrder02);
+        orderItem117.setMyOrder(myOrder02);
+        orderItem118.setMyOrder(myOrder02);
+
 //myOrder02.setOrderItems(listOrderItem102);
-
-
-
 //listOrderItem105.add(orderItem119);
 //listOrderItem105.add(orderItem120);
 //listOrderItem105.add(orderItem121);
 //listOrderItem105.add(orderItem122);
-
-
 //commande myOrder05
-orderItem119.setMyOrder(myOrder05);
-orderItem120.setMyOrder(myOrder05);
-orderItem121.setMyOrder(myOrder05);
-orderItem122.setMyOrder(myOrder05);  
-
+        orderItem119.setMyOrder(myOrder05);
+        orderItem120.setMyOrder(myOrder05);
+        orderItem121.setMyOrder(myOrder05);
+        orderItem122.setMyOrder(myOrder05);
 
 //        
 //myOrder05.setOrderItems(listOrderItem105);
-
 //
 //listOrderItem106.add(orderItem123);
 //listOrderItem106.add(orderItem124);
 //listOrderItem106.add(orderItem125);
-
 //commande myOrder06
-orderItem123.setMyOrder(myOrder06);
-orderItem124.setMyOrder(myOrder06);
-orderItem125.setMyOrder(myOrder06);     
-        
+        orderItem123.setMyOrder(myOrder06);
+        orderItem124.setMyOrder(myOrder06);
+        orderItem125.setMyOrder(myOrder06);
+
 //myOrder06.setOrderItems(listOrderItem106);
-
-
-
         em.persist(combo02);
 
         em.persist(prod23);
@@ -673,12 +662,10 @@ orderItem125.setMyOrder(myOrder06);
         em.persist(prod28);
         em.persist(prod29);
         em.persist(prod30);
- 
+
         em.persist(comboCat04);
         em.persist(comboCat05);
-        em.persist(comboCat06);         
-         
-         
+        em.persist(comboCat06);
 
         em.persist(prod30);
         em.persist(combo01);
@@ -691,9 +678,8 @@ orderItem125.setMyOrder(myOrder06);
         em.persist(comboCat01);
         em.persist(comboCat02);
         em.persist(comboCat03);
-        em.persist(comboCat10);  
-        
-        
+        em.persist(comboCat10);
+
         em.persist(s01);
         em.persist(s02);
         em.persist(s03);
@@ -719,7 +705,6 @@ orderItem125.setMyOrder(myOrder06);
         em.persist(po01);
         em.persist(po02);
         em.persist(po03);
-
 
         em.persist(pay01);
         em.persist(pay02);
@@ -784,7 +769,7 @@ orderItem125.setMyOrder(myOrder06);
         em.persist(account18);
         em.persist(account19);
         em.persist(account20);
-        
+
         em.persist(myOrder01);
         em.persist(myOrder02);
         em.persist(myOrder03);
@@ -817,25 +802,22 @@ orderItem125.setMyOrder(myOrder06);
         em.persist(myTable08);
         em.persist(myTable09);
         em.persist(myTable10);
-        
+
         em.persist(comboOrderItem01);
-        
-        
-        
+
         em.persist(vat01);
         em.persist(vat02);
         em.persist(vat03);
-        
+
         em.persist(u01);
         em.persist(u02);
         em.persist(u03);
-        
+
         em.persist(prop01);
         em.persist(prop02);
         em.persist(prop03);
         em.persist(prop04);
         em.persist(prop05);
-        
 
         em.persist(ing01);
         em.persist(ing02);
@@ -843,50 +825,44 @@ orderItem125.setMyOrder(myOrder06);
         em.persist(ing04);
         em.persist(ing05);
 
-em.persist(prod55);
-em.persist(prod56);
+        em.persist(prod55);
+        em.persist(prod56);
 
-em.persist(orderItem100);
-em.persist(orderItem101);
-em.persist(orderItem102);
-em.persist(orderItem103);
-em.persist(orderItem104);
+        em.persist(orderItem100);
+        em.persist(orderItem101);
+        em.persist(orderItem102);
+        em.persist(orderItem103);
+        em.persist(orderItem104);
 
-em.persist(orderItem105);
-em.persist(orderItem106);
-em.persist(orderItem107);
-em.persist(orderItem108);
-em.persist(orderItem109);
+        em.persist(orderItem105);
+        em.persist(orderItem106);
+        em.persist(orderItem107);
+        em.persist(orderItem108);
+        em.persist(orderItem109);
 
-em.persist(orderItem110);
-em.persist(orderItem111);
-em.persist(orderItem112);
-em.persist(orderItem113);
-em.persist(orderItem114);
+        em.persist(orderItem110);
+        em.persist(orderItem111);
+        em.persist(orderItem112);
+        em.persist(orderItem113);
+        em.persist(orderItem114);
 
-em.persist(orderItem115);
-em.persist(orderItem116);
-em.persist(orderItem117);
-em.persist(orderItem118);
-em.persist(orderItem119);
+        em.persist(orderItem115);
+        em.persist(orderItem116);
+        em.persist(orderItem117);
+        em.persist(orderItem118);
+        em.persist(orderItem119);
 
-em.persist(orderItem120);
-em.persist(orderItem121);
-em.persist(orderItem122);
-em.persist(orderItem123);
-em.persist(orderItem124);
+        em.persist(orderItem120);
+        em.persist(orderItem121);
+        em.persist(orderItem122);
+        em.persist(orderItem123);
+        em.persist(orderItem124);
 
-em.persist(orderItem125);
-
+        em.persist(orderItem125);
 
    //      em.persist(comboCat11);
-
-        
         em.flush();
 
-
-    
-    
     }
-    
+
 }

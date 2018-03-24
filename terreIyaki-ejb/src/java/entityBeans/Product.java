@@ -19,7 +19,17 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "entityBeans.Product.selectAll", 
             query = "select p from Product p"),
     @NamedQuery(name = "entityBeans.Product.selectProductById", 
-            query = "select p from Product p where p.id = :paramId")
+            query = "select p from Product p where p.id = :paramId"),
+    @NamedQuery(name = "entityBeans.Product.selectProductsByCategory", 
+            query = "select p from Product p where p.category = :paramCat"),
+    @NamedQuery(name = "entityBeans.Product.selectProductProperties", 
+            query = "select p.properties from Product p where p = :paramProd"),
+    @NamedQuery(name = "entityBeans.Product.selectProductOptions", 
+            query = "select p.options from Product p where p = :paramProd"),
+    @NamedQuery(name = "entityBeans.Product.selectProductIngredients", 
+            query = "select p.ingredients from Product p where p = :paramProd"),
+    @NamedQuery(name = "entityBeans.Product.selectProductSides", 
+            query = "select p.sides from Product p where p = :paramProd")
 })
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -36,9 +46,9 @@ public class Product implements Serializable {
     private Collection<Property> properties;
     @ManyToOne
     private VAT vat; 
-    @ManyToMany
+    @ManyToMany(mappedBy = "sides")
     private Collection<Product> mainCourses;
-    @ManyToMany(mappedBy = "mainCourses")
+    @ManyToMany
     private Collection<Product> sides;
     @ManyToOne
     private Category category;
@@ -46,9 +56,9 @@ public class Product implements Serializable {
     private Collection<ComboCategory> comboCategories;
     @OneToMany(mappedBy = "product")
     private Collection<OrderItem> orderItems;
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany
     private Collection<Option> options;
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany
     private Collection<Ingredient> ingredients;
     @ManyToOne
     private Status status;
