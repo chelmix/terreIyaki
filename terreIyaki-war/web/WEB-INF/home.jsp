@@ -8,7 +8,11 @@
         <title>home</title>
     </head>
     <body>
-
+        
+        <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
+        <c:import url ="${urlNavbar}"/>
+        
+        <main>
         <p>${message}</p>
         <c:if test="${user!=null}">
             <p>Bonjour ${user.firstName} ${user.lastName}</p>
@@ -22,7 +26,7 @@
                 <c:if test="${my.name=='client'||my.name=='serveur'}">
                     
                     <c:url value="FrontController?section=overview" var="url10" />
-                    <a href="${url10}">Consulter la carte</a>
+                    <a class="button" href="${url10}">Consulter la carte</a>
                     <br /><br />
                     <c:url value="FrontController?section=carteJeannory&action=produit" var="url02" />
                     A la carte  :  <a href="${url02}">  ici </a>     
@@ -45,6 +49,6 @@
             <c:url value="FrontController?section=login&action=logout" var="url01" />
             <p>Se déconnecter :  <a href="${url01}">  ici </a> </p>
         </c:if>
-
+        </main>    
     </body>
 </html>

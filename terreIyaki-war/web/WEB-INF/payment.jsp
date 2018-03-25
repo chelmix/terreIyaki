@@ -13,6 +13,9 @@
         <title>payment</title>
     </head>
     <body>
+        <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
+        <c:import url ="${urlNavbar}"/>
+        <main>
   
         ${message}
         <c:if test="${commandeToPayHash!=null}" >
@@ -57,6 +60,6 @@
            </c:if> 
             
             
-        
+        </main>
     </body>
 </html>

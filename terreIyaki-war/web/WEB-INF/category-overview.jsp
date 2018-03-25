@@ -8,15 +8,19 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
-        <h1>Catégorie : ${category.name}</h1>   
-        <c:forEach var = "pro" items="${products}">
-            <p>${pro.name} : ${pro.description}<br />
-                Prix HT : ${pro.price} - todo prix ttc <br />
-            </p>
-            <c:url value="FrontController?section=overview&product-id=${pro.id}" var="url03" />
-            <a href="${url03}">Détails</a><br>
-            <c:url value="FrontController?section=product-choice&product-id=${pro.id}" var="url04" />
-            <a href="${url04}">Choisir</a><br>
-        </c:forEach>
-</body>
+        <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
+        <c:import url ="${urlNavbar}"/>
+        <main>
+            <h1>Catégorie : ${category.name}</h1>   
+            <c:forEach var = "pro" items="${products}">
+                <p>${pro.name} : ${pro.description}<br />
+                    Prix HT : ${pro.price} - todo prix ttc <br />
+                </p>
+                <c:url value="FrontController?section=overview&product-id=${pro.id}" var="url03" />
+                <a class="button" href="${url03}">Détails</a><br>
+                <c:url value="FrontController?section=product-choice&product-id=${pro.id}" var="url04" />
+                <a class="button" href="${url04}">Choisir</a><br>
+            </c:forEach>
+        </main>
+    </body>
 </html>

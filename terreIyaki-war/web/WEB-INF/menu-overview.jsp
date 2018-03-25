@@ -8,17 +8,23 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
-        <h1>Vue d'ensemble du menu</h1><br />
-        <section>
-            <h2>Formules</h2><br />
-            <p>- to do -</p><br />
-        </section>
-        <h2>A la carte</h2><br />
-        <c:forEach var = "cat" items="${categories}">
+        <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
+        <c:import url ="${urlNavbar}"/>
+        <main>
+            <h1>Vue d'ensemble du menu</h1><br />
             <section>
-                <c:url value="FrontController?section=overview&category-id=${cat.id}" var="url03" />
-                <a href="${url03}">${cat.name}</a>
+                <h2>Formules</h2><br />
+                <p>- to do -</p><br />
             </section>
-        </c:forEach>       
+            <section>
+                <h2>A la carte</h2><br />
+                <c:forEach var = "cat" items="${categories}">
+                    <article>
+                        <c:url value="FrontController?section=overview&category-id=${cat.id}" var="url03" />
+                        <a class="button" href="${url03}">${cat.name}</a>
+                    </article>
+                </c:forEach>
+            </section>
+        </main>
     </body>
 </html>
