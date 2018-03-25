@@ -11,18 +11,11 @@
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
         <main>
-            <h1>Vue d'ensemble du menu</h1><br />
+            <h1>A la carte</h1>
             <section>
-                <h2>Formules</h2><br />
-                <p>- to do -</p><br />
-            </section>
-            <section>
-                <h2>A la carte</h2><br />
                 <c:forEach var = "cat" items="${categories}">
-                    <article>
-                        <c:url value="FrontController?section=overview&category-id=${cat.id}" var="url03" />
-                        <a class="button" href="${url03}">${cat.name}</a>
-                    </article>
+                    <c:url value="FrontController?section=overview&category-id=${cat.id}" var="url03" />
+                    <a class="button" href="${url03}">${cat.name}</a>
                 </c:forEach>
             </section>
         </main>
