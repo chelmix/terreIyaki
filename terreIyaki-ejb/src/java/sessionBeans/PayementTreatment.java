@@ -12,55 +12,39 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 import entityBeans.MyOrder;
+import entityBeans.OrderItem;
+import entityBeans.Product;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
-import javax.ejb.EJBException;
-import javax.ejb.Stateless;
-import javax.mail.BodyPart;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-
-import entityBeans.MyOrder;
-import tools.ConnexionBDD;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
-
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-
-import javax.mail.internet.MimeMessage;
-
 import javax.naming.NamingException;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.swing.text.Document;
-
+import javax.persistence.TypedQuery;
 import tools.ConnexionBDD;
-
-
+import tools.CustomException;
 import tools.Mail;
+import tools.ProductAmount;
 
 
 /**
@@ -284,9 +268,66 @@ document.close();
 
 
     
+ //afficher toutes les commandes en attente de règlement
+    @Override
+    public List<MyOrder> getOrderToPay() throws CustomException{
+        List<MyOrder> my01;
+        String parametre = "A payer";
+        TypedQuery<MyOrder> qr = em.createNamedQuery("entityBeans.MyOrder.getOrderToPay", MyOrder.class);
+        qr.setParameter("paramStatusName", parametre);
+        try{
+           my01 = qr.getResultList();
+        }catch (NoResultException ex){
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de commande en attente de règlement");
+            throw ce;
+        }
+        return my01;
+    }
     
+    //affiche via hashMap tous les montants des commande (via id)
+    @Override
+    public HashMap<Long,ProductAmount> getMontant(Long MyOrderId, HashMap<Long,ProductAmount> ha01)throws CustomException{
+ //       HashMap<Long,ProductAmount> ha01 = new HashMap();
+        List<OrderItem> or01;
+        TypedQuery<OrderItem> qr = em.createNamedQuery("entityBeans.OrderItem.selectByOrder",OrderItem.class);
+        qr.setParameter("paramMyOrderId",MyOrderId);
+        try{
+            or01 = qr.getResultList();
+                }catch (NoResultException ex){
+            CustomException ce = new CustomException(CustomException.USER_ERR,"commande vide");
+            throw ce;
+        }
+        float ht=0f;
+        float ttc = 0f;
+        //somme ht
+        for(int i=0;i<or01.size();i++){
+            ht=ht+or01.get(i).getPrice();
+        }
+        //somme ttc
+        for(int i=0;i<or01.size();i++){
+       ttc = ttc+  or01.get(i).getPrice()+ ((or01.get(i).getPrice()*or01.get(i).getTax())/100);
+            
+        }
+        ProductAmount po01= new ProductAmount(ht,ttc);
+        ha01.put(MyOrderId, po01);
+        return ha01;
+    }
     
+    //affiche la list des produits de la commande
     
+    @Override
+    public List<OrderItem> getItemsFromOrder(Long idCommande) throws CustomException{
+        List<OrderItem> or01;
+        TypedQuery<OrderItem> qr = em.createNamedQuery("entityBeans.MyOrder.getItemsByOrder",OrderItem.class);
+        qr.setParameter("paramMyOrderId",idCommande);
+        try{
+            or01=qr.getResultList();
+        }catch (NoResultException ex){
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de produits affectés");
+            throw ce;
+        }
+       return  or01;
+    }
     
     
 }

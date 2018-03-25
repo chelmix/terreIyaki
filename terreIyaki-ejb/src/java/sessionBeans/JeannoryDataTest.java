@@ -137,10 +137,16 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         //myOrder01 à myOrder10
         MyOrder myOrder01 = new MyOrder(d11);
-        myOrder01.setStatus(s09);
+        myOrder01.setStatus(s05);
 
         MyOrder myOrder02 = new MyOrder(d11);
+
         myOrder02.setStatus(s10);
+
+        myOrder02.setStatus(s05);
+        
+       
+
 
         MyOrder myOrder03 = new MyOrder(d03);
         List<MyTable> listMyTable = new ArrayList();
@@ -156,7 +162,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         MyOrder myOrder10 = new MyOrder(d10);
 
         myOrder05.setStatus(s05);
-        myOrder06.setStatus(s06);
+        myOrder06.setStatus(s05);
 
         //myGrant01 à myGrant03
         MyGrant myGrant01 = new MyGrant("serveur");
@@ -504,7 +510,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         prod30.setVat(vat03);
 
-        OrderItem orderItem100 = new OrderItem(45f, 10f);
+        OrderItem orderItem100 = new OrderItem(0f, 0f);
 //**************menu
         orderItem100.setCombo(combo02);
         OrderItem orderItem101 = new OrderItem(10, 10f);
@@ -512,13 +518,13 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         OrderItem orderItem102 = new OrderItem(30f, 10f);
         orderItem102.setProduct(prod25);
         OrderItem orderItem103 = new OrderItem(5f, 10f);
-        orderItem102.setProduct(prod29);
+        orderItem103.setProduct(prod29);
 
         orderItem101.setComboOrderItem(orderItem100);
         orderItem102.setComboOrderItem(orderItem100);
         orderItem103.setComboOrderItem(orderItem100);
 
-        OrderItem orderItem104 = new OrderItem(62f, 10f);
+        OrderItem orderItem104 = new OrderItem(0f, 0f);
 //**************menu
         orderItem104.setCombo(combo01);
         OrderItem orderItem105 = new OrderItem(12f, 10f);
@@ -529,7 +535,9 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         orderItem107.setProduct(prod21);
 
         OrderItem orderItem108 = new OrderItem(5f, 10f);
-
+orderItem108.setProduct(prod22);
+        
+        
         orderItem105.setComboOrderItem(orderItem105);
         orderItem106.setComboOrderItem(orderItem105);
         orderItem107.setComboOrderItem(orderItem105);
@@ -540,7 +548,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         OrderItem orderItem110 = new OrderItem(5f, 10f);
         orderItem110.setProduct(prod56);
 
-        OrderItem orderItem111 = new OrderItem(62f, 10f);
+        OrderItem orderItem111 = new OrderItem(0f, 0f);
         orderItem111.setCombo(combo01);
 //**************menu
         OrderItem orderItem112 = new OrderItem(12f, 10f);
@@ -557,13 +565,13 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         orderItem114.setComboOrderItem(orderItem111);
         orderItem115.setComboOrderItem(orderItem111);
 
-        OrderItem orderItem116 = new OrderItem(10f, 10f);
+        OrderItem orderItem116 = new OrderItem(30f, 10f);
         orderItem116.setProduct(prod08);
         OrderItem orderItem117 = new OrderItem(5f, 10f);
         orderItem117.setProduct(prod55);
         OrderItem orderItem118 = new OrderItem(5f, 10f);
         orderItem118.setProduct(prod55);
-        OrderItem orderItem119 = new OrderItem(10f, 10f);
+        OrderItem orderItem119 = new OrderItem(35f, 10f);
         orderItem119.setProduct(prod05);
         OrderItem orderItem120 = new OrderItem(30f, 10f);
         orderItem120.setProduct(prod08);

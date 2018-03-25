@@ -34,7 +34,7 @@
                     
                 </c:if>
                 <c:if test="${my.name=='caissier'}">
-                    <c:url value="FrontController?section=reglement" var="url33" />
+                    <c:url value="FrontController?section=payment&action=enCours" var="url33" />
                     <br/>Commande en attente de règlement : <a href="${url33}"  >Ici</a>
                 </c:if>
 

@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,6 +23,12 @@ import javax.persistence.OneToMany;
  * @author jeanno
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name ="entityBeans.OrderItem.selectByOrder",
+        query="Select o from OrderItem o where o.myOrder.id = :paramMyOrderId"),
+//    @NamedQuery(name ="entityBeans.OrderItem.getProductsByOrder",
+//          query="Select o.products from OrderItem o where o.order.id =:paramMyOrderId")            
+})
 public class OrderItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
