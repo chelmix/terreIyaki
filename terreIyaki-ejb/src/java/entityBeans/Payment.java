@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
 /**
@@ -21,6 +23,10 @@ import javax.persistence.Temporal;
  * @author samira
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name="entityBeans.Payment.getPaymentByOrder",
+      query = "Select p from Payment p where p.myOrder.id = :paramIdMyOrder") 
+})
 public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

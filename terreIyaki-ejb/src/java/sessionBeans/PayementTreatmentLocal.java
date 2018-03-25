@@ -7,6 +7,10 @@ package sessionBeans;
 
 import entityBeans.MyOrder;
 import entityBeans.OrderItem;
+import entityBeans.Payment;
+import entityBeans.PaymentOption;
+import entityBeans.Product;
+import entityBeans.Status;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +42,28 @@ public interface PayementTreatmentLocal {
     public HashMap<Long,ProductAmount> getMontant(Long MyOrderId, HashMap<Long,ProductAmount> ha01) throws CustomException;
 
     public List<OrderItem> getItemsFromOrder(Long idCommande) throws CustomException;
+
+    public float getMontantRestant(float priceTotal, float payment);
+
+    public List<PaymentOption> getPaymentType() throws CustomException;
+
+    public PaymentOption getObjectPaymentType(String nameChoisi) throws CustomException;
+
+    public MyOrder getOrderById(long id) throws CustomException;
+
+    public void persistPayment(float priceTotal, PaymentOption po02, MyOrder my02, float mt);
+
+    public Status getStatus(String name) throws CustomException;
+
+    public List<Payment> getPaymentbyOrder(Long id) throws CustomException;
+
+    public float getMontantEncaisseTTC(float priceTotal, MyOrder my02);
+
+    public void changeStatutOrder(float priceTotal, float cumulPayment,  long id);
+
+    public void getBillPdfV02(MyOrder my02, List<OrderItem> or01, float priceTotal, List<Payment> lo09);
+
+    
 
 
 

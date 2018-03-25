@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -20,6 +21,9 @@ import javax.persistence.OneToMany;
  * @author samira
  */
 @Entity
+@NamedQuery(name="entityBeans.Status.getStatus",
+query="Select s from Status s where s.Name=:nameStatus"
+)
 public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;
