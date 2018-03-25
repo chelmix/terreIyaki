@@ -13,14 +13,12 @@
         <title>payment</title>
     </head>
     <body>
-<<<<<<< refs/remotes/origin/master
+
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
         <main>
   
-=======
 
->>>>>>> dernier week end
         ${message}
         <c:if test="${commandeToPayHash!=null}" >
             <br/>Commande en attente de règlement :<br/><br/>
@@ -133,9 +131,9 @@
             
             
             
-<<<<<<< refs/remotes/origin/master
+
         </main>
-=======
+
             <c:forEach var="list" items="${listItem}">
               
                 
@@ -150,7 +148,5 @@
         </c:if> 
 
 
-
->>>>>>> dernier week end
     </body>
 </html>
