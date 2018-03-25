@@ -37,14 +37,14 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class JeannoryDataTest implements JeannoryDataTestLocal {
-
     @PersistenceContext(unitName = "terreIyaki-ejbPU")
     private EntityManager em;
-
+    
+    
     @Override
-    public void dataTest() {
-
-        //Status de s01 à s21
+    public void dataTest(){
+        
+              //Status de s01 à s21
         Status s01 = new Status(1, "Prise de commande en cours", "Order Item");
         Status s02 = new Status(2, "En cours de préparation ", "Order Item");
         Status s03 = new Status(3, "Prêt à être servi ", "Order Item");
@@ -134,19 +134,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         MyTable myTable08 = new MyTable(8);
         MyTable myTable09 = new MyTable(9);
         MyTable myTable10 = new MyTable(10);
-
-        // mettre un statut à une table 
-        myTable01.setStatus(s14);
-        myTable02.setStatus(s15);
-        myTable03.setStatus(s14);
-        myTable04.setStatus(s15);
-        myTable05.setStatus(s14);
-        myTable06.setStatus(s15);
-        myTable07.setStatus(s14);
-        myTable08.setStatus(s15);
-        myTable09.setStatus(s14);
-        myTable10.setStatus(s15);
-
+        
         //myOrder01 à myOrder10
         MyOrder myOrder01 = new MyOrder(d11);
         myOrder01.setStatus(s05);
@@ -190,7 +178,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Account account08 = new Account(4785, "Alex", "Kidd");
         Account account09 = new Account(4234, "Vincent", "Rattant");
         Account account10 = new Account(3264, "Jeanne", "Durand");
-
+        
         Account account11 = new Account(1, "Table", "1");
         Account account12 = new Account(2, "Table", "2");
         Account account13 = new Account(3, "Table", "3");
@@ -201,7 +189,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Account account18 = new Account(8, "Table", "8");
         Account account19 = new Account(9, "Table", "9");
         Account account20 = new Account(10, "Table", "10");
-
+        
         account11.setMyTable(myTable01);
         account12.setMyTable(myTable02);
         account13.setMyTable(myTable03);
@@ -212,6 +200,8 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         account18.setMyTable(myTable08);
         account19.setMyTable(myTable09);
         account20.setMyTable(myTable10);
+        
+        
 
         // prod01 à prod16
         Product prod01 = new Product("Yasai", 20f, "http", "Tempura de légumes 7 pièces");
@@ -230,19 +220,20 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Product prod14 = new Product("Kyuri Wakame", 8f, "http", "Salade japonaise");
         Product prod15 = new Product("Nasu", 9f, "http", "Aubergines confites");
         Product prod16 = new Product("Kara Age", 9f, "http", "Beignet de poulet");
+<<<<<<< refs/remotes/origin/master
         
 
        
-        
 =======
-
+>>>>>>> modif sam
+        
         Product prod17 = new Product("Sélection de petits hors-d'oeuvres", 6f, "http", "Entrée Bento Shokado");
         Product prod18 = new Product("Légumes salés, Mijotés", 6f, "http", "Entrée Bento Shokado");
         Product prod19 = new Product("Sashimi, Saumon Label Rouge grillé", 20f, "http", "Plat Bento Shokado");
         Product prod20 = new Product("Tempura de gambas et légumes", 20f, "http", "Plat Bento Shokado");
         Product prod21 = new Product("Soupe Miso, Riz", 5f, "http", "Assortiment Bento Shokado");
         Product prod22 = new Product("Fruit frais", 5f, "http", "Déssert Bento Shokado");
-
+        
         Product prod23 = new Product("Entrée Zen", 9f, "http", "Petits hors-d'oeuvres, soupe Miso");
         Product prod24 = new Product("Sushi", 30f, "http", "Plat au choix Zen, Assortiment de 7 sushi et 6 maki");
         Product prod25 = new Product("Tempura", 30f, "http", "Plat au choix Zen, 8 tempura de gambas et légumes ou de légumes uniquement (végétarien)");
@@ -250,6 +241,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Product prod27 = new Product("Sashimi", 30f, "http", "Plat au choix Zen, Assortiment de 15 sashimi");
         Product prod28 = new Product("Gyu", 30f, "http", "Plat au choix Zen, Boeuf Black Angus persillé, sauce Teriyaki");
         Product prod29 = new Product("Dessert Zen", 6f, "http", "Fruits frais");
+<<<<<<< refs/remotes/origin/master
 
 >>>>>>> Auto stash before rebase of "origin/master"
         Product prod55 = new Product("Coca cola", 5f, "http", "servi avec rondelle de citron");
@@ -275,6 +267,10 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prod07.getSides().add(prod12);
         prod07.getSides().add(prod13);
 
+=======
+        
+        
+>>>>>>> modif sam
         //cat01 à cat05
         Category cat01 = new Category("Entrées");
         Category cat02 = new Category("Tempura");
@@ -310,6 +306,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         listMyGrant02.add(myGrant02);
         listMyGrant03.add(myGrant03);
 
+
         //serveur et caissier
         listMyGrant04.add(myGrant01);
         listMyGrant04.add(myGrant03);
@@ -335,7 +332,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         account08.setMyGrants(listMyGrant03);
         account09.setMyGrants(listMyGrant04);
         account10.setMyGrants(listMyGrant04);
-
+        
         account11.setMyGrants(listMyGrant05);
         account12.setMyGrants(listMyGrant05);
         account13.setMyGrants(listMyGrant05);
@@ -406,14 +403,21 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 //        orderItem10.setMyOrder(myOrder06);
         orderItem11.setMyOrder(myOrder07);
         orderItem12.setMyOrder(myOrder08);
-
+        
         // mich
+        
+      
         Product prod30 = new Product("Châteauneuf du Pape", 120f, "http", "Millésime 2007 grand cru");
-
+        
         VAT vat01 = new VAT(10f, "consommation immédiate");
         VAT vat02 = new VAT(5.5f, "consommation différée");
+<<<<<<< refs/remotes/origin/master
         VAT vat03 = new VAT(20f, "alcool");
 
+=======
+        VAT vat03 = new VAT(10f, "alcool");
+        
+>>>>>>> modif sam
         prod06.setVat(vat01);
         prod07.setVat(vat01);
         prod08.setVat(vat01);
@@ -421,18 +425,24 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prod10.setVat(vat01);
         prod11.setVat(vat01);
         prod17.setVat(vat03);
+<<<<<<< refs/remotes/origin/master
+=======
+        
+        
+>>>>>>> modif sam
         Property prop01 = new Property("Origine", "Japon");
         Property prop02 = new Property("Origine", "UE");
         Property prop03 = new Property("Origine", "Nouvelle Zélande");
         Property prop04 = new Property("Contenance", "75");
         Property prop05 = new Property("Alcoolémie", "75");
-
+        
         Unit u01 = new Unit("centilitre", "cl");
         Unit u02 = new Unit("degré", "°");
         Unit u03 = new Unit("gramme", "g");
-
+        
         prop04.setUnit(u01);
         prop05.setUnit(u02);
+<<<<<<< refs/remotes/origin/master
         prod30.getProperties().add(prop04);
 
         // propriétés au pif
@@ -463,29 +473,33 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 //        ComboCategory comboCat11 = new ComboCategory (3,"Accompagnement");
         ComboCategory comboCat06 = new ComboCategory(4, "3 - Dessert");
 =======
+=======
+>>>>>>> modif sam
         prod17.getProperties().add(prop04);
-
-        Combo combo01 = new Combo("Bento ShoKado", 62f, "menu 3 étoiles", "images/bentoShokado.jpg");
-        Combo combo02 = new Combo("Zen", 45f, "menu abordable", "images/Zen.jpg");
-
-        ComboCategory comboCat01 = new ComboCategory(1, "Entrée Bento Shokado");
-        ComboCategory comboCat02 = new ComboCategory(2, "Plat Bento Shokado");
-        ComboCategory comboCat10 = new ComboCategory(3, "Assortiment Bento Shokado");
-        ComboCategory comboCat03 = new ComboCategory(4, "Déssert Bento Shokado");
-
-        ComboCategory comboCat04 = new ComboCategory(1, "Entrée Zen");
-        ComboCategory comboCat05 = new ComboCategory(2, "Plat au choix Zen");
-        ComboCategory comboCat11 = new ComboCategory(3, "Assortiment Zen");
-        ComboCategory comboCat06 = new ComboCategory(4, "Déssert Zen");
-
+        
+        
+        Combo combo01 = new Combo ("Bento ShoKado", 62f, "menu 3 étoiles","images/bentoShokado.jpg");
+        Combo combo02 = new Combo ("Zen", 45f, "menu abordable","images/Zen.jpg");
+        
+        
+        ComboCategory comboCat01 = new ComboCategory (1,"Entrée Bento Shokado");
+        ComboCategory comboCat02 = new ComboCategory (2,"Plat Bento Shokado");        
+        ComboCategory comboCat10 = new ComboCategory (3,"Assortiment Bento Shokado");
+        ComboCategory comboCat03 = new ComboCategory (4,"Déssert Bento Shokado");
+        
+        ComboCategory comboCat04 = new ComboCategory (1,"Entrée Zen");
+        ComboCategory comboCat05 = new ComboCategory (2,"Plat au choix Zen");        
+        ComboCategory comboCat11 = new ComboCategory (3,"Assortiment Zen");
+        ComboCategory comboCat06 = new ComboCategory (4,"Déssert Zen");  
+        
         comboCat01.setCombo(combo01);
         comboCat02.setCombo(combo01);
         comboCat03.setCombo(combo01);
->>>>>>> Auto stash before rebase of "origin/master"
-
+        
         comboCat04.setCombo(combo02);
         comboCat05.setCombo(combo02);
         comboCat06.setCombo(combo02);
+<<<<<<< refs/remotes/origin/master
 
 <<<<<<< refs/remotes/origin/master
         List<ComboCategory> listComboCat05 = new ArrayList();
@@ -524,11 +538,21 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         comboCat10.setCombo(combo01);
         comboCat03.setCombo(combo01);
 
-        List<ComboCategory> listComboCat01 = new ArrayList();
-        List<ComboCategory> listComboCat02 = new ArrayList();
-        List<ComboCategory> listComboCat03 = new ArrayList();
-        List<ComboCategory> listComboCat04 = new ArrayList();        
+=======
         
+>>>>>>> modif sam
+        List<ComboCategory> listComboCat01 = new ArrayList();
+         List<ComboCategory> listComboCat02 = new ArrayList();
+          List<ComboCategory> listComboCat03 = new ArrayList();
+           List<ComboCategory> listComboCat04 = new ArrayList();
+            List<ComboCategory> listComboCat05 = new ArrayList();
+             List<ComboCategory> listComboCat06 = new ArrayList();
+             
+             List<ComboCategory> listComboCat07 = new ArrayList();
+             List<ComboCategory> listComboCat08 = new ArrayList();
+             
+        
+<<<<<<< refs/remotes/origin/master
 
         List<ComboCategory> listComboCat07 = new ArrayList();
         List<ComboCategory> listComboCat08 = new ArrayList();
@@ -575,6 +599,64 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(comboCat10);  
         
         
+=======
+        listComboCat01.add(comboCat01);
+        listComboCat02.add(comboCat02);
+        listComboCat03.add(comboCat03);
+        listComboCat04.add(comboCat10);
+        
+        
+        listComboCat05.add(comboCat04);
+        listComboCat06.add(comboCat05);
+        listComboCat07.add(comboCat06);
+        listComboCat08.add(comboCat11);
+        
+        
+        
+        
+         prod17.setComboCategories(listComboCat01);
+    //= new Product("Sélection de petits hors-d'oeuvres", 6f, null, "Entrée Bento Shokado");
+         prod18.setComboCategories(listComboCat01);
+                 
+                 //= new Product("Légumes salés, Mijotés", 6f, null, "Entrée Bento Shokado");
+         
+         
+         prod19.setComboCategories(listComboCat02);
+             
+                 //= new Product("Sashimi, Saumon Label Rouge grillé", 20f, null, "Plat Bento Shokado");
+         prod20.setComboCategories(listComboCat02);                
+    //             = new Product("Tempura de gambas et légumes", 20f, null, "Plat Bento Shokado");
+         prod21.setComboCategories(listComboCat04);   
+                 //= new Product("Soupe Miso, Riz", 5f, null, "Assortiment Bento Shokado");
+         prod22.setComboCategories(listComboCat03);
+                 //= new Product("Fruit frais", 5f, null, "Déssert Bento Shokado");
+         
+         
+        
+         prod23.setComboCategories(listComboCat05);
+                 //= new Product("Entrée Zen", 9f, null, "Petits hors-d'oeuvres, soupe Miso");
+         
+         
+         prod24.setComboCategories(listComboCat06);
+         //= new Product("Sushi", 30f, null, "Plat au choix Zen, Assortiment de 7 sushi et 6 maki");
+         prod25.setComboCategories(listComboCat06);
+         //= new Product("Tempura", 30f, null, "Plat au choix Zen, 8 tempura de gambas et légumes ou de légumes uniquement (végétarien)");
+         prod26.setComboCategories(listComboCat06);
+         //= new Product("Sushi Tempura", 30f, null, "Plat au choix Zen, Assortiment de 4 sushi et 4 tempura mixtes");
+         prod27.setComboCategories(listComboCat06);
+         //= new Product("Sashimi", 30f, null, "Plat au choix Zen, Assortiment de 15 sashimi");
+         
+         prod28.setComboCategories(listComboCat06);
+         //= new Product("Gyu", 30f, null, "Plat au choix Zen, Boeuf Black Angus persillé, sauce Teriyaki");
+         
+         
+         prod29.setComboCategories(listComboCat07);
+         //= new Product("Dessert Zen", 6f, null, "Fruits frais");        
+        
+        
+        
+        
+>>>>>>> modif sam
         em.persist(s01);
         em.persist(s02);
         em.persist(s03);
@@ -600,6 +682,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(po01);
         em.persist(po02);
         em.persist(po03);
+
 
         em.persist(pay01);
         em.persist(pay02);
@@ -664,7 +747,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(account18);
         em.persist(account19);
         em.persist(account20);
-
+        
         em.persist(myOrder01);
         em.persist(myOrder02);
         em.persist(myOrder03);
@@ -697,24 +780,34 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(myTable08);
         em.persist(myTable09);
         em.persist(myTable10);
+<<<<<<< refs/remotes/origin/master
 
         em.persist(comboOrderItem01);
         
+=======
+>>>>>>> modif sam
         
+        em.persist(comboOrderItem01);
         
+<<<<<<< refs/remotes/origin/master
+=======
+        em.persist(prod17);
+        
+>>>>>>> modif sam
         em.persist(vat01);
         em.persist(vat02);
         em.persist(vat03);
-
+        
         em.persist(u01);
         em.persist(u02);
         em.persist(u03);
-
+        
         em.persist(prop01);
         em.persist(prop02);
         em.persist(prop03);
         em.persist(prop04);
         em.persist(prop05);
+        
 
         em.persist(ing01);
         em.persist(ing02);
@@ -722,6 +815,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(ing04);
         em.persist(ing05);
 
+<<<<<<< refs/remotes/origin/master
 
         em.persist(orderItem100);
         em.persist(orderItem101);
@@ -741,13 +835,53 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(orderItem113);
         em.persist(orderItem114);
 
+=======
+
+        em.persist(combo01);
+        em.persist(combo02);
+        
+        em.persist(prod17);
+        em.persist(prod18);
+        em.persist(prod19);
+        em.persist(prod20);
+        em.persist(prod21);
+        em.persist(prod22);
+        
+        em.persist(prod23);
+        em.persist(prod24);
+        em.persist(prod25);
+        em.persist(prod26);
+        em.persist(prod27);
+        em.persist(prod28);
+        em.persist(prod29);
+        em.persist(prod30);
+        
+        em.persist(comboCat01);
+        em.persist(comboCat02);
+        em.persist(comboCat03);
+        em.persist(comboCat04);
+        em.persist(comboCat05);
+        em.persist(comboCat06);
+         em.persist(comboCat11);
+        em.persist(comboCat10);
+>>>>>>> modif sam
         
         em.flush();
+//<<<<<<< HEAD
+//>>>>>>> provisoire jeu d essai + affichage produit et menu
+//=======
+//>>>>>>> jeannoBranch
 
+<<<<<<< refs/remotes/origin/master
     }
 
     
     
     }
+=======
+    
+    
+    }
+>>>>>>> modif sam
     
 }

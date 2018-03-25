@@ -56,7 +56,7 @@ public class MyTable implements Serializable {
 
     @Override
     public String toString() {
-        return "MyTable{" + "tableNumber=" + tableNumber + '}';
+        return "Table n°" + tableNumber ;
     }
 
     
