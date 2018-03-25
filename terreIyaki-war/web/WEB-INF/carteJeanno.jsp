@@ -13,43 +13,47 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <div>
-            <h3>Nos produits</h3>     
+        <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
+        <c:import url ="${urlNavbar}"/>
+        <main>
+            <div>
+                <h3>Nos produits</h3>     
 
-            <c:forEach var="prod" items="${product}"><p>
-                    ${prod.name} - ${prod.price}€ - ${prod.description} - Ajouter <a href="FrontController">ici</a>
-                </p>  </c:forEach>
+                <c:forEach var="prod" items="${product}"><p>
+                        ${prod.name} - ${prod.price}€ - ${prod.description} - Ajouter <a href="FrontController">ici</a>
+                    </p>  </c:forEach>
 
-                <h3>Voici nos menus</h3>
+                    <h3>Voici nos menus</h3>
 
-            <c:forEach var="com" items="${combo}">
-                <p>${com.name} - ${com.price}€ - ${com.description}
-<c:url value="FrontController?section=carteJeannory&action=formule&detection=itemFormul&nameCombo=${com.name}" var="url02" />
- - <a href="${url02}">détail</a>        
- <br/>Ajouter <a href="FrontController">ici</a></p>
-</c:forEach>                  
-                
-<h3>Détail sélection</h3>  
+                <c:forEach var="com" items="${combo}">
+                    <p>${com.name} - ${com.price}€ - ${com.description}
+                        <c:url value="FrontController?section=carteJeannory&action=formule&detection=itemFormul&nameCombo=${com.name}" var="url02" />
+                        - <a href="${url02}">détail</a>        
+                        <br/>Ajouter <a href="FrontController">ici</a></p>
+                    </c:forEach>                  
 
-
-<c:set var="nameCombo" value="${nameCombo}" scope="request" />
-    
-    
-<c:forEach var="comCat" items="${comboCategory}">
-${comCat.name}
+                <h3>Détail sélection</h3>  
 
 
+                <c:set var="nameCombo" value="${nameCombo}" scope="request" />
 
-<c:url value="FrontController?section=carteJeannory&action=formule&detection=itemFormul&faction=produitFormul&nameCombo=${nameCombo}&comboCategory=${comCat.name}" var="url01" />
- - <a href="${url01}">détail</a> <br/> 
-</c:forEach>  
 
-                
-                        <h3>Détail sélection</h3>
-                        <c:forEach var="comboProduct" items="${comboProduct}">
-                            ${comboProduct.name} -  ${comboProduct.description}<br/>
-                        </c:forEach>
+                <c:forEach var="comCat" items="${comboCategory}">
+                    ${comCat.name}
 
-        </div>
+
+
+                    <c:url value="FrontController?section=carteJeannory&action=formule&detection=itemFormul&faction=produitFormul&nameCombo=${nameCombo}&comboCategory=${comCat.name}" var="url01" />
+                    - <a href="${url01}">détail</a> <br/> 
+                </c:forEach>  
+
+
+                <h3>Détail sélection</h3>
+                <c:forEach var="comboProduct" items="${comboProduct}">
+                    ${comboProduct.name} -  ${comboProduct.description}<br/>
+                </c:forEach>
+
+            </div>
+        </main>
     </body>
 </html>

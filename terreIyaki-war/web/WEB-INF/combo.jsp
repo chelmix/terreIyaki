@@ -22,43 +22,46 @@
         <title>JSP Page</title>
     </head>
     <body>
-
-        <p>${message}</p>
-      
-
-    <c:forEach var="com" items="${combo}">
-    <div id="conteneur">
-<div class="element">
-<img src="${com.urlImage}" height="100"/>
-</div>
- <div class="element">
-
-     <c:url value="FrontController?section=combo&action=monCombo&comboName=${com.name}" var="url01"/>
-       <a href="${url01}">${com.name}
-           
-           
-                 
-        <br/>${com.description} - ${com.price} € </a>
-        
-        
- </div>
-        
-
-</div>     
-        </c:forEach>
-
-
-
-        
-        <c:if test="${HashProduct!=null}">
-            <h3>Menu ${comboName02} </h3>
+        <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
+        <c:import url ="${urlNavbar}"/>
+        <main>
             
-            <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/>
-            </a>
-            
-<%--           
- <h3>HashMap trié avant le request.SetAttribute, mais affichage aléatoire.... </h3>       
-  <c:forEach var="map" items="${HashProduct}">
+            <p>${message}</p>
+
+
+            <c:forEach var="com" items="${combo}">
+                <div id="conteneur">
+                    <div class="element">
+                        <img src="${com.urlImage}" height="100"/>
+                    </div>
+                    <div class="element">
+
+                        <c:url value="FrontController?section=combo&action=monCombo&comboName=${com.name}" var="url01"/>
+                        <a href="${url01}">${com.name}
+
+
+
+                            <br/>${com.description} - ${com.price} € </a>
+
+
+                    </div>
+
+
+                </div>     
+            </c:forEach>
+
+
+
+
+            <c:if test="${HashProduct!=null}">
+                <h3>Menu ${comboName02} </h3>
+
+                <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/>
+                </a>
+
+                <%--           
+                 <h3>HashMap trié avant le request.SetAttribute, mais affichage aléatoire.... </h3>       
+                  <c:forEach var="map" items="${HashProduct}">
 
 <br/>${map.key}<br/>
 <c:forEach var="map02" items="${map.value}">
@@ -66,145 +69,144 @@
      </c:forEach><br/>       
   </c:forEach>    
    
- --%>   
-     
-     
-
-           
-           
-           
-          
-
-<%
- //test
-  //out.print("<br><h3>Code dans la jsp ==> HashMap trié dans la jsp...</h3>");  
-    
-    HashMap <String,List<Product>> ha01 =new HashMap(); 
-  ha01 = (HashMap <String,List<Product>> ) request.getAttribute("HashProduct");
-  HashMap<String,List<Product>> ha02 =new HashMap(); 
- List<Product>lp01 = new ArrayList();
- String myKey="";  
-    
-    
-          Set set = ha01.entrySet();
-      Iterator iterator = set.iterator();
-  //    System.out.println("Avant le tri: ");
-      while(iterator.hasNext()) {
-         Map.Entry me = (Map.Entry)iterator.next();
-//         System.out.print(me.getKey() + ": ");
- //        System.out.println(me.getValue());
-      }
-
-      Map sortedMap = new TreeMap(ha01);
-
-      Set set2 = sortedMap.entrySet();
-      Iterator iterator2 = set2.iterator();
- //     System.out.println("Après le tri: ");
-      while(iterator2.hasNext()) {
-         Map.Entry me2 = (Map.Entry)iterator2.next();
-//         System.out.print(me2.getKey() + ": ");
-//         System.out.println(me2.getValue());
-         myKey = String.valueOf(me2.getKey());
-         lp01 = (List<Product>) me2.getValue();
-         ha02.put(myKey , lp01);
-     //    out.print("<br/>test");
-          out.print("<br><br/>"+myKey+"<br>");
-          
-          for (int i=0;i<lp01.size();i++){
-              
-        out.print("<br>"+lp01.get(i).getName());
-          out.print(" "+lp01.get(i).getDescription());    
-              
-          }
-
-    //     out.print("<br>"+lp01.toString());        
-      } 
-   
-    %>
- 
-        </c:if>
-     
-   
-
- 
- 
-     <c:if test="${comboCategory!=null}">
-         
-         
-         
-         
-         
-         <c:if test="${hashPanier!=null}">
-             
-
-             <c:if test="${menuRempli!=null}">
-             
-            <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>  (ne pas recevoir de facture électronique) 
-           <br/><br/>
-           
-                        <form action="FrontController" method="POST">
-                    Valider la commande et recevoir facture électronique (renseigner email)<input type="hidden" name="section" value="combo" />
-                  <input type="hidden" name="action" value="validerMenu" />
-                    <input type="hidden" name="detection" value="mail" />
-                <br/> <input type="text" name="email" value="" />
-                 <input type="submit" value="Envoyer" name="doIt" />
-                 
-             </form>
-             
-</c:if>
+                --%>   
 
 
-             <br/>Sous menu choisi <c:forEach var="hashPanr" items="${hashPanier}"> 
-             
-         <br/>${hashPanr.key}
-         </c:forEach>
-         </c:if>
-     <c:if test="${menuRempli!=null}">
-              
-     </c:if>
- 
- 
-         <h3>${nameComboChoice}</h3>
-         <c:forEach var="comboChoose" items="${comboCategory}">
-             
-             <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${nameComboChoice}&faction=produitFormul&comboCategory=${comboChoose.name}">${comboChoose.name}</a>  
 
-         </c:forEach>
-      <hr/>
-            <c:forEach var="comboProductToChoose" items="${comboProduct}"> 
-         <div id="conteneur"> 
-             
-     <div class="element">
-         <img src="${comboProductToChoose.picture}" height="90"/>
-       </div>   
-     <div class="element">
-<a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${nameComboChoice}&faction=produitFormul&comboCategory=${nomCategorie}&vaction=choix&productChoose=${comboProductToChoose.name}"><img src="images/ajouter.png" width="80" alt="ajouter"/> </a> 
-         <br/>${comboProductToChoose.name}<br/>     
 
-             ${comboProductToChoose.description}
-         </div>  
-         
-   
-        </div> 
 
-              </c:forEach>         
-          
-         
-     </c:if>     
-     
-     
-     
-      <c:if test="${menuCommande!=null}">
-      <c:forEach var="achat" items="${menuCommande}">
-          
-          
-         menu commandé : ${achat.key} - quantité : ${achat.value}
-          <c:url value="FrontController?section=versLogin" var="url02" />
-        
-          <br/><br/>retour vers acceuil Client :  <a href="${url02}">  ici </a>         
-      </c:forEach>
+
+
+
+                <%
+                    //test
+                    //out.print("<br><h3>Code dans la jsp ==> HashMap trié dans la jsp...</h3>");  
+
+                    HashMap<String, List<Product>> ha01 = new HashMap();
+                    ha01 = (HashMap<String, List<Product>>) request.getAttribute("HashProduct");
+                    HashMap<String, List<Product>> ha02 = new HashMap();
+                    List<Product> lp01 = new ArrayList();
+                    String myKey = "";
+
+                    Set set = ha01.entrySet();
+                    Iterator iterator = set.iterator();
+                    //    System.out.println("Avant le tri: ");
+                    while (iterator.hasNext()) {
+                        Map.Entry me = (Map.Entry) iterator.next();
+                        //         System.out.print(me.getKey() + ": ");
+                        //        System.out.println(me.getValue());
+                    }
+
+                    Map sortedMap = new TreeMap(ha01);
+
+                    Set set2 = sortedMap.entrySet();
+                    Iterator iterator2 = set2.iterator();
+                    //     System.out.println("Après le tri: ");
+                    while (iterator2.hasNext()) {
+                        Map.Entry me2 = (Map.Entry) iterator2.next();
+                //         System.out.print(me2.getKey() + ": ");
+                        //         System.out.println(me2.getValue());
+                        myKey = String.valueOf(me2.getKey());
+                        lp01 = (List<Product>) me2.getValue();
+                        ha02.put(myKey, lp01);
+                        //    out.print("<br/>test");
+                        out.print("<br><br/>" + myKey + "<br>");
+
+                        for (int i = 0; i < lp01.size(); i++) {
+
+                            out.print("<br>" + lp01.get(i).getName());
+                            out.print(" " + lp01.get(i).getDescription());
+
+                        }
+
+                        //     out.print("<br>"+lp01.toString());        
+                    }
+
+                %>
+
             </c:if>
-         
-            
+
+
+
+
+
+            <c:if test="${comboCategory!=null}">
+
+
+
+
+
+                <c:if test="${hashPanier!=null}">
+
+
+                    <c:if test="${menuRempli!=null}">
+
+                        <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>  (ne pas recevoir de facture électronique) 
+                        <br/><br/>
+
+                        <form action="FrontController" method="POST">
+                            Valider la commande et recevoir facture électronique (renseigner email)<input type="hidden" name="section" value="combo" />
+                            <input type="hidden" name="action" value="validerMenu" />
+                            <input type="hidden" name="detection" value="mail" />
+                            <br/> <input type="text" name="email" value="" />
+                            <input type="submit" value="Envoyer" name="doIt" />
+
+                        </form>
+
+                    </c:if>
+
+
+                    <br/>Sous menu choisi <c:forEach var="hashPanr" items="${hashPanier}"> 
+
+                        <br/>${hashPanr.key}
+                    </c:forEach>
+                </c:if>
+                <c:if test="${menuRempli!=null}">
+
+                </c:if>
+
+
+                <h3>${nameComboChoice}</h3>
+                <c:forEach var="comboChoose" items="${comboCategory}">
+
+                    <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${nameComboChoice}&faction=produitFormul&comboCategory=${comboChoose.name}">${comboChoose.name}</a>  
+
+                </c:forEach>
+                <hr/>
+                <c:forEach var="comboProductToChoose" items="${comboProduct}"> 
+                    <div id="conteneur"> 
+
+                        <div class="element">
+                            <img src="${comboProductToChoose.picture}" height="90"/>
+                        </div>   
+                        <div class="element">
+                            <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${nameComboChoice}&faction=produitFormul&comboCategory=${nomCategorie}&vaction=choix&productChoose=${comboProductToChoose.name}"><img src="images/ajouter.png" width="80" alt="ajouter"/> </a> 
+                            <br/>${comboProductToChoose.name}<br/>     
+
+                            ${comboProductToChoose.description}
+                        </div>  
+
+
+                    </div> 
+
+                </c:forEach>         
+
+
+            </c:if>     
+
+
+
+            <c:if test="${menuCommande!=null}">
+                <c:forEach var="achat" items="${menuCommande}">
+
+
+                    menu commandé : ${achat.key} - quantité : ${achat.value}
+                    <c:url value="FrontController?section=versLogin" var="url02" />
+
+                    <br/><br/>retour vers acceuil Client :  <a href="${url02}">  ici </a>         
+                </c:forEach>
+            </c:if>
+
+        </main>            
     </body>
 </html>

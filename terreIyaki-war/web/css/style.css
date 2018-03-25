@@ -17,3 +17,20 @@ h2 {
 p.message {
     color: red;
 }
+
+a.button, input.button {
+  display : block;
+  background-color: lightseagreen;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a.button:hover {
+  background-color: #555;
+}
+
+a.button:active {
+  background-color: black;
+}

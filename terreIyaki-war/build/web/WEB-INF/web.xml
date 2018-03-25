@@ -36,8 +36,16 @@
             <param-name>product-choice</param-name>
             <param-value>subControllers.ProductChoiceCtrl</param-value>
         </init-param>
+        
+        <init-param>
+            <param-name>include</param-name>
+            <param-value>subControllers.IncludeCtrl</param-value>
+        </init-param>
 
-
+        <init-param>
+            <param-name>home</param-name>
+            <param-value>subControllers.HomeCtrl</param-value>
+        </init-param>
         
                                                
         <init-param>
