@@ -26,48 +26,49 @@ import javax.persistence.Temporal;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name = "entityBeans.MyOrder.getOrderToPay",
-query = "Select m from MyOrder m where m.status.Name = :paramStatusName"),
-            @NamedQuery(name ="entityBeans.MyOrder.getItemsByOrder",
-          query="Select m.orderItems from MyOrder m where m.id =:paramMyOrderId")   
+    @NamedQuery(name = "entityBeans.MyOrder.getOrderToPay",
+            query = "Select m from MyOrder m where m.status.Name = :paramStatusName"),
+    @NamedQuery(name = "entityBeans.MyOrder.getItemsByOrder",
+            query = "Select m.orderItems from MyOrder m where m.id =:paramMyOrderId"),
+    @NamedQuery(name = "entityBeans.MyOrder.getOrderById",
+            query = "Select m from MyOrder m where m.id =:paramMyOrderId")
 })
 public class MyOrder implements Serializable {
-
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date orderDate;
-    
+
     @ManyToOne
     private Status status;
-    
+
     @ManyToOne
     private Account account;
-    
+
     @ManyToMany
-    private Collection<MyTable> myTables;  
-    
-    @OneToMany (mappedBy="myOrder")
-    private Collection <Payment> payments; 
-    
-    @OneToMany(mappedBy="myOrder")
-    private Collection<OrderItem>orderItems;
+    private Collection<MyTable> myTables;
+
+    @OneToMany(mappedBy = "myOrder")
+    private Collection<Payment> payments;
+
+    @OneToMany(mappedBy = "myOrder")
+    private Collection<OrderItem> orderItems;
 
     public MyOrder() {
         myTables = new ArrayList();
         orderItems = new ArrayList();
-        payments = new ArrayList(); 
+        payments = new ArrayList();
     }
 
     public MyOrder(Date orderDate) {
         this();
         this.orderDate = orderDate;
-    } 
-    
+    }
+
     public Long getId() {
         return id;
     }
@@ -75,7 +76,6 @@ public class MyOrder implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     @Override
     public String toString() {
@@ -114,7 +114,6 @@ public class MyOrder implements Serializable {
         this.orderItems = orderItems;
     }
 
-
     public Account getAccount() {
         return account;
     }
@@ -130,7 +129,5 @@ public class MyOrder implements Serializable {
     public void setPayments(Collection<Payment> payments) {
         this.payments = payments;
     }
-    
-    
-    
+
 }

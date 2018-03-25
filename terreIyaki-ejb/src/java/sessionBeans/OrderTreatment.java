@@ -7,6 +7,7 @@ package sessionBeans;
 
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
+import entityBeans.MyOrder;
 import entityBeans.Product;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -248,6 +249,10 @@ return panier;
 
     
 }
+ 
+
+ 
+ 
     //on récupère tous les menus commandés
 
     

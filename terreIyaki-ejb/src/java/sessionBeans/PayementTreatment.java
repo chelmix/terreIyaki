@@ -13,7 +13,10 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 import entityBeans.MyOrder;
 import entityBeans.OrderItem;
+import entityBeans.Payment;
+import entityBeans.PaymentOption;
 import entityBeans.Product;
+import entityBeans.Status;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -24,9 +27,13 @@ import javax.activation.FileDataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.mail.Message;
@@ -115,14 +122,18 @@ public class PayementTreatment implements PayementTreatmentLocal {
 
             
  //***********************PJ****************************************************           
-//A changer            
-//DataSource source = new FileDataSource("/home/jeanno/Files/test.pdf");
-DataSource source = new FileDataSource("/home/jeannory/Files/test.pdf");
+//En local local            
+DataSource source = new FileDataSource("/home/jeanno/Files/test.pdf");
+            
+//sur serveur distant            
+//DataSource source = new FileDataSource("/home/jeannory/Files/test.pdf");
 message.setDataHandler(new DataHandler(source));
 
-//A changer  
-//message.setFileName("/home/jeanno/Files/test.pdf");
-message.setFileName("/home/jeannory/Files/test.pdf");
+//En local local  
+message.setFileName("/home/jeanno/Files/test.pdf");
+
+//sur serveur distant 
+//message.setFileName("/home/jeannory/Files/test.pdf");
 
  //***********************PJ****************************************************                               
            
@@ -247,26 +258,7 @@ ioe.printStackTrace();
 document.close();
 }
         
-        
-
-//    public void createPdf(){
-//        Document document = new Document(PageSize.A4);
-//try {
-//PdfWriter.getInstance(document,
-//new FileOutputStream("c:/test.pdf"));
-//document.open();
-//document.add(new Paragraph("Hello World"));
-//} catch (DocumentException de) {
-//de.printStackTrace();
-//} catch (IOException ioe) {
-//ioe.printStackTrace();
-//}
-//document.close();
-//}
-//        
-//        
-
-
+ 
     
  //afficher toutes les commandes en attente de règlement
     @Override
@@ -329,7 +321,349 @@ document.close();
        return  or01;
     }
     
+    //fonction pour avoir le solde restant 
+    @Override
+    public float getMontantRestant(float priceTotal, float payment){
+
+      float  montantRestantTTC = priceTotal -payment;
+        
+        System.out.println(" montantRestantTTC dans la méthode ++++++++++++    "+ montantRestantTTC);
+        return montantRestantTTC;
+        
+    }
     
+  //disposer de tous les moyens de payment
+    @Override
+    public List<PaymentOption> getPaymentType() throws CustomException{
+      List<PaymentOption> op01;
+      TypedQuery<PaymentOption> qr = em.createNamedQuery("entityBeans.PaymentOption.getPaymentType", PaymentOption.class);
+     try{
+         op01= qr.getResultList();}
+     catch (NoResultException ex){
+         CustomException ce = new CustomException(CustomException.USER_ERR,"pas de moyen de payment");
+         throw ce;
+     }
+       return  op01;
+    }
+    
+    
+  //on récupère l objet pour l associer au montant réglé  
+    @Override
+    public PaymentOption getObjectPaymentType(String nameChoisi)throws CustomException{
+        PaymentOption op01;
+            TypedQuery<PaymentOption> qr = em.createNamedQuery("entityBeans.PaymentOption.getObjectPaymentType", PaymentOption.class);
+     qr.setParameter("paramName", nameChoisi);
+            try{
+         op01= qr.getSingleResult();}
+     catch (NoResultException ex){
+         CustomException ce = new CustomException(CustomException.USER_ERR,"pas de moyen de payment");
+         throw ce;
+     }
+       return  op01;  
+        
+    }
+    
+    
+    @Override
+  public MyOrder getOrderById(long id) throws CustomException{
+      MyOrder mo01;
+     TypedQuery<MyOrder> qr=em.createNamedQuery("entityBeans.MyOrder.getOrderById",MyOrder.class);
+     qr.setParameter("paramMyOrderId", id);
+     try{
+         mo01=qr.getSingleResult();
+     }
+        catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de commande");
+         throw ce;
+     }
+     return mo01;
+ }   
+  
+  
+  //prix facture TTC, option de payment choisi, n° commande et montant encaissé
+    @Override
+ public void persistPayment(float priceTotal, PaymentOption po02, MyOrder my02 , float mt){
+            
+          SimpleDateFormat formater = null;
+        Date aujourdhui = new Date();
+
+        formater = new SimpleDateFormat("EEEE d MMM yyyy");
+
+        Date today = aujourdhui;
+
+Payment po01 = new Payment(today,mt);
+po01.setPaymentOption(po02);
+po01.setMyOrder(my02);
+
+em.persist(po01); 
+
+} 
+ 
+ 
+
+ 
+ 
+    @Override
+    public float getMontantEncaisseTTC(float priceTotal, MyOrder my02) {
+        List<Payment> lo09 = new ArrayList();
+try{
+     lo09= getPaymentbyOrder(my02.getId());
+            }catch (CustomException ex){
+      String text = ex.getMessage();
+
+  }    
+    //si le prix total est inférieur à la somme encaissé on change de statut ==> les montants encaissés sont en TTC
+float cumulPayment=0f;
+for(int i=0;i<lo09.size();i++){
+    cumulPayment = cumulPayment + lo09.get(i).getAmount();
+    
+}
+
+//System.out.println("++++++++++++++++++++++++++++  cumulPayment cumulPayment "+cumulPayment); 
+
+    return cumulPayment;
+   
+    
+}
+ 
+ 
+    @Override
+ public void changeStatutOrder(float priceTotal, float cumulPayment, long id){
+
+     
+     if(cumulPayment>=priceTotal){
+           String mot = "Payé";
+           
+      
+           
+           
+           
+           
+           
+     try{
+         MyOrder my02 =getOrderById(id); 
+     Status st01 = getStatus(mot);
+      my02.setStatus(st01);
+      em.persist(my02);
+}catch (CustomException ex){
+      String text = ex.getMessage();
+     
+  }  
+
+     
+     
+     }
+     
+ }
+ 
+ 
+ 
+ 
+ 
+    @Override
+    public Status getStatus(String name) throws CustomException {
+    Status st01;
+        TypedQuery<Status> qr = em.createNamedQuery("entityBeans.Status.getStatus",Status.class);
+    qr.setParameter("nameStatus", name);
+    try{
+st01= qr.getSingleResult();
+    }
+            catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de commande");
+         throw ce;
+     }
+    return st01;
+    
+}
+    
+    
+    
+    @Override
+    public List<Payment> getPaymentbyOrder(Long id) throws CustomException{
+        List<Payment> lo09;
+         TypedQuery<Payment> qr = em.createNamedQuery("entityBeans.Payment.getPaymentByOrder",Payment.class);
+    qr.setParameter("paramIdMyOrder", id);
+    try{
+lo09= qr.getResultList();
+    }
+            catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de paiement");
+         throw ce;
+     }       
+        return lo09;
+    }
+ 
+    
+    
+
+//
+//    public void envoyerMailV02(String mailDestinataire) throws NamingException, SQLException, EJBException {
+//
+//
+//
+//        //on utilise une méthode d'un pojo pour récupérer identifiant de connexion à la boite mail
+//        Mail mail01 = getMail();
+//
+//        String from = mail01.getMail();//mettre adresse mail
+//        final String username = mail01.getMail();//mettre adresse mail
+//        final String password = mail01.getMdp();//mettre mot de passe
+//
+//        String host = "smtp.gmail.com";
+//
+//        Properties props = new Properties();
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.starttls.enable", "true");
+//        props.put("mail.smtp.host", host);
+//        props.put("mail.smtp.port", "587");
+//
+//        // Get the Session object.
+//        Session session = Session.getInstance(props,
+//                new javax.mail.Authenticator() {
+//                    @Override
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(username, password);
+//                    }
+//                });
+//
+//        try {
+//            // Create a default MimeMessage object.
+//            Message message = new MimeMessage(session);
+//
+//            // Set From: header field of the header.
+//            message.setFrom(new InternetAddress(from));
+//
+//            // Set To: header field of the header.
+//            message.setRecipients(Message.RecipientType.TO,
+//                    InternetAddress.parse(mailDestinataire));
+//
+//            // Set Subject: header field
+//            message.setSubject("Restaurant Iyaki - Facture");
+//
+//            // Now set the actual message
+//            message.setText("Votre Restaurant Iyaki vous remercie de votre visite\nVous trouverez ci-joint votre facture\nEn espérant vous retrouver prochainement");
+//
+//
+//            
+// //***********************PJ****************************************************           
+////A changer            
+////DataSource source = new FileDataSource("/home/jeanno/Files/test.pdf");
+//DataSource source = new FileDataSource("/home/jeannory/Files/test.pdf");
+//message.setDataHandler(new DataHandler(source));
+//
+////A changer  
+////message.setFileName("/home/jeanno/Files/test.pdf");
+//message.setFileName("/home/jeannory/Files/test.pdf");
+//
+// //***********************PJ****************************************************                               
+//           
+//
+//            // Send message
+//            Transport.send(message);
+//
+//            System.out.println("Sent message successfully....");
+//
+//        } catch (MessagingException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//    }
+//
+
+    /**
+     *
+     * @param my02
+     * @param or01
+     * @param priceTotal
+     * @param lo09
+     */
+    
+
+    @Override
+    public void getBillPdfV02(MyOrder my02, List<OrderItem> po03, float priceTotal, List<Payment> lo09 ){
+        com.lowagie.text.Document document = new com.lowagie.text.Document(PageSize.A4);
+try{
+//en local    
+PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/test.pdf"));
+
+//sur serveur distant
+//PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/test.pdf"));
+document.open();
+
+//en local
+Image image = Image.getInstance("/home/jeanno/Files/logo.png");
+
+//sur serveur distant
+//Image image = Image.getInstance("/home/jeannory/Files/logo.png");
+document.add(image);
+SimpleDateFormat formater = null;
+Date aujourdhui = new Date();
+        
+formater = new SimpleDateFormat("EEEE d MMM yyyy");      
+ 
+Paragraph paragraph = new Paragraph("\n\n\n");
+document.add(paragraph);
+        
+paragraph = new Paragraph("Facture n° "+my02.getId()+ " - "+formater.format(aujourdhui));
+paragraph.setIndentationLeft(30f);
+document.add(paragraph);
+
+
+paragraph = new Paragraph("Montant total : "+priceTotal  +"€ TTC");
+paragraph.setIndentationLeft(15f);
+document.add(paragraph);
+
+ paragraph = new Paragraph("\n\n");
+document.add(paragraph);
+
+paragraph = new Paragraph("Produits :");
+paragraph.setIndentationLeft(15f);
+document.add(paragraph);
+
+
+//je fais une boucle de tous les produits
+for(OrderItem po : po03){
+ paragraph = new Paragraph(   
+   "Qté : 1 - prix : "+po.getProduct().getPrice()+"€ HT - tva : "+ po.getProduct().getVat().getRate()+ "% - " +po.getProduct().getName());
+document.add(paragraph);
+}
+
+//for(OrderItem po : po03){
+// paragraph = new Paragraph(   
+//   "\nMenu - Qté : 1 - "+po.getCombo().getName());
+//}
+
+paragraph = new Paragraph("\n");
+document.add(paragraph);
+paragraph = new Paragraph("\n");
+document.add(paragraph);
+
+paragraph = new Paragraph("Règlements :");
+paragraph.setIndentationLeft(15f);
+document.add(paragraph);
+
+
+for(Payment pa : lo09 ){
+ paragraph = new Paragraph(   
+   "Montant : "+pa.getAmount()+"€ -"+ pa.getPaymentOption().getName());
+document.add(paragraph);
+}
+
+
+paragraph = new Paragraph("\n\n\n");
+document.add(paragraph);
+
+paragraph = new Paragraph("Terre Iyaki Restaurant vous remercie de votre visite et vous dit à bientôt");
+document.add(paragraph);
+
+
+} catch (DocumentException de) {
+de.printStackTrace();
+} catch (IOException ioe) {
+ioe.printStackTrace();
+}
+document.close();
+}
+          
 }
 
 

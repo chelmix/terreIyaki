@@ -144,9 +144,6 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         myOrder02.setStatus(s10);
 
         myOrder02.setStatus(s05);
-        
-       
-
 
         MyOrder myOrder03 = new MyOrder(d03);
         List<MyTable> listMyTable = new ArrayList();
@@ -224,7 +221,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         Product prod55 = new Product("Coca cola", 5f, "http", "servi avec rondelle de citron");
         Product prod56 = new Product("Fanta", 5f, "http", "saveur exotique");
-        
+
         // ajout des options au pif pour test
         prod07.getOptions().add(opt05);
         prod07.getOptions().add(opt04);
@@ -244,7 +241,6 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         // ajout accompagnements au pif pour le test
         prod07.getSides().add(prod12);
         prod07.getSides().add(prod13);
-        
 
         //cat01 à cat05
         Category cat01 = new Category("Entrées");
@@ -350,7 +346,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         OrderItem comboOrderItem01 = new OrderItem(100f, 20f);
 
-   //     orderItem01.setMyOrder(myOrder01);
+        //     orderItem01.setMyOrder(myOrder01);
 //        orderItem02.setMyOrder(myOrder02);
 //        orderItem03.setMyOrder(myOrder02);
 //        orderItem04.setMyOrder(myOrder02);
@@ -455,7 +451,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prod28.setComboCategories(listComboCat06);
         prod29.setComboCategories(listComboCat07);
 
-  //combo 1       
+        //combo 1       
         Combo combo01 = new Combo("Bento ShoKado", 62f, "menu 3 étoiles", "images/bentoShokado.jpg");
 
         ComboCategory comboCat01 = new ComboCategory(1, "1 - Entree au choix");
@@ -535,9 +531,8 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         orderItem107.setProduct(prod21);
 
         OrderItem orderItem108 = new OrderItem(5f, 10f);
-orderItem108.setProduct(prod22);
-        
-        
+        orderItem108.setProduct(prod22);
+
         orderItem105.setComboOrderItem(orderItem105);
         orderItem106.setComboOrderItem(orderItem105);
         orderItem107.setComboOrderItem(orderItem105);
@@ -868,7 +863,7 @@ orderItem108.setProduct(prod22);
 
         em.persist(orderItem125);
 
-   //      em.persist(comboCat11);
+        //      em.persist(comboCat11);
         em.flush();
 
     }

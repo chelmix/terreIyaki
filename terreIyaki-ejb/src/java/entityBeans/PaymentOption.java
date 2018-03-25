@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -17,6 +19,12 @@ import javax.persistence.OneToMany;
  * @author samira
  */
 @Entity
+@NamedQueries({
+   @NamedQuery(name = "entityBeans.PaymentOption.getPaymentType",
+           query = "Select p from PaymentOption p") ,
+    @NamedQuery(name = "entityBeans.PaymentOption.getObjectPaymentType",
+            query="Select p from PaymentOption p where p.Name=:paramName")
+})
 public class PaymentOption implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
