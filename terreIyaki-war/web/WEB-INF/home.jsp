@@ -18,36 +18,25 @@
             <p>Bonjour ${user.firstName} ${user.lastName}</p>
 
             <c:forEach var="my" items="${myGrants}">
-                <br/> Profil : ${my.name}
+                <p> Profil : ${my.name}</p>
                 <c:if test="${my.name=='client'}">
                     <br/>Bienvenue à la table n° ${user.myTable.tableNumber}   
                 </c:if>
-                <br /><br />
                 <c:if test="${my.name=='client'||my.name=='serveur'}">
                     
                     <c:url value="FrontController?section=overview" var="url10" />
-                    <a class="button" href="${url10}">Consulter la carte</a>
-                    <br /><br />
-                    <c:url value="FrontController?section=carteJeannory&action=produit" var="url02" />
-                    A la carte  :  <a href="${url02}">  ici </a>     
-                    <c:url value="FrontController?section=carteJeannory&action=formule" var="url03" />
-                    <br/>vers les formules  :  <a href="${url03}">  ici </a>       
-
+                    <a class="button" href="${url10}">À la carte</a>
                     <c:url value="FrontController?section=combo&action=allCombo" var="url04" />
-                    <br/>Formule V2  :  <a href="${url04}">  ici </a>  
-                    
+                    <a class="button" href="${url04}">Formules</a> 
                 </c:if>
                 <c:if test="${my.name=='caissier'}">
                     <c:url value="FrontController?section=payment&action=enCours" var="url33" />
-                    <br/>Commande en attente de règlement : <a href="${url33}"  >Ici</a>
+                    <a class="button" href="${url33}"  >Commande en attente de règlement</a>
                 </c:if>
-
-
             </c:forEach>
 
 
-            <c:url value="FrontController?section=login&action=logout" var="url01" />
-            <p>Se déconnecter :  <a href="${url01}">  ici </a> </p>
+            
         </c:if>
         </main>    
     </body>

@@ -13,13 +13,15 @@
         <main>
             <h1>Catégorie : ${category.name}</h1>   
             <c:forEach var = "pro" items="${products}">
-                <p>${pro.name} : ${pro.description}<br />
-                    Prix HT : ${pro.price} - todo prix ttc <br />
-                </p>
-                <c:url value="FrontController?section=overview&product-id=${pro.id}" var="url03" />
-                <a class="button" href="${url03}">Détails</a><br>
-                <c:url value="FrontController?section=product-choice&product-id=${pro.id}" var="url04" />
-                <a class="button" href="${url04}">Choisir</a><br>
+                <article>
+                    <p>${pro.name} : ${pro.description}<br />
+                        Prix HT : ${pro.price} € - todo prix ttc <br />
+                    </p>
+                    <c:url value="FrontController?section=overview&product-id=${pro.id}" var="url03" />
+                    <a class="button" href="${url03}">Détails</a>
+                    <c:url value="FrontController?section=product-choice&product-id=${pro.id}" var="url04" />
+                    <a class="button" href="${url04}">Choisir</a>
+                </article>
             </c:forEach>
         </main>
     </body>

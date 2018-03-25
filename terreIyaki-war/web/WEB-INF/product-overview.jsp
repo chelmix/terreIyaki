@@ -15,10 +15,10 @@
             <p>
                 ${product.name}<br />
                 ${product.description}<br />
-                Prix HT : ${product.price} - todo prix TTC<br />
+                Prix HT : ${product.price} € - todo prix TTC<br />
             </p>
-            <c:url value="FrontController?section=product-choice&product-id=${pro.id}" var="url04" />
-            <a class="button" href="${url04}">Choisir</a><br /><br />
+            <c:url value="FrontController?section=product-choice&product-id=${product.id}" var="url04" />
+            <a class="button" href="${url04}">Choisir</a><br />
             <h2>
                 Propriétés    
             </h2>
