@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 
 /**
@@ -21,6 +23,11 @@ import javax.persistence.OneToOne;
  * @author jeanno
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "entityBeans.MyTable.selectAll", 
+            query = "select t from MyTable t")   
+        })
+
 public class MyTable implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,13 +50,12 @@ public class MyTable implements Serializable {
 
     public MyTable(int tableNumber) {
         this();
-        this.tableNumber = tableNumber;
-       
+        this.tableNumber = tableNumber;  
     }  
 
     @Override
     public String toString() {
-        return "MyTable{" + "tableNumber=" + tableNumber + '}';
+        return "Table n°" + tableNumber ;
     }
 
     

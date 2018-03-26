@@ -52,9 +52,12 @@
             <param-name>payment</param-name>
             <param-value>subControllers.PaymentCtrl</param-value>
         </init-param>
-                                                                                          
-                                                                                                                                                                    
-                                      
+        
+        <init-param>
+            <param-name>table</param-name>
+            <param-value>subControllers.VersMyTablesCtrl</param-value>
+        </init-param>
+                                 
        </servlet>
 
     <servlet-mapping>
