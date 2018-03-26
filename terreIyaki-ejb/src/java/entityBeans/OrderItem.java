@@ -25,7 +25,7 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
     @NamedQuery(name ="entityBeans.OrderItem.selectByOrder",
-        query="Select o from OrderItem o where o.myOrder.id = :paramMyOrderId"),
+        query="Select o from OrderItem o where o.myOrder.id = :paramMyOrderId")
 //    @NamedQuery(name ="entityBeans.OrderItem.getProductsByOrder",
 //          query="Select o.products from OrderItem o where o.order.id =:paramMyOrderId")            
 })

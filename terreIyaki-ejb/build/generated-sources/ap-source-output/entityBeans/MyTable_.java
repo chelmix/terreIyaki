@@ -8,7 +8,11 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-25T23:00:02")
+<<<<<<< HEAD
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-26T09:42:01")
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-25T22:38:32")
+>>>>>>> jeannoBranch
 @StaticMetamodel(MyTable.class)
 public class MyTable_ { 
 
