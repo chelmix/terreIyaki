@@ -8,13 +8,17 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
+        <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
+        <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
         <main>
             <h1>Catégorie : ${category.name}</h1>   
             <c:forEach var = "pro" items="${products}">
                 <article>
-                    <p>${pro.name} : ${pro.description}<br />
+                    <img src="${pro.picture}" />
+                    <p class="product-name">${pro.name}</p>
+                    <p>${pro.description}<br />
                         Prix HT : ${pro.price} € - todo prix ttc <br />
                     </p>
                     <c:url value="FrontController?section=overview&product-id=${pro.id}" var="url03" />

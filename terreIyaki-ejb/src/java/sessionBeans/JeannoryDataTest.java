@@ -202,25 +202,25 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         account20.setMyTable(myTable10);
 
         // prod01 à prod16
-        Product prod01 = new Product("Yasai", 20f, "http", "Tempura de légumes 7 pièces");
-        Product prod02 = new Product("Ebi", 33f, "http", "Tempura de gambas 6 pièces");
-        Product prod03 = new Product("Moriawase 6", 25f, "http", "Tempura de légumes et de gambas 6 pièces");
-        Product prod04 = new Product("Ise Ebi", 50f, "http", "Tempura de langoustes");
-        Product prod05 = new Product("Moriawase 10", 35f, "http", "Tempura de légumes et de gambas 10 pièces");
-        Product prod06 = new Product("Kagoshima", 90f, "http", "Entrecôte de boeuf Wagyu de Kagoshima");
-        Product prod07 = new Product("Torikatsu Toji", 29f, "http", "Torikatsu Toji");
-        Product prod08 = new Product("Shake-Terriyaki", 30f, "http", "Saumon Royal de l'Océan Pacifique");
-        Product prod09 = new Product("Gohan", 7f, "http", "Riz nature");
-        Product prod10 = new Product("Miso-Shiro", 7f, "http", "Soupe Miso");
-        Product prod11 = new Product("Yasai Mushi", 11f, "http", "Légumes de saison à la vapeur, coulis de sésame");
-        Product prod12 = new Product("Agedashi", 11f, "http", "Tofu frit");
-        Product prod13 = new Product("Edamame 6", 19f, "http", "Soja vert");
-        Product prod14 = new Product("Kyuri Wakame", 8f, "http", "Salade japonaise");
-        Product prod15 = new Product("Nasu", 9f, "http", "Aubergines confites");
-        Product prod16 = new Product("Kara Age", 9f, "http", "Beignet de poulet");
+        Product prod01 = new Product("Yasai", 20f, "images/default-product.jpg", "Tempura de légumes 7 pièces");
+        Product prod02 = new Product("Ebi", 33f, "images/default-product.jpg", "Tempura de gambas 6 pièces");
+        Product prod03 = new Product("Moriawase 6", 25f, "images/default-product.jpg", "Tempura de légumes et de gambas 6 pièces");
+        Product prod04 = new Product("Ise Ebi", 50f, "images/default-product.jpg", "Tempura de langoustes");
+        Product prod05 = new Product("Moriawase 10", 35f, "images/default-product.jpg", "Tempura de légumes et de gambas 10 pièces");
+        Product prod06 = new Product("Kagoshima", 90f, "images/default-product.jpg", "Entrecôte de boeuf Wagyu de Kagoshima");
+        Product prod07 = new Product("Torikatsu Toji", 29f, "images/default-product.jpg", "Torikatsu Toji");
+        Product prod08 = new Product("Shake-Terriyaki", 30f, "images/default-product.jpg", "Saumon Royal de l'Océan Pacifique");
+        Product prod09 = new Product("Gohan", 7f, "images/default-product.jpg", "Riz nature");
+        Product prod10 = new Product("Miso-Shiro", 7f, "images/default-product.jpg", "Soupe Miso");
+        Product prod11 = new Product("Yasai Mushi", 11f, "images/default-product.jpg", "Légumes de saison à la vapeur, coulis de sésame");
+        Product prod12 = new Product("Agedashi", 11f, "images/default-product.jpg", "Tofu frit");
+        Product prod13 = new Product("Edamame 6", 19f, "images/default-product.jpg", "Soja vert");
+        Product prod14 = new Product("Kyuri Wakame", 8f, "images/default-product.jpg", "Salade japonaise");
+        Product prod15 = new Product("Nasu", 9f, "images/default-product.jpg", "Aubergines confites");
+        Product prod16 = new Product("Kara Age", 9f, "images/default-product.jpg", "Beignet de poulet");
 
-        Product prod55 = new Product("Coca cola", 5f, "http", "servi avec rondelle de citron");
-        Product prod56 = new Product("Fanta", 5f, "http", "saveur exotique");
+        Product prod55 = new Product("Coca cola", 5f, "images/default-product.jpg", "servi avec rondelle de citron");
+        Product prod56 = new Product("Fanta", 5f, "images/default-product.jpg", "saveur exotique");
 
         // ajout des options au pif pour test
         prod07.getOptions().add(opt05);
@@ -250,13 +250,22 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Category cat05 = new Category("Accompagnements");
 
         // attribution de catégories aux produits
-        prod01.setCategory(cat05);
-        prod02.setCategory(cat05);
-        prod03.setCategory(cat05);
-        prod04.setCategory(cat04);
-        prod05.setCategory(cat04);
+        prod01.setCategory(cat02);
+        prod02.setCategory(cat02);
+        prod03.setCategory(cat02);
+        prod04.setCategory(cat02);
+        prod05.setCategory(cat02);
         prod06.setCategory(cat03);
         prod07.setCategory(cat02);
+        prod08.setCategory(cat04);
+        prod09.setCategory(cat05);
+        prod10.setCategory(cat01);
+        prod11.setCategory(cat05);
+        prod12.setCategory(cat01);
+        prod13.setCategory(cat01);
+        prod14.setCategory(cat01);
+        prod15.setCategory(cat01);
+        prod16.setCategory(cat01);
 
         List<MyGrant> listMyGrant01 = new ArrayList();
         List<MyGrant> listMyGrant02 = new ArrayList();
@@ -418,13 +427,13 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         Combo combo02 = new Combo("Zen", 45f, "menu abordable", "images/Zen.jpg");
 //      Zen  
-        Product prod23 = new Product("King starter", 10f, "images/nonDisponible.png", "Petits hors-d'oeuvres avec sa soupe Miso");
-        Product prod24 = new Product("Sushi rary", 30f, "images/nonDisponible.png", "Assortiment variés de 7 sushi et 6 maki");
-        Product prod25 = new Product("Tempura gaya", 30f, "images/nonDisponible.png", "8 exotiques tempura de gambas avec ses légumes ou plats royal de légumes tempura (plat végétarien)");
-        Product prod26 = new Product("Sushi Tempura", 30f, "images/nonDisponible.png", "Délicieux assortiment de 4 sushi et de 4 tempura mixtes");
-        Product prod27 = new Product("King Sashimi", 30f, "images/nonDisponible.png", "Succulent assortiment de 15 sashimi");
-        Product prod28 = new Product("Gyu Royal", 30f, "images/nonDisponible.png", "Excellent plat avec notre spécial Boeuf Black Angus persillé et sa sauce Teriyaki");
-        Product prod29 = new Product("Fruit love", 5f, "images/nonDisponible.png", "Assortiments de fruits frais");
+        Product prod23 = new Product("King starter", 10f, "images/default-product.jpg", "Petits hors-d'oeuvres avec sa soupe Miso");
+        Product prod24 = new Product("Sushi rary", 30f, "images/default-product.jpg", "Assortiment variés de 7 sushi et 6 maki");
+        Product prod25 = new Product("Tempura gaya", 30f, "images/default-product.jpg", "8 exotiques tempura de gambas avec ses légumes ou plats royal de légumes tempura (plat végétarien)");
+        Product prod26 = new Product("Sushi Tempura", 30f, "images/default-product.jpg", "Délicieux assortiment de 4 sushi et de 4 tempura mixtes");
+        Product prod27 = new Product("King Sashimi", 30f, "images/default-product.jpg", "Succulent assortiment de 15 sashimi");
+        Product prod28 = new Product("Gyu Royal", 30f, "images/default-product.jpg", "Excellent plat avec notre spécial Boeuf Black Angus persillé et sa sauce Teriyaki");
+        Product prod29 = new Product("Fruit love", 5f, "images/default-product.jpg", "Assortiments de fruits frais");
 
         ComboCategory comboCat04 = new ComboCategory(1, "1 - Entree");
         ComboCategory comboCat05 = new ComboCategory(2, "2 - Plat au choix");
@@ -459,12 +468,12 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         ComboCategory comboCat10 = new ComboCategory(3, "3 - Accompagnement");
         ComboCategory comboCat03 = new ComboCategory(4, "4 - Dessert");
 
-        Product prod117 = new Product("Gosaismas starter", 12f, "images/nonDisponible.png", "Sélection de délicieux petits hors-d'oeuvres");
-        Product prod18 = new Product("Gosaismos starter", 12f, "images/nonDisponible.png", "Assortiments de légumes salés et Mijotés");
-        Product prod19 = new Product("Bento Shokado speedo", 40f, "images/nonDisponible.png", "Plat de Sashimi avec du Saumon Label Rouge grillé");
-        Product prod20 = new Product("Bento Shokado algo", 40f, "images/nonDisponible.png", "Tempura de gambas avec ses légumes");
-        Product prod21 = new Product("Accompagnement loquent", 5f, "images/nonDisponible.png", "Riz gluant avec graine de sésames à volontés");
-        Product prod22 = new Product("Litchi love", 5f, "images/nonDisponible.png", "Assortiments de litchi frais");
+        Product prod117 = new Product("Gosaismas starter", 12f, "images/default-product.jpg", "Sélection de délicieux petits hors-d'oeuvres");
+        Product prod18 = new Product("Gosaismos starter", 12f, "images/default-product.jpg", "Assortiments de légumes salés et Mijotés");
+        Product prod19 = new Product("Bento Shokado speedo", 40f, "images/default-product.jpg", "Plat de Sashimi avec du Saumon Label Rouge grillé");
+        Product prod20 = new Product("Bento Shokado algo", 40f, "images/default-product.jpg", "Tempura de gambas avec ses légumes");
+        Product prod21 = new Product("Accompagnement loquent", 5f, "images/default-product.jpg", "Riz gluant avec graine de sésames à volontés");
+        Product prod22 = new Product("Litchi love", 5f, "images/default-product.jpg", "Assortiments de litchi frais");
 
         comboCat01.setCombo(combo01);
         comboCat02.setCombo(combo01);

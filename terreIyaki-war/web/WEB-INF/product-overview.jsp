@@ -8,12 +8,15 @@
         <title>TerreIyaki</title>
     </head>
     <body>
+        <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
+        <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
         <main>
             <h1>Fiche produit</h1>
+            <img src="${product.picture}" />
+            <p class="product-name">${product.name}</p>
             <p>
-                ${product.name}<br />
                 ${product.description}<br />
                 Prix HT : ${product.price} € - todo prix TTC<br />
             </p>

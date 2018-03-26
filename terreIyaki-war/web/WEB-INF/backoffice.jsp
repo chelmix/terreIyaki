@@ -8,6 +8,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
+        <c:import url ="${urlHeader}"/>
         <h1>back office provisoire</h1>
         <p>Attention il faut passer en create dans persistence.xml</p>
         <br />

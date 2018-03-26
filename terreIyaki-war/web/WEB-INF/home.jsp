@@ -5,10 +5,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css" />
-        <title>home</title>
+        <title>TerreIyaki</title>
     </head>
     <body>
-
+        <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
+        <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
 
