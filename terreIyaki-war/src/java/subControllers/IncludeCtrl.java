@@ -12,7 +12,10 @@ public class IncludeCtrl implements ControllerInterface, Serializable{
         String url = ""; // à changer
         String action = request.getParameter("action");
         if ("navbar".equals(action)) {
-            url = "navbar";
+            url = "/includes/aside/navbar";
+        }
+        if ("header".equals(action)) {
+            url = "/includes/aside/header";
         }
         return url;
     }

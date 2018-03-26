@@ -1,5 +1,7 @@
-body {
-    background-color: aliceblue;
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h1 {
@@ -39,9 +41,14 @@ p.message {
     color: red;
 }
 
+p.product-name {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 a.button, input.button {
   display : block;
-  background-color: lightseagreen;
+  background-color: #EB212E;
   color: white;
   padding: 1em 1.5em;
   text-decoration: none;
