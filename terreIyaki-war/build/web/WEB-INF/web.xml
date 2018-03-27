@@ -8,6 +8,10 @@
             <param-value>subControllers.JeannoryDataTestCtrl</param-value>
         </init-param>
         <init-param>
+            <param-name>kitchen</param-name>
+            <param-value>subControllers.KitchenCtrl</param-value>
+        </init-param>
+        <init-param>
             <param-name>versLogin</param-name>
             <param-value>subControllers.VersLoginCtrl</param-value>
         </init-param>
@@ -76,5 +80,11 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <local>sessionBeans.CatalogTreatmentLocal</local>
         <ejb-link>terreIyaki-ejb.jar#CatalogTreatment</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>KitchenTreatment</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <local>sessionBeans.KitchenTreatmentLocal</local>
+        <ejb-link>terreIyaki-ejb.jar#KitchenTreatment</ejb-link>
     </ejb-local-ref>
 </web-app>
