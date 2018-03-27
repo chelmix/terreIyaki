@@ -5,18 +5,22 @@
         <group>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/PaymentOption.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/conf/persistence.xml</file>
-            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/PayementTreatmentLocal.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Category.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Ingredient.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/UserTreatment.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/OrderItem.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/OrderTreatmentLocal.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/VAT.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Payment.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/ComboCategory.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Status.java</file>
-            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/PayementTreatment.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Account.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/PayementTreatment.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Product.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/OrderTreatment.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/CatalogTreatment.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/JeannoryDataTest.java</file>
+            <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-ejb/src/java/entityBeans/MyGrant.java</file>
         </group>
     </open-files>
 </project-private>

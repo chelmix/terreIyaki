@@ -15,7 +15,6 @@ import entityBeans.MyOrder;
 import entityBeans.OrderItem;
 import entityBeans.Payment;
 import entityBeans.PaymentOption;
-import entityBeans.Product;
 import entityBeans.Status;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -29,11 +28,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.mail.Message;
@@ -123,17 +119,17 @@ public class PayementTreatment implements PayementTreatmentLocal {
             
  //***********************PJ****************************************************           
 //En local local            
-DataSource source = new FileDataSource("/home/jeanno/Files/test.pdf");
+//DataSource source = new FileDataSource("/home/jeanno/Files/test.pdf");
             
 //sur serveur distant            
-//DataSource source = new FileDataSource("/home/jeannory/Files/test.pdf");
+DataSource source = new FileDataSource("/home/jeannory/Files/facture.pdf");
 message.setDataHandler(new DataHandler(source));
 
 //En local local  
-message.setFileName("/home/jeanno/Files/test.pdf");
+//message.setFileName("/home/jeanno/Files/test.pdf");
 
 //sur serveur distant 
-//message.setFileName("/home/jeannory/Files/test.pdf");
+message.setFileName("/home/jeannory/Files/facture.pdf");
 
  //***********************PJ****************************************************                               
            
@@ -185,10 +181,10 @@ message.setFileName("/home/jeanno/Files/test.pdf");
         com.lowagie.text.Document document = new com.lowagie.text.Document(PageSize.A4);
 try{
 //en local    
-//PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/test.pdf"));
+//PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/facture.pdf"));
 
 //sur serveur distant
-PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/test.pdf"));
+PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/facture.pdf"));
 document.open();
 
 //en local
@@ -569,13 +565,7 @@ lo09= qr.getResultList();
 //    }
 //
 
-    /**
-     *
-     * @param my02
-     * @param po03
-     * @param priceTotal
-     * @param lo09
-     */
+
     
 
     @Override
@@ -583,17 +573,17 @@ lo09= qr.getResultList();
         com.lowagie.text.Document document = new com.lowagie.text.Document(PageSize.A4);
 try{
 //en local    
-PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/test.pdf"));
+//PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/facture.pdf"));
 
 //sur serveur distant
-//PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/test.pdf"));
+PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/facture.pdf"));
 document.open();
 
 //en local
-Image image = Image.getInstance("/home/jeanno/Files/logo.png");
+//Image image = Image.getInstance("/home/jeanno/Files/logo.png");
 
 //sur serveur distant
-//Image image = Image.getInstance("/home/jeannory/Files/logo.png");
+Image image = Image.getInstance("/home/jeannory/Files/logo.png");
 document.add(image);
 SimpleDateFormat formater = null;
 Date aujourdhui = new Date();
@@ -663,6 +653,59 @@ ioe.printStackTrace();
 }
 document.close();
 }
+    
+    
+    
+    
+    
+    @Override
+ public float   getMontantRestantTTCV02 (long id) throws CustomException{
+     
+     float calulMontantRestantTTCV02;
+     
+     
+     //On associe les orderItem pour calculer facture TTC
+     
+     //on associe les reglements
+     
+    // on calcul la différence
+     try{
+         //on cherche l 'objet MyOrder
+     MyOrder my01 = getOrderById(id);
+     List<OrderItem> lior01 = getItemsFromOrder(id);
+     List<Payment> lipa01 = getPaymentbyOrder(id);
+     
+     float totalTTC=0f;
+     for(int i=0;i<lior01.size();i++){
+         totalTTC = totalTTC + (lior01.get(i).getPrice() + ((lior01.get(i).getPrice()*lior01.get(i).getTax())/100));
+   
+     }
+    System.out.println("+++++++++++++++++++V2 totalTTC "+totalTTC);
+    
+    
+     float totalpayerTTC = 0f;
+         for(int i=0;i<lipa01.size();i++){
+         totalpayerTTC = totalpayerTTC + lipa01.get(i).getAmount();
+   
+     } 
+     System.out.println("+++++++++++++++++++V2 totalpayerTTC "+totalpayerTTC);
+     
+     
+     float soldeRestantTTC = totalTTC- totalpayerTTC;
+          System.out.println("+++++++++++++++++++V2 soldeRestantTTC "+soldeRestantTTC);
+     return soldeRestantTTC;
+     
+      }
+            catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"error");
+         throw ce;
+     }   
+     
+     
+     
+     
+ }
+    
           
 }
 

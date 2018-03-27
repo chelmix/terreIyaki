@@ -139,11 +139,11 @@
                 <c:if test="${hashPanier!=null}">
 
 
-                    <c:if test="${menuRempli!=null}">
+                   <c:if test="${menuRempli!=null}">
 
-                        <a href="FrontController?section=combo&action=validerMenu">${menuRempli}</a>  (ne pas recevoir de facture électronique) 
+                        <a href="FrontController?section=combo&action=validerMenu">ajouter à la commande</a>
                         <br/><br/>
-
+<%-- 
                         <form action="FrontController" method="POST">
                             Valider la commande et recevoir facture électronique (renseigner email)<input type="hidden" name="section" value="combo" />
                             <input type="hidden" name="action" value="validerMenu" />
@@ -152,8 +152,8 @@
                             <input type="submit" value="Envoyer" name="doIt" />
 
                         </form>
-
-                    </c:if>
+--%>
+                    </c:if>  
 
 
                     <br/>Sous menu choisi <c:forEach var="hashPanr" items="${hashPanier}"> 

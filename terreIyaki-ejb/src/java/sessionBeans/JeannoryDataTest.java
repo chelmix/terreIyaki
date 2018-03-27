@@ -489,12 +489,18 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prod22.setComboCategories(listComboCat03);
 
         prod117.setVat(vat01);
+        prod18.setVat(vat01);
         prod19.setVat(vat01);
+        prod20.setVat(vat01);
         prod22.setVat(vat01);
         prod21.setVat(vat01);
 
         prod23.setVat(vat01);
+        prod24.setVat(vat01);
         prod25.setVat(vat01);
+        prod26.setVat(vat01);
+        prod27.setVat(vat01);
+        prod28.setVat(vat01);
         prod29.setVat(vat01);
 
         prod56.setVat(vat01);
