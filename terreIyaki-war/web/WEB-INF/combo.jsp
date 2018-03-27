@@ -61,24 +61,6 @@
                 <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/>
                 </a>
 
-                <%--           
-                 <h3>HashMap trié avant le request.SetAttribute, mais affichage aléatoire.... </h3>       
-                  <c:forEach var="map" items="${HashProduct}">
-
-<br/>${map.key}<br/>
-<c:forEach var="map02" items="${map.value}">
-<br/>${map02.name} - ${map02.description}
-     </c:forEach><br/>       
-  </c:forEach>    
-   
-                --%>   
-
-
-
-
-
-
-
 
                 <%
                     //test
@@ -145,16 +127,7 @@
 
                         <a href="FrontController?section=combo&action=validerMenu">ajouter à la commande</a>
                         <br/><br/>
-<%-- 
-                        <form action="FrontController" method="POST">
-                            Valider la commande et recevoir facture électronique (renseigner email)<input type="hidden" name="section" value="combo" />
-                            <input type="hidden" name="action" value="validerMenu" />
-                            <input type="hidden" name="detection" value="mail" />
-                            <br/> <input type="text" name="email" value="" />
-                            <input type="submit" value="Envoyer" name="doIt" />
 
-                        </form>
---%>
                     </c:if>  
 
 
