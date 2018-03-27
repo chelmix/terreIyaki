@@ -6,33 +6,6 @@
             <name>terreIyaki-ejb</name>
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <included-library dirs="200">libs.iText.classpath</included-library>
-            <included-library dirs="200">file.reference.javax.batch-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.ejb-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.el.jar</included-library>
-            <included-library dirs="200">file.reference.javax.enterprise.concurrent-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.enterprise.concurrent.jar</included-library>
-            <included-library dirs="200">file.reference.javax.enterprise.deploy-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.faces.jar</included-library>
-            <included-library dirs="200">file.reference.javax.inject.jar</included-library>
-            <included-library dirs="200">file.reference.javax.interceptor-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.jms-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.json.jar</included-library>
-            <included-library dirs="200">file.reference.javax.mail.jar</included-library>
-            <included-library dirs="200">file.reference.javax.management.j2ee-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.persistence.jar</included-library>
-            <included-library dirs="200">file.reference.javax.resource-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.security.auth.message-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.security.jacc-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.servlet-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.servlet.jsp-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.servlet.jsp.jar</included-library>
-            <included-library dirs="200">file.reference.javax.servlet.jsp.jstl-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.servlet.jsp.jstl.jar</included-library>
-            <included-library dirs="200">file.reference.javax.transaction-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.websocket-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.ws.rs-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.xml.registry-api.jar</included-library>
-            <included-library dirs="200">file.reference.javax.xml.rpc-api.jar</included-library>
             <source-roots>
                 <root id="src.dir"/>
             </source-roots>
