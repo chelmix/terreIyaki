@@ -25,7 +25,11 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "entityBeans.MyTable.selectAll", 
-            query = "select t from MyTable t")   
+            query = "select t from MyTable t order by t"), 
+         
+    @NamedQuery(name = "entityBeans.MyTable.selectTablebyTableNumber", 
+            query = "select t from MyTable t where t.tableNumber = :paramtableNumber")
+        
         })
 
 public class MyTable implements Serializable {

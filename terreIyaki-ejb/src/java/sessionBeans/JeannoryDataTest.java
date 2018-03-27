@@ -134,6 +134,22 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         MyTable myTable08 = new MyTable(8);
         MyTable myTable09 = new MyTable(9);
         MyTable myTable10 = new MyTable(10);
+        
+        
+                // mettre un statut à une table 
+        myTable01.setStatus(s14);
+        myTable02.setStatus(s15);
+        myTable03.setStatus(s14);
+        myTable04.setStatus(s15);
+        myTable05.setStatus(s14);
+        myTable06.setStatus(s15);
+        myTable07.setStatus(s14);
+        myTable08.setStatus(s15);
+        myTable09.setStatus(s14);
+        myTable10.setStatus(s15);
+        
+        
+        
 
         //myOrder01 à myOrder10
         MyOrder myOrder01 = new MyOrder(d11);

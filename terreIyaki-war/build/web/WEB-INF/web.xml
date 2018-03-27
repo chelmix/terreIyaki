@@ -30,36 +30,32 @@
         <init-param>
             <param-name>overview</param-name>
             <param-value>subControllers.OverviewCtrl</param-value>
-
         </init-param>
         <init-param>
             <param-name>product-choice</param-name>
             <param-value>subControllers.ProductChoiceCtrl</param-value>
         </init-param>
-        
         <init-param>
             <param-name>include</param-name>
             <param-value>subControllers.IncludeCtrl</param-value>
         </init-param>
-
         <init-param>
             <param-name>home</param-name>
             <param-value>subControllers.HomeCtrl</param-value>
         </init-param>
-        
-                                               
         <init-param>
             <param-name>payment</param-name>
             <param-value>subControllers.PaymentCtrl</param-value>
         </init-param>
-        
         <init-param>
             <param-name>table</param-name>
             <param-value>subControllers.VersMyTablesCtrl</param-value>
         </init-param>
-                                 
-       </servlet>
-
+        <init-param>
+            <param-name>newOrder</param-name>
+            <param-value>subControllers.versNewOrder</param-value>
+        </init-param>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/FrontController</url-pattern>
