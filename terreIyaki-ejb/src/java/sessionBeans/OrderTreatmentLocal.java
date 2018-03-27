@@ -38,6 +38,8 @@ public interface OrderTreatmentLocal {
 
     public HashMap<Long, Integer> getMenuProductCommande(HashMap<String, Long> getPanier);
 
+    public void comboPersist(HashMap<String, Long> hashPanier, String nameComboChoice) throws CustomException;
+
 
 
 

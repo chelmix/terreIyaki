@@ -97,6 +97,22 @@ try{
 try{
 if(request.getParameter("action").equals("versPayer")){
 Long id = Long.valueOf(request.getParameter("id"));
+
+//*****************test pour calcul montant restant rapidos ************début ****                        
+                     try{
+                     
+                      float montantRestantTTCV2 = traiterPaiement.getMontantRestantTTCV02(id);
+                     
+                     request.setAttribute("montantRestantTTCV2", montantRestantTTCV2);                    
+                     }catch (CustomException ex){
+      String text = ex.getMessage();
+      request.setAttribute("message",text);
+  } 
+                     
+                     
+//*****************test pour calcul montant restant rapidos ************fin ****     
+
+
 //dans ce bloc l id sera toujours renvoyé
 request.setAttribute("id", id);
 //la hashMap exite dans tout le bloc je peux la réutiliser 
@@ -151,6 +167,10 @@ request.setAttribute("id", id);
 //**************montant restant calculé dynamique début ******************************     
 //il faut que le règlement soit toujours le dernier enregistré                 
                  try{
+                     
+                    
+                     
+                     
        
             //1************si pas de session on execute sinon on reprend données session
             if(session.getAttribute("priceRestant")==null){ 
@@ -206,6 +226,18 @@ request.setAttribute("id", id);
       //*******************************le moyen de paiement choisie on choisi le montant *******début *************
  try{
  if(request.getParameter("faction").equals("encaisse")){
+   
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      float mt = Float.valueOf(String.valueOf(request.getParameter("montantEncaisse"))) ;
     //méthode insert à faire 
      //je dois récupérer l objet moyen de payment 
@@ -229,6 +261,23 @@ request.setAttribute("id", id);
   }    
   
 
+  
+  
+  
+    
+    //*****************test pour calcul montant restant rapidos ************début ****                        
+                     try{
+                     
+                      float montantRestantTTCV2 = traiterPaiement.getMontantRestantTTCV02(id);
+                     
+                     request.setAttribute("montantRestantTTCV2", montantRestantTTCV2);                    
+                     }catch (CustomException ex){
+      String text = ex.getMessage();
+      request.setAttribute("message",text);
+  } 
+                     
+                     
+//*****************test pour calcul montant restant rapidos ************fin ****     
      
      
       
@@ -260,6 +309,11 @@ request.setAttribute("id", id);
 //*************************ici on édite la facture début *********************************    
              try{
          if(request.getParameter("detection").equals("payerOK")){
+             
+             
+             
+             
+             
              //je récupère le Myorder
              MyOrder my02 = new MyOrder();
               List<Payment> lo09 = new ArrayList();
