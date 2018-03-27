@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/style.css" />
         <title>payment</title>
     </head>
     <body>
@@ -18,54 +19,48 @@
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
         <main>
+            ${message}
 
+            <c:if test="${commandeToPayHash==null}" >
             <c:url value="FrontController?section=payment&action=enCours&detection=suppSesion" var="url55" />
             <br/>Retour liste facture en attente  : <a href="${url55}"  >Ici</a> 
             <br/>                 
+            </c:if>
 
+            
 
-            <br/>Commande en attente de règlement :<br/><br/>
-
-            ${message}
             <c:if test="${commandeToPayHash!=null}" >
-
+<br/>Commande en attente de règlement :<br/>
                 <c:forEach var="com" items="${commandeToPayHash}">
                     <br/>Commande n° ${com.key} -- Net à payer : ${com.value.montantTTC}€ TTC
-                    -- Effectuer règlement --> <a href="FrontController?section=payment&action=versPayer&id=${com.key}">Ici</a>
+                     -- <a href="FrontController?section=payment&action=versPayer&id=${com.key}">Régler</a>
                 </c:forEach>
 
             </c:if>
 
             <c:if test="${price!=null}" >
-                <c:if test="${priceRestant==null}" >
 
-
-                    <c:url value="FrontController?section=payment&action=enCours&detection=suppSesion" var="url55" />
-                    <br/>Retour liste facture en attente  : <a href="${url55}"  >Ici</a> 
                     <br/> 
 
-
-                    <c:url value="FrontController?section=payment&action=versPayer&id=${id}&detection=payer" var="url33" />
-                    <h3>Encaisser règlement : <a href="${url33}"  >Ici</a></h3>
-                </c:if>         
-
-
                 <c:if test="${montantRestantTTCV2>0}" > 
+<div id="conteneur">
+<div class="element">
 
+                    <br/>Moyen de paiement :   <br/> 
 
-
-                    <br/>Choisir moyen de paiement :   <br/> 
-
-
+                    <ul>
                     <c:forEach var="paymentOp" items="${paymentOption}">
 
-                        <br/><a href="FrontController?section=payment&action=versPayer&id=${id}&detection=payer&vaction=prise&type=${paymentOp.name}">Choisir ${paymentOp.name}</a>
+                        <li><a href="FrontController?section=payment&action=versPayer&id=${id}&detection=payer&vaction=prise&type=${paymentOp.name}">${paymentOp.name}</a></li>
 
 
                     </c:forEach>
-
+                    </ul>
+                    
+                    </div> 
+    <div class="element">
                     <c:if test="${typeChoisi!=null&&montantRestantTTCV2>0}">
-                        <br/> <br/>Moyen de paiment choisi : ${typeChoisi}
+                        <br/><br/> <br/>Type : ${typeChoisi}
                         <form action="FrontController" method="POST">
                             <input type="hidden" name="section" value="payment" />
                             <input type="hidden" name="action" value="versPayer" />
@@ -74,7 +69,7 @@
                             <input type="hidden" name="vaction" value="prise" />
                             <input type="hidden" name="type" value="${typeChoisi}" />                                 
                             <input type="hidden" name="faction" value="encaisse" />
-                            Montant encaissé : <input type="text" name="montantEncaisse" value="" />
+                            Montant encaissé : <br/> <input type="text" name="montantEncaisse" value="" />
 
                             <input type="submit" value="valider" name="doIt" />
 
@@ -82,36 +77,45 @@
                         </form>
 
                     </c:if> 
+                        
+                        </div> 
+    </div> 
                 </c:if>
+                    
+                 
                 <c:if test="${montantRestantTTCV2<=0}">  
+                 <div id="conteneur"><div class="element">      
+                       
                     <br/><br/><a href="FrontController?section=payment&action=versPayer&id=${id}&detection=payerOK&choix=papier"/>Editer facture</a>
-
-
+<br/><br/><br/><br/><br/>
+</div> 
                 <c:if test="${factureEdite!=null}">
+                 <div class="element">   
                     <form action="FrontController" method="POST">
-                        <br/>Envoyer par mail (renseigner email)
+                      <br/><br/>  - Recevoir par mail
                         <input type="hidden" name="section" value="payment" />
                         <input type="hidden" name="action" value="versPayer" />
                         <input type="hidden" name="id" value="${id}" />
                         <input type="hidden" name="detection" value="payerOK" />
                         <input type="hidden" name="choix" value="mail" />
-                        <br/> <input type="text" name="email" value="" />
+                        <input type="text" name="email" value="" />
                         <input type="submit" value="Envoyer" name="doIt" />
 
-                    </form>         
-                </c:if>      
-
+                    </form>   
+                     </div>   
+                </c:if>       
+</div>
             </c:if>
 
             <c:forEach var="pri" items="${price}">
                 <br/> <br/>Montant total : ${pri.value.montantHT}€ HT 
-                <br/>Montant total : ${pri.value.montantTTC}€ TTC 
+                - ${pri.value.montantTTC}€ TTC 
                 <br/>
             </c:forEach>
         </c:if>
 
         <c:if test="${montantRestantTTCV2!=null}">
-            <br/><strong>Restant à payer :  ${montantRestantTTCV2}€ TTC</strong><br/>
+            <strong>Restant à payer :  ${montantRestantTTCV2}€ TTC</strong><br/>
         </c:if>    
 
 
