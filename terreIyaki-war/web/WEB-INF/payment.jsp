@@ -19,6 +19,7 @@
         <c:import url ="${urlNavbar}"/>
         <main>
 
+<<<<<<< HEAD
 
             ${message}
             <c:if test="${commandeToPayHash!=null}" >
@@ -27,7 +28,15 @@
                  <br/>Commande n° ${com.id} - date : ${com.orderDate}
              </c:forEach>    --%>
 
+=======
+>>>>>>> jeannoBranch
 
+            ${message}
+            <c:if test="${commandeToPayHash!=null}" >
+                <br/>Commande en attente de règlement :<br/><br/>
+                <%--     <c:forEach var="com" items="${commandeToPay}">
+                 <br/>Commande n° ${com.id} - date : ${com.orderDate}
+             </c:forEach>    --%>
 
                 <c:forEach var="com" items="${commandeToPayHash}">
                     <br/>Commande n° ${com.key} -- Net à payer : ${com.value.montantTTC}€ TTC
@@ -35,6 +44,10 @@
                 </c:forEach>
 
 
+                <c:forEach var="com" items="${commandeToPayHash}">
+                    <br/>Commande n° ${com.key} -- Net à payer : ${com.value.montantTTC}€ TTC
+                    -- Effectuer règlement --> <a href="FrontController?section=payment&action=versPayer&id=${com.key}">Ici</a>
+                </c:forEach>
 
 
 
@@ -45,6 +58,16 @@
 
 
 
+<<<<<<< HEAD
+=======
+            </c:if>
+
+            <c:if test="${price!=null}" >
+                <c:if test="${priceRestant==null}" >
+
+
+
+>>>>>>> jeannoBranch
                     <c:url value="FrontController?section=payment&action=versPayer&id=${id}&detection=payer" var="url33" />
                     <h3>Encaisser règlement : <a href="${url33}"  >Ici</a></h3>
                 </c:if>         

@@ -7,7 +7,11 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
+<<<<<<< HEAD
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-27T12:57:38")
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-27T09:58:38")
+>>>>>>> jeannoBranch
 @StaticMetamodel(Ingredient.class)
 public class Ingredient_ { 
 
