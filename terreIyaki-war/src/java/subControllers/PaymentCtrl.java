@@ -65,7 +65,7 @@ try{
             
                 try{    
       if(request.getParameter("detection").equals("suppSesion")){
-          session.removeAttribute("priceRestant");
+   //       session.removeAttribute("priceRestant");
           
       }       
          }catch(NullPointerException ne)  {
@@ -166,47 +166,47 @@ request.setAttribute("id", id);
                  
 //**************montant restant calculé dynamique début ******************************     
 //il faut que le règlement soit toujours le dernier enregistré                 
-                 try{
-                     
-                    
-                     
-                     
-       
-            //1************si pas de session on execute sinon on reprend données session
-            if(session.getAttribute("priceRestant")==null){ 
-                //si pas d encaissement on retire 0f
-                 if(request.getParameter("montantEncaisse")!=null){
-            float encaissement = Float.valueOf(request.getParameter("montantEncaisse"));      
-          float montantRestantTTC=  traiterPaiement.getMontantRestant(priceTotal, encaissement);
-            session.setAttribute("priceRestant", montantRestantTTC);
-                 }
-                 else{
-
-          float montantRestantTTC=  traiterPaiement.getMontantRestant(priceTotal, 0f);
-            session.setAttribute("priceRestant", montantRestantTTC);        
-                 }
-            }                                 
-             //2************si pas de session on execute sinon on reprend donner session  
-            else if(session.getAttribute("priceRestant")!=null){  
-                
-                float nouveauMontant = Float.valueOf(String.valueOf(session.getAttribute("priceRestant")));
-                //si pas d encaissement on retire 0f
-                 if(request.getParameter("montantEncaisse")!=null){
-            float encaissement = Float.valueOf(request.getParameter("montantEncaisse"));      
-          float montantRestantTTC=  traiterPaiement.getMontantRestant(nouveauMontant, encaissement);
-            session.setAttribute("priceRestant", montantRestantTTC);
-                 }
-                 else{
-
-          float montantRestantTTC=  traiterPaiement.getMontantRestant(nouveauMontant, 0f);
-            session.setAttribute("priceRestant", montantRestantTTC);        
-                 }
-            }              
-                 
-                 }catch(NullPointerException ne){
-                     
-                     
-                 }
+//                 try{
+//                     
+//                    
+//                     
+//                     
+//       
+//            //1************si pas de session on execute sinon on reprend données session
+//            if(session.getAttribute("priceRestant")==null){ 
+//                //si pas d encaissement on retire 0f
+//                 if(request.getParameter("montantEncaisse")!=null){
+//            float encaissement = Float.valueOf(request.getParameter("montantEncaisse"));      
+//          float montantRestantTTC=  traiterPaiement.getMontantRestant(priceTotal, encaissement);
+//            session.setAttribute("priceRestant", montantRestantTTC);
+//                 }
+//                 else{
+//
+//          float montantRestantTTC=  traiterPaiement.getMontantRestant(priceTotal, 0f);
+//            session.setAttribute("priceRestant", montantRestantTTC);        
+//                 }
+//            }                                 
+//             //2************si pas de session on execute sinon on reprend donner session  
+//            else if(session.getAttribute("priceRestant")!=null){  
+//                
+//                float nouveauMontant = Float.valueOf(String.valueOf(session.getAttribute("priceRestant")));
+//                //si pas d encaissement on retire 0f
+//                 if(request.getParameter("montantEncaisse")!=null){
+//            float encaissement = Float.valueOf(request.getParameter("montantEncaisse"));      
+//          float montantRestantTTC=  traiterPaiement.getMontantRestant(nouveauMontant, encaissement);
+//            session.setAttribute("priceRestant", montantRestantTTC);
+//                 }
+//                 else{
+//
+//          float montantRestantTTC=  traiterPaiement.getMontantRestant(nouveauMontant, 0f);
+//            session.setAttribute("priceRestant", montantRestantTTC);        
+//                 }
+//            }              
+//                 
+//                 }catch(NullPointerException ne){
+//                     
+//                     
+//                 }
 //**************montant restant calculé dynamique fin ******************************       
   
   
