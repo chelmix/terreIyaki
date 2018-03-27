@@ -24,6 +24,7 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import sessionBeans.CatalogTreatmentLocal;
 import sessionBeans.OrderTreatmentLocal;
 import sessionBeans.PayementTreatmentLocal;
 import tools.CustomException;
@@ -348,7 +349,20 @@ request.setAttribute("menuRempli", "valider menu");
        //**************achat dun menu **********début ****************      
  try{
  if(request.getParameter("action").equals("validerMenu")){
-     String message = "merci pour avoir commandé ce menu";
+     
+     
+     try{
+     HashMap<String,Long>  hashPanier =(HashMap<String,Long>)session.getAttribute("hashPanier");
+            String  nameComboChoice = (String) session.getAttribute("nameComboChoice");
+     gestionCommande.comboPersist(hashPanier, nameComboChoice);
+      } catch (CustomException ex) {
+                            String texte = ex.getMessage();
+                            request.setAttribute("message", texte);
+                        }
+     
+     
+     
+     String message = "vous venez d'ajouter ce menu à votre panier";
      request.setAttribute("message", message);
      System.out.println("++++++++++++++++ session :   "+session.getAttribute("hashPanier").toString());
 HashMap<String,Long> panier = (HashMap<String,Long> ) session.getAttribute("hashPanier");
@@ -365,8 +379,6 @@ session.setAttribute("hashPanier", panier);
 
  //L349
    //on enregistre tous les menus commandés dans la session
-     
-//provisoire car fatigué
      String nomMenu = (String)session.getAttribute("nameComboChoice");
      HashMap<String,Integer> menuHashCommande= new HashMap();
      menuHashCommande.put(nomMenu, 1);  
@@ -375,7 +387,8 @@ request.setAttribute("menuCommande", menuHashCommande);
 
 session.removeAttribute("nameComboChoice");     
  
-System.out.println("ou etes vous ****************************");     
+session.removeAttribute("hashPanier");    
+ 
      
      
  //****************************test*****************************************
@@ -508,7 +521,18 @@ System.out.println("ou etes vous ****************************");
 
         }
 
-    }      
+    }
+    
+    
+        private CatalogTreatmentLocal lookupCatalogTreatmentLocal() {
+        try {
+            Context c = new InitialContext();
+            return (CatalogTreatmentLocal) c.lookup("java:global/terreIyaki/terreIyaki-ejb/CatalogTreatment!sessionBeans.CatalogTreatmentLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
     
     
 }

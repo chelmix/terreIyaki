@@ -8,16 +8,25 @@ package sessionBeans;
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.MyOrder;
+import entityBeans.OrderItem;
+import entityBeans.Payment;
 import entityBeans.Product;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import tools.CustomException;
 import tools.TriParComboCategory;
 //import tools.TriParComboCategory;
@@ -30,9 +39,11 @@ import tools.TriParComboCategory;
  */
 @Stateless
 public class OrderTreatment implements OrderTreatmentLocal {
+
     @PersistenceContext(unitName = "terreIyaki-ejbPU")
     private EntityManager em;
-
+    
+CatalogTreatmentLocal catalogTreatment = lookupCatalogTreatmentLocal();
 //    private HashMap<String,Long> panier ;
 //    
 //    @PostConstruct
@@ -246,10 +257,95 @@ return panier;
     }
     
     return menuProductPaid;
-
-    
+   
 }
  
+
+ public Combo getComboByName(String nameComboChoice) throws CustomException{
+     Combo co01;
+   TypedQuery<Combo> qr = em.createNamedQuery("entityBeans.Combo.getComboByName",Combo.class);  
+     qr.setParameter("paramComboName", nameComboChoice);
+     try{
+         co01=qr.getSingleResult();
+         
+     }catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de combo");
+         throw ce;
+     }       
+     return co01;
+ }
+ 
+ //dans cette méthode je créé l'objet orderItem et je fais un set avec le combo
+ //je créé orderItem et je fais un set avec l'objet product 
+    @Override
+    public void comboPersist(HashMap<String,Long>  hashPanier, String nameComboChoice) throws CustomException{
+ 
+    try{
+    Combo co01 =  getComboByName(nameComboChoice);
+    OrderItem oi = new OrderItem (0f, 0f);
+oi.setCombo(co01);
+em.persist(oi);
+  }catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de produit");
+         throw ce;
+     }  
+
+
+
+Product po01;
+
+List<Product>li01=new ArrayList();
+
+for(HashMap.Entry<String,Long>entry : hashPanier.entrySet()){
+    try{
+    String idString= String.valueOf(entry.getValue());
+       po01= catalogTreatment.getProductById(idString);
+        li01.add(po01);
+        System.out.println("*************Object *************   "+ po01.toString());
+        
+       System.out.println("*************Object Prix*************   "+ po01.getPrice());
+       System.out.println("*************Object Tax*************   "+  po01.getVat().getRate());
+       OrderItem oi = new OrderItem (po01.getPrice(), po01.getVat().getRate());
+       oi.setProduct(po01);
+       em.persist(oi);
+//       em.flush();
+    }catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de produit");
+         throw ce;
+     }       
+        
+    }
+
+
+
+
+}
+    
+    
+    
+    
+         private CatalogTreatmentLocal lookupCatalogTreatmentLocal() {
+        try {
+            Context c = new InitialContext();
+            return (CatalogTreatmentLocal) c.lookup("java:global/terreIyaki/terreIyaki-ejb/CatalogTreatment!sessionBeans.CatalogTreatmentLocal");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+
+ 
+  }    
+
+    
 
  
  
@@ -297,4 +393,4 @@ return panier;
 //            return 0;
 //        }
 //    } 
-}
+

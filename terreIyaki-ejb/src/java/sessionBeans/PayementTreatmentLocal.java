@@ -63,6 +63,8 @@ public interface PayementTreatmentLocal {
 
     public void getBillPdfV02(MyOrder my02, List<OrderItem> or01, float priceTotal, List<Payment> lo09);
 
+    public float getMontantRestantTTCV02(long id) throws CustomException;
+
     
 
 

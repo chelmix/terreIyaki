@@ -18,136 +18,165 @@
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
         <main>
-  
 
-        ${message}
-        <c:if test="${commandeToPayHash!=null}" >
-            <br/>Commande en attente de règlement :<br/><br/>
-            <%--     <c:forEach var="com" items="${commandeToPay}">
-             <br/>Commande n° ${com.id} - date : ${com.orderDate}
-         </c:forEach>    --%>
+<<<<<<< HEAD
+
+            ${message}
+            <c:if test="${commandeToPayHash!=null}" >
+                <br/>Commande en attente de règlement :<br/><br/>
+                <%--     <c:forEach var="com" items="${commandeToPay}">
+                 <br/>Commande n° ${com.id} - date : ${com.orderDate}
+             </c:forEach>    --%>
+
+=======
+>>>>>>> jeannoBranch
+
+            ${message}
+            <c:if test="${commandeToPayHash!=null}" >
+                <br/>Commande en attente de règlement :<br/><br/>
+                <%--     <c:forEach var="com" items="${commandeToPay}">
+                 <br/>Commande n° ${com.id} - date : ${com.orderDate}
+             </c:forEach>    --%>
+
+                <c:forEach var="com" items="${commandeToPayHash}">
+                    <br/>Commande n° ${com.key} -- Net à payer : ${com.value.montantTTC}€ TTC
+                    -- Effectuer règlement --> <a href="FrontController?section=payment&action=versPayer&id=${com.key}">Ici</a>
+                </c:forEach>
+
+
+                <c:forEach var="com" items="${commandeToPayHash}">
+                    <br/>Commande n° ${com.key} -- Net à payer : ${com.value.montantTTC}€ TTC
+                    -- Effectuer règlement --> <a href="FrontController?section=payment&action=versPayer&id=${com.key}">Ici</a>
+                </c:forEach>
 
 
 
-            <c:forEach var="com" items="${commandeToPayHash}">
-                <br/>Commande n° ${com.key} -- Net à payer : ${com.value.montantTTC}€ TTC
-                -- Effectuer règlement --> <a href="FrontController?section=payment&action=versPayer&id=${com.key}">Ici</a>
-            </c:forEach>
+            </c:if>
+
+            <c:if test="${price!=null}" >
+                <c:if test="${priceRestant==null}" >
 
 
 
+<<<<<<< HEAD
+=======
+            </c:if>
+
+            <c:if test="${price!=null}" >
+                <c:if test="${priceRestant==null}" >
 
 
-        </c:if>
- 
-        <c:if test="${price!=null}" >
-  <c:if test="${priceRestant==null}" >
-      
 
-      
+>>>>>>> jeannoBranch
                     <c:url value="FrontController?section=payment&action=versPayer&id=${id}&detection=payer" var="url33" />
                     <h3>Encaisser règlement : <a href="${url33}"  >Ici</a></h3>
-       </c:if>         
- <c:if test="${priceRestant!=null}" > 
- 
+                </c:if>         
+                <%--<c:if test="${priceRestant!=null}" > --%>
+
+                <c:if test="${montantRestantTTCV2>0}" > 
 
 
-         
-     
-  <br/>Choisir moyen de paiement :   <br/> 
-  
-  
-  <c:forEach var="paymentOp" items="${paymentOption}">
-      
-      <br/><a href="FrontController?section=payment&action=versPayer&id=${id}&detection=payer&vaction=prise&type=${paymentOp.name}">Choisir ${paymentOp.name}</a>
-      
-      
-  </c:forEach>
- 
-      <c:if test="${typeChoisi!=null&&priceRestant>0}">
-         <br/> <br/>Moyen de paiment choisi : ${typeChoisi}
-          <form action="FrontController" method="POST">
-              <input type="hidden" name="section" value="payment" />
-              <input type="hidden" name="action" value="versPayer" />
-              <input type="hidden" name="id" value="${id}" />
-                      <input type="hidden" name="detection" value="payer" />
-              <input type="hidden" name="vaction" value="prise" />
-            <input type="hidden" name="type" value="${typeChoisi}" />                                 
-              <input type="hidden" name="faction" value="encaisse" />
-              Montant encaissé : <input type="text" name="montantEncaisse" value="" />
-   
-              <input type="submit" value="valider" name="doIt" />
-              
-              
-          </form>
-  
-      </c:if>
-         
-         
-          <c:if test="${priceRestant<=0}">
-          <br/><br/><a href="FrontController?section=payment&action=versPayer&id=${id}&detection=payerOK&choix=papier"/>Editer facture</a>
 
- 
- <c:if test="${factureEdite!=null}">
-                         <form action="FrontController" method="POST">
-                             <br/>Envoyer par mail (renseigner email)
-                    <input type="hidden" name="section" value="payment" />
-                  <input type="hidden" name="action" value="versPayer" />
-                  <input type="hidden" name="id" value="${id}" />
-                  <input type="hidden" name="detection" value="payerOK" />
-                  <input type="hidden" name="choix" value="mail" />
-                <br/> <input type="text" name="email" value="" />
-                 <input type="submit" value="Envoyer" name="doIt" />
-                 
-             </form>         
-          </c:if>
-          
-                          <c:url value="FrontController?section=payment&action=enCours&detection=suppSesion" var="url55" />
-                    <br/>Retour liste facture en attente  : <a href="${url55}"  >Ici</a> 
-          
-          
-          
-  </c:if>
-         <h3> Montant restant :  ${priceRestant} € TTC </h3>
-</c:if>            
+                    <br/>Choisir moyen de paiement :   <br/> 
+
+
+                    <c:forEach var="paymentOp" items="${paymentOption}">
+
+                        <br/><a href="FrontController?section=payment&action=versPayer&id=${id}&detection=payer&vaction=prise&type=${paymentOp.name}">Choisir ${paymentOp.name}</a>
+
+
+                    </c:forEach>
+
+                    <c:if test="${typeChoisi!=null&&montantRestantTTCV2>0}">
+                        <br/> <br/>Moyen de paiment choisi : ${typeChoisi}
+                        <form action="FrontController" method="POST">
+                            <input type="hidden" name="section" value="payment" />
+                            <input type="hidden" name="action" value="versPayer" />
+                            <input type="hidden" name="id" value="${id}" />
+                            <input type="hidden" name="detection" value="payer" />
+                            <input type="hidden" name="vaction" value="prise" />
+                            <input type="hidden" name="type" value="${typeChoisi}" />                                 
+                            <input type="hidden" name="faction" value="encaisse" />
+                            Montant encaissé : <input type="text" name="montantEncaisse" value="" />
+
+                            <input type="submit" value="valider" name="doIt" />
+
+
+                        </form>
+
+               <%--     </c:if>      --%>
+</c:if> 
+                </c:if>
+                <c:if test="${montantRestantTTCV2<=0}">  
+                    <br/><br/><a href="FrontController?section=payment&action=versPayer&id=${id}&detection=payerOK&choix=papier"/>Editer facture</a>
+
+
+                <c:if test="${factureEdite!=null}">
+                    <form action="FrontController" method="POST">
+                        <br/>Envoyer par mail (renseigner email)
+                        <input type="hidden" name="section" value="payment" />
+                        <input type="hidden" name="action" value="versPayer" />
+                        <input type="hidden" name="id" value="${id}" />
+                        <input type="hidden" name="detection" value="payerOK" />
+                        <input type="hidden" name="choix" value="mail" />
+                        <br/> <input type="text" name="email" value="" />
+                        <input type="submit" value="Envoyer" name="doIt" />
+
+                    </form>         
+                </c:if>      
+
+                <c:url value="FrontController?section=payment&action=enCours&detection=suppSesion" var="url55" />
+                <br/>Retour liste facture en attente  : <a href="${url55}"  >Ici</a> 
+
+
+
+            </c:if>
+            <%--<h3> Montant restant :  ${priceRestant} € TTC </h3>--%>
+
+     <%--    </c:if>    --%>        
+
+
+
+        <c:forEach var="pri" items="${price}">
+            <br/> <br/>Montant total : ${pri.value.montantHT}€ HT 
+            <br/>Montant total : ${pri.value.montantTTC}€ TTC 
+            <br/>
+        </c:forEach>
+</c:if>
             
-            
-            
-            <c:forEach var="pri" items="${price}">
-                <br/>Montant total : ${pri.value.montantHT}€ HT 
-                <br/>Net à payer ${pri.value.montantTTC}€ TTC 
-                <br/>
-            </c:forEach>
-        </c:if>
+        <c:if test="${montantRestantTTCV2!=null}">
+            <br/><strong>Restant à payer :  ${montantRestantTTCV2}€ TTC</strong><br/>
+        </c:if>    
+    
 
 
-        <c:if test="${listItem!=null}" >
-            <br/>Détail commande :<br/>
-            <c:forEach var="list" items="${listItem}">
-                <c:if test="${list.combo.name!=null}" >
-                    <br/>--Menu--  ${list.combo.name}
-                </c:if>                 
+    <c:if test="${listItem!=null}" >
+        <br/>Détail commande :<br/>
+        <c:forEach var="list" items="${listItem}">
+            <c:if test="${list.combo.name!=null}" >
+                <br/>--Menu--  ${list.combo.name}
+            </c:if>                 
 
-            </c:forEach>            
-            
-            
-            
-
-        </main>
-
-            <c:forEach var="list" items="${listItem}">
-              
-                
-                <c:if test="${list.product.name!=null}" >
-                    
-                    <br/>-Produit-  qté : 1 - prix : ${list.product.price}€ HT - taux tva : ${list.product.vat.rate}% : ${list.product.name}
-                </c:if> 
-
-            </c:forEach>
+        </c:forEach>            
 
 
+
+
+    </main>
+
+    <c:forEach var="list" items="${listItem}">
+
+
+        <c:if test="${list.product.name!=null}" >
+
+            <br/>-Produit-  qté : 1 - prix : ${list.product.price}€ HT - taux tva : ${list.product.vat.rate}% : ${list.product.name}
         </c:if> 
 
+    </c:forEach>
 
-    </body>
+
+</c:if> 
+
+
+</body>
 </html>
