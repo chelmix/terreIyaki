@@ -2,7 +2,10 @@
 <nav>
     <c:url value="FrontController?section=home" var="url33" />
     <a class="button" href="${url33}">Retour à l'accueil</a>
-    <c:url value="FrontController?section=login&action=logout" var="url01" />
-    <a class="button" href="${url34}">Se déconnecter</a>
+    <c:if test="${user!=null}" >
+    <c:url value="FrontController?section=versLogin&action=logout" var="url01" />
+    <a class="button" href="${url01}">Se déconnecter</a>
+    </c:if>  
+        
     <hr />
 </nav>

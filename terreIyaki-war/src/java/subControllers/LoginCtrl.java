@@ -219,7 +219,7 @@ public class LoginCtrl implements ControllerInterface, Serializable {
         try {
             if (request.getParameter("action").equals("logout")) {
                 session.removeAttribute("user");
-
+                session.removeAttribute("myGrants");
             }
         } catch (NullPointerException ne09) {
             //on fait rien

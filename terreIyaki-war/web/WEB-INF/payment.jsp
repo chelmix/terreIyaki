@@ -19,37 +19,20 @@
         <c:import url ="${urlNavbar}"/>
         <main>
 
-<<<<<<< HEAD
+            <c:url value="FrontController?section=payment&action=enCours&detection=suppSesion" var="url55" />
+            <br/>Retour liste facture en attente  : <a href="${url55}"  >Ici</a> 
+            <br/>                 
+
+
+            <br/>Commande en attente de règlement :<br/><br/>
 
             ${message}
             <c:if test="${commandeToPayHash!=null}" >
-                <br/>Commande en attente de règlement :<br/><br/>
-                <%--     <c:forEach var="com" items="${commandeToPay}">
-                 <br/>Commande n° ${com.id} - date : ${com.orderDate}
-             </c:forEach>    --%>
-
-=======
->>>>>>> jeannoBranch
-
-            ${message}
-            <c:if test="${commandeToPayHash!=null}" >
-                <br/>Commande en attente de règlement :<br/><br/>
-                <%--     <c:forEach var="com" items="${commandeToPay}">
-                 <br/>Commande n° ${com.id} - date : ${com.orderDate}
-             </c:forEach>    --%>
 
                 <c:forEach var="com" items="${commandeToPayHash}">
                     <br/>Commande n° ${com.key} -- Net à payer : ${com.value.montantTTC}€ TTC
                     -- Effectuer règlement --> <a href="FrontController?section=payment&action=versPayer&id=${com.key}">Ici</a>
                 </c:forEach>
-
-
-                <c:forEach var="com" items="${commandeToPayHash}">
-                    <br/>Commande n° ${com.key} -- Net à payer : ${com.value.montantTTC}€ TTC
-                    -- Effectuer règlement --> <a href="FrontController?section=payment&action=versPayer&id=${com.key}">Ici</a>
-                </c:forEach>
-
-
 
             </c:if>
 
@@ -57,21 +40,15 @@
                 <c:if test="${priceRestant==null}" >
 
 
-
-<<<<<<< HEAD
-=======
-            </c:if>
-
-            <c:if test="${price!=null}" >
-                <c:if test="${priceRestant==null}" >
+                    <c:url value="FrontController?section=payment&action=enCours&detection=suppSesion" var="url55" />
+                    <br/>Retour liste facture en attente  : <a href="${url55}"  >Ici</a> 
+                    <br/> 
 
 
-
->>>>>>> jeannoBranch
                     <c:url value="FrontController?section=payment&action=versPayer&id=${id}&detection=payer" var="url33" />
                     <h3>Encaisser règlement : <a href="${url33}"  >Ici</a></h3>
                 </c:if>         
-                <%--<c:if test="${priceRestant!=null}" > --%>
+
 
                 <c:if test="${montantRestantTTCV2>0}" > 
 
@@ -104,8 +81,7 @@
 
                         </form>
 
-               <%--     </c:if>      --%>
-</c:if> 
+                    </c:if> 
                 </c:if>
                 <c:if test="${montantRestantTTCV2<=0}">  
                     <br/><br/><a href="FrontController?section=payment&action=versPayer&id=${id}&detection=payerOK&choix=papier"/>Editer facture</a>
@@ -125,57 +101,44 @@
                     </form>         
                 </c:if>      
 
-                <c:url value="FrontController?section=payment&action=enCours&detection=suppSesion" var="url55" />
-                <br/>Retour liste facture en attente  : <a href="${url55}"  >Ici</a> 
-
-
-
             </c:if>
-            <%--<h3> Montant restant :  ${priceRestant} € TTC </h3>--%>
 
-     <%--    </c:if>    --%>        
+            <c:forEach var="pri" items="${price}">
+                <br/> <br/>Montant total : ${pri.value.montantHT}€ HT 
+                <br/>Montant total : ${pri.value.montantTTC}€ TTC 
+                <br/>
+            </c:forEach>
+        </c:if>
 
-
-
-        <c:forEach var="pri" items="${price}">
-            <br/> <br/>Montant total : ${pri.value.montantHT}€ HT 
-            <br/>Montant total : ${pri.value.montantTTC}€ TTC 
-            <br/>
-        </c:forEach>
-</c:if>
-            
         <c:if test="${montantRestantTTCV2!=null}">
             <br/><strong>Restant à payer :  ${montantRestantTTCV2}€ TTC</strong><br/>
         </c:if>    
-    
 
 
-    <c:if test="${listItem!=null}" >
-        <br/>Détail commande :<br/>
+
+        <c:if test="${listItem!=null}" >
+            <br/>Détail commande :<br/>
+            <c:forEach var="list" items="${listItem}">
+                <c:if test="${list.combo.name!=null}" >
+                    <br/>--Menu--  ${list.combo.name}
+                </c:if>                 
+
+            </c:forEach>            
+
+        </main>
+
         <c:forEach var="list" items="${listItem}">
-            <c:if test="${list.combo.name!=null}" >
-                <br/>--Menu--  ${list.combo.name}
-            </c:if>                 
-
-        </c:forEach>            
 
 
+            <c:if test="${list.product.name!=null}" >
+
+                <br/>-Produit-  qté : 1 - prix : ${list.product.price}€ HT - taux tva : ${list.product.vat.rate}% : ${list.product.name}
+            </c:if> 
+
+        </c:forEach>
 
 
-    </main>
-
-    <c:forEach var="list" items="${listItem}">
-
-
-        <c:if test="${list.product.name!=null}" >
-
-            <br/>-Produit-  qté : 1 - prix : ${list.product.price}€ HT - taux tva : ${list.product.vat.rate}% : ${list.product.name}
-        </c:if> 
-
-    </c:forEach>
-
-
-</c:if> 
+    </c:if> 
 
 
 </body>
