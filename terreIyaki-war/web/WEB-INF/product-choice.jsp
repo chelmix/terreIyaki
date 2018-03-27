@@ -21,24 +21,30 @@
                 <input type="hidden" name="section" value="" />
                 <input type="hidden" name="action" value="" />
                 <br />
-                <label>choix de l'accompagnement</label><br />
-                <select name="oi-sides" multiple>
-                    <c:forEach var = "sid" items="${sides}">
-                        <option value="${sid.id}">${sid}</option>
-                    </c:forEach>
-                </select><br /><br />
-                <label>options souhaitées</label><br />
-                <select name="oi-options" multiple>
-                    <c:forEach var = "opt" items="${options}">
-                        <option value="${opt.id}">${opt}</option>
-                    </c:forEach>
-                </select><br /><br />
+                <c:if test="${not empty product.sides}">
+                    <label>choix de l'accompagnement</label><br />
+                    <select name="oi-sides" multiple>
+                        <c:forEach var = "sid" items="${sides}">
+                            <option value="${sid.id}">${sid}</option>
+                        </c:forEach>
+                    </select><br /><br />
+                </c:if>
+                <c:if test="${not empty product.options}">
+                    <label>options souhaitées</label><br />
+                    <select name="oi-options" multiple>
+                        <c:forEach var = "opt" items="${options}">
+                            <option value="${opt.id}">${opt}</option>
+                        </c:forEach>
+                    </select><br /><br />
+                </c:if>
+                <c:if test="${not empty product.ingredients}">
                 <label>ingredients à retirer</label><br />
                 <select name="oi-ingredients" multiple>
                     <c:forEach var = "ing" items="${ingredients}">
                         <option value="${ing.id}">${ing}</option>
                     </c:forEach>
                 </select><br /><br />
+                </c:if>
                 <input class="button" type="submit" value="valider votre choix">
             </form>
         </main>

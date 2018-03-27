@@ -172,6 +172,14 @@ public class Product implements Serializable {
     public Float getPrice() {
         return price;
     }
+    
+    public Float getPriceWithVAT() {
+        Float priceWithVAT = price;
+        if (vat != null) {
+            priceWithVAT += price * vat.getRate() / 100;
+        }
+        return priceWithVAT;
+    }
 
     public void setPrice(Float price) {
         this.price = price;

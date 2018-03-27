@@ -18,7 +18,8 @@
             <p class="product-name">${product.name}</p>
             <p>
                 ${product.description}<br />
-                Prix HT : ${product.price} € - todo prix TTC<br />
+                Prix HT : ${product.price} € - supprimer après debug<br />
+                Prix TTC : ${product.priceWithVAT} €<br />
             </p>
             <c:url value="FrontController?section=product-choice&product-id=${product.id}" var="url04" />
             <a class="button" href="${url04}">Choisir</a><br />

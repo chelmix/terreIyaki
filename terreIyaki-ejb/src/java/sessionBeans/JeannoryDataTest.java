@@ -265,7 +265,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         //cat01 à cat05
         Category cat01 = new Category("Entrées");
         Category cat02 = new Category("Tempura");
-        Category cat03 = new Category("Viandes grillés");
+        Category cat03 = new Category("Viandes grillées");
         Category cat04 = new Category("Poissons grillés");
         Category cat05 = new Category("Accompagnements");
 

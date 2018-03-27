@@ -19,7 +19,8 @@
                     <img src="${pro.picture}" />
                     <p class="product-name">${pro.name}</p>
                     <p>${pro.description}<br />
-                        Prix HT : ${pro.price} € - todo prix ttc <br />
+                        Prix HT : ${pro.price} € - supprimer après debug <br />
+                        Prix TTC : ${pro.priceWithVAT} €<br />
                     </p>
                     <c:url value="FrontController?section=overview&product-id=${pro.id}" var="url03" />
                     <a class="button" href="${url03}">Détails</a>
