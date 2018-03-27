@@ -23,11 +23,12 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQueries({
-   @NamedQuery(name="entityBeans.Status.getStatus",
-       query="Select s from Status s where s.Name=:nameStatus"),
-   @NamedQuery(name="entityBeans.Status.getStatusByNum",
-       query="Select s from Status s where s.num=:paramNumStatus")          
+    @NamedQuery(name="entityBeans.Status.getStatus",
+        query="Select s from Status s where s.Name=:nameStatus"), 
+    @NamedQuery(name="entityBeans.Status.getStatusByNum",
+        query="Select s from Status s where s.num=:paramNumStatus")          
 })
+
 public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;

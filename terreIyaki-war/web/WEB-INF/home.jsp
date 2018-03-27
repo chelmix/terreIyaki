@@ -39,7 +39,10 @@
                     <c:url value="FrontController?section=table" var="url04" />
                     <a class="button" href="${url04}">Liste des tables</a>
                 </div>
-
+                <div>
+                    <c:url value="FrontController?section=kitchen" var="url44" />
+                    <a class="button" href="${url44}">liste des plats à préparer</a>
+                </div>
 
             </c:if>
         </main>    
