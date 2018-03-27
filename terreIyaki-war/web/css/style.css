@@ -23,18 +23,18 @@ h3, h4, h5, h6 {
     display: flex;
     background-color: white;
     color:black;
- //   border: 1px solid black;
+    //   border: 1px solid black;
 }
 
 p {
-  display : block;  
-  padding: 1em 1.5em;
-  text-decoration: none;
+    display : block;  
+    padding: 1em 1.5em;
+    text-decoration: none;
 }
 
 p.descript {
-  background-color: lightsteelblue;
-  color: white;
+    background-color: lightsteelblue;
+    color: white;
 }
 
 p.message {
@@ -56,13 +56,31 @@ a.button, input.button {
 }
 
 a.button:hover {
-  background-color: #555;
+    background-color: #555;
 }
 
 a.button:active {
-  background-color: black;
+    background-color: black;
 }
 
 article {
     border: 1em black solid;
+}
+
+#mytableStatus {
+    display:block;
+    width:150px;
+    height: 70px;
+    line-height:20px;
+    text-align:center;
+    vertical-align:middle;
+    display: inline-block;
+    color: white; 
+    background-color: lightseagreen; 
+    text-transform: uppercase;
+    border: 0.1em black solid;
+} 
+
+#mytableStatus:hover {
+    background-color: #555;
 }

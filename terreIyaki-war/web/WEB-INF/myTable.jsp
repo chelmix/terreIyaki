@@ -12,21 +12,24 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+          <link rel="stylesheet" href="css/style.css" />
+        <title>Ouvrir Table</title>
     </head>
     <body>
         <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
         <c:import url ="${urlHeader}"/>
         <h1>Liste des tables et leurs statuts</h1>
-
-        <form action="FrontController?section=table&action=valide">
+        <form action="FrontController">
             <c:forEach var="table" items="${myTable}">
-                <p>
-                <input type="checkbox" name="table" value="${table.tableNumber}"> <br> <td> ${table.status}</td>
-                <p> test blabla </p>
+                <input type ="hidden" name ="section" value ="newOrder" />
+                <input type ="hidden" name ="action" value ="valide" />
+                
+                <p id="mytableStatus">
+                    <label >Table : ${table.tableNumber} <br /> ${table.status} </label>  <br />
+                <input type="checkbox" name="table" value="${table.tableNumber}"> <br> 
             </p>  
-        </c:forEach>
-        <input type="submit" value="Submit">
+        </c:forEach> <br />
+        <input type="submit" value="Submit"> <br />
     </form>
 </body>
 </html>
