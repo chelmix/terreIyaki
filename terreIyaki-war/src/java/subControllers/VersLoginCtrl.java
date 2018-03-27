@@ -20,6 +20,23 @@ public class VersLoginCtrl implements ControllerInterface, Serializable {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
     HttpSession session = request.getSession();
+    
+    
+    
+                    try {
+            if (request.getParameter("action").equals("logout")) {
+                session.removeAttribute("user");
+                session.removeAttribute("myGrants");
+            }
+        } catch (NullPointerException ne09) {
+            //on fait rien
+        }
+    
+    
+    
+    
+    
+    
 
       
       return "login";

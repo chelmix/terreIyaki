@@ -105,9 +105,10 @@
 
 </c:forEach>
 
-
-<c:url value="FrontController?section=login&action=logout" var="url01" />
+<%--
+<c:url value="FrontController?section=home&action=logout" var="url01" />
 <p>Se déconnecter :  <a href="${url01}">  ici </a> </p>
+--%>
 </c:if>       
 
     </body>
