@@ -794,16 +794,124 @@ exists or setup the property manually. For example like this:
     <target depends="compile,-library-inclusion-in-archive-weblogic,-library-inclusion-in-archive-by-user" name="library-inclusion-in-archive"/>
     <target if="is.jars.in.ejbjar" name="-library-inclusion-in-archive-by-user">
         <copyfiles files="${libs.iText.classpath}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.batch-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.ejb-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.el.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.enterprise.concurrent-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.enterprise.concurrent.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.enterprise.deploy-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.faces.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.inject.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.interceptor-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.jms-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.json.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.mail.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.management.j2ee-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.persistence.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.resource-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.security.auth.message-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.security.jacc-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.servlet-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.servlet.jsp-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.servlet.jsp.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.servlet.jsp.jstl-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.servlet.jsp.jstl.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.transaction-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.websocket-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.ws.rs-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.xml.registry-api.jar}" todir="${build.classes.dir}"/>
+        <copyfiles files="${file.reference.javax.xml.rpc-api.jar}" todir="${build.classes.dir}"/>
     </target>
     <target if="is.server.weblogic" name="-library-inclusion-in-archive-weblogic">
         <basename file="${libs.iText.classpath}" property="manifest.libs.iText.classpath"/>
+        <basename file="${file.reference.javax.batch-api.jar}" property="manifest.file.reference.javax.batch-api.jar"/>
+        <basename file="${file.reference.javax.ejb-api.jar}" property="manifest.file.reference.javax.ejb-api.jar"/>
+        <basename file="${file.reference.javax.el.jar}" property="manifest.file.reference.javax.el.jar"/>
+        <basename file="${file.reference.javax.enterprise.concurrent-api.jar}" property="manifest.file.reference.javax.enterprise.concurrent-api.jar"/>
+        <basename file="${file.reference.javax.enterprise.concurrent.jar}" property="manifest.file.reference.javax.enterprise.concurrent.jar"/>
+        <basename file="${file.reference.javax.enterprise.deploy-api.jar}" property="manifest.file.reference.javax.enterprise.deploy-api.jar"/>
+        <basename file="${file.reference.javax.faces.jar}" property="manifest.file.reference.javax.faces.jar"/>
+        <basename file="${file.reference.javax.inject.jar}" property="manifest.file.reference.javax.inject.jar"/>
+        <basename file="${file.reference.javax.interceptor-api.jar}" property="manifest.file.reference.javax.interceptor-api.jar"/>
+        <basename file="${file.reference.javax.jms-api.jar}" property="manifest.file.reference.javax.jms-api.jar"/>
+        <basename file="${file.reference.javax.json.jar}" property="manifest.file.reference.javax.json.jar"/>
+        <basename file="${file.reference.javax.mail.jar}" property="manifest.file.reference.javax.mail.jar"/>
+        <basename file="${file.reference.javax.management.j2ee-api.jar}" property="manifest.file.reference.javax.management.j2ee-api.jar"/>
+        <basename file="${file.reference.javax.persistence.jar}" property="manifest.file.reference.javax.persistence.jar"/>
+        <basename file="${file.reference.javax.resource-api.jar}" property="manifest.file.reference.javax.resource-api.jar"/>
+        <basename file="${file.reference.javax.security.auth.message-api.jar}" property="manifest.file.reference.javax.security.auth.message-api.jar"/>
+        <basename file="${file.reference.javax.security.jacc-api.jar}" property="manifest.file.reference.javax.security.jacc-api.jar"/>
+        <basename file="${file.reference.javax.servlet-api.jar}" property="manifest.file.reference.javax.servlet-api.jar"/>
+        <basename file="${file.reference.javax.servlet.jsp-api.jar}" property="manifest.file.reference.javax.servlet.jsp-api.jar"/>
+        <basename file="${file.reference.javax.servlet.jsp.jar}" property="manifest.file.reference.javax.servlet.jsp.jar"/>
+        <basename file="${file.reference.javax.servlet.jsp.jstl-api.jar}" property="manifest.file.reference.javax.servlet.jsp.jstl-api.jar"/>
+        <basename file="${file.reference.javax.servlet.jsp.jstl.jar}" property="manifest.file.reference.javax.servlet.jsp.jstl.jar"/>
+        <basename file="${file.reference.javax.transaction-api.jar}" property="manifest.file.reference.javax.transaction-api.jar"/>
+        <basename file="${file.reference.javax.websocket-api.jar}" property="manifest.file.reference.javax.websocket-api.jar"/>
+        <basename file="${file.reference.javax.ws.rs-api.jar}" property="manifest.file.reference.javax.ws.rs-api.jar"/>
+        <basename file="${file.reference.javax.xml.registry-api.jar}" property="manifest.file.reference.javax.xml.registry-api.jar"/>
+        <basename file="${file.reference.javax.xml.rpc-api.jar}" property="manifest.file.reference.javax.xml.rpc-api.jar"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Extension-List" value="jar-1 "/>
+            <attribute name="Extension-List" value="jar-1 jar-2 jar-3 jar-4 jar-5 jar-6 jar-7 jar-8 jar-9 jar-10 jar-11 jar-12 jar-13 jar-14 jar-15 jar-16 jar-17 jar-18 jar-19 jar-20 jar-21 jar-22 jar-23 jar-24 jar-25 jar-26 jar-27 jar-28 "/>
             <attribute name="jar-1-Extension-Name" value="${manifest.libs.iText.classpath}"/>
+            <attribute name="jar-2-Extension-Name" value="${manifest.file.reference.javax.batch-api.jar}"/>
+            <attribute name="jar-3-Extension-Name" value="${manifest.file.reference.javax.ejb-api.jar}"/>
+            <attribute name="jar-4-Extension-Name" value="${manifest.file.reference.javax.el.jar}"/>
+            <attribute name="jar-5-Extension-Name" value="${manifest.file.reference.javax.enterprise.concurrent-api.jar}"/>
+            <attribute name="jar-6-Extension-Name" value="${manifest.file.reference.javax.enterprise.concurrent.jar}"/>
+            <attribute name="jar-7-Extension-Name" value="${manifest.file.reference.javax.enterprise.deploy-api.jar}"/>
+            <attribute name="jar-8-Extension-Name" value="${manifest.file.reference.javax.faces.jar}"/>
+            <attribute name="jar-9-Extension-Name" value="${manifest.file.reference.javax.inject.jar}"/>
+            <attribute name="jar-10-Extension-Name" value="${manifest.file.reference.javax.interceptor-api.jar}"/>
+            <attribute name="jar-11-Extension-Name" value="${manifest.file.reference.javax.jms-api.jar}"/>
+            <attribute name="jar-12-Extension-Name" value="${manifest.file.reference.javax.json.jar}"/>
+            <attribute name="jar-13-Extension-Name" value="${manifest.file.reference.javax.mail.jar}"/>
+            <attribute name="jar-14-Extension-Name" value="${manifest.file.reference.javax.management.j2ee-api.jar}"/>
+            <attribute name="jar-15-Extension-Name" value="${manifest.file.reference.javax.persistence.jar}"/>
+            <attribute name="jar-16-Extension-Name" value="${manifest.file.reference.javax.resource-api.jar}"/>
+            <attribute name="jar-17-Extension-Name" value="${manifest.file.reference.javax.security.auth.message-api.jar}"/>
+            <attribute name="jar-18-Extension-Name" value="${manifest.file.reference.javax.security.jacc-api.jar}"/>
+            <attribute name="jar-19-Extension-Name" value="${manifest.file.reference.javax.servlet-api.jar}"/>
+            <attribute name="jar-20-Extension-Name" value="${manifest.file.reference.javax.servlet.jsp-api.jar}"/>
+            <attribute name="jar-21-Extension-Name" value="${manifest.file.reference.javax.servlet.jsp.jar}"/>
+            <attribute name="jar-22-Extension-Name" value="${manifest.file.reference.javax.servlet.jsp.jstl-api.jar}"/>
+            <attribute name="jar-23-Extension-Name" value="${manifest.file.reference.javax.servlet.jsp.jstl.jar}"/>
+            <attribute name="jar-24-Extension-Name" value="${manifest.file.reference.javax.transaction-api.jar}"/>
+            <attribute name="jar-25-Extension-Name" value="${manifest.file.reference.javax.websocket-api.jar}"/>
+            <attribute name="jar-26-Extension-Name" value="${manifest.file.reference.javax.ws.rs-api.jar}"/>
+            <attribute name="jar-27-Extension-Name" value="${manifest.file.reference.javax.xml.registry-api.jar}"/>
+            <attribute name="jar-28-Extension-Name" value="${manifest.file.reference.javax.xml.rpc-api.jar}"/>
         </manifest>
     </target>
     <target depends="compile" name="library-inclusion-in-manifest">
         <copyfiles files="${libs.iText.classpath}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.batch-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.ejb-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.el.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.enterprise.concurrent-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.enterprise.concurrent.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.enterprise.deploy-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.faces.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.inject.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.interceptor-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.jms-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.json.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.mail.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.management.j2ee-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.persistence.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.resource-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.security.auth.message-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.security.jacc-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.servlet-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.servlet.jsp-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.servlet.jsp.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.servlet.jsp.jstl-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.servlet.jsp.jstl.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.transaction-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.websocket-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.ws.rs-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.xml.registry-api.jar}" todir="${dist.ear.dir}/lib"/>
+        <copyfiles files="${file.reference.javax.xml.rpc-api.jar}" todir="${dist.ear.dir}/lib"/>
         <manifest file="${build.ear.classes.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
     <target name="-copy-meta-inf">
