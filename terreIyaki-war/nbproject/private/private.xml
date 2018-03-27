@@ -3,30 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< refs/remotes/origin/master
-<<<<<<< Updated upstream
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/home.jsp</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/src/java/subControllers/VersMyTablesCtrl.java</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/src/java/frontController/FrontController.java</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/web.xml</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/src/java/subControllers/BackOfficeCtrl.java</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/myTable.jsp</file>
-=======
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/product-overview.jsp</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/menu-overview.jsp</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/home.jsp</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/navbar.jsp</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/combo.jsp</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/css/style.css</file>
-            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/category-overview.jsp</file>
->>>>>>> Stashed changes
-=======
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-war/src/java/subControllers/ComboCtrl.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-war/src/java/subControllers/PaymentCtrl.java</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-war/web/WEB-INF/combo.jsp</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-war/web/WEB-INF/payment.jsp</file>
             <file>file:/home/jeanno/filRouge/terreIyaki/terreIyaki-war/src/java/subControllers/ProductChoiceCtrl.java</file>
->>>>>>> avant de recevoir master
         </group>
     </open-files>
 </project-private>
