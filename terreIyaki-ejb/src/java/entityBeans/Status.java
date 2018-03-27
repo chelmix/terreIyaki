@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -21,9 +22,13 @@ import javax.persistence.OneToMany;
  * @author samira
  */
 @Entity
-@NamedQuery(name="entityBeans.Status.getStatus",
-query="Select s from Status s where s.Name=:nameStatus"
-)
+@NamedQueries({
+    @NamedQuery(name="entityBeans.Status.getStatus",
+        query="Select s from Status s where s.Name=:nameStatus"), 
+    @NamedQuery(name="entityBeans.Status.getStatusByNum",
+        query="Select s from Status s where s.num=:paramNumStatus")          
+})
+
 public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;

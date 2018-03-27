@@ -47,6 +47,8 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         //Status de s01 à s21
         Status s01 = new Status(1, "Prise de commande en cours", "Order Item");
         Status s02 = new Status(2, "En cours de préparation ", "Order Item");
+        Status s22 = new Status(22, "A préparer ", "Order Item ");
+        Status s23 = new Status(23, "En preparation ", "Order Item ");
         Status s03 = new Status(3, "Prêt à être servi ", "Order Item");
         Status s04 = new Status(4, "Annulé", "Order Item");
         Status s05 = new Status(5, "A payer", "Payment ");
@@ -66,7 +68,9 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Status s19 = new Status(19, "Inactif ", "VAT ");
         Status s20 = new Status(20, "Disponible", "Product  ");
         Status s21 = new Status(21, "Indisponible ", "Product ");
-
+        //Status s22 = new Status(22, "A préparer ", "Order Item ");
+        //Status s23 = new Status(23, "En preparation ", "Order Item ");
+        
         //PaymentOption de p01 à p03
         PaymentOption po01 = new PaymentOption("CB");
         PaymentOption po02 = new PaymentOption("Espece");
@@ -344,14 +348,18 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         //plat simple
         OrderItem orderItem01 = new OrderItem(20f, 4f);
         orderItem01.setProduct(prod16);
+        orderItem01.setStatus(s22);
 
         //menu
         OrderItem orderItem02 = new OrderItem(20f, 4f);
-
+        orderItem02.setProduct(prod11);
+        orderItem02.setStatus(s22);
         OrderItem orderItem03 = new OrderItem(20f, 4f);
         OrderItem orderItem04 = new OrderItem(20f, 4f);
         OrderItem orderItem05 = new OrderItem(20f, 4f);
         OrderItem orderItem06 = new OrderItem(20f, 4f);
+        orderItem06.setProduct(prod12);
+        orderItem06.setStatus(s22);
 
         OrderItem comboOrderItem01 = new OrderItem(100f, 20f);
 
@@ -713,6 +721,8 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(s19);
         em.persist(s20);
         em.persist(s21);
+        em.persist(s22);
+        em.persist(s23);
 
         em.persist(po01);
         em.persist(po02);
