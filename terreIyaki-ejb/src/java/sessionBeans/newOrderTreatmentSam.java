@@ -69,29 +69,42 @@ public class newOrderTreatmentSam implements newOrderTreatmentSamLocal {
         
     }
     
-    
+    public Status getStatusCommandeEnCours() throws CustomException{
+        
+        
+        Query qr=em.createNamedQuery("entityBeans.Status.getStatusByNum");
+        qr.setParameter("paramNumStatus",9); 
+        try {
+        Status status = (Status) qr.getSingleResult(); 
+        return status;
+        } catch (NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de statut");
+            throw ce;
+            
+        
+        }
+        
+    }
     
     
     
     @Override
-    public void newOrder(MyTable table) throws CustomException{ 
-        Status status = getStatusTableActif(); 
-        table.setStatus(status);
+    public MyOrder newOrder(MyTable table) throws CustomException{ 
+        Status statusTable = getStatusTableActif(); 
+        table.setStatus(statusTable);
+        Status statusCommande = getStatusCommandeEnCours (); 
+        
         ArrayList listeTable = new ArrayList (); 
         listeTable.add(table);
         MyOrder newOrder = new MyOrder(); 
+        newOrder.setStatus(statusCommande);
         newOrder.setMyTables(listeTable);
         em.persist(newOrder);
         em.merge(table); 
+        return newOrder;
         
-        
-        
-        
-        
-        
-    
-    
-    
+
+   
     }
     
     

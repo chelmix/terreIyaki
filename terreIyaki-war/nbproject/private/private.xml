@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/jeanno/filRouge/versionGitKraken02/terreIyaki/terreIyaki-war/web/css/style.css</file>
-            <file>file:/home/jeanno/filRouge/versionGitKraken02/terreIyaki/terreIyaki-war/web/WEB-INF/combo.jsp</file>
-            <file>file:/home/jeanno/filRouge/versionGitKraken02/terreIyaki/terreIyaki-war/web/WEB-INF/payment.jsp</file>
-            <file>file:/home/jeanno/filRouge/versionGitKraken02/terreIyaki/terreIyaki-war/src/java/subControllers/PaymentCtrl.java</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/css/style.css</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/src/java/subControllers/ComboCtrl.java</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/newOrder.jsp</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/product-overview.jsp</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/web.xml</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/myTable.jsp</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/src/java/subControllers/versNewOrder.java</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/product-choice.jsp</file>
+            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/combo.jsp</file>
         </group>
     </open-files>
 </project-private>

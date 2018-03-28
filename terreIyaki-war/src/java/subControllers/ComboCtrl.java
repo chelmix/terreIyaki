@@ -4,6 +4,7 @@ package subControllers;
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.MyOrder;
+import entityBeans.OrderItem;
 import entityBeans.Product;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -21,6 +22,8 @@ import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -39,8 +42,13 @@ public class ComboCtrl implements ControllerInterface, Serializable {
      * @param response
      * @return renvoy vers la page des combos
      */
+
+    
+    
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response){
+        
+    
         OrderTreatmentLocal gestionCommande = lookupOrderTreatmentLocal();  
         HttpSession session = request.getSession();
         
@@ -352,9 +360,23 @@ request.setAttribute("menuRempli", "valider menu");
      
      
      try{
-     HashMap<String,Long>  hashPanier =(HashMap<String,Long>)session.getAttribute("hashPanier");
+   
+         try{
+         HashMap<String,Long>  hashPanier =(HashMap<String,Long>)session.getAttribute("hashPanier");
             String  nameComboChoice = (String) session.getAttribute("nameComboChoice");
-     gestionCommande.comboPersist(hashPanier, nameComboChoice);
+     List<OrderItem>  listOrderItem = gestionCommande.comboPersist(hashPanier, nameComboChoice);
+     MyOrder myOrder = (MyOrder) session.getAttribute("myOrder"); 
+       System.out.println("test samira"+myOrder);
+    
+    
+     gestionCommande.mergeComboWithMyOrder(listOrderItem, myOrder);
+         }catch(NullPointerException ne){
+             //test a faire
+           
+         }
+     
+     
+     
       } catch (CustomException ex) {
                             String texte = ex.getMessage();
                             request.setAttribute("message", texte);
