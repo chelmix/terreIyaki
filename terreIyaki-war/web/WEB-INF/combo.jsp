@@ -57,9 +57,11 @@
 
             <c:if test="${HashProduct!=null}">
                 <h3>Menu ${comboName02} </h3>
-
+                
+             
                 <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/>
                 </a>
+                 
 
 
                 <%
@@ -124,10 +126,12 @@
 
 
                    <c:if test="${menuRempli!=null}">
-
+                       
+                           
+                       
                         <a href="FrontController?section=combo&action=validerMenu">ajouter à la commande</a>
                         <br/><br/>
-
+                          
                     </c:if>  
 
 

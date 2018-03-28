@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+import entityBeans.MyOrder;
 import entityBeans.MyTable;
 import entityBeans.Status;
 import javax.ejb.Local;
@@ -19,6 +20,6 @@ public interface newOrderTreatmentSamLocal {
 
     public MyTable getSeletedTableNumber(int numeroTable) throws CustomException;
 
-    public void newOrder(MyTable table) throws CustomException;
+    public MyOrder newOrder(MyTable table) throws CustomException;
     
 }

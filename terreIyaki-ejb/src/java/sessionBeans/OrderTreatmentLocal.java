@@ -7,6 +7,8 @@ package sessionBeans;
 
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
+import entityBeans.MyOrder;
+import entityBeans.OrderItem;
 import entityBeans.Product;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +40,11 @@ public interface OrderTreatmentLocal {
 
     public HashMap<Long, Integer> getMenuProductCommande(HashMap<String, Long> getPanier);
 
-    public void comboPersist(HashMap<String, Long> hashPanier, String nameComboChoice) throws CustomException;
+    public List <OrderItem> comboPersist(HashMap<String, Long> hashPanier, String nameComboChoice, MyOrder myOrder) throws CustomException;
+
+    public void mergeComboWithMyOrder(List<OrderItem> listOrderItem, MyOrder myOrder);
+
+    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException;
 
 
 

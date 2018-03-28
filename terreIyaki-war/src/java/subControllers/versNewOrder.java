@@ -5,6 +5,7 @@
  */
 package subControllers;
 
+import entityBeans.MyOrder;
 import entityBeans.MyTable;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -42,7 +43,10 @@ public class versNewOrder implements ControllerInterface, Serializable {
             try {
                 
                 MyTable mytable = gestionTable.getSeletedTableNumber(numeroTable);
-                gestionTable.newOrder(mytable);
+                MyOrder newOrder = gestionTable.newOrder(mytable);
+                session.setAttribute("newOrder", newOrder);
+                
+               
               
 
             } catch (CustomException ex) {

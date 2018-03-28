@@ -45,7 +45,9 @@
                     </c:forEach>
                 </select><br /><br />
                 </c:if>
+                    <c:if test ="${newOrder!=null}">
                 <input class="button" type="submit" value="valider votre choix">
+                    </c:if>
             </form>
         </main>
     </body>
