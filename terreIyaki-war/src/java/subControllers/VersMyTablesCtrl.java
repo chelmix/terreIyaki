@@ -1,6 +1,5 @@
 package subControllers;
 
-import static entityBeans.Account_.myTable;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
@@ -10,12 +9,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sessionBeans.OrderTreatmentLocal;
 import sessionBeans.TableTreatmentLocal;
 import entityBeans.MyTable;
-import static entityBeans.Status_.myTables;
 import javax.servlet.http.HttpSession;
-import tools.CustomException;
 
 /**
  *
