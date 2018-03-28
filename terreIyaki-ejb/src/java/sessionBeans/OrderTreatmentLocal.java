@@ -40,11 +40,13 @@ public interface OrderTreatmentLocal {
 
     public HashMap<Long, Integer> getMenuProductCommande(HashMap<String, Long> getPanier);
 
-    public List <OrderItem> comboPersist(HashMap<String, Long> hashPanier, String nameComboChoice, MyOrder myOrder) throws CustomException;
+    public void comboPersist(HashMap<String,Long>  hashPanier, String nameComboChoice, MyOrder myOrderPersist) throws CustomException;
 
-    public void mergeComboWithMyOrder(List<OrderItem> listOrderItem, MyOrder myOrder);
+//    public void mergeComboWithMyOrder(List<OrderItem> listOrderItem, MyOrder myOrder);
 
-    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException;
+//    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException;
+
+//    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException;
 
 
 

@@ -32,6 +32,8 @@ import javax.persistence.Temporal;
             query = "Select m.orderItems from MyOrder m where m.id =:paramMyOrderId"),
     @NamedQuery(name = "entityBeans.MyOrder.getOrderById",
             query = "Select m from MyOrder m where m.id =:paramMyOrderId")
+//        @NamedQuery(name = "entityBeans.MyOrder.getLastOrderByTableNumber",
+//            query = "Select m from MyOrder m where m.myTables.number =:paramTableNumber order by m.id desc")
 })
 public class MyOrder implements Serializable {
 
