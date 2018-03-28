@@ -278,16 +278,17 @@ return panier;
  //dans cette méthode je créé l'objet orderItem et je fais un set avec le combo
  //je créé orderItem et je fais un set avec l'objet product 
     @Override
-    public List <OrderItem> comboPersist(HashMap<String,Long>  hashPanier, String nameComboChoice) throws CustomException{
+    public void comboPersist(HashMap<String,Long>  hashPanier, String nameComboChoice, MyOrder myOrderPersist) throws CustomException{
  
-        List <OrderItem> listOrderItem = new ArrayList (); 
+     //   List <OrderItem> listOrderItem = new ArrayList (); 
         
     try{
     Combo co01 =  getComboByName(nameComboChoice);
     OrderItem oi = new OrderItem (0f, 0f);
-    listOrderItem.add(oi); 
+  //  listOrderItem.add(oi); 
 oi.setCombo(co01);
 em.persist(oi);
+oi.setMyOrder(myOrderPersist);
   }catch(NoResultException ex) {
             CustomException ce = new CustomException(CustomException.USER_ERR,"pas de produit");
          throw ce;
@@ -310,8 +311,9 @@ for(HashMap.Entry<String,Long>entry : hashPanier.entrySet()){
        System.out.println("*************Object Prix*************   "+ po01.getPrice());
        System.out.println("*************Object Tax*************   "+  po01.getVat().getRate());
        OrderItem oi = new OrderItem (po01.getPrice(), po01.getVat().getRate());
-        listOrderItem.add(oi);
+    //    listOrderItem.add(oi);
        oi.setProduct(po01);
+       oi.setMyOrder(myOrderPersist);
        em.persist(oi);
 //       em.flush();
     }catch(NoResultException ex) {
@@ -327,24 +329,52 @@ for(HashMap.Entry<String,Long>entry : hashPanier.entrySet()){
 //     myOrder.setOrderItems(listOrderItem);
 //     em.merge(myOrder);  
 
+//listOrderItem
+//myOrderPersist
 
-
-
-return  listOrderItem;
+//return  listOrderItem;
   
 
 }
     
-    @Override
-    public void mergeComboWithMyOrder( List<OrderItem>  listOrderItem, MyOrder myOrder){
-        
-    myOrder.setOrderItems(listOrderItem);
-        System.out.println("test samira"+ listOrderItem.toString());
-    em.merge(myOrder);
+//    //ca marche pas
+//    @Override
+//    public void mergeComboWithMyOrder( List<OrderItem>  listOrderItem, MyOrder myOrder){
+//        
+//    myOrder.setOrderItems(listOrderItem);
+//        System.out.println("test samira"+ listOrderItem.toString());
+//    em.merge(myOrder);
+//    
+//        
+//        
+//    }
     
-        
-        
-    }
+    
+//    @Override
+//    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException{
+//        
+// 
+//    TypedQuery<MyOrder> qr = em.createNamedQuery("entityBeans.MyOrder.getLastOrderByTableNumber",MyOrder.class);  
+//        qr.setParameter("paramTableNumber", numeroTable);
+//        
+//    try{
+//    MyOrder maCommande  =  qr.getSingleResult();
+// return maCommande;
+//    }catch(NoResultException ex) {
+//            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de combo");
+//         throw ce;
+//
+//    
+//    
+//    }
+//        
+//    }
+    
+    
+    
+    
+    
+    
     
     //méthode en private pour utiliser un autre métier
          private CatalogTreatmentLocal lookupCatalogTreatmentLocal() {

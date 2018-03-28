@@ -4,6 +4,7 @@ package subControllers;
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.MyOrder;
+import entityBeans.MyTable;
 import entityBeans.OrderItem;
 import entityBeans.Product;
 import java.io.Serializable;
@@ -359,17 +360,36 @@ request.setAttribute("menuRempli", "valider menu");
  if(request.getParameter("action").equals("validerMenu")){
      
      
-     try{
+   //  try{
    
          try{
+             
+ //je dois retrouver la derniere MyOrder et l'associer aux ComboItem
+//             
+             
          HashMap<String,Long>  hashPanier =(HashMap<String,Long>)session.getAttribute("hashPanier");
             String  nameComboChoice = (String) session.getAttribute("nameComboChoice");
-     List<OrderItem>  listOrderItem = gestionCommande.comboPersist(hashPanier, nameComboChoice);
+     
      MyOrder myOrder = (MyOrder) session.getAttribute("myOrder"); 
-       System.out.println("test samira"+myOrder);
+        int numeroTable=0;
+     for(MyTable my : myOrder.getMyTables()){
+      numeroTable =  my.getTableNumber();   
+     }
+    // MyOrder myOrderPersist = gestionCommande.getLastOrderByTable(numeroTable);
+//     List<OrderItem>  listOrderItem = 
+//             gestionCommande.comboPersist(hashPanier, nameComboChoice, myOrderPersist);
+     
+     
+  
+    
+    // myOrder.getMyTables();
+     
+     
+     
+      // System.out.println("test samira"+myOrder);
     
     
-     gestionCommande.mergeComboWithMyOrder(listOrderItem, myOrder);
+//     gestionCommande.mergeComboWithMyOrder(listOrderItem, myOrder);
          }catch(NullPointerException ne){
              //test a faire
            
@@ -377,10 +397,10 @@ request.setAttribute("menuRempli", "valider menu");
      
      
      
-      } catch (CustomException ex) {
-                            String texte = ex.getMessage();
-                            request.setAttribute("message", texte);
-                        }
+//      } catch (CustomException ex) {
+//                            String texte = ex.getMessage();
+//                            request.setAttribute("message", texte);
+//                        }
      
      
      
