@@ -1,6 +1,7 @@
 
 package sessionBeans;
 
+import entityBeans.Option;
 import entityBeans.OrderItem;
 import entityBeans.Product;
 import entityBeans.Status;
@@ -19,10 +20,11 @@ public class KitchenTreatment implements KitchenTreatmentLocal {
     private EntityManager em;
   
     @Override
-    public List<OrderItem> getToCookItems(){
+    public List<OrderItem> getToPrepareOrInPreparationItems(){
         List<OrderItem> lcr01 = new ArrayList();
-        TypedQuery<OrderItem> qr = em.createNamedQuery("entityBeans.OrderItem.selectReadyToCook", OrderItem.class);
-        qr.setParameter("paramStatus", getStatusByNum(22));
+        TypedQuery<OrderItem> qr = em.createNamedQuery("entityBeans.OrderItem.selectByStatus2Params", OrderItem.class);
+        qr.setParameter("paramStatus1", getStatusByNum(1));
+        qr.setParameter("paramStatus2", getStatusByNum(2));
         try {
             lcr01 = qr.getResultList();
         } catch(NoResultException ex){
@@ -32,6 +34,7 @@ public class KitchenTreatment implements KitchenTreatmentLocal {
         return lcr01;
     }
     
+    @Override
     public Status getStatusByNum(int statusNum) {
         Status sta;
         TypedQuery<Status> qr = em.createNamedQuery("entityBeans.Status.getStatusByNum", Status.class);
@@ -43,5 +46,29 @@ public class KitchenTreatment implements KitchenTreatmentLocal {
             return null;
         }
         return sta;
+    }
+    
+    @Override
+    public OrderItem getOrderItemById(String id) {
+        OrderItem oi = em.find(OrderItem.class, Long.valueOf(id));
+        return oi;
+    }
+    
+    @Override
+    public void setItemStatusForward(String itemId) {
+        OrderItem oi = em.find(OrderItem.class, Long.valueOf(itemId));
+        int num = oi.getStatus().getNum();
+        num++;
+        Status sta = em.find(Status.class, num);
+        oi.setStatus(sta);
+        //em.merge(oi);
+    }
+    
+    @Override
+    public List<Option> getOptionsByOrderItem(OrderItem oi) {
+        Query qr = em.createNamedQuery("entityBeans.Option.selectByOrderItem");
+        qr.setParameter("paramItem", oi);
+        List<Option> lo = qr.getResultList();
+        return lo;
     }
 }

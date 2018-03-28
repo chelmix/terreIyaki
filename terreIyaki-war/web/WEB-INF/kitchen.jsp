@@ -13,12 +13,32 @@
         <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
-        <h1>Hello Kitchen</h1>
+        <h1>Interface cuisine</h1>
         
         <c:forEach var = "kitchenOrderItem" items="${orderItems}">
-                <p> 
-                    ${kitchenOrderItem.product.name}
-                </p><br />
+                <article> 
+                    
+                    <c:if test="${kitchenOrderItem.status.num == 1}">
+                    <c:set var="text" value="Mettre en préparation" scope="page" />
+                    <c:set var="classname" value="to-process" scope="page" />
+                    </c:if>
+                    <c:if test="${kitchenOrderItem.status.num == 2}">
+                    <c:set var="text" value="Mettre à servir" scope="page" />
+                    <c:set var="classname" value="processing" scope="page" />
+                    </c:if>
+                    
+                    <p class = "${classname}">${kitchenOrderItem.product.name} : ${kitchenOrderItem.status.name}</p>
+                    
+                    <c:if test="${not empty kitchenOrderItem.ingredients || not empty kitchenOrderItem.options}">
+                    <a class="button" onclick="displayOrderCustomization('${kitchenOrderItem.id}'); return false;">/!\ Commande personnalisée - voir détails</a>
+                    </c:if>
+                    
+                    <div id="order-item-customization${kitchenOrderItem.id}" style="display:none"></div>
+                    
+                    <c:url value="FrontController?section=kitchen&action=status-forward&item-id=${kitchenOrderItem.id}" var="url33" />
+                    <a class="button" href="${url33}">${text}</a> 
+                </article>
             </c:forEach>
+        <script src="/terreIyaki-war/js/myJS.js" type="text/javascript"></script>
     </body>
 </html>

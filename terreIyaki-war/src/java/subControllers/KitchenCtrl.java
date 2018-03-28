@@ -1,6 +1,6 @@
-
 package subControllers;
 
+import entityBeans.OrderItem;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,11 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 import sessionBeans.KitchenTreatmentLocal;
 
 public class KitchenCtrl implements ControllerInterface, Serializable {
+
     KitchenTreatmentLocal kitchenTreatment = lookupKitchenTreatmentLocal();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("orderItems", kitchenTreatment.getToCookItems());
+        String action = request.getParameter("action");
+        if ("status-forward".equals(action)) {
+            if (request.getParameter("item-id") != null) {
+                kitchenTreatment.setItemStatusForward(request.getParameter("item-id"));
+            }
+        }
+        if ("get-customization".equals(action)) {
+            if (request.getParameter("item-id") != null) {
+                OrderItem oi = kitchenTreatment.getOrderItemById(request.getParameter("item-id"));
+                request.setAttribute("options", kitchenTreatment.getOptionsByOrderItem(oi));
+                //request.setAttribute("ingredients", kitchenTreatment.getIngredientsByOrderItem(oi));
+                return "/includes/ajax/order-item-customization";
+            }
+        }
+        request.setAttribute("orderItems", kitchenTreatment.getToPrepareOrInPreparationItems());
         return "kitchen";
     }
 
@@ -29,5 +44,5 @@ public class KitchenCtrl implements ControllerInterface, Serializable {
             throw new RuntimeException(ne);
         }
     }
-    
+
 }

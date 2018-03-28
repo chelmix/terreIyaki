@@ -5,7 +5,9 @@
  */
 package sessionBeans;
 
+import entityBeans.Option;
 import entityBeans.OrderItem;
+import entityBeans.Status;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,6 +18,14 @@ import javax.ejb.Local;
 @Local
 public interface KitchenTreatmentLocal {
 
-    public List<OrderItem> getToCookItems();
+    public List<OrderItem> getToPrepareOrInPreparationItems();
+
+    public void setItemStatusForward(String itemId);
+
+    public Status getStatusByNum(int statusNum);
+
+    public OrderItem getOrderItemById(String id);
+
+    public List<Option> getOptionsByOrderItem(OrderItem oi);
     
 }
