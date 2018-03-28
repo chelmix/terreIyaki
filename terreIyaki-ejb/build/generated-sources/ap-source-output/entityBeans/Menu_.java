@@ -7,10 +7,14 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-27T23:01:53")
 =======
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-27T23:56:48")
 >>>>>>> reparation
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-03-28T09:41:48")
+>>>>>>> test
 @StaticMetamodel(Menu.class)
 public class Menu_ { 
 
