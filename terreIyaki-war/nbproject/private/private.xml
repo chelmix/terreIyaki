@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/includes/ajax/order-item-customization.jsp</file>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/css/style.css</file>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/home.jsp</file>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/includes/aside/navbar.jsp</file>
-            <file>file:/Users/samira/terreIyaki/terreIyaki-war/web/WEB-INF/login.jsp</file>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/src/java/subControllers/KitchenCtrl.java</file>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/js/myJS.js</file>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/includes/ajax/order-item-display.jsp</file>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/WEB-INF/kitchen.jsp</file>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-war/web/css/style.css</file>
         </group>
     </open-files>
 </project-private>

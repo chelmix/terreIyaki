@@ -11,15 +11,18 @@ body {
 h1 {
     font-size: 1.5em;
     text-transform: uppercase;
+    margin: 2em 2em;
 }
 
 h2 {
     font-size: 1.33em;
     text-transform: uppercase;
+    margin: 2em 2em;
 }
 
 h3, h4, h5, h6 {
     text-transform: uppercase;
+    margin: 2em 2em;
 }
 
 #conteneur
@@ -36,7 +39,7 @@ h3, h4, h5, h6 {
 
 p {
     display : block;  
-    padding: 1em 1.5em;
+    margin: 2em 2em;
     text-decoration: none;
 }
 
@@ -113,10 +116,12 @@ article {
 .processing {
     font-weight: bold;
 }
-nav {
-      margin : 2em 2em; 
+nav {    
+    margin : 2em 2em; 
     display: flex;
-    justify-content :space-between; 
-    
-    
+    justify-content :space-between;  
+}
+
+.meal {
+    margin : 2em 2em; 
 }

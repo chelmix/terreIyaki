@@ -16,16 +16,15 @@
             <h1>Catégorie : ${category.name}</h1>   
             <c:forEach var = "pro" items="${products}">
                 <article>
-                    <img src="${pro.picture}" />
+                    <img src="${pro.picture}" class ="meal" />
                     <p class="product-name">${pro.name}</p>
                     <p>${pro.description}<br />
-                        Prix HT : ${pro.price} € - supprimer après debug <br />
-                        Prix TTC : ${pro.priceWithVAT} €<br />
+                        Prix : ${pro.priceWithVAT} €<br />
                     </p>
                     <c:url value="FrontController?section=overview&product-id=${pro.id}" var="url03" />
-                    <a class="button" href="${url03}">Détails</a>
+                    <a class="button1" href="${url03}">Détails</a>
                     <c:url value="FrontController?section=product-choice&product-id=${pro.id}" var="url04" />
-                    <a class="button" href="${url04}">Choisir</a>
+                    <a class="button1" href="${url04}">Choisir</a>
                 </article>
             </c:forEach>
         </main>

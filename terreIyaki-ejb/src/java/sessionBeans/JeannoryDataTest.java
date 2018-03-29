@@ -238,6 +238,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         Product prod55 = new Product("Coca cola", 5f, "images/default-product.jpg", "servi avec rondelle de citron");
         Product prod56 = new Product("Fanta", 5f, "images/default-product.jpg", "saveur exotique");
+        
 
         // ajout des options au pif pour test
         prod07.getOptions().add(opt05);
@@ -265,6 +266,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         Category cat03 = new Category("Viandes grillées");
         Category cat04 = new Category("Poissons grillés");
         Category cat05 = new Category("Accompagnements");
+        Category cat06 = new Category("Boissons");
 
         // attribution de catégories aux produits
         prod01.setCategory(cat02);
@@ -283,6 +285,10 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prod14.setCategory(cat01);
         prod15.setCategory(cat01);
         prod16.setCategory(cat01);
+        prod55.setCategory(cat06);
+        prod56.setCategory(cat06);
+        
+        
 
         List<MyGrant> listMyGrant01 = new ArrayList();
         List<MyGrant> listMyGrant02 = new ArrayList();
@@ -414,19 +420,33 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         VAT vat01 = new VAT(10f, "consommation immédiate");
         VAT vat02 = new VAT(5.5f, "consommation différée");
         VAT vat03 = new VAT(20f, "alcool");
-
+        
+        prod55.setVat(vat01);
+        prod56.setVat(vat01);
+        
+        prod01.setVat(vat01);
+        prod02.setVat(vat01);
+        prod03.setVat(vat01);
+        prod04.setVat(vat01);
+        prod05.setVat(vat01);
         prod06.setVat(vat01);
         prod07.setVat(vat01);
         prod08.setVat(vat01);
         prod09.setVat(vat01);
         prod10.setVat(vat01);
         prod11.setVat(vat01);
+        prod12.setVat(vat01);
+        prod13.setVat(vat01);
+        prod14.setVat(vat01);
+        prod15.setVat(vat01);
+        prod16.setVat(vat01);
+        
 
         Property prop01 = new Property("Origine", "Japon");
         Property prop02 = new Property("Origine", "UE");
         Property prop03 = new Property("Origine", "Nouvelle Zélande");
         Property prop04 = new Property("Contenance", "75");
-        Property prop05 = new Property("Alcoolémie", "75");
+        Property prop05 = new Property("Alcoolémie", "12.5");
 
         Unit u01 = new Unit("centilitre", "cl");
         Unit u02 = new Unit("degré", "°");
@@ -450,7 +470,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prod07.getProperties().add(prop02);
         prod08.getProperties().add(prop02);
 
-        Combo combo02 = new Combo("Zen", 45f, "menu abordable", "images/Zen.jpg");
+        Combo combo02 = new Combo("Zen", 45f, "menu abordable", "images/default-product.jpg");
 //      Zen  
         Product prod23 = new Product("King starter", 10f, "images/default-product.jpg", "Petits hors-d'oeuvres avec sa soupe Miso");
         Product prod24 = new Product("Sushi rary", 30f, "images/default-product.jpg", "Assortiment variés de 7 sushi et 6 maki");
@@ -486,7 +506,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         prod29.setComboCategories(listComboCat07);
 
         //combo 1       
-        Combo combo01 = new Combo("Bento ShoKado", 62f, "menu 3 étoiles", "images/bentoShokado.jpg");
+        Combo combo01 = new Combo("Bento ShoKado", 62f, "menu 3 étoiles", "images/default-product.jpg");
 
         ComboCategory comboCat01 = new ComboCategory(1, "1 - Entree au choix");
         ComboCategory comboCat02 = new ComboCategory(2, "2 - Plat au choix");
@@ -539,10 +559,6 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
 
         prod56.setVat(vat01);
         prod55.setVat(vat01);
-
-        prod08.setVat(vat01);
-        prod05.setVat(vat01);
-        prod06.setVat(vat01);
 
         prod30.setVat(vat03);
 
@@ -787,6 +803,7 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         em.persist(cat03);
         em.persist(cat04);
         em.persist(cat05);
+        em.persist(cat06);
 
         em.persist(myGrant01);
         em.persist(myGrant02);
