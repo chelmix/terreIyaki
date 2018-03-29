@@ -1,6 +1,7 @@
 
 package subControllers;
 
+import entityBeans.Account;
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.MyOrder;
@@ -359,61 +360,50 @@ request.setAttribute("menuRempli", "valider menu");
  try{
  if(request.getParameter("action").equals("validerMenu")){
      
-     
-   //  try{
+   
+     try{
    
          try{
              
  //je dois retrouver la derniere MyOrder et l'associer aux ComboItem
-//             
-             
-         HashMap<String,Long>  hashPanier =(HashMap<String,Long>)session.getAttribute("hashPanier");
-            String  nameComboChoice = (String) session.getAttribute("nameComboChoice");
-     
-     MyOrder myOrder = (MyOrder) session.getAttribute("myOrder"); 
+//                     
+         HashMap<String,Long>  hashPanier =(HashMap<String,Long>)session.getAttribute("hashPanier");   
+            String  nameComboChoice = (String) session.getAttribute("nameComboChoice");       
+     MyOrder myOrder = (MyOrder) session.getAttribute("newOrder"); 
         int numeroTable=0;
      for(MyTable my : myOrder.getMyTables()){
       numeroTable =  my.getTableNumber();   
      }
-    // MyOrder myOrderPersist = gestionCommande.getLastOrderByTable(numeroTable);
-//     List<OrderItem>  listOrderItem = 
-//             gestionCommande.comboPersist(hashPanier, nameComboChoice, myOrderPersist);
+     MyOrder myOrderPersist = gestionCommande.getLastOrderbyTableNumber(numeroTable);
+             gestionCommande.comboPersist(hashPanier, nameComboChoice, myOrderPersist);
+             
+             
+             
+             
+            List<OrderItem> listOI = gestionCommande.getOrderItemByOrder(myOrderPersist.getId());
+            
+            
+            
+            
+            
+            session.setAttribute("panierListOrderItem", listOI); 
+            
+            
+            
      
-     
-  
-    
-    // myOrder.getMyTables();
-     
-     
-     
-      // System.out.println("test samira"+myOrder);
-    
-    
-//     gestionCommande.mergeComboWithMyOrder(listOrderItem, myOrder);
-         }catch(NullPointerException ne){
-             //test a faire
-           
+         }catch(NullPointerException ne){  
          }
-     
-     
-     
-//      } catch (CustomException ex) {
-//                            String texte = ex.getMessage();
-//                            request.setAttribute("message", texte);
-//                        }
-     
-     
-     
+      } catch (CustomException ex) {
+                            String texte = ex.getMessage();
+                            request.setAttribute("message", texte);
+                        }
+
      String message = "vous venez d'ajouter ce menu à votre panier";
      request.setAttribute("message", message);
-     System.out.println("++++++++++++++++ session :   "+session.getAttribute("hashPanier").toString());
 HashMap<String,Long> panier = (HashMap<String,Long> ) session.getAttribute("hashPanier");
 panier.clear();
-session.setAttribute("hashPanier", panier);     
-     
+session.setAttribute("hashPanier", panier);         
   session.removeAttribute("nombre");
-
-     System.out.println("++++++++++++++++ session V22222222:   "+session.getAttribute("hashPanier").toString());
 
      
  //****************************test*****************************************
@@ -429,14 +419,17 @@ request.setAttribute("menuCommande", menuHashCommande);
 
 session.removeAttribute("nameComboChoice");     
  
-session.removeAttribute("hashPanier");    
- 
+session.removeAttribute("hashPanier"); 
+
+session.setAttribute("panierListComboItem", panier);
+       
+
      
      
  //****************************test*****************************************
        
 //***********************facture *******début ******************************
-     
+   
      try{
      
      if(request.getParameter("detection").equals("mail")){

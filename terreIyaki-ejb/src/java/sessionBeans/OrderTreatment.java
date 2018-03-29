@@ -5,12 +5,14 @@
  */
 package sessionBeans;
 
+import entityBeans.Account;
 import entityBeans.Combo;
 import entityBeans.ComboCategory;
 import entityBeans.MyOrder;
 import entityBeans.OrderItem;
 import entityBeans.Payment;
 import entityBeans.Product;
+import entityBeans.Status;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -276,7 +278,7 @@ return panier;
  }
  
  //dans cette méthode je créé l'objet orderItem et je fais un set avec le combo
- //je créé orderItem et je fais un set avec l'objet product 
+ //je créé orderItem et je fais un set avec l'objet product + set avec status commandeEnCours
     @Override
     public void comboPersist(HashMap<String,Long>  hashPanier, String nameComboChoice, MyOrder myOrderPersist) throws CustomException{
  
@@ -287,15 +289,16 @@ return panier;
     OrderItem oi = new OrderItem (0f, 0f);
   //  listOrderItem.add(oi); 
 oi.setCombo(co01);
-em.persist(oi);
+
 oi.setMyOrder(myOrderPersist);
+
+em.persist(oi);
+
   }catch(NoResultException ex) {
             CustomException ce = new CustomException(CustomException.USER_ERR,"pas de produit");
          throw ce;
          
      }  
-
-
 
 Product po01;
 
@@ -303,78 +306,185 @@ List<Product>li01=new ArrayList();
 
 for(HashMap.Entry<String,Long>entry : hashPanier.entrySet()){
     try{
+        
+        Status statusOrderItemCommandeEnCours =  getStatusComboItemCommandeEnCours();
     String idString= String.valueOf(entry.getValue());
        po01= catalogTreatment.getProductById(idString);
         li01.add(po01);
-        System.out.println("*************Object *************   "+ po01.toString());
-        
-       System.out.println("*************Object Prix*************   "+ po01.getPrice());
-       System.out.println("*************Object Tax*************   "+  po01.getVat().getRate());
+
        OrderItem oi = new OrderItem (po01.getPrice(), po01.getVat().getRate());
-    //    listOrderItem.add(oi);
+  
        oi.setProduct(po01);
        oi.setMyOrder(myOrderPersist);
+       oi.setStatus(statusOrderItemCommandeEnCours);
        em.persist(oi);
-//       em.flush();
+
     }catch(NoResultException ex) {
             CustomException ce = new CustomException(CustomException.USER_ERR,"pas de produit");
          throw ce;
      }       
         
     }
-//              HashMap<String,Long>  hashPanier =(HashMap<String,Long>)session.getAttribute("hashPanier");
-//            String  nameComboChoice = (String) session.getAttribute("nameComboChoice");
-//     List<OrderItem>  listOrderItem = gestionCommande.comboPersist(hashPanier, nameComboChoice);
-//     MyOrder myOrder = (MyOrder) session.getAttribute("myOrder"); 
-//     myOrder.setOrderItems(listOrderItem);
-//     em.merge(myOrder);  
 
-//listOrderItem
-//myOrderPersist
-
-//return  listOrderItem;
-  
+  System.out.println("*************myOrderPersist myOrderPersist myOrderPersist*************   "+  myOrderPersist.toString());
 
 }
     
-//    //ca marche pas
-//    @Override
-//    public void mergeComboWithMyOrder( List<OrderItem>  listOrderItem, MyOrder myOrder){
-//        
-//    myOrder.setOrderItems(listOrderItem);
-//        System.out.println("test samira"+ listOrderItem.toString());
-//    em.merge(myOrder);
-//    
-//        
-//        
-//    }
+
+ 
+    @Override
+    public MyOrder getLastOrderByAccountCode(int accountCode) throws CustomException  {
+      MyOrder my01;
+         TypedQuery<MyOrder> qr = em.createNamedQuery("entityBeans.MyOrder.getLastAccount",MyOrder.class);  
+     qr.setParameter("paramAccountNumber", accountCode);
+     qr.setMaxResults(1);
+     try{
+         my01=qr.getSingleResult();
+         return my01;
+     }catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de combo");
+         throw ce;
+     }
+      
+  }
     
     
-//    @Override
-//    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException{
-//        
-// 
-//    TypedQuery<MyOrder> qr = em.createNamedQuery("entityBeans.MyOrder.getLastOrderByTableNumber",MyOrder.class);  
-//        qr.setParameter("paramTableNumber", numeroTable);
-//        
-//    try{
-//    MyOrder maCommande  =  qr.getSingleResult();
-// return maCommande;
-//    }catch(NoResultException ex) {
-//            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de combo");
-//         throw ce;
-//
-//    
-//    
-//    }
-//        
-//    }
+    @Override
+    public MyOrder getLastOrderbyTableNumber(int tableNumber)throws CustomException  {
+              MyOrder my01;
+         TypedQuery<MyOrder> qr = em.createNamedQuery("entityBeans.MyOrder.getOrderBylastTableNumber",MyOrder.class);  
+     qr.setParameter("paramTableNumber", tableNumber);
+     qr.setMaxResults(1);
+     try{
+         my01=qr.getSingleResult();
+         return my01;
+     }catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de combo");
+         throw ce;
+     }
+    }
     
     
+    //statut commande en cours
+    @Override
+        public Status getStatusComboItemCommandeEnCours() throws CustomException{
+        
+        
+        Query qr=em.createNamedQuery("entityBeans.Status.getStatusByNum");
+        qr.setParameter("paramNumStatus",0); 
+        try {
+        Status status = (Status) qr.getSingleResult(); 
+        return status;
+        } catch (NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de statut");
+            throw ce;
+            
+        
+        }
+        
+    }
     
+    //on persist le combo item + le statue + on le produit associe recupere + la comande
+        
+    @Override
+    public Product persistProductPanier(String stringIdProduct, MyOrder my) throws CustomException  {
+        //je dois reconstituer le produit 
+       
+       
+       
+try{
     
+      Product po01= catalogTreatment.getProductById(stringIdProduct);
+       
+       OrderItem oi = new OrderItem (po01.getPrice(), po01.getVat().getRate());
+       Status statusOrderItemCommandeEnCours =  getStatusComboItemCommandeEnCours();
+       oi.setStatus(statusOrderItemCommandeEnCours);
+       oi.setMyOrder(my);
+       oi.setProduct(po01);
+       em.persist(oi);
+       
+       return po01;
+       
+       }catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de produit");
+         throw ce;
+         
     
+         
+         
+     }    
+        
+    }  
+        
+        
+        
+             public Status getStatusApayer() throws CustomException{
+        
+        
+        Query qr=em.createNamedQuery("entityBeans.Status.getStatusByNum");
+        qr.setParameter("paramNumStatus",5); 
+        try {
+        Status status = (Status) qr.getSingleResult(); 
+        return status;
+        } catch (NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de statut");
+            throw ce;
+            
+        
+        }
+        
+    }   
+        
+    @Override
+             public void changeStatusCommandeAPayer(MyOrder my) throws CustomException{
+     Status status =     getStatusApayer()  ;      
+     my.setStatus(status);
+     em.merge(my);
+             }
+        
+        
+        
+    @Override
+     public List<OrderItem> getOrderItemByOrder(long MyOrderId) throws CustomException {
+             
+             
+        TypedQuery<OrderItem> qr = em.createNamedQuery("entityBeans.OrderItem.selectByOrder",OrderItem.class);
+        qr.setParameter("paramMyOrderId",MyOrderId);
+        try{
+            List<OrderItem> or01;
+            or01 = qr.getResultList();
+            return or01;
+                }catch (NoResultException ex){
+            CustomException ce = new CustomException(CustomException.USER_ERR,"commande vide");
+            throw ce;
+        }
+     }  
     
+     
+     
+    @Override
+             public OrderItem getOrderItemById(long id) throws CustomException{
+
+        Query qr=em.createNamedQuery("entityBeans.OrderItem.selectOrderItemById");
+        qr.setParameter("paramOrderItemId",id); 
+        try {
+        OrderItem oi = (OrderItem) qr.getSingleResult(); 
+        return oi;
+        } catch (NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de ligne de commande");
+            throw ce;
+            
+        
+        }
+        
+    }
+     
+     
+     
+     
+     
+     
+     
     
     //méthode en private pour utiliser un autre métier
          private CatalogTreatmentLocal lookupCatalogTreatmentLocal() {
@@ -388,61 +498,39 @@ for(HashMap.Entry<String,Long>entry : hashPanier.entrySet()){
     }
     
     
+    @Override
+             public Status getStatusAPreparer() throws CustomException{
+        
+        
+        Query qr=em.createNamedQuery("entityBeans.Status.getStatusByNum");
+        qr.setParameter("paramNumStatus",1); 
+        try {
+        Status status = (Status) qr.getSingleResult(); 
+        return status;
+        } catch (NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de statut");
+            throw ce;
+            
+        
+        }
+    } 
+    
+    
+    @Override
+          public void metOrderItemAPreparer(OrderItem oi) throws CustomException{
 
-    
-    
-    
+              
+              
+            
+           Status status = getStatusAPreparer();
+              oi.setStatus(status);
+              em.merge(oi);
+              
+            
+        }  
     
 
  
   }    
 
-    
-
  
- 
-    //on récupère tous les menus commandés
-
-    
-    
-
-//    public void persist(Object object) {
-//        em.persist(object);
-//    }
-
-
-//    public int compareTo(ComboCategory obj, ComboCategory cible) {
-//        int d01 = obj.getNumber();
-//        int d02 = cible.getNumber();
-//        int delta = d01 - d02;
-//        if(delta < 0){
-//            return -1;
-//        }else if(delta > 0){
-//            return 1;
-//        }else{
-//            return 0;
-//        }
-//    } 
-    
-//        public int compareTo(Ville cible) {
-//        String nom01 = this.getNom();
-//        if(nom01 == null){
-//            return -1;
-//        }
-//        String nom02 = cible.getNom();
-//        if(nom02 == null){
-//            return 1;
-//        }
-   //    public int compare(ComboCategory obj, ComboCategory cible) {
-//        int d01 = obj.getNumber();
-//        int d02 = cible.getNumber();
-//        int delta = d01 - d02;
-//        if(delta < 0){
-//            return -1;
-//        }else if(delta > 0){
-//            return 1;
-//        }else{
-//            return 0;
-//        }
-//    } 
-

@@ -9,7 +9,8 @@
     </head>
     <body>
         <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
-        <c:import url ="${urlHeader}"/>
+        <c:import url ="${urlHeader}"/>        
+        
         <h1>Login</h1>
         
 <c:if test="${code==null}">

@@ -29,6 +29,9 @@ import javax.persistence.OneToOne;
          
     @NamedQuery(name = "entityBeans.MyTable.selectTablebyTableNumber", 
             query = "select t from MyTable t where t.tableNumber = :paramtableNumber")
+
+//    @NamedQuery(name = "entityBeans.MyTable.selectlastOrderByTableNumber", 
+//            query = "select t. from MyTable t where t.tableNumber = :paramtableNumber")        
         
         })
 

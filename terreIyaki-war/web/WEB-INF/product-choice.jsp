@@ -12,14 +12,15 @@
         <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
-        <main>
+        <main>           
             <h1>Votre choix</h1>
             <br />
             ${product}
             <br />
             <form action="FrontController" method="POST" accept-charset="UTF-8">
-                <input type="hidden" name="section" value="" />
-                <input type="hidden" name="action" value="" />
+                <input type="hidden" name="section" value="newOrder" />
+                <input type="hidden" name="action" value="choixProduit" />
+                <input type="hidden" name="produit" value="${product.id}" />
                 <br />
                 <c:if test="${not empty product.sides}">
                     <label>choix de l'accompagnement</label><br />

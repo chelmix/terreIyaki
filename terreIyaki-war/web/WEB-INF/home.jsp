@@ -13,7 +13,31 @@
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
 
-        <main>
+        <main> 
+<c:if test="${panierListOrderItem!=null}">
+    <br/>Produit : 
+<c:forEach var="orderP" items="${panierListOrderItem}">
+   
+    <br/>Qté : 1 - ${orderP.status} - ${orderP.product.name} 
+    <c:url value="FrontController?section=home&action=validerPlat&orderItem=${orderP.id}" var="url33" />
+    <c:if test="${orderP.status.num==0}">
+   - <a href="${url33}">Envoyer en cuisine</a>     
+   </c:if>
+</c:forEach>
+<c:url value="FrontController?section=home&action=addition" var="url3333" />
+<a class="button" href="${url3333}">L'addition</a>    
+</c:if>
+    <%--
+<c:if test="${panierListOrderComboItem!=null}">
+    <br/>Menu : 
+<c:forEach var="orderM" items="${panierListOrderComboItem}">
+   
+    <br/>Qté : 1 - ${orderM.status} - ${orderM.product.name}  
+</c:forEach>          
+</c:if>  
+    --%>
+    
+            
             <p>${message}</p>
             <c:if test="${user!=null}">
                 <p>Bonjour ${user.firstName} ${user.lastName}</p>

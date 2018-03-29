@@ -31,9 +31,11 @@ import javax.persistence.Temporal;
     @NamedQuery(name = "entityBeans.MyOrder.getItemsByOrder",
             query = "Select m.orderItems from MyOrder m where m.id =:paramMyOrderId"),
     @NamedQuery(name = "entityBeans.MyOrder.getOrderById",
-            query = "Select m from MyOrder m where m.id =:paramMyOrderId")
-//        @NamedQuery(name = "entityBeans.MyOrder.getLastOrderByTableNumber",
-//            query = "Select m from MyOrder m where m.myTables.number =:paramTableNumber order by m.id desc")
+            query = "Select m from MyOrder m where m.id =:paramMyOrderId"),
+    @NamedQuery(name = "entityBeans.MyOrder.getLastAccount",
+            query = "Select m from MyOrder m where m.account.code =:paramAccountNumber order by m.id desc"),
+    @NamedQuery(name = "entityBeans.MyOrder.getOrderBylastTableNumber",
+            query = "select distinct o from MyOrder o join o.myTables t where t.tableNumber = :paramTableNumber order by o.id desc")
 })
 public class MyOrder implements Serializable {
 

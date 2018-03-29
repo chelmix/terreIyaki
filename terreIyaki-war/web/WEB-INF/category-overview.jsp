@@ -12,7 +12,7 @@
         <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
-        <main>
+        <main>           
             <h1>Catégorie : ${category.name}</h1>   
             <c:forEach var = "pro" items="${products}">
                 <article>

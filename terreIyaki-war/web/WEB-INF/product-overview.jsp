@@ -11,7 +11,7 @@
         <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
         <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
-        <c:import url ="${urlNavbar}"/>
+        <c:import url ="${urlNavbar}"/>         
         <main>
             <h1>Fiche produit</h1>
             <img src="${product.picture}" />

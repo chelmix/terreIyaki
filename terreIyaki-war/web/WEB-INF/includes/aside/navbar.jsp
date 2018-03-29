@@ -6,6 +6,6 @@
     <c:url value="FrontController?section=versLogin&action=logout" var="url01" />
     <a class="button" href="${url01}">Se déconnecter</a>
     </c:if>  
-        
+ 
     <hr />
 </nav>

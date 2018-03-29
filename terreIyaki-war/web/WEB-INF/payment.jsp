@@ -18,7 +18,7 @@
         <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
-        <main>
+        <main>             
             ${message}
 
             <c:if test="${commandeToPayHash==null}" >

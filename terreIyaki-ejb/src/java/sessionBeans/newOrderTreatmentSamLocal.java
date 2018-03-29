@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+import entityBeans.Account;
 import entityBeans.MyOrder;
 import entityBeans.MyTable;
 import entityBeans.Status;
@@ -20,6 +21,8 @@ public interface newOrderTreatmentSamLocal {
 
     public MyTable getSeletedTableNumber(int numeroTable) throws CustomException;
 
-    public MyOrder newOrder(MyTable table) throws CustomException;
+    public MyOrder newOrder(MyTable table, Account monCompte) throws CustomException;
+
+    public Account getAccountByCode(int leCode) throws CustomException;
     
 }

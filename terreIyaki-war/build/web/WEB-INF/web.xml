@@ -59,6 +59,10 @@
             <param-name>newOrder</param-name>
             <param-value>subControllers.versNewOrder</param-value>
         </init-param>
+        <init-param>
+            <param-name>panier</param-name>
+            <param-value>subControllers.PanierCtrl</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
