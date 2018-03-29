@@ -119,17 +119,17 @@ public class PayementTreatment implements PayementTreatmentLocal {
             
  //***********************PJ****************************************************           
 //En local local            
-DataSource source = new FileDataSource("/home/jeanno/Files/facture.pdf");
+//DataSource source = new FileDataSource("/home/jeanno/Files/facture.pdf");
             
 //sur serveur distant            
-//DataSource source = new FileDataSource("/home/jeannory/Files/facture.pdf");
+DataSource source = new FileDataSource("/home/jeannory/Files/facture.pdf");
 message.setDataHandler(new DataHandler(source));
 
 //En local local  
-message.setFileName("/home/jeanno/Files/facture.pdf");
+//message.setFileName("/home/jeanno/Files/facture.pdf");
 
 //sur serveur distant 
-//message.setFileName("/home/jeannory/Files/facture.pdf");
+message.setFileName("/home/jeannory/Files/facture.pdf");
 
  //***********************PJ****************************************************                               
            
@@ -181,17 +181,17 @@ message.setFileName("/home/jeanno/Files/facture.pdf");
         com.lowagie.text.Document document = new com.lowagie.text.Document(PageSize.A4);
 try{
 //en local    
-PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/facture.pdf"));
+//PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/facture.pdf"));
 
 //sur serveur distant
-//PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/facture.pdf"));
+PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/facture.pdf"));
 document.open();
 
 //en local
-Image image = Image.getInstance("/home/jeanno/Files/logo.png");
+//Image image = Image.getInstance("/home/jeanno/Files/logo.png");
 
 //sur serveur distant
-//Image image = Image.getInstance("/home/jeannory/Files/logo.png");
+Image image = Image.getInstance("/home/jeannory/Files/logo.png");
 document.add(image);
 SimpleDateFormat formater = null;
 Date aujourdhui = new Date();
@@ -557,7 +557,7 @@ lo09= qr.getResultList();
 //            Transport.send(message);
 //
 //            System.out.println("Sent message successfully....");
-//
+////
 //        } catch (MessagingException e) {
 //            throw new RuntimeException(e);
 //        }
@@ -573,17 +573,17 @@ lo09= qr.getResultList();
         com.lowagie.text.Document document = new com.lowagie.text.Document(PageSize.A4);
 try{
 //en local    
-PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/facture.pdf"));
+//PdfWriter.getInstance(document,new FileOutputStream("/home/jeanno/Files/facture.pdf"));
 
 //sur serveur distant
-//PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/facture.pdf"));
+PdfWriter.getInstance(document,new FileOutputStream("/home/jeannory/Files/facture.pdf"));
 document.open();
 
 //en local
-Image image = Image.getInstance("/home/jeanno/Files/logo.png");
+//Image image = Image.getInstance("/home/jeanno/Files/logo.png");
 
 //sur serveur distant
-//Image image = Image.getInstance("/home/jeannory/Files/logo.png");
+Image image = Image.getInstance("/home/jeannory/Files/logo.png");
 document.add(image);
 SimpleDateFormat formater = null;
 Date aujourdhui = new Date();

@@ -26,8 +26,7 @@
         <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>
-        <main>
-            
+        <main>           
             <p>${message}</p>
 
 
@@ -58,9 +57,9 @@
             <c:if test="${HashProduct!=null}">
                 <h3>Menu ${comboName02} </h3>
                 
-             
-                <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/>
-                </a>
+             <c:if test="${newOrder!=null}">
+                <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/></a>
+              </c:if>  
                  
 
 
@@ -182,7 +181,7 @@
                     menu commandé : ${achat.key} - quantité : ${achat.value}
                     <c:url value="FrontController?section=versLogin" var="url02" />
 
-                    <br/><br/>retour vers acceuil Client :  <a href="${url02}">  ici </a>         
+                        
                 </c:forEach>
             </c:if>
 

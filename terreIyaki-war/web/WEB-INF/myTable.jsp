@@ -18,6 +18,8 @@
     <body>
         <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
         <c:import url ="${urlHeader}"/>
+        <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
+        <c:import url ="${urlNavbar}"/>        
         <h1>Liste des tables et leurs statuts</h1>
         <form action="FrontController">
             <c:forEach var="table" items="${myTable}">

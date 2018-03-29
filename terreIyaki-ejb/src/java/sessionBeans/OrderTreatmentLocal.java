@@ -10,6 +10,7 @@ import entityBeans.ComboCategory;
 import entityBeans.MyOrder;
 import entityBeans.OrderItem;
 import entityBeans.Product;
+import entityBeans.Status;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Local;
@@ -46,7 +47,27 @@ public interface OrderTreatmentLocal {
 
 //    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException;
 
-//    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException;
+ //   public MyOrder getLastOrderByTable(int numeroTable) throws CustomException;
+
+    public MyOrder getLastOrderByAccountCode(int accountCode) throws CustomException;
+
+    public MyOrder getLastOrderbyTableNumber(int tableNumber) throws CustomException;
+
+    public Status getStatusComboItemCommandeEnCours() throws CustomException;
+
+    public Product persistProductPanier(String stringIdProduct, MyOrder my) throws CustomException;
+
+    public List<OrderItem> getOrderItemByOrder(long MyOrderId) throws CustomException;
+
+    public void changeStatusCommandeAPayer(MyOrder my) throws CustomException;
+
+    public OrderItem getOrderItemById(long id) throws CustomException;
+
+    public Status getStatusAPreparer() throws CustomException;
+
+    public void metOrderItemAPreparer(OrderItem oi) throws CustomException;
+
+
 
 
 

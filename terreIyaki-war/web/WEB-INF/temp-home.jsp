@@ -10,7 +10,7 @@
     <body>
         <c:url value ="FrontController?section=include&action=header" var="urlHeader"/> 
         <c:import url ="${urlHeader}"/>
-        <main>
+        <main>           
             <div>
                 <c:url value="FrontController?section=dataTestJeannory" var="url01" />
 

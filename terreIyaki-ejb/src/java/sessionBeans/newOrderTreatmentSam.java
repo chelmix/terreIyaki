@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+import entityBeans.Account;
 import entityBeans.MyOrder;
 import entityBeans.MyTable;
 import entityBeans.Status;
@@ -19,6 +20,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import tools.CustomException;
 
 /**
@@ -27,8 +29,9 @@ import tools.CustomException;
  */
 @Stateless
 public class newOrderTreatmentSam implements newOrderTreatmentSamLocal {
+    OrderTreatmentLocal gestionCommande = lookupOrderTreatmentLocal();  
 
-    PayementTreatmentLocal traiterStatus = lookupPayementTreatmentLocal();
+    PayementTreatmentLocal getMethodPayementTreatment = lookupPayementTreatmentLocal();
     
     
     @PersistenceContext(unitName = "terreIyaki-ejbPU")
@@ -87,9 +90,9 @@ public class newOrderTreatmentSam implements newOrderTreatmentSamLocal {
     }
     
     
-    
+    //on persist myOrder et on recup l object persisté
     @Override
-    public MyOrder newOrder(MyTable table) throws CustomException{ 
+    public MyOrder newOrder(MyTable table, Account monCompte) throws CustomException{ 
         Status statusTable = getStatusTableActif(); 
         table.setStatus(statusTable);
         Status statusCommande = getStatusCommandeEnCours (); 
@@ -97,17 +100,62 @@ public class newOrderTreatmentSam implements newOrderTreatmentSamLocal {
         ArrayList listeTable = new ArrayList (); 
         listeTable.add(table);
         MyOrder newOrder = new MyOrder(); 
+        
+       
         newOrder.setStatus(statusCommande);
         newOrder.setMyTables(listeTable);
+        newOrder.setAccount(monCompte);
+        
         em.persist(newOrder);
         em.merge(table); 
-        return newOrder;
-        
-
-   
+      //  return newOrder;
+   int numerotable = table.getTableNumber();     
+ MyOrder newOrder02 =  gestionCommande.getLastOrderbyTableNumber(numerotable);
+  return  newOrder02;
     }
     
     
+        
+    
+    
+     
+//    @Override
+//    public MyOrder getLastOrderByTable(int numeroTable) throws CustomException{
+//        
+// 
+//    TypedQuery<MyOrder> qr = em.createNamedQuery("entityBeans.MyOrder.getLastOrderByTableNumber",MyOrder.class);  
+//        qr.setParameter("paramTableNumber", numeroTable);
+//        
+//    try{
+//    MyOrder maCommande  =  qr.getSingleResult();
+// return maCommande;
+//    }catch(NoResultException ex) {
+//            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de combo");
+//         throw ce;
+//
+//    
+//    
+//    }
+//        
+//    }
+    
+    
+    @Override
+    public Account getAccountByCode(int leCode) throws CustomException{
+        
+        TypedQuery<Account> qr = em.createNamedQuery("entityBeans.Account.getAccountByCode",Account.class);
+        qr.setParameter("paramAccountCode", leCode);
+        try{
+        Account monCompte = qr.getSingleResult();
+        return monCompte;
+        }catch(NoResultException ex) {
+            CustomException ce = new CustomException(CustomException.USER_ERR,"pas de combo");
+         throw ce;
+        
+        
+    }
+    
+    }
     
     
     private PayementTreatmentLocal lookupPayementTreatmentLocal(){
@@ -120,6 +168,19 @@ public class newOrderTreatmentSam implements newOrderTreatmentSamLocal {
     }
     
 }
+    
+       private OrderTreatmentLocal lookupOrderTreatmentLocal() {
+        try {
+            Context c = new InitialContext();
+            return (OrderTreatmentLocal) c.lookup("java:global/terreIyaki/terreIyaki-ejb/OrderTreatment!sessionBeans.OrderTreatmentLocal");
+
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+
+        }
+
+    } 
     
     
 }
