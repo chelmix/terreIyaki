@@ -92,3 +92,7 @@ article {
 #mytableStatus:hover {
     background-color: #EB212E;
 }
+
+.processing {
+    font-weight: bold;
+}

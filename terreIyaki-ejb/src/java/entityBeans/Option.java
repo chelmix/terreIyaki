@@ -17,7 +17,9 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name ="entityBeans.Option.selectAll", 
-            query = "select o from Option o")
+            query = "select o from Option o"),
+    @NamedQuery(name ="entityBeans.Option.selectByOrderItem", 
+            query = "select o from Option o join o.orderItems i where i = :paramItem")
 })
 public class Option implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -29,7 +31,7 @@ public class Option implements Serializable {
     @Column(nullable = false)
     private String Value; 
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "options")
     private Collection <OrderItem> orderItems; 
     
     @ManyToMany(mappedBy = "options")

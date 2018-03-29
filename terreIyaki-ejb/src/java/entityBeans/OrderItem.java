@@ -25,9 +25,15 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQueries({
     @NamedQuery(name ="entityBeans.OrderItem.selectByOrder",
-        query="Select o from OrderItem o where o.myOrder.id = :paramMyOrderId"), 
+        query="Select o from OrderItem o where o.myOrder.id = :paramMyOrderId"),
     @NamedQuery(name ="entityBeans.OrderItem.selectReadyToCook",
-        query="Select o from OrderItem o where o.status = :paramStatus")
+        query="Select o from OrderItem o where o.status = :paramStatus"),
+    @NamedQuery(name ="entityBeans.OrderItem.selectByStatus2Params",
+        query="Select o from OrderItem o where o.status = :paramStatus1 or o.status = :paramStatus2"),
+    @NamedQuery(name ="entityBeans.OrderItem.selectOrderItemOptions", 
+            query = "select o.options from OrderItem o where o = :paramItem"),
+    @NamedQuery(name ="entityBeans.OrderItem.selectOrderItemIngredients", 
+            query = "select o.ingredients from OrderItem o where o = :paramItem")
 //    @NamedQuery(name ="entityBeans.OrderItem.getProductsByOrder",
 //          query="Select o.products from OrderItem o where o.order.id =:paramMyOrderId")            
 })
@@ -59,24 +65,21 @@ public class OrderItem implements Serializable {
     @OneToMany(mappedBy = "comboOrderItem")
     private Collection<OrderItem> orderItems;
 
-    @ManyToMany (mappedBy = "orderItems")
+    @ManyToMany
     private Collection <Ingredient> ingredients; 
-    
-    
-    @ManyToMany (mappedBy = "orderItems")
+        
+    @ManyToMany
     private Collection <Option> options; 
     
     @ManyToOne
     private Product product; 
-    
-    
-    
-    
-    
+     
 //    @ManyToOne
 //    private ComboOrderItem comboOrderItem;
     public OrderItem() {
         orderItems = new ArrayList();
+        ingredients = new ArrayList();
+        options = new ArrayList();
     }
 
     public OrderItem(float price, float tax) {
