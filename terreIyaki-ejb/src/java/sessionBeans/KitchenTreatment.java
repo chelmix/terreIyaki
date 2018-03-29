@@ -1,6 +1,7 @@
 
 package sessionBeans;
 
+import entityBeans.Ingredient;
 import entityBeans.Option;
 import entityBeans.OrderItem;
 import entityBeans.Product;
@@ -66,9 +67,17 @@ public class KitchenTreatment implements KitchenTreatmentLocal {
     
     @Override
     public List<Option> getOptionsByOrderItem(OrderItem oi) {
-        Query qr = em.createNamedQuery("entityBeans.Option.selectByOrderItem");
+        Query qr = em.createNamedQuery("entityBeans.OrderItem.selectOrderItemOptions");
         qr.setParameter("paramItem", oi);
         List<Option> lo = qr.getResultList();
         return lo;
+    }
+    
+    @Override
+    public List<Ingredient> getIngredientsByOrderItem(OrderItem oi) {
+        Query qr = em.createNamedQuery("entityBeans.OrderItem.selectOrderItemIngredients");
+        qr.setParameter("paramItem", oi);
+        List<Ingredient> li = qr.getResultList();
+        return li;
     }
 }

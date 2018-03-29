@@ -362,12 +362,15 @@ public class JeannoryDataTest implements JeannoryDataTestLocal {
         OrderItem orderItem01 = new OrderItem(20f, 4f);
         orderItem01.setProduct(prod16);
         orderItem01.setStatus(s01);
-        orderItem01.getOptions().add(opt01);
+        orderItem01.getOptions().add(opt02);
+        orderItem01.getOptions().add(opt03);
 
         //menu
         OrderItem orderItem02 = new OrderItem(20f, 4f);
         orderItem02.setProduct(prod11);
         orderItem02.setStatus(s01);
+        orderItem02.getIngredients().add(ing02);
+        
         OrderItem orderItem03 = new OrderItem(20f, 4f);
         OrderItem orderItem04 = new OrderItem(20f, 4f);
         OrderItem orderItem05 = new OrderItem(20f, 4f);

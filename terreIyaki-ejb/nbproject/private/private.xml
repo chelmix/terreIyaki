@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-ejb/src/java/entityBeans/Option.java</file>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/CatalogTreatment.java</file>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-ejb/src/java/entityBeans/OrderItem.java</file>
             <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-ejb/src/conf/persistence.xml</file>
+            <file>file:/home/chelmix/NetBeansProjects/terreIyaki/terreIyaki-ejb/src/java/sessionBeans/KitchenTreatment.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,6 +5,7 @@
  */
 package sessionBeans;
 
+import entityBeans.Ingredient;
 import entityBeans.Option;
 import entityBeans.OrderItem;
 import entityBeans.Status;
@@ -27,5 +28,7 @@ public interface KitchenTreatmentLocal {
     public OrderItem getOrderItemById(String id);
 
     public List<Option> getOptionsByOrderItem(OrderItem oi);
+
+    public List<Ingredient> getIngredientsByOrderItem(OrderItem oi);
     
 }

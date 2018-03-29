@@ -34,7 +34,7 @@ public class Ingredient implements Serializable {
     private String Description; 
 
     
-    @ManyToMany
+    @ManyToMany (mappedBy = "ingredients")
     private Collection <OrderItem> orderItems; 
     
     
