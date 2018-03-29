@@ -12,25 +12,24 @@
         <c:import url ="${urlHeader}"/>
         <c:url value ="FrontController?section=include&action=navbar" var="urlNavbar"/> 
         <c:import url ="${urlNavbar}"/>         
-        <main>
+        <article>
             <h1>Fiche produit</h1>
-            <img src="${product.picture}" />
+            <img src="${product.picture}" class="meal"/>
             <p class="product-name">${product.name}</p>
             <p>
                 ${product.description}<br />
-                Prix HT : ${product.price} € - supprimer après debug<br />
-                Prix TTC : ${product.priceWithVAT} €<br />
+                Prix : ${product.priceWithVAT} €<br />
             </p>
             <c:url value="FrontController?section=product-choice&product-id=${product.id}" var="url04" />
             <a class="button" href="${url04}">Choisir</a><br />
-            <h2>
+            <h4>
                 Propriétés    
-            </h2>
+            </h4>
             <c:forEach var = "pty" items="${properties}">
                 <p>
                     ${pty.name} : ${pty.value} ${pty.unit.abbreviation}
                 </p><br />
             </c:forEach>
-        </main>
+        </article>
     </body>
 </html>

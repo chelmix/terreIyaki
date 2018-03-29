@@ -3,7 +3,7 @@
 <c:if test="${options != null}">
     <p>Options :</p>
     <c:forEach var = "opt" items="${options}">
-        ${opt.name}
+        <p>${opt.name}</p>
     </c:forEach>
 </c:if>
 <br />
@@ -11,6 +11,6 @@
 <c:if test="${ingredients != null}">
     <p>Ingrédients à retirer :</p>
     <c:forEach var = "ing" items="${ingredients}">
-        ${ing.name}
+         <p>${ing.name}</p>
     </c:forEach>
 </c:if>

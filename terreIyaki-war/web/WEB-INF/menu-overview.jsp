@@ -17,7 +17,7 @@
             <section>
                 <c:forEach var = "cat" items="${categories}">
                     <c:url value="FrontController?section=overview&category-id=${cat.id}" var="url03" />
-                    <a class="button" href="${url03}">${cat.name}</a>
+                    <a class="button1" href="${url03}">${cat.name}</a>
                 </c:forEach>
             </section>
         </main>
