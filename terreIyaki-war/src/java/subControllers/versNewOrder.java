@@ -41,6 +41,62 @@ public class versNewOrder implements ControllerInterface, Serializable {
         OrderTreatmentLocal gestionCommande = lookupOrderTreatmentLocal();
         HttpSession session = request.getSession();
         newOrderTreatmentSamLocal gestionTable = lookupNewOrderTreatmentSamLocal();
+        
+        
+        
+        
+        //**************************************affichage panier *****début****************************
+
+
+              
+        
+        
+        
+        try{
+            if((session.getAttribute("panierListOrderItem()"))!=null){
+             try{
+               
+    MyOrder myOrder = (MyOrder) session.getAttribute("newOrder"); 
+
+          int numeroTable=0;
+     for(MyTable my : myOrder.getMyTables()){
+      numeroTable =  my.getTableNumber();   
+     }
+     MyOrder myOrderPersist = gestionCommande.getLastOrderbyTableNumber(numeroTable); 
+     
+   //  Product po01 =   gestionCommande.persistProductPanier(stringIdProduit,myOrderPersist );
+     
+//System.out.println("existe tu myOrderPersist *****************" + myOrderPersist.toString());
+             List<OrderItem> listOI = gestionCommande.getOrderItemByOrder(myOrder.getId());  
+
+             
+             session.setAttribute("panierListOrderItem", listOI); 
+             
+        
+            } catch (CustomException ex1) {
+                    Logger.getLogger(versNewOrder.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+       }
+       
+       }
+    catch(NullPointerException ne){
+    
+}
+        
+              
+        
+        
+ //**************************************affichage panier *****fin****************************         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
         if (request.getParameter("action").equals("valide")) {
 
@@ -89,7 +145,7 @@ public class versNewOrder implements ControllerInterface, Serializable {
      
      Product po01 =   gestionCommande.persistProductPanier(stringIdProduit,myOrderPersist );
      
-System.out.println("existe tu myOrderPersist *****************" + myOrderPersist.toString());
+
              List<OrderItem> listOI = gestionCommande.getOrderItemByOrder(myOrder.getId());  
 
              

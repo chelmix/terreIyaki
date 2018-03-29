@@ -33,8 +33,7 @@ import javax.persistence.OneToMany;
     @NamedQuery(name ="entityBeans.OrderItem.selectOrderItemOptions", 
             query = "select o.options from OrderItem o where o = :paramItem"),
     @NamedQuery(name ="entityBeans.OrderItem.selectOrderItemIngredients", 
-            query = "select o.ingredients from OrderItem o where o = :paramItem")
-        query="Select o from OrderItem o where o.status = :paramStatus"),
+            query = "select o.ingredients from OrderItem o where o = :paramItem"),
         @NamedQuery(name ="entityBeans.OrderItem.selectOrderItemById",
         query="Select o from OrderItem o where o.id = :paramOrderItemId")    
 //    @NamedQuery(name ="entityBeans.OrderItem.getProductsByOrder",

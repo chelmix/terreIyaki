@@ -22,8 +22,61 @@ public class HomeCtrl implements ControllerInterface, Serializable {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
+    
          HttpSession session = request.getSession();
          OrderTreatmentLocal gestionCommande = lookupOrderTreatmentLocal(); 
+         
+         
+// ****************************je remet a jour l affichage *************début **************
+          try{
+          if(session.getAttribute("panierListOrderItem")!=null){
+           try{
+               
+    MyOrder myOrder = (MyOrder) session.getAttribute("newOrder"); 
+
+          int numeroTable=0;
+     for(MyTable my : myOrder.getMyTables()){
+      numeroTable =  my.getTableNumber();   
+     }
+     MyOrder myOrderPersist = gestionCommande.getLastOrderbyTableNumber(numeroTable); 
+    
+
+             List<OrderItem> listOI = gestionCommande.getOrderItemByOrder(myOrder.getId());  
+
+             
+             session.setAttribute("panierListOrderItem", listOI); 
+             
+        
+            } catch (CustomException ex1) {
+                    Logger.getLogger(versNewOrder.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+          
+          }
+                 
+          }catch(NullPointerException ne){
+              
+          }
+         
+// ****************************je remet a jour l affichage *************fin **************    
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
          
       try   {
 if(request.getParameter("action").equals("addition")){
@@ -80,32 +133,7 @@ if(request.getParameter("action").equals("addition")){
                         request.setAttribute("message", texte);         
      }
           
-         //je remet a jour l affichage
-          
-          
-           try{
-               
-    MyOrder myOrder = (MyOrder) session.getAttribute("newOrder"); 
-
-          int numeroTable=0;
-     for(MyTable my : myOrder.getMyTables()){
-      numeroTable =  my.getTableNumber();   
-     }
-     MyOrder myOrderPersist = gestionCommande.getLastOrderbyTableNumber(numeroTable); 
-    
-
-             List<OrderItem> listOI = gestionCommande.getOrderItemByOrder(myOrder.getId());  
-
-             
-             session.setAttribute("panierListOrderItem", listOI); 
-             
         
-            } catch (CustomException ex1) {
-                    Logger.getLogger(versNewOrder.class.getName()).log(Level.SEVERE, null, ex1);
-                }
-          
-          
-          
           
           
           
