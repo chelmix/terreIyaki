@@ -31,7 +31,7 @@
         
         
         
-        
+        <div class ="pad" >       
 <div class="bouton">
       <a href="FrontController?section=login&bottom${codeNumber}=01"><img src="images/image01.png" width="86" height="94" alt="bouton01"/></a>
       <a href="FrontController?section=login&bottom${codeNumber}=02"><img src="images/image02.png" width="86" height="94" alt="bouton02"/></a>
@@ -75,6 +75,7 @@
 </c:if> 
 </div>          
 
+      </div>
     <p>${message}</p>       
 
     

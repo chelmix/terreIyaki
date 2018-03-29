@@ -63,6 +63,23 @@ a.button, input.button {
   text-transform: uppercase;
 }
 
+a.button1, input.button1 {
+
+ text-align: center;
+display : block;
+  background-color: #EB212E;
+  color: white;
+  margin : 2em 2em; 
+  padding: 1em 1.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+p.home {
+   margin-left: 2em; 
+   
+}
+
 a.button:hover {
     background-color: #555;
 }
@@ -95,4 +112,11 @@ article {
 
 .processing {
     font-weight: bold;
+}
+nav {
+      margin : 2em 2em; 
+    display: flex;
+    justify-content :space-between; 
+    
+    
 }
