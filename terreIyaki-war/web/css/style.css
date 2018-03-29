@@ -104,13 +104,13 @@ article {
     vertical-align:middle;
     display: inline-block;
     color: white; 
-    background-color: lightseagreen; 
+    background-color: #EB212E; 
     text-transform: uppercase;
     border: 0.1em black solid;
 } 
 
 #mytableStatus:hover {
-    background-color: #EB212E;
+    background-color: #555;
 }
 
 .processing {

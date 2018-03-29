@@ -38,12 +38,9 @@
                     <div class="element">
 
                         <c:url value="FrontController?section=combo&action=monCombo&comboName=${com.name}" var="url01"/>
-                        <a href="${url01}">${com.name}
-
-
-
-                            <br/>${com.description} - ${com.price} € </a>
-
+                        ${com.name}
+                        <br/>${com.description} - ${com.price} €  
+                        <a class="button1" href="${url01}" >Choisir</a>
 
                     </div>
 
@@ -56,11 +53,11 @@
 
             <c:if test="${HashProduct!=null}">
                 <h3>Menu ${comboName02} </h3>
-                
-             <c:if test="${newOrder!=null}">
-                <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/></a>
-              </c:if>  
-                 
+
+                <c:if test="${newOrder!=null}">
+                    <a href="FrontController?section=combo&action=comboChoice&detection=itemFormul&comboName=${comboName02}"><img src="images/ajouter.png" width="80" alt="ajouter"/></a>
+                    </c:if>  
+
 
 
                 <%
@@ -89,7 +86,7 @@
                     //     System.out.println("Après le tri: ");
                     while (iterator2.hasNext()) {
                         Map.Entry me2 = (Map.Entry) iterator2.next();
-                //         System.out.print(me2.getKey() + ": ");
+                        //         System.out.print(me2.getKey() + ": ");
                         //         System.out.println(me2.getValue());
                         myKey = String.valueOf(me2.getKey());
                         lp01 = (List<Product>) me2.getValue();
@@ -124,13 +121,13 @@
                 <c:if test="${hashPanier!=null}">
 
 
-                   <c:if test="${menuRempli!=null}">
-                       
-                           
-                       
+                    <c:if test="${menuRempli!=null}">
+
+
+
                         <a href="FrontController?section=combo&action=validerMenu">ajouter à la commande</a>
                         <br/><br/>
-                          
+
                     </c:if>  
 
 
@@ -181,7 +178,7 @@
                     menu commandé : ${achat.key} - quantité : ${achat.value}
                     <c:url value="FrontController?section=versLogin" var="url02" />
 
-                        
+
                 </c:forEach>
             </c:if>
 
